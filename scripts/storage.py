@@ -39,18 +39,18 @@ class JsonPermitStore:
         self.history_path.parent.mkdir(parents=True, exist_ok=True)
         self.state_path.parent.mkdir(parents=True, exist_ok=True)
 
-def _read_json(self, path: Path, default):
-    if not path.exists():
-        return default
+    def _read_json(self, path: Path, default):
+        if not path.exists():
+            return default
 
-    try:
-        with path.open("r", encoding="utf-8") as f:
-            content = f.read().strip()
-            if not content:
-                return default
-            return json.loads(content)
-    except Exception:
-        return default
+        try:
+            with path.open("r", encoding="utf-8") as f:
+                content = f.read().strip()
+                if not content:
+                    return default
+                return json.loads(content)
+        except Exception:
+            return default
 
     def _write_json(self, path: Path, payload) -> None:
         tmp = path.with_suffix(path.suffix + ".tmp")
