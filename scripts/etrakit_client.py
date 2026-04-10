@@ -164,7 +164,23 @@ class ETrakitClient:
         except ValueError as exc:
             raise ETrakitError(f"Invalid issued date: {issued_date_iso}") from exc
 
-        report_page = self._get(self.config.issue_report_url)
+        try:
+            report_page = self._get(self.config.issue_report_url)
+        except requests.HTTPError as exc:
+            response = exc.response
+            if response is not None:
+                self._debug_write_text("04_issue_report_page_error.html", response.text)
+                self._debug_write_json(
+                    "04_issue_report_page_error_meta.json",
+                    {
+                        "status_code": response.status_code,
+                        "url": response.url,
+                    },
+                )
+            raise ETrakitError(
+                f"Failed to load issue report page: {exc}"
+            ) from exc
+
         self._debug_write_text("04_issue_report_page.html", report_page.text)
         self._debug_write_json(
             "04_issue_report_page_fields.json",
