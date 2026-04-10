@@ -68,17 +68,20 @@ class ETrakitClient:
         if self.config.debug_enabled:
             self.debug_dir.mkdir(parents=True, exist_ok=True)
 
-    def _debug_write_text(self, filename: str, content: str) -> None:
-        if not self.config.debug_enabled:
-            return
-        (self.debug_dir / filename).write_text(content, encoding="utf-8")
+def _debug_write_text(self, filename: str, content: str) -> None:
+    if not self.config.debug_enabled:
+        return
+    self.debug_dir.mkdir(parents=True, exist_ok=True)
+    (self.debug_dir / filename).write_text(content, encoding="utf-8")
 
-    def _debug_write_json(self, filename: str, payload: dict) -> None:
-        if not self.config.debug_enabled:
-            return
-        (self.debug_dir / filename).write_text(
-            json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8"
-        )
+def _debug_write_json(self, filename: str, payload: dict) -> None:
+    if not self.config.debug_enabled:
+        return
+    self.debug_dir.mkdir(parents=True, exist_ok=True)
+    (self.debug_dir / filename).write_text(
+        json.dumps(payload, indent=2, sort_keys=True),
+        encoding="utf-8",
+    )
 
     def _get(self, url: str) -> requests.Response:
         resp = self.session.get(url, timeout=60)
