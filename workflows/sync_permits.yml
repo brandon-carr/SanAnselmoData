@@ -1,0 +1,56 @@
+name: Sync San Anselmo permits
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_issued_date:
+        description: "Issued date to sync (YYYY-MM-DD)"
+        required: true
+        default: "2026-04-09"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      TARGET_ISSUED_DATE: ${{ inputs.target_issued_date }}
+      ETRAKIT_USERNAME: ${{ secrets.ETRAKIT_USERNAME }}
+      ETRAKIT_PASSWORD: ${{ secrets.ETRAKIT_PASSWORD }}
+      ETRAKIT_BASE_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+      ETRAKIT_LOGIN_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+      ETRAKIT_PERMIT_SEARCH_URL: https://sanan-trk.aspgov.com/eTRAKiT/Search/Permit.aspx
+
+      # Adjust these only if the first live run shows different field names.
+      ETRAKIT_USERNAME_FIELD: ctl00$MainContent$txtUserName
+      ETRAKIT_PASSWORD_FIELD: ctl00$MainContent$txtPassword
+      ETRAKIT_LOGIN_BUTTON_FIELD: ctl00$MainContent$btnLogin
+      ETRAKIT_SEARCH_BY_FIELD: ctl00$MainContent$ddlSearchBy
+      ETRAKIT_ISSUED_START_FIELD: ctl00$MainContent$txtStartDate
+      ETRAKIT_ISSUED_END_FIELD: ctl00$MainContent$txtEndDate
+      ETRAKIT_SEARCH_BUTTON_FIELD: ctl00$MainContent$btnSearch
+      ETRAKIT_ISSUED_SEARCH_VALUE: ISSUED
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run sync
+        run: python scripts/sync_permits.py
+
+      - name: Commit updated JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/current_permits.json data/permit_history.json data/sync_state.json
+          git diff --cached --quiet || git commit -m "Sync permits for ${TARGET_ISSUED_DATE}"
+          git push
