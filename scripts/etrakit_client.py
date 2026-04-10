@@ -158,25 +158,26 @@ class ETrakitClient:
         )
         return self._search_permits_by_issued_date_fallback(issued_date_iso)
 
-    def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
+     def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
         try:
             dt = datetime.strptime(issued_date_iso, "%Y-%m-%d")
         except ValueError as exc:
             raise ETrakitError(f"Invalid issued date: {issued_date_iso}") from exc
 
         try:
-            report_page = self._get(self.config.issue_report_url)
-        except requests.HTTPError as exc:
-            response = exc.response
-            if response is not None:
-                self._debug_write_text("04_issue_report_page_error.html", response.text)
+            report_page = self.session.get(self.config.issue_report_url, timeout=60)
+            if report_page.status_code >= 400:
+                self._debug_write_text("04_issue_report_page_error.html", report_page.text)
                 self._debug_write_json(
                     "04_issue_report_page_error_meta.json",
                     {
-                        "status_code": response.status_code,
-                        "url": response.url,
+                        "status_code": report_page.status_code,
+                        "url": report_page.url,
+                        "headers": dict(report_page.headers),
                     },
                 )
+                report_page.raise_for_status()
+        except requests.HTTPError as exc:
             raise ETrakitError(
                 f"Failed to load issue report page: {exc}"
             ) from exc
