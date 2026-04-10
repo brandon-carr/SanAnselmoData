@@ -35,12 +35,10 @@ class ETrakitConfig:
     password_field: str = os.getenv("ETRAKIT_PASSWORD_FIELD", "ctl00$MainContent$txtPassword")
     login_button_field: str = os.getenv("ETRAKIT_LOGIN_BUTTON_FIELD", "ctl00$MainContent$btnLogin")
 
-    # Report page fields. These may need one live adjustment.
     report_start_field: str = os.getenv("ETRAKIT_REPORT_START_FIELD", "ctl00$MainContent$txtFromDate")
     report_end_field: str = os.getenv("ETRAKIT_REPORT_END_FIELD", "ctl00$MainContent$txtToDate")
     report_run_button_field: str = os.getenv("ETRAKIT_REPORT_RUN_BUTTON_FIELD", "ctl00$MainContent$btnReport")
 
-    # Fallback search fields.
     search_by_field: str = os.getenv("ETRAKIT_SEARCH_BY_FIELD", "ctl00$MainContent$ddlSearchBy")
     issued_start_field: str = os.getenv("ETRAKIT_ISSUED_START_FIELD", "ctl00$MainContent$txtStartDate")
     issued_end_field: str = os.getenv("ETRAKIT_ISSUED_END_FIELD", "ctl00$MainContent$txtEndDate")
@@ -68,20 +66,20 @@ class ETrakitClient:
         if self.config.debug_enabled:
             self.debug_dir.mkdir(parents=True, exist_ok=True)
 
-def _debug_write_text(self, filename: str, content: str) -> None:
-    if not self.config.debug_enabled:
-        return
-    self.debug_dir.mkdir(parents=True, exist_ok=True)
-    (self.debug_dir / filename).write_text(content, encoding="utf-8")
+    def _debug_write_text(self, filename: str, content: str) -> None:
+        if not self.config.debug_enabled:
+            return
+        self.debug_dir.mkdir(parents=True, exist_ok=True)
+        (self.debug_dir / filename).write_text(content, encoding="utf-8")
 
-def _debug_write_json(self, filename: str, payload: dict) -> None:
-    if not self.config.debug_enabled:
-        return
-    self.debug_dir.mkdir(parents=True, exist_ok=True)
-    (self.debug_dir / filename).write_text(
-        json.dumps(payload, indent=2, sort_keys=True),
-        encoding="utf-8",
-    )
+    def _debug_write_json(self, filename: str, payload: dict) -> None:
+        if not self.config.debug_enabled:
+            return
+        self.debug_dir.mkdir(parents=True, exist_ok=True)
+        (self.debug_dir / filename).write_text(
+            json.dumps(payload, indent=2, sort_keys=True),
+            encoding="utf-8",
+        )
 
     def _get(self, url: str) -> requests.Response:
         resp = self.session.get(url, timeout=60)
@@ -139,7 +137,7 @@ def _debug_write_json(self, filename: str, payload: dict) -> None:
             },
         )
 
-        response = self._post(self.config.login_url, payload)
+        response = self.session.post(self.config.login_url, data=payload, timeout=60)
         self._debug_write_text("03_login_response.html", response.text)
         self._debug_write_json("03_login_response_fields.json", self._extract_form_fields(response.text))
 
@@ -154,99 +152,93 @@ def _debug_write_json(self, filename: str, payload: dict) -> None:
         if links:
             return links
 
-        # Fallback only if the report returned nothing.
         self._debug_write_json(
             "07_report_fallback.json",
             {"reason": "issue report returned zero links; using fallback permit search"},
         )
         return self._search_permits_by_issued_date_fallback(issued_date_iso)
 
-def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
-    try:
-        dt = datetime.strptime(issued_date_iso, "%Y-%m-%d")
-    except ValueError as exc:
-        raise ETrakitError(f"Invalid issued date: {issued_date_iso}") from exc
+    def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
+        try:
+            dt = datetime.strptime(issued_date_iso, "%Y-%m-%d")
+        except ValueError as exc:
+            raise ETrakitError(f"Invalid issued date: {issued_date_iso}") from exc
 
-    date_text = dt.strftime("%m/%d/%Y")
+        date_text = dt.strftime("%m/%d/%Y")
 
-    report_page = self.session.get(self.config.issue_report_url, timeout=60)
+        report_page = self.session.get(self.config.issue_report_url, timeout=60)
 
-    # Always dump the raw response, even on failure
-    self._debug_write_text("04_issue_report_page_raw.html", report_page.text)
-    self._debug_write_json(
-        "04_issue_report_page_meta.json",
-        {
-            "status_code": report_page.status_code,
-            "url": report_page.url,
-            "headers": dict(report_page.headers),
-        },
-    )
-
-    if report_page.status_code >= 400:
-        raise ETrakitError(
-            f"Failed to load issue report page: {report_page.status_code} for {report_page.url}"
+        self._debug_write_text("04_issue_report_page_raw.html", report_page.text)
+        self._debug_write_json(
+            "04_issue_report_page_meta.json",
+            {
+                "status_code": report_page.status_code,
+                "url": report_page.url,
+                "headers": dict(report_page.headers),
+            },
         )
 
-    self._debug_write_json(
-        "04_issue_report_page_fields.json",
-        self._extract_form_fields(report_page.text),
-    )
+        if report_page.status_code >= 400:
+            raise ETrakitError(
+                f"Failed to load issue report page: {report_page.status_code} for {report_page.url}"
+            )
 
-    payload = self._parse_hidden_inputs(report_page.text)
-    payload[self.config.report_start_field] = date_text
-    payload[self.config.report_end_field] = date_text
-    payload[self.config.report_run_button_field] = "Run Report"
-
-    self._debug_write_json(
-        "05_issue_report_post_payload.json",
-        {
-            "issue_report_url": self.config.issue_report_url,
-            "issued_date_iso": issued_date_iso,
-            "issued_date_formatted": date_text,
-            "payload_keys": sorted(payload.keys()),
-            "report_start_field": self.config.report_start_field,
-            "report_end_field": self.config.report_end_field,
-            "report_run_button_field": self.config.report_run_button_field,
-        },
-    )
-
-    response = self.session.post(self.config.issue_report_url, data=payload, timeout=60)
-
-    # Always dump POST result too
-    self._debug_write_text("06_issue_report_results_raw.html", response.text)
-    self._debug_write_json(
-        "06_issue_report_results_meta.json",
-        {
-            "status_code": response.status_code,
-            "url": response.url,
-            "headers": dict(response.headers),
-        },
-    )
-
-    if response.status_code >= 400:
-        raise ETrakitError(
-            f"Issue report POST failed: {response.status_code} for {response.url}"
+        self._debug_write_json(
+            "04_issue_report_page_fields.json",
+            self._extract_form_fields(report_page.text),
         )
 
-    links = self._extract_permit_links_from_report(response.text)
-    self._debug_write_json(
-        "06_issue_report_links.json",
-        {"count": len(links), "links": links},
-    )
-    return links
+        payload = self._parse_hidden_inputs(report_page.text)
+        payload[self.config.report_start_field] = date_text
+        payload[self.config.report_end_field] = date_text
+        payload[self.config.report_run_button_field] = "Run Report"
+
+        self._debug_write_json(
+            "05_issue_report_post_payload.json",
+            {
+                "issue_report_url": self.config.issue_report_url,
+                "issued_date_iso": issued_date_iso,
+                "issued_date_formatted": date_text,
+                "payload_keys": sorted(payload.keys()),
+                "report_start_field": self.config.report_start_field,
+                "report_end_field": self.config.report_end_field,
+                "report_run_button_field": self.config.report_run_button_field,
+            },
+        )
+
+        response = self.session.post(self.config.issue_report_url, data=payload, timeout=60)
+
+        self._debug_write_text("06_issue_report_results_raw.html", response.text)
+        self._debug_write_json(
+            "06_issue_report_results_meta.json",
+            {
+                "status_code": response.status_code,
+                "url": response.url,
+                "headers": dict(response.headers),
+            },
+        )
+
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Issue report POST failed: {response.status_code} for {response.url}"
+            )
+
+        links = self._extract_permit_links_from_report(response.text)
+        self._debug_write_json(
+            "06_issue_report_links.json",
+            {"count": len(links), "links": links},
+        )
+        return links
 
     def _extract_permit_links_from_report(self, html: str) -> List[str]:
         soup = BeautifulSoup(html, "html.parser")
         links: List[str] = []
 
-        # First choice: actual permit detail links.
         for a in soup.find_all("a", href=True):
             href = a["href"]
             if "ActivityNo=" in href or "Permit.aspx?" in href:
                 links.append(urljoin(self.config.base_url, href))
 
-        # Backup: sometimes the report may contain plain permit numbers but not direct links.
-        # If so, synthesize detail URLs from permit numbers found in text.
         if not links:
             text = " ".join(soup.stripped_strings)
             permit_numbers = re.findall(r"\b([A-Z]\d{4}-\d{4,})\b", text, flags=re.IGNORECASE)
@@ -289,8 +281,21 @@ def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
             },
         )
 
-        response = self._post(self.config.permit_search_url, payload)
+        response = self.session.post(self.config.permit_search_url, data=payload, timeout=60)
         self._debug_write_text("10_search_results.html", response.text)
+        self._debug_write_json(
+            "10_search_results_meta.json",
+            {
+                "status_code": response.status_code,
+                "url": response.url,
+                "headers": dict(response.headers),
+            },
+        )
+
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Fallback permit search failed: {response.status_code} for {response.url}"
+            )
 
         links = self._extract_permit_links_from_search_results(response.text)
         self._debug_write_json("10_search_results_links.json", {"count": len(links), "links": links})
@@ -315,12 +320,17 @@ def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
         return out
 
     def fetch_permit_details(self, detail_url: str) -> Dict[str, str]:
-        response = self._get(detail_url)
+        response = self.session.get(detail_url, timeout=60)
         html = response.text
 
         permit_number_hint = self._extract_permit_number(detail_url, html, [])
         safe_name = permit_number_hint or "unknown_permit"
         self._debug_write_text(f"permit_{safe_name}.html", html)
+
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Permit detail page failed: {response.status_code} for {response.url}"
+            )
 
         soup = BeautifulSoup(html, "html.parser")
         text_nodes = [normalize_str(t) for t in soup.stripped_strings if normalize_str(t)]
