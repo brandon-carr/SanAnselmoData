@@ -40,10 +40,10 @@ class JsonPermitStore:
         self.state_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _read_json(self, path: Path, default):
-        if not path.exists():
-            return default
-        with path.open("r", encoding="utf-8") as f:
-            return json.load(f)
+    if not path.exists():
+        return default
+    with path.open("r", encoding="utf-8") as f:
+        return json.load(f)
 
     def _write_json(self, path: Path, payload) -> None:
         tmp = path.with_suffix(path.suffix + ".tmp")
