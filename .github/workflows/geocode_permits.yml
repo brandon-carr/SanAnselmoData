@@ -55,7 +55,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add -f data/current_permits.json data/addresses.json data/address_history.json data/geocode_cache.json
+          for file in \
+            data/current_permits.json \
+            data/addresses.json \
+            data/address_history.json \
+            data/geocode_cache.json
+          do
+            if [ -f "$file" ]; then
+              git add -f "$file"
+            fi
+          done
 
           git diff --cached --quiet || git commit -m "Geocode permit addresses"
           git push
