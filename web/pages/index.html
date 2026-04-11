@@ -430,7 +430,7 @@
 
     function renderResults() {
       syncFilterOptions();
-      const filteredRawPermits = state.rawPermits.filter(matchesFilters);
+      const filteredRawPermits = state.rawPermits.filter((permit) => matchesFilters(permit));
       state.filteredPermits = filteredRawPermits.filter((permit) => permit.lat != null && permit.lng != null);
 
       markersLayer.clearLayers();
@@ -494,7 +494,7 @@
       try {
         const response = await fetch(`${DATA_URL}?${CACHE_BUST}`, { cache: "no-store" });
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`);
+          throw new Error(`HTTP ${response.status} for ${DATA_URL}`);
         }
 
         const data = await response.json();
@@ -509,7 +509,7 @@
         resultsEl.innerHTML = `
           <div class="empty-state">
             Could not load <code>${DATA_URL}</code>.<br>
-            Make sure the file exists and the site is being served from the project root.
+            ${escapeHtml(error?.message || "Unknown error")}
           </div>
         `;
       }
