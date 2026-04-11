@@ -41,17 +41,30 @@ def resolve_target_dates(state: dict) -> List[str]:
         return [manual_date]
 
     completed = set(state.get("completed_issued_dates", []))
-    today = datetime.utcnow().date()
+    completed_dates = sorted(
+        datetime.strptime(d, "%Y-%m-%d").date()
+        for d in completed
+        if d
+    )
+    yesterday = datetime.utcnow().date() - timedelta(days=1)
+    backfill_anchor = completed_dates[0] if completed_dates else yesterday
 
     targets: List[str] = []
-    for offset in range(1, days_back + 1):
-        d = today - timedelta(days=offset)
+    seen = set()
+
+    def add_target(d) -> None:
         d_str = d.isoformat()
-
+        if d_str in seen:
+            return
         if not force_rerun and d_str in completed:
-            continue
-
+            return
+        seen.add(d_str)
         targets.append(d_str)
+
+    add_target(yesterday)
+
+    for offset in range(1, days_back + 1):
+        add_target(backfill_anchor - timedelta(days=offset))
 
     return targets
 
@@ -179,6 +192,8 @@ def main() -> int:
     if not target_dates:
         print("SKIPPED no target dates to process")
         return 0
+
+    print(f"TARGETS {', '.join(target_dates)}")
 
     client = ETrakitClient()
     geocoder = JsonGeocoder()
