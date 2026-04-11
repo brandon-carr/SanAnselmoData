@@ -322,10 +322,18 @@
         .replaceAll("'", "&#39;");
     }
 
+    function isDateLike(value) {
+      return /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(String(value || "").trim());
+    }
+
     function populateFilterOptions() {
       const sources = [...new Set(state.allPermits.map(p => p.permit_source).filter(Boolean))].sort();
       const types = [...new Set(state.allPermits.map(p => p.permit_type).filter(Boolean))].sort();
-      const statuses = [...new Set(state.allPermits.map(p => p.status).filter(Boolean))].sort();
+      const statuses = [...new Set(
+        state.allPermits
+          .map(p => p.status)
+          .filter((value) => value && !isDateLike(value))
+      )].sort();
 
       for (const value of sources) {
         const option = document.createElement("option");

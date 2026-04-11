@@ -659,7 +659,21 @@ class ETrakitClient:
             label = normalize_str(columns[0].get_text(" ", strip=True)).rstrip(":")
             value = normalize_str(columns[1].get_text(" ", strip=True))
             if label:
-                row_map[label.lower()] = value
+                label_key = label.lower()
+                if label_key not in row_map or not row_map[label_key]:
+                    row_map[label_key] = value
+
+        for row in soup.select("tr"):
+            cells = row.find_all("td", recursive=False)
+            if len(cells) < 2:
+                continue
+
+            label = normalize_str(cells[0].get_text(" ", strip=True)).rstrip(":")
+            value = normalize_str(cells[1].get_text(" ", strip=True))
+            if label:
+                label_key = label.lower()
+                if label_key not in row_map or not row_map[label_key]:
+                    row_map[label_key] = value
 
         def find_after(label_variants: Iterable[str]) -> str:
             lookup = [normalize_str(v).rstrip(":").lower() for v in label_variants]
