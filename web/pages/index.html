@@ -264,8 +264,10 @@
     }
 
     function normalizePermit(raw) {
-      const lat = Number(raw.lat ?? raw.latitude ?? "");
-      const lng = Number(raw.lng ?? raw.lon ?? raw.longitude ?? "");
+      const latRaw = String(raw.lat ?? raw.latitude ?? "").trim();
+      const lngRaw = String(raw.lng ?? raw.lon ?? raw.longitude ?? "").trim();
+      const lat = latRaw === "" ? NaN : Number(latRaw);
+      const lng = lngRaw === "" ? NaN : Number(lngRaw);
       return {
         permit_number: raw.permit_number || "",
         status: raw.status || "",

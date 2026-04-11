@@ -177,8 +177,9 @@ class ETrakitClient:
         payload[base_field] = iso_date
 
         date_input_field = f"{base_field}$dateInput"
-        if date_input_field in payload:
-            payload[date_input_field] = text_date
+        # Telerik date controls submit both the ISO field and the visible text input.
+        # If we omit the text input, the server can fall back to a broader/default range.
+        payload[date_input_field] = text_date
 
         date_input_client_state_field = f"{field_prefix}_dateInput_ClientState"
         if date_input_client_state_field in payload:
@@ -217,6 +218,10 @@ class ETrakitClient:
         soup = BeautifulSoup(html, "html.parser")
         payload: Dict[str, str] = {}
         for inp in soup.select("input[type='hidden'][name]"):
+            payload[inp.get("name")] = inp.get("value", "")
+        # Some report controls are posted as plain text inputs, not hidden fields.
+        # Include them so later payload mutation has the same shape as a browser form submit.
+        for inp in soup.select("input[type='text'][name]"):
             payload[inp.get("name")] = inp.get("value", "")
         return payload
 
@@ -585,8 +590,12 @@ class ETrakitClient:
         except ValueError as exc:
             raise ETrakitError(f"Invalid issued date: {issued_date_iso}") from exc
 
+        # eTRAKiT does not reliably accept a same-day from/to range.
+        # To ask for one logical target day, we submit a two-date window:
+        # from = target day, to = target day + 1.
+        report_end_dt = dt + timedelta(days=1)
         start_date_text = dt.strftime("%m/%d/%Y")
-        end_date_text = (dt + timedelta(days=1)).strftime("%m/%d/%Y")
+        end_date_text = report_end_dt.strftime("%m/%d/%Y")
 
         report_page = self._ensure_logged_in_for_url(self.config.issue_report_url)
 
@@ -619,7 +628,7 @@ class ETrakitClient:
         if report_date_type_field:
             payload[report_date_type_field] = "ISSUED"
         self._set_telerik_date_payload(payload, report_start_field, dt)
-        self._set_telerik_date_payload(payload, report_end_field, dt + timedelta(days=1))
+        self._set_telerik_date_payload(payload, report_end_field, report_end_dt)
         payload[report_run_button_field] = "View Report"
 
         self._debug_write_json(

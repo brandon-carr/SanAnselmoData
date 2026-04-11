@@ -35,9 +35,17 @@ def resolve_target_dates(state: dict) -> List[str]:
     manual_date = getenv_str("TARGET_ISSUED_DATE")
     days_back = getenv_int("DAYS_BACK", 1)
     force_rerun = getenv_bool("FORCE_RERUN", False)
+    today_utc = datetime.now(timezone.utc).date()
+    yesterday = today_utc - timedelta(days=1)
 
     if manual_date:
-        return [manual_date]
+        try:
+            manual_dt = datetime.strptime(manual_date, "%Y-%m-%d").date()
+        except ValueError:
+            return []
+        if manual_dt > today_utc:
+            return []
+        return [manual_dt.isoformat()]
 
     completed = set(state.get("completed_issued_dates", []))
     completed_dates = sorted(
@@ -45,13 +53,14 @@ def resolve_target_dates(state: dict) -> List[str]:
         for d in completed
         if d
     )
-    yesterday = datetime.now(timezone.utc).date() - timedelta(days=1)
     backfill_anchor = completed_dates[0] if completed_dates else yesterday
 
     targets: List[str] = []
     seen = set()
 
     def add_target(d) -> None:
+        if d > today_utc:
+            return
         d_str = d.isoformat()
         if d_str in seen:
             return
@@ -66,6 +75,16 @@ def resolve_target_dates(state: dict) -> List[str]:
         add_target(backfill_anchor - timedelta(days=offset))
 
     return targets
+
+
+def normalize_mmddyyyy_to_iso(value: str) -> str:
+    raw = (value or "").strip()
+    if not raw:
+        return ""
+    try:
+        return datetime.strptime(raw, "%m/%d/%Y").date().isoformat()
+    except ValueError:
+        return ""
 
 
 def sync_one_date(
@@ -90,6 +109,12 @@ def sync_one_date(
             try:
                 fields = client.fetch_permit_details(detail_url)
                 record = PermitRecord.from_scraped_fields(fields)
+                issued_date_iso = normalize_mmddyyyy_to_iso(record.issued_date)
+                # The report request uses target_date..target_date+1 because the site
+                # does not accept a same-day from/to query. Persist only the exact
+                # target day's permits so our stored data stays day-accurate.
+                if issued_date_iso != target_issued_date:
+                    continue
                 scraped_records[record.permit_number] = record
             except Exception as exc:
                 errors.append(f"{detail_url}: {exc}")
