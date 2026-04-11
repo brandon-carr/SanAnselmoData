@@ -57,6 +57,24 @@
       "last_seen_at": "2026-04-11T18:14:03+00:00",
       "latitude": "",
       "longitude": ""
+    },
+    {
+      "address": "61 LINCOLN PARK",
+      "address_id": "91b6f310b90d1cc6",
+      "city_state_zip": "SAN ANSELMO, CA, 94960",
+      "data_hash": "e13fc5645da9efbe9b2f6c208cf06e4a56966a3a2e7dbb0b3b6c1021182138ad",
+      "extra": {},
+      "first_seen_at": "2026-04-11T18:14:03+00:00",
+      "geocode_attempts": 1,
+      "geocode_error": "No geocode match returned",
+      "geocode_last_attempt_at": "2026-04-11T18:15:29+00:00",
+      "geocode_source": "nominatim",
+      "geocode_status": "error",
+      "geocoded_address": "",
+      "last_changed_at": "2026-04-11T18:15:29+00:00",
+      "last_seen_at": "2026-04-11T18:15:29+00:00",
+      "latitude": "",
+      "longitude": ""
     }
   ],
   "b8d3bf40d70bf1e9": [
@@ -155,6 +173,24 @@
       "geocoded_address": "",
       "last_changed_at": "2026-04-11T18:14:00+00:00",
       "last_seen_at": "2026-04-11T18:14:00+00:00",
+      "latitude": "",
+      "longitude": ""
+    },
+    {
+      "address": "525 SAN ANSELMO_ Town Projects",
+      "address_id": "f2c6dfb1648327fa",
+      "city_state_zip": "SAN ANSELMO, CA, 94960",
+      "data_hash": "33114e6b84af02b47efbcc69aac36d37fa31ed19e91dd62fb9580ee4d8ac466b",
+      "extra": {},
+      "first_seen_at": "2026-04-11T18:14:00+00:00",
+      "geocode_attempts": 1,
+      "geocode_error": "No geocode match returned",
+      "geocode_last_attempt_at": "2026-04-11T18:15:34+00:00",
+      "geocode_source": "nominatim",
+      "geocode_status": "error",
+      "geocoded_address": "",
+      "last_changed_at": "2026-04-11T18:15:34+00:00",
+      "last_seen_at": "2026-04-11T18:15:34+00:00",
       "latitude": "",
       "longitude": ""
     }
