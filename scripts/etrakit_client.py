@@ -686,7 +686,27 @@ class ETrakitClient:
         if not links and "ActivityNo=" in response.url:
             links = [response.url]
         permit_token = f"ACTIVITYNO={permit_number.upper()}"
-        return [link for link in links if permit_token in link.upper()]
+        matched_links = [link for link in links if permit_token in link.upper()]
+        if matched_links:
+            return matched_links
+
+        direct_url = urljoin(
+            self.config.base_url,
+            f"Search/Permit.aspx?ActivityNo={permit_number.upper()}",
+        )
+        direct_response = self._ensure_logged_in_for_url(direct_url)
+        if direct_response.status_code >= 400:
+            return []
+
+        extracted = self._extract_permit_number(direct_url, direct_response.text, [])
+        if extracted.upper() == permit_number.upper():
+            self._debug_write_json(
+                "13b_building_search_direct_fallback.json",
+                {"permit_number": permit_number, "matched_url": direct_url},
+            )
+            return [direct_url]
+
+        return []
 
     def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
         try:
