@@ -23,6 +23,22 @@
     "queried_at": "2026-04-11T18:15:34+00:00",
     "query": "15 CHERNE LN, SAN ANSELMO, CA, 94960"
   },
+  "191 the alameda, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "191, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9935766",
+    "longitude": "-122.5757961",
+    "queried_at": "2026-04-11T18:24:24+00:00",
+    "query": "191 THE ALAMEDA, SAN ANSELMO, CA, 94960"
+  },
+  "24 hillcrest ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "24, Hillcrest Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9911080",
+    "longitude": "-122.5802828",
+    "queried_at": "2026-04-11T18:24:22+00:00",
+    "query": "24 HILLCREST CT, SAN ANSELMO, CA, 94960"
+  },
   "525 san anselmo_ town projects, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
@@ -70,5 +86,13 @@
     "longitude": "-122.5735037",
     "queried_at": "2026-04-11T18:15:29+00:00",
     "query": "84 BROADMOOR AVE, SAN ANSELMO, CA, 94960"
+  },
+  "98 elm ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "98, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9788753",
+    "longitude": "-122.5756276",
+    "queried_at": "2026-04-11T18:24:23+00:00",
+    "query": "98 ELM AVE, SAN ANSELMO, CA, 94960"
   }
 }
