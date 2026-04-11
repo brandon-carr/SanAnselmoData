@@ -613,6 +613,17 @@ class ETrakitClient:
                 links.append(urljoin(self.config.base_url, href))
         return self._dedupe(links)
 
+    def _looks_like_missing_activity_page(self, html: str) -> bool:
+        normalized = normalize_str(BeautifulSoup(html, "html.parser").get_text(" ", strip=True)).lower()
+        missing_markers = (
+            "record not found",
+            "no record found",
+            "activity not found",
+            "no matching records",
+            "cannot be found",
+        )
+        return any(marker in normalized for marker in missing_markers)
+
     def _dedupe(self, links: List[str]) -> List[str]:
         out: List[str] = []
         seen = set()
@@ -622,26 +633,19 @@ class ETrakitClient:
                 out.append(link)
         return out
 
-    def fetch_activity_details(
+    def _parse_activity_details(
         self,
         detail_url: str,
+        html: str,
         *,
         record_number_labels: Iterable[str],
         type_labels: Iterable[str],
         address_labels: Iterable[str],
         status_labels: Iterable[str],
     ) -> Dict[str, str]:
-        response = self._ensure_logged_in_for_url(detail_url)
-        html = response.text
-
         permit_number_hint = self._extract_activity_number(detail_url, html, [], record_number_labels)
         safe_name = permit_number_hint or "unknown_permit"
         self._debug_write_text(f"permit_{safe_name}.html", html)
-
-        if response.status_code >= 400:
-            raise ETrakitError(
-                f"Permit detail page failed: {response.status_code} for {response.url}"
-            )
 
         soup = BeautifulSoup(html, "html.parser")
         text_nodes = [normalize_str(t) for t in soup.stripped_strings if normalize_str(t)]
@@ -672,7 +676,7 @@ class ETrakitClient:
                             return nxt
             return ""
 
-        permit_number = find_after(record_number_labels) or self._extract_activity_number(
+        permit_number = self._extract_activity_number(
             detail_url,
             html,
             text_nodes,
@@ -706,6 +710,29 @@ class ETrakitClient:
 
         return fields
 
+    def fetch_activity_details(
+        self,
+        detail_url: str,
+        *,
+        record_number_labels: Iterable[str],
+        type_labels: Iterable[str],
+        address_labels: Iterable[str],
+        status_labels: Iterable[str],
+    ) -> Dict[str, str]:
+        response = self._ensure_logged_in_for_url(detail_url)
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Permit detail page failed: {response.status_code} for {response.url}"
+            )
+        return self._parse_activity_details(
+            detail_url,
+            response.text,
+            record_number_labels=record_number_labels,
+            type_labels=type_labels,
+            address_labels=address_labels,
+            status_labels=status_labels,
+        )
+
     def fetch_activity_details_by_number(
         self,
         detail_base_url: str,
@@ -717,19 +744,26 @@ class ETrakitClient:
         status_labels: Iterable[str],
     ) -> Dict[str, str] | None:
         detail_url = f"{detail_base_url}{activity_number.upper()}"
-        try:
-            fields = self.fetch_activity_details(
-                detail_url,
-                record_number_labels=record_number_labels,
-                type_labels=type_labels,
-                address_labels=address_labels,
-                status_labels=status_labels,
-            )
-        except ETrakitError:
+        response = self._ensure_logged_in_for_url(detail_url)
+        if response.status_code >= 400:
+            return None
+        if self._looks_like_missing_activity_page(response.text):
             return None
 
+        fields = self._parse_activity_details(
+            detail_url,
+            response.text,
+            record_number_labels=record_number_labels,
+            type_labels=type_labels,
+            address_labels=address_labels,
+            status_labels=status_labels,
+        )
+
         if fields.get("permit_number", "").upper() != activity_number.upper():
-            return None
+            raise ETrakitError(
+                f"Detail page did not match requested activity number {activity_number}: "
+                f"parsed {fields.get('permit_number', '') or 'blank'}"
+            )
         return fields
 
     def fetch_permit_details(self, detail_url: str) -> Dict[str, str]:

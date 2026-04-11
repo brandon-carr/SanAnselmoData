@@ -255,6 +255,7 @@
     map.addLayer(markersLayer);
 
     const state = {
+      rawPermits: [],
       allPermits: [],
       filteredPermits: [],
       markersByPermit: new Map()
@@ -381,7 +382,8 @@
     }
 
     function renderResults() {
-      state.filteredPermits = state.allPermits.filter(matchesFilters);
+      const filteredRawPermits = state.rawPermits.filter(matchesFilters);
+      state.filteredPermits = filteredRawPermits.filter((permit) => permit.lat != null && permit.lng != null);
 
       markersLayer.clearLayers();
       state.markersByPermit.clear();
@@ -403,7 +405,8 @@
         map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
       }
 
-      summaryEl.textContent = `${state.filteredPermits.length} permits shown • ${mappable.length} mapped`;
+      const additionalNotGeolocated = filteredRawPermits.filter((permit) => permit.lat == null || permit.lng == null).length;
+      summaryEl.textContent = `${state.filteredPermits.length} geolocated permits shown. ${additionalNotGeolocated} additional permits not geolocated`;
 
       resultsEl.innerHTML = "";
       if (state.filteredPermits.length === 0) {
@@ -446,8 +449,9 @@
         }
 
         const data = await response.json();
-        state.allPermits = asArray(data)
-          .map((record) => normalizePermit(record, record.permit_source || ""))
+        state.rawPermits = asArray(data)
+          .map((record) => normalizePermit(record, record.permit_source || ""));
+        state.allPermits = state.rawPermits
           .filter((permit) => permit.lat != null && permit.lng != null);
         populateFilterOptions();
         renderResults();
