@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>Bad Geocode Addresses</title>
   <style>
     :root {
@@ -154,9 +157,11 @@
 
   <script>
     const ADDRESSES_URL = "../../data/addresses.json";
+    const CACHE_BUST = `ts=${Date.now()}`;
 
     async function fetchJson(url) {
-      const response = await fetch(url, { cache: "no-store" });
+      const separator = url.includes("?") ? "&" : "?";
+      const response = await fetch(`${url}${separator}${CACHE_BUST}`, { cache: "no-store" });
       if (!response.ok) {
         throw new Error(`Failed to load ${url}: HTTP ${response.status}`);
       }

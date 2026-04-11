@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>San Anselmo Permits Map</title>
   <link
     rel="stylesheet"
@@ -231,6 +234,7 @@
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
     const DATA_URL = "../../data/current_permits.json";
+    const CACHE_BUST = `ts=${Date.now()}`;
     const DEFAULT_CENTER = [37.9746, -122.5610];
     const DEFAULT_ZOOM = 13;
 
@@ -415,7 +419,7 @@
 
     async function loadPermits() {
       try {
-        const response = await fetch(DATA_URL, { cache: "no-store" });
+        const response = await fetch(`${DATA_URL}?${CACHE_BUST}`, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}`);
         }
