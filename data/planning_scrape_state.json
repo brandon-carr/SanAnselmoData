@@ -1,0 +1,42 @@
+{
+  "completed_issued_dates": [
+    "2026-04-09",
+    "2026-04-10"
+  ],
+  "date_status": {
+    "2026-04-09": {
+      "completed_at": "2026-04-11T21:16:39+00:00",
+      "errors": [],
+      "geocoded_changed": 0,
+      "last_attempt_at": "2026-04-11T21:16:39+00:00",
+      "permits_changed": 0,
+      "permits_found": 9,
+      "permits_new": 4,
+      "permits_unchanged": 0,
+      "status": "success"
+    },
+    "2026-04-10": {
+      "completed_at": "2026-04-11T21:16:35+00:00",
+      "errors": [],
+      "geocoded_changed": 0,
+      "last_attempt_at": "2026-04-11T21:16:35+00:00",
+      "permits_changed": 0,
+      "permits_found": 5,
+      "permits_new": 5,
+      "permits_unchanged": 0,
+      "status": "success"
+    }
+  },
+  "errors": [],
+  "last_run_finished_at": "2026-04-11T21:16:39+00:00",
+  "last_run_started_at": "2026-04-11T21:16:35+00:00",
+  "last_run_status": "success",
+  "last_summary": {
+    "permits_changed": 0,
+    "permits_found": 9,
+    "permits_new": 4,
+    "permits_unchanged": 0,
+    "target_issued_date": "2026-04-09"
+  },
+  "last_target_issued_date": "2026-04-09"
+}
