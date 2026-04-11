@@ -38,6 +38,10 @@ class PermitRecord:
     expiration_date: str = ""
 
     source_url: str = ""
+    latitude: str = ""
+    longitude: str = ""
+    geocoded_address: str = ""
+    geocode_source: str = ""
 
     first_seen_at: str = ""
     last_seen_at: str = ""
@@ -69,6 +73,10 @@ class PermitRecord:
             finaled_date=normalize_str(fields.get("finaled_date")),
             expiration_date=normalize_str(fields.get("expiration_date")),
             source_url=normalize_str(fields.get("source_url")),
+            latitude=normalize_str(fields.get("latitude")),
+            longitude=normalize_str(fields.get("longitude")),
+            geocoded_address=normalize_str(fields.get("geocoded_address")),
+            geocode_source=normalize_str(fields.get("geocode_source")),
             extra=fields.get("extra", {}) or {},
         )
 
@@ -97,6 +105,10 @@ class PermitRecord:
             "finaled_date": self.finaled_date,
             "expiration_date": self.expiration_date,
             "source_url": self.source_url,
+            "latitude": self.latitude,
+            "longitude": self.longitude,
+            "geocoded_address": self.geocoded_address,
+            "geocode_source": self.geocode_source,
             "extra": self.extra,
         }
         return sha256(repr(sorted(meaningful.items())).encode("utf-8")).hexdigest()

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 from typing import Dict, List
 
 from etrakit_client import ETrakitClient, ETrakitError
+from geocoder import JsonGeocoder
 from permit_model import PermitRecord, utc_now_iso
 from storage import JsonPermitStore, finalize_run_state, init_run_state
 
@@ -102,6 +103,10 @@ def sync_one_date(
                 continue
 
             existing = current_records[permit_number]
+            new_record.latitude = existing.latitude
+            new_record.longitude = existing.longitude
+            new_record.geocoded_address = existing.geocoded_address
+            new_record.geocode_source = existing.geocode_source
             changed, merged = existing.apply_new_scrape(new_record, when_iso=now_iso)
             if changed:
                 store.append_history(permit_number, existing)
@@ -130,6 +135,41 @@ def sync_one_date(
         }, errors
 
 
+def enrich_records_with_geocoding(
+    geocoder: JsonGeocoder,
+    current_records: Dict[str, PermitRecord],
+    store: JsonPermitStore,
+) -> tuple[int, List[str]]:
+    errors: List[str] = []
+    geocoded_changed = 0
+    now_iso = utc_now_iso()
+
+    for permit_number, record in current_records.items():
+        if not geocoder.needs_geocoding(record):
+            continue
+
+        previous = PermitRecord.from_dict(record.to_dict())
+        try:
+            geocoded = geocoder.geocode_record(record)
+        except Exception as exc:
+            errors.append(f"{permit_number}: {exc}")
+            continue
+
+        geocoded.last_seen_at = now_iso
+        new_hash = geocoded.compute_data_hash()
+        if new_hash != previous.data_hash:
+            store.append_history(permit_number, previous)
+            geocoded.last_changed_at = now_iso
+            geocoded.data_hash = new_hash
+            current_records[permit_number] = geocoded
+            geocoded_changed += 1
+        else:
+            geocoded.data_hash = previous.data_hash
+            current_records[permit_number] = geocoded
+
+    return geocoded_changed, errors
+
+
 def main() -> int:
     store = JsonPermitStore()
     state = store.load_state()
@@ -141,6 +181,7 @@ def main() -> int:
         return 0
 
     client = ETrakitClient()
+    geocoder = JsonGeocoder()
 
     try:
         client.login()
@@ -164,6 +205,20 @@ def main() -> int:
             store=store,
         )
 
+        store.save_current(current_records)
+
+        geocoded_changed = 0
+        geocode_errors: List[str] = []
+        if success:
+            geocoded_changed, geocode_errors = enrich_records_with_geocoding(
+                geocoder=geocoder,
+                current_records=current_records,
+                store=store,
+            )
+            store.save_current(current_records)
+
+        combined_errors = errors + geocode_errors
+
         state = finalize_run_state(
             state,
             success=success,
@@ -172,7 +227,7 @@ def main() -> int:
             permits_new=summary["permits_new"],
             permits_changed=summary["permits_changed"],
             permits_unchanged=summary["permits_unchanged"],
-            errors=errors,
+            errors=combined_errors,
         )
 
         # optional per-date status tracking
@@ -185,25 +240,24 @@ def main() -> int:
             "permits_new": summary["permits_new"],
             "permits_changed": summary["permits_changed"],
             "permits_unchanged": summary["permits_unchanged"],
-            "errors": errors,
+            "geocoded_changed": geocoded_changed,
+            "errors": combined_errors,
         }
-
-        store.save_current(current_records)
         store.save_state(state)
 
         last_summary = summary
-        all_errors.extend(errors)
+        all_errors.extend(combined_errors)
 
         if success:
             print(
                 f"SUCCESS target={target_issued_date} found={summary['permits_found']} "
                 f"new={summary['permits_new']} changed={summary['permits_changed']} "
-                f"unchanged={summary['permits_unchanged']}"
+                f"unchanged={summary['permits_unchanged']} geocoded_changed={geocoded_changed}"
             )
         else:
             overall_success = False
             print(f"FAILED target={target_issued_date}")
-            for err in errors:
+            for err in combined_errors:
                 print(f"- {err}")
 
     return 0 if overall_success else 1

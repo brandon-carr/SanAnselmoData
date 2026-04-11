@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Local notes/context
+ai_context.md
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Debug and generated local run artifacts
+data/debug/
+scripts/data/
+
+# Optional: OS/editor noise
+.DS_Store
+Thumbs.db

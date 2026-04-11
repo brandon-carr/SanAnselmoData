@@ -1,0 +1,82 @@
+{
+  "115 tamalpais ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "115, Tamalpais Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9750527",
+    "longitude": "-122.5675634",
+    "queried_at": "2026-04-11T01:38:05+00:00",
+    "query": "115 TAMALPAIS AVE, SAN ANSELMO, CA, 94960"
+  },
+  "12 brookside dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "12, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9866670",
+    "longitude": "-122.5718735",
+    "queried_at": "2026-04-11T01:38:08+00:00",
+    "query": "12 BROOKSIDE DR, SAN ANSELMO, CA, 94960"
+  },
+  "1208 sir francis drake blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1208, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9833976",
+    "longitude": "-122.5705109",
+    "queried_at": "2026-04-11T01:38:09+00:00",
+    "query": "1208 SIR FRANCIS DRAKE BLVD, SAN ANSELMO, CA, 94960"
+  },
+  "174 meadowcroft dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "174, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9885936",
+    "longitude": "-122.5772800",
+    "queried_at": "2026-04-11T01:38:04+00:00",
+    "query": "174 MEADOWCROFT DR, SAN ANSELMO, CA, 94960"
+  },
+  "23 medway rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "23, Medway Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9844479",
+    "longitude": "-122.5771670",
+    "queried_at": "2026-04-11T01:38:10+00:00",
+    "query": "23 MEDWAY RD, SAN ANSELMO, CA, 94960"
+  },
+  "360 redwood rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "360, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9743854",
+    "longitude": "-122.5774737",
+    "queried_at": "2026-04-11T01:38:07+00:00",
+    "query": "360 REDWOOD RD, SAN ANSELMO, CA, 94960"
+  },
+  "525 san anselmo ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9830030",
+    "longitude": "-122.5770003",
+    "queried_at": "2026-04-11T01:38:01+00:00",
+    "query": "525 SAN ANSELMO AVE, SAN ANSELMO, CA, 94960"
+  },
+  "564 scenic ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9781805",
+    "longitude": "-122.5760358",
+    "queried_at": "2026-04-11T01:38:02+00:00",
+    "query": "564 SCENIC AVE, SAN ANSELMO, CA, 94960"
+  },
+  "60 greenfield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Java Hub, 60, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9761496",
+    "longitude": "-122.5596307",
+    "queried_at": "2026-04-11T01:38:06+00:00",
+    "query": "60 GREENFIELD AVE, SAN ANSELMO, CA, 94960"
+  },
+  "95 hillside ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "95, Hillside Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9764958",
+    "longitude": "-122.5705408",
+    "queried_at": "2026-04-11T01:38:11+00:00",
+    "query": "95 HILLSIDE AVE, SAN ANSELMO, CA, 94960"
+  }
+}
