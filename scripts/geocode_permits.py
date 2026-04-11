@@ -2,11 +2,11 @@ from __future__ import annotations
 
 import os
 import sys
-from typing import List
+from typing import Dict, List
 
 from geocoder import JsonGeocoder
-from permit_model import PermitRecord, normalize_str, utc_now_iso
-from storage import JsonPermitStore
+from permit_model import AddressRecord, PermitRecord, normalize_str, utc_now_iso
+from storage import JsonPermitStore, hydrate_permits_from_addresses
 
 
 def getenv_int(name: str, default: int) -> int:
@@ -26,7 +26,7 @@ def geocode_sort_key(record: PermitRecord) -> tuple[str, str]:
     )
 
 
-def should_attempt_geocode(record: PermitRecord, max_attempts: int) -> bool:
+def should_attempt_geocode(record: AddressRecord, max_attempts: int) -> bool:
     if record.latitude and record.longitude:
         return False
     if record.geocode_status == "success":
@@ -36,14 +36,46 @@ def should_attempt_geocode(record: PermitRecord, max_attempts: int) -> bool:
     return True
 
 
-def select_pending_records(records: dict[str, PermitRecord], batch_size: int, max_attempts: int) -> List[PermitRecord]:
-    pending = [record for record in records.values() if should_attempt_geocode(record, max_attempts)]
-    pending.sort(key=geocode_sort_key, reverse=True)
-    return pending[:batch_size]
+def ensure_address_records(
+    permits: Dict[str, PermitRecord],
+    addresses: Dict[str, AddressRecord],
+) -> None:
+    for permit in permits.values():
+        if not permit.address_id:
+            continue
+        if permit.address_id in addresses:
+            continue
+        addresses[permit.address_id] = AddressRecord.from_permit(permit)
 
 
-def attempt_geocode_record(
-    record: PermitRecord,
+def select_pending_addresses(
+    permits: Dict[str, PermitRecord],
+    addresses: Dict[str, AddressRecord],
+    batch_size: int,
+    max_attempts: int,
+) -> List[AddressRecord]:
+    newest_permit_by_address: Dict[str, PermitRecord] = {}
+    for permit in permits.values():
+        if not permit.address_id:
+            continue
+        current = newest_permit_by_address.get(permit.address_id)
+        if current is None or geocode_sort_key(permit) > geocode_sort_key(current):
+            newest_permit_by_address[permit.address_id] = permit
+
+    pending = []
+    for address_id, permit in newest_permit_by_address.items():
+        address = addresses.get(address_id)
+        if not address:
+            continue
+        if should_attempt_geocode(address, max_attempts):
+            pending.append((geocode_sort_key(permit), address))
+
+    pending.sort(key=lambda item: item[0], reverse=True)
+    return [address for _, address in pending[:batch_size]]
+
+
+def attempt_geocode_address(
+    record: AddressRecord,
     geocoder: JsonGeocoder,
     when_iso: str,
 ) -> tuple[bool, str]:
@@ -51,7 +83,7 @@ def attempt_geocode_record(
     record.geocode_last_attempt_at = when_iso
 
     try:
-        geocoded = geocoder.geocode_record(record)
+        geocoded = geocoder.geocode_address(record)
     except Exception as exc:
         record.geocode_source = geocoder.config.provider
         record.geocode_status = "error"
@@ -75,43 +107,52 @@ def main() -> int:
 
     store = JsonPermitStore()
     current_records = store.load_current()
+    address_records = store.load_addresses()
     geocoder = JsonGeocoder()
+    ensure_address_records(current_records, address_records)
 
-    pending = select_pending_records(current_records, batch_size=batch_size, max_attempts=max_attempts)
+    pending = select_pending_addresses(
+        current_records,
+        address_records,
+        batch_size=batch_size,
+        max_attempts=max_attempts,
+    )
     if not pending:
         print("SKIPPED no permits pending geocoding")
         return 0
 
-    print("TARGETS " + ", ".join(record.permit_number for record in pending))
+    print("TARGETS " + ", ".join(record.address_id for record in pending))
 
     successes = 0
     errors: List[str] = []
 
     for record in pending:
-        previous = PermitRecord.from_dict(record.to_dict())
+        previous = AddressRecord.from_dict(record.to_dict())
         when_iso = utc_now_iso()
-        success, error_message = attempt_geocode_record(record, geocoder, when_iso)
+        success, error_message = attempt_geocode_address(record, geocoder, when_iso)
         record.last_seen_at = when_iso
         record.data_hash = record.compute_data_hash()
 
         if record.data_hash != previous.data_hash:
-            store.append_history(record.permit_number, previous)
+            store.append_address_history(record.address_id, previous)
 
         if success:
             record.last_changed_at = when_iso
             successes += 1
             print(
-                f"SUCCESS permit={record.permit_number} attempts={record.geocode_attempts} "
+                f"SUCCESS address={record.address_id} attempts={record.geocode_attempts} "
                 f"status={record.geocode_status}"
             )
         else:
             record.last_changed_at = when_iso
-            errors.append(f"{record.permit_number}: {error_message}")
+            errors.append(f"{record.address_id}: {error_message}")
             print(
-                f"ERROR permit={record.permit_number} attempts={record.geocode_attempts} "
+                f"ERROR address={record.address_id} attempts={record.geocode_attempts} "
                 f"status={record.geocode_status} error={record.geocode_error}"
             )
 
+    hydrate_permits_from_addresses(current_records, address_records)
+    store.save_addresses(address_records)
     store.save_current(current_records)
     print(
         f"SUMMARY selected={len(pending)} success={successes} "

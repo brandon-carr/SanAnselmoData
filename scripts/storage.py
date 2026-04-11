@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from typing import Dict, List, Protocol
 
-from permit_model import PermitRecord, utc_now_iso
+from permit_model import AddressRecord, PermitRecord, apply_address_to_permit, utc_now_iso
 
 
 class PermitStore(Protocol):
@@ -23,6 +23,15 @@ class PermitStore(Protocol):
     def save_state(self, state: dict) -> None:
         ...
 
+    def load_addresses(self) -> Dict[str, AddressRecord]:
+        ...
+
+    def save_addresses(self, records: Dict[str, AddressRecord]) -> None:
+        ...
+
+    def append_address_history(self, address_id: str, old_record: AddressRecord) -> None:
+        ...
+
 
 class JsonPermitStore:
     def __init__(
@@ -30,14 +39,20 @@ class JsonPermitStore:
         current_path: str = "data/current_permits.json",
         history_path: str = "data/permit_history.json",
         state_path: str = "data/sync_state.json",
+        addresses_path: str = "data/addresses.json",
+        address_history_path: str = "data/address_history.json",
     ) -> None:
         self.current_path = Path(current_path)
         self.history_path = Path(history_path)
         self.state_path = Path(state_path)
+        self.addresses_path = Path(addresses_path)
+        self.address_history_path = Path(address_history_path)
 
         self.current_path.parent.mkdir(parents=True, exist_ok=True)
         self.history_path.parent.mkdir(parents=True, exist_ok=True)
         self.state_path.parent.mkdir(parents=True, exist_ok=True)
+        self.addresses_path.parent.mkdir(parents=True, exist_ok=True)
+        self.address_history_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _read_json(self, path: Path, default):
         if not path.exists():
@@ -66,11 +81,25 @@ class JsonPermitStore:
         payload = {k: v.to_dict() for k, v in records.items()}
         self._write_json(self.current_path, payload)
 
+    def load_addresses(self) -> Dict[str, AddressRecord]:
+        payload = self._read_json(self.addresses_path, {})
+        return {k: AddressRecord.from_dict(v) for k, v in payload.items()}
+
+    def save_addresses(self, records: Dict[str, AddressRecord]) -> None:
+        payload = {k: v.to_dict() for k, v in records.items()}
+        self._write_json(self.addresses_path, payload)
+
     def append_history(self, permit_number: str, old_record: PermitRecord) -> None:
         history = self._read_json(self.history_path, {})
         history.setdefault(permit_number, [])
         history[permit_number].append(old_record.to_dict())
         self._write_json(self.history_path, history)
+
+    def append_address_history(self, address_id: str, old_record: AddressRecord) -> None:
+        history = self._read_json(self.address_history_path, {})
+        history.setdefault(address_id, [])
+        history[address_id].append(old_record.to_dict())
+        self._write_json(self.address_history_path, history)
 
     def load_state(self) -> dict:
         default = {
@@ -86,6 +115,20 @@ class JsonPermitStore:
 
     def save_state(self, state: dict) -> None:
         self._write_json(self.state_path, state)
+
+
+def hydrate_permits_from_addresses(
+    permits: Dict[str, PermitRecord],
+    addresses: Dict[str, AddressRecord],
+) -> None:
+    for permit in permits.values():
+        address_id = permit.address_id
+        if not address_id:
+            continue
+        address = addresses.get(address_id)
+        if not address:
+            continue
+        apply_address_to_permit(permit, address)
 
 
 def init_run_state(state: dict, target_issued_date: str) -> dict:

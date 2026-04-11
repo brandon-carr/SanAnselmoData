@@ -6,8 +6,8 @@ from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 
 from etrakit_client import ETrakitClient, ETrakitError
-from permit_model import PermitRecord, utc_now_iso
-from storage import JsonPermitStore, finalize_run_state, init_run_state
+from permit_model import AddressRecord, PermitRecord, build_address_id, utc_now_iso
+from storage import JsonPermitStore, finalize_run_state, hydrate_permits_from_addresses, init_run_state
 
 
 def getenv_str(name: str, default: str = "") -> str:
@@ -71,6 +71,7 @@ def resolve_target_dates(state: dict) -> List[str]:
 def sync_one_date(
     client: ETrakitClient,
     current_records: Dict[str, PermitRecord],
+    address_records: Dict[str, AddressRecord],
     target_issued_date: str,
     store: JsonPermitStore,
 ) -> tuple[bool, dict, List[str]]:
@@ -105,7 +106,35 @@ def sync_one_date(
         now_iso = utc_now_iso()
 
         for permit_number, new_record in scraped_records.items():
+            new_record.address_id = build_address_id(new_record.address, new_record.city_state_zip)
+
             if permit_number not in current_records:
+                address_record = AddressRecord.from_permit(new_record, when_iso=now_iso)
+                existing_address = address_records.get(address_record.address_id)
+                if existing_address:
+                    address_record.latitude = existing_address.latitude
+                    address_record.longitude = existing_address.longitude
+                    address_record.geocoded_address = existing_address.geocoded_address
+                    address_record.geocode_source = existing_address.geocode_source
+                    address_record.geocode_status = existing_address.geocode_status
+                    address_record.geocode_error = existing_address.geocode_error
+                    address_record.geocode_attempts = existing_address.geocode_attempts
+                    address_record.geocode_last_attempt_at = existing_address.geocode_last_attempt_at
+                    _, address_record = existing_address.apply_new_source(address_record, when_iso=now_iso)
+                else:
+                    address_record.first_seen_at = now_iso
+                    address_record.last_seen_at = now_iso
+                    address_record.last_changed_at = now_iso
+                    address_record.data_hash = address_record.compute_data_hash()
+                address_records[address_record.address_id] = address_record
+                new_record.latitude = address_record.latitude
+                new_record.longitude = address_record.longitude
+                new_record.geocoded_address = address_record.geocoded_address
+                new_record.geocode_source = address_record.geocode_source
+                new_record.geocode_status = address_record.geocode_status
+                new_record.geocode_error = address_record.geocode_error
+                new_record.geocode_attempts = address_record.geocode_attempts
+                new_record.geocode_last_attempt_at = address_record.geocode_last_attempt_at
                 new_record.first_seen_at = now_iso
                 new_record.last_seen_at = now_iso
                 new_record.last_changed_at = now_iso
@@ -119,10 +148,46 @@ def sync_one_date(
                 existing.address != new_record.address
                 or existing.city_state_zip != new_record.city_state_zip
             )
+            previous_address = address_records.get(existing.address_id)
             if address_changed:
                 new_record.reset_geocode_fields()
             else:
-                new_record.copy_geocode_fields_from(existing)
+                if previous_address:
+                    new_record.latitude = previous_address.latitude
+                    new_record.longitude = previous_address.longitude
+                    new_record.geocoded_address = previous_address.geocoded_address
+                    new_record.geocode_source = previous_address.geocode_source
+                    new_record.geocode_status = previous_address.geocode_status
+                    new_record.geocode_error = previous_address.geocode_error
+                    new_record.geocode_attempts = previous_address.geocode_attempts
+                    new_record.geocode_last_attempt_at = previous_address.geocode_last_attempt_at
+                else:
+                    new_record.copy_geocode_fields_from(existing)
+
+            next_address = AddressRecord.from_permit(new_record, when_iso=now_iso)
+            current_address = address_records.get(next_address.address_id)
+            if current_address:
+                if current_address.data_hash != next_address.compute_data_hash():
+                    store.append_address_history(next_address.address_id, current_address)
+                    _, next_address = current_address.apply_new_source(next_address, when_iso=now_iso)
+                else:
+                    current_address.last_seen_at = now_iso
+                    next_address = current_address
+            else:
+                next_address.first_seen_at = now_iso
+                next_address.last_seen_at = now_iso
+                next_address.last_changed_at = now_iso
+                next_address.data_hash = next_address.compute_data_hash()
+            address_records[next_address.address_id] = next_address
+
+            new_record.latitude = next_address.latitude
+            new_record.longitude = next_address.longitude
+            new_record.geocoded_address = next_address.geocoded_address
+            new_record.geocode_source = next_address.geocode_source
+            new_record.geocode_status = next_address.geocode_status
+            new_record.geocode_error = next_address.geocode_error
+            new_record.geocode_attempts = next_address.geocode_attempts
+            new_record.geocode_last_attempt_at = next_address.geocode_last_attempt_at
             changed, merged = existing.apply_new_scrape(new_record, when_iso=now_iso)
             if changed:
                 store.append_history(permit_number, existing)
@@ -155,6 +220,7 @@ def main() -> int:
     store = JsonPermitStore()
     state = store.load_state()
     current_records = store.load_current()
+    address_records = store.load_addresses()
 
     target_dates = resolve_target_dates(state)
     if not target_dates:
@@ -183,10 +249,13 @@ def main() -> int:
         success, summary, errors = sync_one_date(
             client=client,
             current_records=current_records,
+            address_records=address_records,
             target_issued_date=target_issued_date,
             store=store,
         )
 
+        hydrate_permits_from_addresses(current_records, address_records)
+        store.save_addresses(address_records)
         store.save_current(current_records)
 
         geocoded_changed = 0

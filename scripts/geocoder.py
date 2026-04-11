@@ -9,7 +9,7 @@ from typing import Dict
 
 import requests
 
-from permit_model import PermitRecord, normalize_str, utc_now_iso
+from permit_model import AddressRecord, PermitRecord, normalize_str, utc_now_iso
 
 
 @dataclass
@@ -55,7 +55,7 @@ class JsonGeocoder:
         tmp.write_text(json.dumps(self.cache, indent=2, sort_keys=True), encoding="utf-8")
         tmp.replace(self.cache_path)
 
-    def _build_query(self, record: PermitRecord) -> str:
+    def _build_query(self, record: PermitRecord | AddressRecord) -> str:
         parts = [normalize_str(record.address), normalize_str(record.city_state_zip)]
         return ", ".join(part for part in parts if part)
 
@@ -69,6 +69,12 @@ class JsonGeocoder:
             time.sleep(wait_for)
 
     def geocode_record(self, record: PermitRecord) -> PermitRecord:
+        return self._geocode(record)
+
+    def geocode_address(self, record: AddressRecord) -> AddressRecord:
+        return self._geocode(record)
+
+    def _geocode(self, record: PermitRecord | AddressRecord):
         if not self.config.enabled:
             return record
 
@@ -126,7 +132,7 @@ class JsonGeocoder:
         self._save_cache()
         return self._apply_result(record, result)
 
-    def needs_geocoding(self, record: PermitRecord) -> bool:
+    def needs_geocoding(self, record: PermitRecord | AddressRecord) -> bool:
         if not self.config.enabled:
             return False
 
@@ -145,7 +151,7 @@ class JsonGeocoder:
         cached_lon = normalize_str(cached.get("longitude"))
         return cached_lat != normalize_str(record.latitude) or cached_lon != normalize_str(record.longitude)
 
-    def _apply_result(self, record: PermitRecord, result: dict) -> PermitRecord:
+    def _apply_result(self, record: PermitRecord | AddressRecord, result: dict):
         record.latitude = normalize_str(result.get("latitude"))
         record.longitude = normalize_str(result.get("longitude"))
         record.geocoded_address = normalize_str(result.get("geocoded_address"))
