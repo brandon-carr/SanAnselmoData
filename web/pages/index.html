@@ -326,45 +326,46 @@
       return /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(String(value || "").trim());
     }
 
-    function populateFilterOptions() {
-      const sources = [...new Set(state.allPermits.map(p => p.permit_source).filter(Boolean))].sort();
-      const types = [...new Set(state.allPermits.map(p => p.permit_type).filter(Boolean))].sort();
-      const statuses = [...new Set(
-        state.allPermits
-          .map(p => p.status)
-          .filter((value) => value && !isDateLike(value))
-      )].sort();
-
-      for (const value of sources) {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = value;
-        sourceFilter.appendChild(option);
-      }
-
-      for (const value of types) {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = value;
-        typeFilter.appendChild(option);
-      }
-
-      for (const value of statuses) {
-        const option = document.createElement("option");
-        option.value = value;
-        option.textContent = value;
-        statusFilter.appendChild(option);
-      }
+    function getFilterValues() {
+      return {
+        keyword: keywordInput.value.trim().toLowerCase(),
+        permit_source: sourceFilter.value,
+        permit_type: typeFilter.value,
+        status: statusFilter.value,
+        issued_after: issuedAfterInput.value,
+      };
     }
 
-    function matchesFilters(permit) {
-      const keyword = keywordInput.value.trim().toLowerCase();
-      const selectedSource = sourceFilter.value;
-      const selectedType = typeFilter.value;
-      const selectedStatus = statusFilter.value;
-      const issuedAfter = issuedAfterInput.value;
+    function replaceSelectOptions(selectEl, values, emptyLabel) {
+      const currentValue = selectEl.value;
+      selectEl.innerHTML = "";
 
-      if (keyword) {
+      const emptyOption = document.createElement("option");
+      emptyOption.value = "";
+      emptyOption.textContent = emptyLabel;
+      selectEl.appendChild(emptyOption);
+
+      for (const value of values) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        selectEl.appendChild(option);
+      }
+
+      if (currentValue && values.includes(currentValue)) {
+        selectEl.value = currentValue;
+        return false;
+      }
+
+      selectEl.value = "";
+      return currentValue !== "";
+    }
+
+    function matchesFilters(permit, ignoredFields = []) {
+      const filters = getFilterValues();
+      const ignore = new Set(ignoredFields);
+
+      if (filters.keyword && !ignore.has("keyword")) {
         const haystack = [
           permit.permit_number,
           permit.address,
@@ -374,22 +375,61 @@
           permit.apn,
         ].join(" ").toLowerCase();
 
-        if (!haystack.includes(keyword)) return false;
+        if (!haystack.includes(filters.keyword)) return false;
       }
 
-      if (selectedSource && permit.permit_source !== selectedSource) return false;
-      if (selectedType && permit.permit_type !== selectedType) return false;
-      if (selectedStatus && permit.status !== selectedStatus) return false;
+      if (!ignore.has("permit_source") && filters.permit_source && permit.permit_source !== filters.permit_source) return false;
+      if (!ignore.has("permit_type") && filters.permit_type && permit.permit_type !== filters.permit_type) return false;
+      if (!ignore.has("status") && filters.status && permit.status !== filters.status) return false;
 
-      if (issuedAfter && permit.issued_date) {
+      if (!ignore.has("issued_after") && filters.issued_after && permit.issued_date) {
         const permitDate = permit.issued_date.slice(0, 10);
-        if (permitDate && permitDate < issuedAfter) return false;
+        if (permitDate && permitDate < filters.issued_after) return false;
       }
 
       return true;
     }
 
+    function syncFilterOptions() {
+      let changed = false;
+
+      for (let i = 0; i < 3; i += 1) {
+        let passChanged = false;
+
+        const availableSources = [...new Set(
+          state.rawPermits
+            .filter((permit) => matchesFilters(permit, ["permit_source"]))
+            .map((permit) => permit.permit_source)
+            .filter(Boolean)
+        )].sort();
+
+        const availableTypes = [...new Set(
+          state.rawPermits
+            .filter((permit) => matchesFilters(permit, ["permit_type"]))
+            .map((permit) => permit.permit_type)
+            .filter(Boolean)
+        )].sort();
+
+        const availableStatuses = [...new Set(
+          state.rawPermits
+            .filter((permit) => matchesFilters(permit, ["status"]))
+            .map((permit) => permit.status)
+            .filter((value) => value && !isDateLike(value))
+        )].sort();
+
+        passChanged = replaceSelectOptions(sourceFilter, availableSources, "All sources") || passChanged;
+        passChanged = replaceSelectOptions(typeFilter, availableTypes, "All types") || passChanged;
+        passChanged = replaceSelectOptions(statusFilter, availableStatuses, "All statuses") || passChanged;
+
+        changed = changed || passChanged;
+        if (!passChanged) break;
+      }
+
+      return changed;
+    }
+
     function renderResults() {
+      syncFilterOptions();
       const filteredRawPermits = state.rawPermits.filter(matchesFilters);
       state.filteredPermits = filteredRawPermits.filter((permit) => permit.lat != null && permit.lng != null);
 
@@ -428,9 +468,10 @@
         card.innerHTML = `
           <h2>${escapeHtml(permit.permit_number || "Permit")}</h2>
           <div class="permit-meta">
-            ${escapeHtml(permit.address || "No address")}<br>
             ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
+            ${escapeHtml(permit.address || "No address")}<br>
             ${permit.permit_type ? `${escapeHtml(permit.permit_type)}<br>` : ""}
+            ${permit.status ? `Status: ${escapeHtml(permit.status)}<br>` : ""}
             ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
             ${permit.short_description ? escapeHtml(permit.short_description) : ""}
           </div>
@@ -461,7 +502,6 @@
           .map((record) => normalizePermit(record, record.permit_source || ""));
         state.allPermits = state.rawPermits
           .filter((permit) => permit.lat != null && permit.lng != null);
-        populateFilterOptions();
         renderResults();
       } catch (error) {
         console.error(error);
