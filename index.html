@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>San Anselmo Permits Map</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+  <style>
+    :root {
+      --border: #d9d9d9;
+      --bg: #f7f7f7;
+      --panel: #ffffff;
+      --text: #1f1f1f;
+      --muted: #666;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .app {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      height: 100vh;
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--border);
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .sidebar-header {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-header h1 {
+      margin: 0 0 6px;
+      font-size: 20px;
+    }
+
+    .sidebar-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .filters {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      gap: 10px;
+    }
+
+    .field {
+      display: grid;
+      gap: 4px;
+    }
+
+    .field label {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .field input,
+    .field select,
+    .field button {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      background: #fff;
+    }
+
+    .field button {
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .summary {
+      padding: 12px 16px;
+      font-size: 13px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results {
+      overflow: auto;
+      padding: 8px;
+      flex: 1;
+    }
+
+    .permit-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .permit-card:hover {
+      background: #fafafa;
+    }
+
+    .permit-card h2 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .permit-meta {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .permit-status {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #f0f0f0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #444;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    .empty-state {
+      padding: 16px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .app {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50vh 50vh;
+      }
+
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>San Anselmo Permits</h1>
+        <p>
+          Loads permit data from <code>data/current_permits.json</code>. Records without
+          coordinates are skipped from the map.
+        </p>
+      </div>
+
+      <div class="filters">
+        <div class="field">
+          <label for="keyword">Keyword</label>
+          <input id="keyword" type="text" placeholder="Address, permit number, description" />
+        </div>
+
+        <div class="field">
+          <label for="typeFilter">Permit type</label>
+          <select id="typeFilter">
+            <option value="">All types</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="statusFilter">Status</label>
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="issuedAfter">Issued on or after</label>
+          <input id="issuedAfter" type="date" />
+        </div>
+
+        <div class="field">
+          <button id="resetFilters" type="button">Reset filters</button>
+        </div>
+      </div>
+
+      <div class="summary" id="summary">Loading…</div>
+      <div class="results" id="results"></div>
+    </aside>
+
+    <main id="map"></main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script>
+    const DATA_URL = "data/current_permits.json";
+    const DEFAULT_CENTER = [37.9746, -122.5610];
+    const DEFAULT_ZOOM = 13;
+
+    const map = L.map("map").setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    const markersLayer = L.markerClusterGroup();
+    map.addLayer(markersLayer);
+
+    const state = {
+      allPermits: [],
+      filteredPermits: [],
+      markersByPermit: new Map()
+    };
+
+    const keywordInput = document.getElementById("keyword");
+    const typeFilter = document.getElementById("typeFilter");
+    const statusFilter = document.getElementById("statusFilter");
+    const issuedAfterInput = document.getElementById("issuedAfter");
+    const resetButton = document.getElementById("resetFilters");
+    const resultsEl = document.getElementById("results");
+    const summaryEl = document.getElementById("summary");
+
+    function asArray(data) {
+      if (Array.isArray(data)) return data;
+      if (data && typeof data === "object") return Object.values(data);
+      return [];
+    }
+
+    function normalizePermit(raw) {
+      const lat = Number(raw.lat ?? raw.latitude ?? "");
+      const lng = Number(raw.lng ?? raw.lon ?? raw.longitude ?? "");
+      return {
+        permit_number: raw.permit_number || "",
+        status: raw.status || "",
+        permit_type: raw.permit_type || raw.type || "",
+        subtype: raw.subtype || "",
+        short_description: raw.short_description || "",
+        address: raw.address || "",
+        city_state_zip: raw.city_state_zip || "",
+        apn: raw.apn || "",
+        issued_date: raw.issued_date || "",
+        source_url: raw.source_url || "",
+        lat: Number.isFinite(lat) ? lat : null,
+        lng: Number.isFinite(lng) ? lng : null,
+      };
+    }
+
+    function buildPopupHtml(permit) {
+      return `
+        <div style="min-width:220px; line-height:1.45;">
+          <strong>${escapeHtml(permit.permit_number || "Permit")}</strong><br>
+          ${escapeHtml(permit.address || "No address")}<br>
+          ${permit.permit_type ? `${escapeHtml(permit.permit_type)}<br>` : ""}
+          ${permit.status ? `Status: ${escapeHtml(permit.status)}<br>` : ""}
+          ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
+          ${permit.short_description ? `<div style="margin-top:6px;">${escapeHtml(permit.short_description)}</div>` : ""}
+          ${permit.source_url ? `<div style="margin-top:8px;"><a href="${permit.source_url}" target="_blank" rel="noopener noreferrer">Open source record</a></div>` : ""}
+        </div>
+      `;
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function populateFilterOptions() {
+      const types = [...new Set(state.allPermits.map(p => p.permit_type).filter(Boolean))].sort();
+      const statuses = [...new Set(state.allPermits.map(p => p.status).filter(Boolean))].sort();
+
+      for (const value of types) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        typeFilter.appendChild(option);
+      }
+
+      for (const value of statuses) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        statusFilter.appendChild(option);
+      }
+    }
+
+    function matchesFilters(permit) {
+      const keyword = keywordInput.value.trim().toLowerCase();
+      const selectedType = typeFilter.value;
+      const selectedStatus = statusFilter.value;
+      const issuedAfter = issuedAfterInput.value;
+
+      if (keyword) {
+        const haystack = [
+          permit.permit_number,
+          permit.address,
+          permit.short_description,
+          permit.permit_type,
+          permit.status,
+          permit.apn,
+        ].join(" ").toLowerCase();
+
+        if (!haystack.includes(keyword)) return false;
+      }
+
+      if (selectedType && permit.permit_type !== selectedType) return false;
+      if (selectedStatus && permit.status !== selectedStatus) return false;
+
+      if (issuedAfter && permit.issued_date) {
+        const permitDate = permit.issued_date.slice(0, 10);
+        if (permitDate && permitDate < issuedAfter) return false;
+      }
+
+      return true;
+    }
+
+    function renderResults() {
+      state.filteredPermits = state.allPermits.filter(matchesFilters);
+
+      markersLayer.clearLayers();
+      state.markersByPermit.clear();
+
+      const mappable = [];
+      for (const permit of state.filteredPermits) {
+        if (permit.lat == null || permit.lng == null) continue;
+        const marker = L.marker([permit.lat, permit.lng]);
+        marker.bindPopup(buildPopupHtml(permit));
+        markersLayer.addLayer(marker);
+        state.markersByPermit.set(permit.permit_number, marker);
+        mappable.push(marker);
+      }
+
+      if (mappable.length > 0) {
+        const group = L.featureGroup(mappable);
+        map.fitBounds(group.getBounds().pad(0.15));
+      } else {
+        map.setView(DEFAULT_CENTER, DEFAULT_ZOOM);
+      }
+
+      summaryEl.textContent = `${state.filteredPermits.length} permits shown • ${mappable.length} mapped`;
+
+      resultsEl.innerHTML = "";
+      if (state.filteredPermits.length === 0) {
+        resultsEl.innerHTML = '<div class="empty-state">No permits match the current filters.</div>';
+        return;
+      }
+
+      for (const permit of state.filteredPermits) {
+        const card = document.createElement("div");
+        card.className = "permit-card";
+        card.innerHTML = `
+          <h2>${escapeHtml(permit.permit_number || "Permit")}</h2>
+          <div class="permit-meta">
+            ${escapeHtml(permit.address || "No address")}<br>
+            ${permit.permit_type ? `${escapeHtml(permit.permit_type)}<br>` : ""}
+            ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
+            ${permit.short_description ? escapeHtml(permit.short_description) : ""}
+          </div>
+          ${permit.status ? `<div class="permit-status">${escapeHtml(permit.status)}</div>` : ""}
+        `;
+
+        card.addEventListener("click", () => {
+          const marker = state.markersByPermit.get(permit.permit_number);
+          if (marker) {
+            map.setView(marker.getLatLng(), 17);
+            marker.openPopup();
+          }
+        });
+
+        resultsEl.appendChild(card);
+      }
+    }
+
+    async function loadPermits() {
+      try {
+        const response = await fetch(DATA_URL, { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        state.allPermits = asArray(data).map(normalizePermit);
+        populateFilterOptions();
+        renderResults();
+      } catch (error) {
+        console.error(error);
+        summaryEl.textContent = "Failed to load permit data.";
+        resultsEl.innerHTML = `
+          <div class="empty-state">
+            Could not load <code>${DATA_URL}</code>.<br>
+            Make sure the file exists and the site is being served from the project root.
+          </div>
+        `;
+      }
+    }
+
+    [keywordInput, typeFilter, statusFilter, issuedAfterInput].forEach((el) => {
+      el.addEventListener("input", renderResults);
+      el.addEventListener("change", renderResults);
+    });
+
+    resetButton.addEventListener("click", () => {
+      keywordInput.value = "";
+      typeFilter.value = "";
+      statusFilter.value = "";
+      issuedAfterInput.value = "";
+      renderResults();
+    });
+
+    loadPermits();
+  </script>
+</body>
+</html>
