@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bad Geocode Addresses</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --panel: #fffdf8;
+      --text: #201c18;
+      --muted: #6b6257;
+      --border: #d8d0c3;
+      --error: #8f2d2d;
+      --error-soft: #fde7e7;
+      --link: #255f4a;
+      --shadow: 0 10px 30px rgba(31, 28, 24, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #faf6f1 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1;
+    }
+
+    .subhead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+      font-family: Arial, sans-serif;
+    }
+
+    a {
+      color: var(--link);
+    }
+
+    .back-link {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .summary {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      font-family: Arial, sans-serif;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .summary strong {
+      color: var(--error);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .mono {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--error-soft);
+      color: var(--error);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .empty {
+      padding: 24px 18px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div>
+        <h1>Bad Address Review</h1>
+        <p class="subhead">
+          Addresses that have been tried three or more times and still do not have latitude and longitude.
+        </p>
+      </div>
+      <a class="back-link" href="./index.html">Back to admin</a>
+    </div>
+
+    <section class="card">
+      <div class="summary" id="summary">Loading address review...</div>
+      <div id="results" class="empty">Loading...</div>
+    </section>
+  </div>
+
+  <script>
+    const ADDRESSES_URL = "../../data/addresses.json";
+
+    async function fetchJson(url) {
+      const response = await fetch(url, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Failed to load ${url}: HTTP ${response.status}`);
+      }
+      return response.json();
+    }
+
+    function toList(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && typeof payload === "object") return Object.values(payload);
+      return [];
+    }
+
+    function normalizeAddress(record) {
+      const attempts = Number(record.geocode_attempts || 0);
+      const latitude = String(record.latitude || "").trim();
+      const longitude = String(record.longitude || "").trim();
+      return {
+        address_id: record.address_id || "",
+        address: record.address || "",
+        city_state_zip: record.city_state_zip || "",
+        geocode_attempts: Number.isFinite(attempts) ? attempts : 0,
+        geocode_error: record.geocode_error || "",
+        geocode_last_attempt_at: record.geocode_last_attempt_at || "",
+        geocode_status: record.geocode_status || "",
+        hasGeo: Boolean(latitude && longitude),
+      };
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function render(addresses) {
+      const summary = document.getElementById("summary");
+      const results = document.getElementById("results");
+
+      const bad = addresses
+        .filter((address) => !address.hasGeo && address.geocode_attempts >= 3)
+        .sort((a, b) => {
+          if (b.geocode_attempts !== a.geocode_attempts) {
+            return b.geocode_attempts - a.geocode_attempts;
+          }
+          return a.address.localeCompare(b.address);
+        });
+
+      summary.innerHTML = `<strong>${bad.length}</strong> addresses currently need manual review.`;
+
+      if (bad.length === 0) {
+        results.className = "empty";
+        results.textContent = "No addresses are currently stuck at three or more failed attempts.";
+        return;
+      }
+
+      results.className = "";
+      results.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Address</th>
+              <th>Attempts</th>
+              <th>Status</th>
+              <th>Last Error</th>
+              <th>Last Attempt</th>
+              <th>Address ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${bad.map((address) => `
+              <tr>
+                <td>
+                  <strong>${escapeHtml(address.address || "Missing address")}</strong><br>
+                  ${escapeHtml(address.city_state_zip || "")}
+                </td>
+                <td>${address.geocode_attempts}</td>
+                <td><span class="tag">${escapeHtml(address.geocode_status || "error")}</span></td>
+                <td>${escapeHtml(address.geocode_error || "")}</td>
+                <td>${escapeHtml(address.geocode_last_attempt_at || "")}</td>
+                <td class="mono">${escapeHtml(address.address_id)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    async function init() {
+      try {
+        const payload = await fetchJson(ADDRESSES_URL);
+        render(toList(payload).map(normalizeAddress));
+      } catch (error) {
+        document.getElementById("summary").textContent = "Failed to load address review.";
+        document.getElementById("results").className = "empty";
+        document.getElementById("results").textContent = error.message;
+        console.error(error);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

@@ -181,7 +181,7 @@
       <div class="sidebar-header">
         <h1>San Anselmo Permits</h1>
         <p>
-          Loads permit data from <code>data/current_permits.json</code>. Records without
+          Loads permit data from <code>../../data/current_permits.json</code>. Records without
           coordinates are skipped from the map.
         </p>
       </div>
@@ -216,7 +216,7 @@
         </div>
       </div>
 
-      <div class="summary" id="summary">Loading…</div>
+      <div class="summary" id="summary">Loading...</div>
       <div class="results" id="results"></div>
     </aside>
 
@@ -230,7 +230,7 @@
   ></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
-    const DATA_URL = "data/current_permits.json";
+    const DATA_URL = "../../data/current_permits.json";
     const DEFAULT_CENTER = [37.9746, -122.5610];
     const DEFAULT_ZOOM = 13;
 
