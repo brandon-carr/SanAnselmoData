@@ -1,4 +1,20 @@
 {
+  "100 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "100, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9979410",
+    "longitude": "-122.5845050",
+    "queried_at": "2026-04-11T21:14:27+00:00",
+    "query": "100 OAK SPRINGS DR, SAN ANSELMO, CA, 94960"
+  },
+  "1019 sir francis drake blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1019, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9815775",
+    "longitude": "-122.5678893",
+    "queried_at": "2026-04-11T21:14:28+00:00",
+    "query": "1019 SIR FRANCIS DRAKE BLVD, SAN ANSELMO, CA, 94960"
+  },
   "107 holstein rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "107, Holstein Road, San Anselmo, Marin County, California, 94960, United States",
@@ -6,6 +22,22 @@
     "longitude": "-122.5724404",
     "queried_at": "2026-04-11T18:15:31+00:00",
     "query": "107 HOLSTEIN RD, San Anselmo, CA, 94960"
+  },
+  "112 san francisco blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "112, San Francisco Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9837143",
+    "longitude": "-122.5674672",
+    "queried_at": "2026-04-11T21:14:24+00:00",
+    "query": "112 SAN FRANCISCO BLVD, SAN ANSELMO, CA, 94960"
+  },
+  "129 calumet ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "129, Calumet Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9791342",
+    "longitude": "-122.5683303",
+    "queried_at": "2026-04-11T21:14:26+00:00",
+    "query": "129 CALUMET AVE, SAN ANSELMO, CA, 94960"
   },
   "14-16 forbes ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -23,6 +55,14 @@
     "queried_at": "2026-04-11T18:15:34+00:00",
     "query": "15 CHERNE LN, SAN ANSELMO, CA, 94960"
   },
+  "179 scenic ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "179, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9783485",
+    "longitude": "-122.5784968",
+    "queried_at": "2026-04-11T21:14:22+00:00",
+    "query": "179 SCENIC AVE, SAN ANSELMO, CA, 94960"
+  },
   "191 the alameda, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "191, The Alameda, San Anselmo, Marin County, California, 94960, United States",
@@ -30,6 +70,30 @@
     "longitude": "-122.5757961",
     "queried_at": "2026-04-11T18:24:24+00:00",
     "query": "191 THE ALAMEDA, SAN ANSELMO, CA, 94960"
+  },
+  "2 foothill rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "2, Foothill Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9809970",
+    "longitude": "-122.5780850",
+    "queried_at": "2026-04-11T21:14:29+00:00",
+    "query": "2 FOOTHILL RD, SAN ANSELMO, CA, 94960"
+  },
+  "20 hillcrest ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "20, Hillcrest Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9911658",
+    "longitude": "-122.5803363",
+    "queried_at": "2026-04-11T21:14:20+00:00",
+    "query": "20 HILLCREST CT, SAN ANSELMO, CA, 94960"
+  },
+  "21 rosemont ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "21, Rosemont Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9907912",
+    "longitude": "-122.5775642",
+    "queried_at": "2026-04-11T21:14:25+00:00",
+    "query": "21 ROSEMONT AVE, SAN ANSELMO, CA, 94960"
   },
   "24 hillcrest ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -70,6 +134,14 @@
     "longitude": "-122.5549905",
     "queried_at": "2026-04-11T18:15:33+00:00",
     "query": "61 LONGVIEW AVE, SAN ANSELMO, CA, 94960"
+  },
+  "70 florence ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Florence Avenue, San Anselmo, Marin County, California, 94930, United States",
+    "latitude": "37.9837057",
+    "longitude": "-122.5785730",
+    "queried_at": "2026-04-11T21:14:23+00:00",
+    "query": "70 FLORENCE AVE, SAN ANSELMO, CA, 94960"
   },
   "72 yolanda dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
