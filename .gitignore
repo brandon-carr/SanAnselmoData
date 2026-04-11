@@ -10,9 +10,16 @@ __pycache__/
 *.pyc
 
 # Runtime data produced by scrape/geocode jobs
-data/current_permits.json
-data/permit_history.json
-data/scrape_state.json
+data/planning_permits.json
+data/planning_permit_history.json
+data/planning_scrape_state.json
+data/building_permits.json
+data/building_permit_history.json
+data/building_scrape_state.json
+data/violations_permits.json
+data/violations_permit_history.json
+data/violations_scrape_state.json
+data/all_permits_view.json
 data/geocode_cache.json
 data/addresses.json
 data/address_history.json

@@ -1,55 +1,38 @@
-name: Scrape San Anselmo permits
+name: Scrape San Anselmo planning permits
 
 on:
   workflow_dispatch:
     inputs:
       target_issued_date:
-        description: "Issued date to scrape (YYYY-MM-DD) — leave blank to use DAYS_BACK"
+        description: "Issued date to scrape (YYYY-MM-DD) - leave blank to use DAYS_BACK"
         required: false
         default: ""
 
 jobs:
-  scrape:
+  scrape_planning:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
     env:
-      # ---- AUTH ----
       ETRAKIT_USERNAME: ${{ secrets.ETRAKIT_USERNAME }}
       ETRAKIT_PASSWORD: ${{ secrets.ETRAKIT_PASSWORD }}
 
-      # ---- DATE LOGIC ----
       TARGET_ISSUED_DATE: ${{ inputs.target_issued_date }}
       DAYS_BACK: 1
       FORCE_RERUN: "false"
 
-      # ---- DEBUG ----
       ETRAKIT_DEBUG: "true"
       ETRAKIT_DEBUG_DIR: data/debug
 
-      # ---- URLS ----
       ETRAKIT_BASE_URL: https://sanan-trk.aspgov.com/eTRAKiT/
       ETRAKIT_LOGIN_URL: https://sanan-trk.aspgov.com/eTRAKiT/
       ETRAKIT_PERMIT_SEARCH_URL: https://sanan-trk.aspgov.com/eTRAKiT/Search/Permit.aspx
       ETRAKIT_ISSUE_REPORT_URL: https://sanan-trk.aspgov.com/eTRAKiT/PermitApplication/issue_permit_report.aspx
 
-      # ---- LOGIN FORM FIELDS (may need adjustment after debug) ----
       ETRAKIT_USERNAME_FIELD: ctl00$MainContent$txtUserName
       ETRAKIT_PASSWORD_FIELD: ctl00$MainContent$txtPassword
       ETRAKIT_LOGIN_BUTTON_FIELD: ctl00$MainContent$btnLogin
-
-      # ---- REPORT FORM FIELDS (likely wrong initially — debug will tell us) ----
-      ETRAKIT_REPORT_START_FIELD: ctl00$MainContent$txtFromDate
-      ETRAKIT_REPORT_END_FIELD: ctl00$MainContent$txtToDate
-      ETRAKIT_REPORT_RUN_BUTTON_FIELD: ctl00$MainContent$btnReport
-
-      # ---- FALLBACK SEARCH ----
-      ETRAKIT_SEARCH_BY_FIELD: ctl00$MainContent$ddlSearchBy
-      ETRAKIT_ISSUED_START_FIELD: ctl00$MainContent$txtStartDate
-      ETRAKIT_ISSUED_END_FIELD: ctl00$MainContent$txtEndDate
-      ETRAKIT_SEARCH_BUTTON_FIELD: ctl00$MainContent$btnSearch
-      ETRAKIT_ISSUED_SEARCH_VALUE: ISSUED
 
     steps:
       - name: Check out repo
@@ -69,32 +52,31 @@ jobs:
           if [ -z "$ETRAKIT_USERNAME" ]; then echo "Missing username"; exit 1; fi
           if [ -z "$ETRAKIT_PASSWORD" ]; then echo "Missing password"; exit 1; fi
 
-      - name: Run permit scrape
+      - name: Run planning permit scrape
         run: |
-          python scripts/scrape_permits.py
+          python scripts/scrape_planning_permits.py
 
-      # ✅ ALWAYS upload debug artifacts (even if script fails)
       - name: Upload debug artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: etrakit-debug
+          name: etrakit-planning-debug
           path: |
             data/debug/**
             data/*.json
           if-no-files-found: ignore
 
-      # ✅ Commit results only if run succeeded
-      - name: Commit updated data
+      - name: Commit updated planning data
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for file in \
-            data/current_permits.json \
-            data/permit_history.json \
-            data/scrape_state.json \
+            data/planning_permits.json \
+            data/planning_permit_history.json \
+            data/planning_scrape_state.json \
+            data/all_permits_view.json \
             data/addresses.json \
             data/address_history.json
           do
@@ -103,5 +85,5 @@ jobs:
             fi
           done
 
-          git diff --cached --quiet || git commit -m "Scrape permits for ${TARGET_ISSUED_DATE:-auto}"
+          git diff --cached --quiet || git commit -m "Scrape planning permits for ${TARGET_ISSUED_DATE:-auto}"
           git push

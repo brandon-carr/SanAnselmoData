@@ -27,6 +27,7 @@ def build_address_id(address: Any, city_state_zip: Any) -> str:
 @dataclass
 class PermitRecord:
     permit_number: str
+    permit_source: str = ""
 
     status: str = ""
     permit_type: str = ""
@@ -71,6 +72,7 @@ class PermitRecord:
 
         record = cls(
             permit_number=permit_number,
+            permit_source=normalize_str(fields.get("permit_source")),
             status=normalize_str(fields.get("status")),
             permit_type=normalize_str(fields.get("permit_type")),
             subtype=normalize_str(fields.get("subtype")),
@@ -110,6 +112,7 @@ class PermitRecord:
     def compute_data_hash(self) -> str:
         meaningful = {
             "permit_number": self.permit_number,
+            "permit_source": self.permit_source,
             "status": self.status,
             "permit_type": self.permit_type,
             "subtype": self.subtype,

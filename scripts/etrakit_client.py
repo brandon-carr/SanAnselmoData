@@ -73,7 +73,13 @@ class ETrakitConfig:
     )
 
     search_by_field: str = field(
-        default_factory=lambda: os.getenv("ETRAKIT_SEARCH_BY_FIELD", "ctl00$MainContent$ddlSearchBy")
+        default_factory=lambda: os.getenv("ETRAKIT_SEARCH_BY_FIELD", "ctl00$cplMain$ddSearchBy")
+    )
+    search_operator_field: str = field(
+        default_factory=lambda: os.getenv("ETRAKIT_SEARCH_OPERATOR_FIELD", "ctl00$cplMain$ddSearchOper")
+    )
+    search_text_field: str = field(
+        default_factory=lambda: os.getenv("ETRAKIT_SEARCH_TEXT_FIELD", "ctl00$cplMain$txtSearchString")
     )
     issued_start_field: str = field(
         default_factory=lambda: os.getenv("ETRAKIT_ISSUED_START_FIELD", "ctl00$MainContent$txtStartDate")
@@ -86,6 +92,12 @@ class ETrakitConfig:
     )
     issued_search_value: str = field(
         default_factory=lambda: os.getenv("ETRAKIT_ISSUED_SEARCH_VALUE", "ISSUED")
+    )
+    permit_number_search_value: str = field(
+        default_factory=lambda: os.getenv("ETRAKIT_PERMIT_NUMBER_SEARCH_VALUE", "Permit Number")
+    )
+    search_equals_value: str = field(
+        default_factory=lambda: os.getenv("ETRAKIT_SEARCH_EQUALS_VALUE", "Equals")
     )
 
     debug_enabled: bool = field(
@@ -413,6 +425,23 @@ class ETrakitClient:
 
         return date_type_field, start_field, end_field, run_button_field
 
+    def _permit_search_field_names_for_html(self, html: str) -> tuple[str, str, str, str]:
+        search_by_field = self._find_first_field_name(html, ("$ddSearchBy", "$ddlSearchBy"))
+        search_operator_field = self._find_first_field_name(html, ("$ddSearchOper", "$ddlSearchOper"))
+        search_text_field = self._find_first_field_name(html, ("$txtSearchString", "$txtSearch"))
+        search_button_field = self._find_first_field_name(html, ("$btnSearch",))
+
+        if not search_by_field and self.config.search_by_field in html:
+            search_by_field = self.config.search_by_field
+        if not search_operator_field and self.config.search_operator_field in html:
+            search_operator_field = self.config.search_operator_field
+        if not search_text_field and self.config.search_text_field in html:
+            search_text_field = self.config.search_text_field
+        if not search_button_field and self.config.search_button_field in html:
+            search_button_field = self.config.search_button_field
+
+        return search_by_field, search_operator_field, search_text_field, search_button_field
+
     def _submit_login_form(self, page_url: str, html: str, preferred_mode: str = "public") -> requests.Response:
         if preferred_mode in {"public", "contractor"}:
             html, page_url = self._switch_login_mode(page_url, html, preferred_mode)
@@ -583,6 +612,81 @@ class ETrakitClient:
             {"reason": "issue report returned zero links; using fallback permit search"},
         )
         return self._search_permits_by_issued_date_fallback(issued_date_iso)
+
+    def search_permit_by_number(self, permit_number: str) -> List[str]:
+        search_page = self._ensure_logged_in_for_url(self.config.permit_search_url)
+        self._debug_write_text("11_building_search_page.html", search_page.text)
+        self._debug_write_json("11_building_search_page_fields.json", self._extract_form_fields(search_page.text))
+
+        search_by_field, search_operator_field, search_text_field, search_button_field = (
+            self._permit_search_field_names_for_html(search_page.text)
+        )
+        if not search_by_field or not search_operator_field or not search_text_field or not search_button_field:
+            raise ETrakitError("Could not locate permit-number search fields in search page HTML.")
+
+        payload = self._parse_hidden_inputs(search_page.text)
+        search_by_value = self._match_select_option_value(
+            search_page.text,
+            search_by_field,
+            self.config.permit_number_search_value,
+        )
+        search_operator_value = self._match_select_option_value(
+            search_page.text,
+            search_operator_field,
+            self.config.search_equals_value,
+        )
+        if not search_by_value:
+            raise ETrakitError("Could not match permit-number search option in search page.")
+        if not search_operator_value:
+            raise ETrakitError("Could not match search operator option for exact permit-number lookup.")
+
+        payload[search_by_field] = search_by_value
+        payload[search_operator_field] = search_operator_value
+        payload[search_text_field] = permit_number
+        payload["__EVENTTARGET"] = search_button_field
+        payload["__EVENTARGUMENT"] = ""
+        payload[search_button_field] = "Search"
+
+        self._debug_write_json(
+            "12_building_search_post_payload.json",
+            {
+                "permit_number": permit_number,
+                "payload_keys": sorted(payload.keys()),
+                "search_by_field": search_by_field,
+                "search_by_value": search_by_value,
+                "search_operator_field": search_operator_field,
+                "search_operator_value": search_operator_value,
+                "search_text_field": search_text_field,
+                "search_button_field": search_button_field,
+            },
+        )
+
+        response = self.session.post(
+            self.config.permit_search_url,
+            data=payload,
+            headers=self._browser_headers(self.config.permit_search_url, referer=search_page.url),
+            timeout=60,
+        )
+        self._debug_write_text("13_building_search_results.html", response.text)
+        self._debug_write_json(
+            "13_building_search_results_meta.json",
+            {
+                "status_code": response.status_code,
+                "url": response.url,
+                "headers": dict(response.headers),
+            },
+        )
+
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Permit-number search failed: {response.status_code} for {response.url}"
+            )
+
+        links = self._extract_permit_links_from_search_results(response.text)
+        if not links and "ActivityNo=" in response.url:
+            links = [response.url]
+        permit_token = f"ACTIVITYNO={permit_number.upper()}"
+        return [link for link in links if permit_token in link.upper()]
 
     def fetch_issued_report_for_date(self, issued_date_iso: str) -> List[str]:
         try:

@@ -223,7 +223,7 @@
       <p class="eyebrow">Admin</p>
       <h1>Permit Data Health</h1>
       <p class="subhead">
-        A quick operational view of permit volume by issued date and address geolocation status.
+        A quick operational view of planning and building permit volume by issued date and address geolocation status.
         This page reads directly from the generated data files and summarizes retry progress.
       </p>
     </section>
@@ -271,7 +271,7 @@
   </div>
 
   <script>
-    const PERMITS_URL = "../../data/current_permits.json";
+    const PERMITS_URL = "../../data/all_permits_view.json";
     const ADDRESSES_URL = "../../data/addresses.json";
     const CACHE_BUST = `ts=${Date.now()}`;
 
@@ -290,9 +290,10 @@
       return [];
     }
 
-    function normalizePermit(record) {
+    function normalizePermit(record, permitSource) {
       return {
         permit_number: record.permit_number || "",
+        permit_source: record.permit_source || permitSource || "",
         issued_date: (record.issued_date || "").trim(),
       };
     }
@@ -453,7 +454,7 @@
           fetchJson(ADDRESSES_URL),
         ]);
 
-        const permits = toList(permitPayload).map(normalizePermit);
+        const permits = toList(permitPayload).map((record) => normalizePermit(record, record.permit_source || ""));
         const addresses = toList(addressPayload).map(normalizeAddress);
 
         updateSummaryCards(permits, addresses);

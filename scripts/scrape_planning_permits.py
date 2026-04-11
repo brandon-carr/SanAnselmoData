@@ -5,9 +5,12 @@ import sys
 from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 
-from etrakit_client import ETrakitClient, ETrakitError
+from etrakit_client import ETrakitClient
 from permit_model import AddressRecord, PermitRecord, build_address_id, utc_now_iso
 from storage import JsonPermitStore, finalize_run_state, hydrate_permits_from_addresses, init_run_state
+
+
+DATASET_NAME = "planning"
 
 
 def getenv_str(name: str, default: str = "") -> str:
@@ -89,7 +92,7 @@ def normalize_mmddyyyy_to_iso(value: str) -> str:
 
 def scrape_one_date(
     client: ETrakitClient,
-    current_records: Dict[str, PermitRecord],
+    permit_records: Dict[str, PermitRecord],
     address_records: Dict[str, AddressRecord],
     target_issued_date: str,
     store: JsonPermitStore,
@@ -108,11 +111,9 @@ def scrape_one_date(
         for detail_url in detail_urls:
             try:
                 fields = client.fetch_permit_details(detail_url)
+                fields["permit_source"] = DATASET_NAME
                 record = PermitRecord.from_scraped_fields(fields)
                 issued_date_iso = normalize_mmddyyyy_to_iso(record.issued_date)
-                # The report request uses target_date..target_date+1 because the site
-                # does not accept a same-day from/to query. Persist only the exact
-                # target day's permits so our stored data stays day-accurate.
                 if issued_date_iso != target_issued_date:
                     continue
                 scraped_records[record.permit_number] = record
@@ -133,7 +134,7 @@ def scrape_one_date(
         for permit_number, new_record in scraped_records.items():
             new_record.address_id = build_address_id(new_record.address, new_record.city_state_zip)
 
-            if permit_number not in current_records:
+            if permit_number not in permit_records:
                 address_record = AddressRecord.from_permit(new_record, when_iso=now_iso)
                 existing_address = address_records.get(address_record.address_id)
                 if existing_address:
@@ -164,11 +165,11 @@ def scrape_one_date(
                 new_record.last_seen_at = now_iso
                 new_record.last_changed_at = now_iso
                 new_record.data_hash = new_record.compute_data_hash()
-                current_records[permit_number] = new_record
+                permit_records[permit_number] = new_record
                 permits_new += 1
                 continue
 
-            existing = current_records[permit_number]
+            existing = permit_records[permit_number]
             address_changed = (
                 existing.address != new_record.address
                 or existing.city_state_zip != new_record.city_state_zip
@@ -215,11 +216,11 @@ def scrape_one_date(
             new_record.geocode_last_attempt_at = next_address.geocode_last_attempt_at
             changed, merged = existing.apply_new_scrape(new_record, when_iso=now_iso)
             if changed:
-                store.append_history(permit_number, existing)
-                current_records[permit_number] = merged
+                store.append_permit_history(DATASET_NAME, permit_number, existing)
+                permit_records[permit_number] = merged
                 permits_changed += 1
             else:
-                current_records[permit_number] = merged
+                permit_records[permit_number] = merged
                 permits_unchanged += 1
 
         return True, {
@@ -243,8 +244,8 @@ def scrape_one_date(
 
 def main() -> int:
     store = JsonPermitStore()
-    state = store.load_state()
-    current_records = store.load_current()
+    state = store.load_scrape_state(DATASET_NAME)
+    permit_records = store.load_permits(DATASET_NAME)
     address_records = store.load_addresses()
 
     target_dates = resolve_target_dates(state)
@@ -264,30 +265,29 @@ def main() -> int:
         return 1
 
     overall_success = True
-    last_summary = {}
-    all_errors: List[str] = []
 
     for target_issued_date in target_dates:
         run_state = init_run_state(state, target_issued_date)
-        store.save_state(run_state)
+        store.save_scrape_state(DATASET_NAME, run_state)
 
         success, summary, errors = scrape_one_date(
             client=client,
-            current_records=current_records,
+            permit_records=permit_records,
             address_records=address_records,
             target_issued_date=target_issued_date,
             store=store,
         )
 
-        hydrate_permits_from_addresses(current_records, address_records)
+        hydrate_permits_from_addresses(permit_records, address_records)
         store.save_addresses(address_records)
-        store.save_current(current_records)
+        store.save_permits(DATASET_NAME, permit_records)
+        store.save_all_permits_view(store.load_all_permits())
 
         geocoded_changed = 0
         combined_errors = errors
 
         state = finalize_run_state(
-            state,
+            run_state,
             success=success,
             target_issued_date=target_issued_date,
             permits_found=summary["permits_found"],
@@ -297,7 +297,6 @@ def main() -> int:
             errors=combined_errors,
         )
 
-        # optional per-date status tracking
         state.setdefault("date_status", {})
         state["date_status"][target_issued_date] = {
             "status": "success" if success else "failed",
@@ -310,10 +309,7 @@ def main() -> int:
             "geocoded_changed": geocoded_changed,
             "errors": combined_errors,
         }
-        store.save_state(state)
-
-        last_summary = summary
-        all_errors.extend(combined_errors)
+        store.save_scrape_state(DATASET_NAME, state)
 
         if success:
             print(

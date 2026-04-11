@@ -6,7 +6,7 @@ from typing import Dict, List
 
 from geocoder import JsonGeocoder
 from permit_model import AddressRecord, PermitRecord, normalize_str, utc_now_iso
-from storage import JsonPermitStore, hydrate_permits_from_addresses
+from storage import JsonPermitStore, hydrate_permit_groups_from_addresses
 
 
 def getenv_int(name: str, default: int) -> int:
@@ -49,18 +49,19 @@ def ensure_address_records(
 
 
 def select_pending_addresses(
-    permits: Dict[str, PermitRecord],
+    permit_groups: Dict[str, Dict[str, PermitRecord]],
     addresses: Dict[str, AddressRecord],
     batch_size: int,
     max_attempts: int,
 ) -> List[AddressRecord]:
     newest_permit_by_address: Dict[str, PermitRecord] = {}
-    for permit in permits.values():
-        if not permit.address_id:
-            continue
-        current = newest_permit_by_address.get(permit.address_id)
-        if current is None or geocode_sort_key(permit) > geocode_sort_key(current):
-            newest_permit_by_address[permit.address_id] = permit
+    for permits in permit_groups.values():
+        for permit in permits.values():
+            if not permit.address_id:
+                continue
+            current = newest_permit_by_address.get(permit.address_id)
+            if current is None or geocode_sort_key(permit) > geocode_sort_key(current):
+                newest_permit_by_address[permit.address_id] = permit
 
     pending = []
     for address_id, permit in newest_permit_by_address.items():
@@ -106,19 +107,20 @@ def main() -> int:
     max_attempts = getenv_int("GEOCODE_MAX_ATTEMPTS", 3)
 
     store = JsonPermitStore()
-    current_records = store.load_current()
+    permit_groups = store.load_all_permits()
     address_records = store.load_addresses()
     geocoder = JsonGeocoder()
-    ensure_address_records(current_records, address_records)
+    for permits in permit_groups.values():
+        ensure_address_records(permits, address_records)
 
     pending = select_pending_addresses(
-        current_records,
+        permit_groups,
         address_records,
         batch_size=batch_size,
         max_attempts=max_attempts,
     )
     if not pending:
-        print("SKIPPED no permits pending geocoding")
+        print("SKIPPED no addresses pending geocoding")
         return 0
 
     print("TARGETS " + ", ".join(record.address_id for record in pending))
@@ -151,9 +153,10 @@ def main() -> int:
                 f"status={record.geocode_status} error={record.geocode_error}"
             )
 
-    hydrate_permits_from_addresses(current_records, address_records)
+    hydrate_permit_groups_from_addresses(permit_groups, address_records)
     store.save_addresses(address_records)
-    store.save_current(current_records)
+    store.save_all_permits(permit_groups)
+    store.save_all_permits_view(permit_groups)
     print(
         f"SUMMARY selected={len(pending)} success={successes} "
         f"errors={len(errors)} max_attempts={max_attempts}"

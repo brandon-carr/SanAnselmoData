@@ -16,5 +16,5 @@ Suggested layout:
 Notes:
 
 - The data pipeline lives in `scripts/` and writes runtime data into `data/`.
-- The website should read from `data/current_permits.json` and other published data files.
+- The website should read from `data/all_permits_view.json` plus other published data files such as `data/addresses.json`.
 - Keeping the site in `web/` helps separate presentation from scraping/geocoding logic.

@@ -184,7 +184,7 @@
       <div class="sidebar-header">
         <h1>San Anselmo Permits</h1>
         <p>
-          Loads permit data from <code>../../data/current_permits.json</code>. Only permits with
+          Loads permit data from the combined permit view dataset. Only permits with
           geolocation are shown.
         </p>
       </div>
@@ -193,6 +193,13 @@
         <div class="field">
           <label for="keyword">Keyword</label>
           <input id="keyword" type="text" placeholder="Address, permit number, description" />
+        </div>
+
+        <div class="field">
+          <label for="sourceFilter">Permit source</label>
+          <select id="sourceFilter">
+            <option value="">All sources</option>
+          </select>
         </div>
 
         <div class="field">
@@ -233,7 +240,7 @@
   ></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
-    const DATA_URL = "../../data/current_permits.json";
+    const DATA_URL = "../../data/all_permits_view.json";
     const CACHE_BUST = `ts=${Date.now()}`;
     const DEFAULT_CENTER = [37.9746, -122.5610];
     const DEFAULT_ZOOM = 13;
@@ -254,6 +261,7 @@
     };
 
     const keywordInput = document.getElementById("keyword");
+    const sourceFilter = document.getElementById("sourceFilter");
     const typeFilter = document.getElementById("typeFilter");
     const statusFilter = document.getElementById("statusFilter");
     const issuedAfterInput = document.getElementById("issuedAfter");
@@ -267,13 +275,14 @@
       return [];
     }
 
-    function normalizePermit(raw) {
+    function normalizePermit(raw, permitSource) {
       const latRaw = String(raw.lat ?? raw.latitude ?? "").trim();
       const lngRaw = String(raw.lng ?? raw.lon ?? raw.longitude ?? "").trim();
       const lat = latRaw === "" ? NaN : Number(latRaw);
       const lng = lngRaw === "" ? NaN : Number(lngRaw);
       return {
         permit_number: raw.permit_number || "",
+        permit_source: raw.permit_source || permitSource || "",
         status: raw.status || "",
         permit_type: raw.permit_type || raw.type || "",
         subtype: raw.subtype || "",
@@ -293,6 +302,7 @@
         <div style="min-width:220px; line-height:1.45;">
           <strong>${escapeHtml(permit.permit_number || "Permit")}</strong><br>
           ${escapeHtml(permit.address || "No address")}<br>
+          ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
           ${permit.permit_type ? `${escapeHtml(permit.permit_type)}<br>` : ""}
           ${permit.status ? `Status: ${escapeHtml(permit.status)}<br>` : ""}
           ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
@@ -312,8 +322,16 @@
     }
 
     function populateFilterOptions() {
+      const sources = [...new Set(state.allPermits.map(p => p.permit_source).filter(Boolean))].sort();
       const types = [...new Set(state.allPermits.map(p => p.permit_type).filter(Boolean))].sort();
       const statuses = [...new Set(state.allPermits.map(p => p.status).filter(Boolean))].sort();
+
+      for (const value of sources) {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = value;
+        sourceFilter.appendChild(option);
+      }
 
       for (const value of types) {
         const option = document.createElement("option");
@@ -332,6 +350,7 @@
 
     function matchesFilters(permit) {
       const keyword = keywordInput.value.trim().toLowerCase();
+      const selectedSource = sourceFilter.value;
       const selectedType = typeFilter.value;
       const selectedStatus = statusFilter.value;
       const issuedAfter = issuedAfterInput.value;
@@ -349,6 +368,7 @@
         if (!haystack.includes(keyword)) return false;
       }
 
+      if (selectedSource && permit.permit_source !== selectedSource) return false;
       if (selectedType && permit.permit_type !== selectedType) return false;
       if (selectedStatus && permit.status !== selectedStatus) return false;
 
@@ -398,6 +418,7 @@
           <h2>${escapeHtml(permit.permit_number || "Permit")}</h2>
           <div class="permit-meta">
             ${escapeHtml(permit.address || "No address")}<br>
+            ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
             ${permit.permit_type ? `${escapeHtml(permit.permit_type)}<br>` : ""}
             ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
             ${permit.short_description ? escapeHtml(permit.short_description) : ""}
@@ -426,7 +447,7 @@
 
         const data = await response.json();
         state.allPermits = asArray(data)
-          .map(normalizePermit)
+          .map((record) => normalizePermit(record, record.permit_source || ""))
           .filter((permit) => permit.lat != null && permit.lng != null);
         populateFilterOptions();
         renderResults();
@@ -442,13 +463,14 @@
       }
     }
 
-    [keywordInput, typeFilter, statusFilter, issuedAfterInput].forEach((el) => {
+    [keywordInput, sourceFilter, typeFilter, statusFilter, issuedAfterInput].forEach((el) => {
       el.addEventListener("input", renderResults);
       el.addEventListener("change", renderResults);
     });
 
     resetButton.addEventListener("click", () => {
       keywordInput.value = "";
+      sourceFilter.value = "";
       typeFilter.value = "";
       statusFilter.value = "";
       issuedAfterInput.value = "";
