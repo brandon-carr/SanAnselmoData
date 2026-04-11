@@ -2,11 +2,10 @@ from __future__ import annotations
 
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List
 
 from etrakit_client import ETrakitClient, ETrakitError
-from geocoder import JsonGeocoder
 from permit_model import PermitRecord, utc_now_iso
 from storage import JsonPermitStore, finalize_run_state, init_run_state
 
@@ -46,7 +45,7 @@ def resolve_target_dates(state: dict) -> List[str]:
         for d in completed
         if d
     )
-    yesterday = datetime.utcnow().date() - timedelta(days=1)
+    yesterday = datetime.now(timezone.utc).date() - timedelta(days=1)
     backfill_anchor = completed_dates[0] if completed_dates else yesterday
 
     targets: List[str] = []
@@ -116,10 +115,14 @@ def sync_one_date(
                 continue
 
             existing = current_records[permit_number]
-            new_record.latitude = existing.latitude
-            new_record.longitude = existing.longitude
-            new_record.geocoded_address = existing.geocoded_address
-            new_record.geocode_source = existing.geocode_source
+            address_changed = (
+                existing.address != new_record.address
+                or existing.city_state_zip != new_record.city_state_zip
+            )
+            if address_changed:
+                new_record.reset_geocode_fields()
+            else:
+                new_record.copy_geocode_fields_from(existing)
             changed, merged = existing.apply_new_scrape(new_record, when_iso=now_iso)
             if changed:
                 store.append_history(permit_number, existing)
@@ -148,41 +151,6 @@ def sync_one_date(
         }, errors
 
 
-def enrich_records_with_geocoding(
-    geocoder: JsonGeocoder,
-    current_records: Dict[str, PermitRecord],
-    store: JsonPermitStore,
-) -> tuple[int, List[str]]:
-    errors: List[str] = []
-    geocoded_changed = 0
-    now_iso = utc_now_iso()
-
-    for permit_number, record in current_records.items():
-        if not geocoder.needs_geocoding(record):
-            continue
-
-        previous = PermitRecord.from_dict(record.to_dict())
-        try:
-            geocoded = geocoder.geocode_record(record)
-        except Exception as exc:
-            errors.append(f"{permit_number}: {exc}")
-            continue
-
-        geocoded.last_seen_at = now_iso
-        new_hash = geocoded.compute_data_hash()
-        if new_hash != previous.data_hash:
-            store.append_history(permit_number, previous)
-            geocoded.last_changed_at = now_iso
-            geocoded.data_hash = new_hash
-            current_records[permit_number] = geocoded
-            geocoded_changed += 1
-        else:
-            geocoded.data_hash = previous.data_hash
-            current_records[permit_number] = geocoded
-
-    return geocoded_changed, errors
-
-
 def main() -> int:
     store = JsonPermitStore()
     state = store.load_state()
@@ -196,7 +164,6 @@ def main() -> int:
     print(f"TARGETS {', '.join(target_dates)}")
 
     client = ETrakitClient()
-    geocoder = JsonGeocoder()
 
     try:
         client.login()
@@ -223,16 +190,7 @@ def main() -> int:
         store.save_current(current_records)
 
         geocoded_changed = 0
-        geocode_errors: List[str] = []
-        if success:
-            geocoded_changed, geocode_errors = enrich_records_with_geocoding(
-                geocoder=geocoder,
-                current_records=current_records,
-                store=store,
-            )
-            store.save_current(current_records)
-
-        combined_errors = errors + geocode_errors
+        combined_errors = errors
 
         state = finalize_run_state(
             state,

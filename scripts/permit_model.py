@@ -42,6 +42,10 @@ class PermitRecord:
     longitude: str = ""
     geocoded_address: str = ""
     geocode_source: str = ""
+    geocode_status: str = ""
+    geocode_error: str = ""
+    geocode_attempts: int = 0
+    geocode_last_attempt_at: str = ""
 
     first_seen_at: str = ""
     last_seen_at: str = ""
@@ -77,6 +81,10 @@ class PermitRecord:
             longitude=normalize_str(fields.get("longitude")),
             geocoded_address=normalize_str(fields.get("geocoded_address")),
             geocode_source=normalize_str(fields.get("geocode_source")),
+            geocode_status=normalize_str(fields.get("geocode_status")),
+            geocode_error=normalize_str(fields.get("geocode_error")),
+            geocode_attempts=int(fields.get("geocode_attempts", 0) or 0),
+            geocode_last_attempt_at=normalize_str(fields.get("geocode_last_attempt_at")),
             extra=fields.get("extra", {}) or {},
         )
 
@@ -109,6 +117,10 @@ class PermitRecord:
             "longitude": self.longitude,
             "geocoded_address": self.geocoded_address,
             "geocode_source": self.geocode_source,
+            "geocode_status": self.geocode_status,
+            "geocode_error": self.geocode_error,
+            "geocode_attempts": self.geocode_attempts,
+            "geocode_last_attempt_at": self.geocode_last_attempt_at,
             "extra": self.extra,
         }
         return sha256(repr(sorted(meaningful.items())).encode("utf-8")).hexdigest()
@@ -125,6 +137,26 @@ class PermitRecord:
         when_iso = when_iso or utc_now_iso()
         self.last_seen_at = when_iso
         return self
+
+    def reset_geocode_fields(self) -> None:
+        self.latitude = ""
+        self.longitude = ""
+        self.geocoded_address = ""
+        self.geocode_source = ""
+        self.geocode_status = ""
+        self.geocode_error = ""
+        self.geocode_attempts = 0
+        self.geocode_last_attempt_at = ""
+
+    def copy_geocode_fields_from(self, other: "PermitRecord") -> None:
+        self.latitude = other.latitude
+        self.longitude = other.longitude
+        self.geocoded_address = other.geocoded_address
+        self.geocode_source = other.geocode_source
+        self.geocode_status = other.geocode_status
+        self.geocode_error = other.geocode_error
+        self.geocode_attempts = other.geocode_attempts
+        self.geocode_last_attempt_at = other.geocode_last_attempt_at
 
     def apply_new_scrape(self, new_record: "PermitRecord", when_iso: Optional[str] = None) -> tuple[bool, "PermitRecord"]:
         when_iso = when_iso or utc_now_iso()

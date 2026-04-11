@@ -1,9 +1,45 @@
 {
   "completed_issued_dates": [
+    "2026-04-06",
+    "2026-04-07",
+    "2026-04-08",
     "2026-04-09",
     "2026-04-10"
   ],
   "date_status": {
+    "2026-04-06": {
+      "completed_at": "2026-04-11T02:41:33+00:00",
+      "errors": [],
+      "geocoded_changed": 0,
+      "last_attempt_at": "2026-04-11T02:41:33+00:00",
+      "permits_changed": 0,
+      "permits_found": 97,
+      "permits_new": 0,
+      "permits_unchanged": 97,
+      "status": "success"
+    },
+    "2026-04-07": {
+      "completed_at": "2026-04-11T02:39:40+00:00",
+      "errors": [],
+      "geocoded_changed": 0,
+      "last_attempt_at": "2026-04-11T02:39:40+00:00",
+      "permits_changed": 97,
+      "permits_found": 97,
+      "permits_new": 0,
+      "permits_unchanged": 0,
+      "status": "success"
+    },
+    "2026-04-08": {
+      "completed_at": "2026-04-11T02:29:35+00:00",
+      "errors": [],
+      "geocoded_changed": 87,
+      "last_attempt_at": "2026-04-11T02:29:35+00:00",
+      "permits_changed": 0,
+      "permits_found": 97,
+      "permits_new": 87,
+      "permits_unchanged": 10,
+      "status": "success"
+    },
     "2026-04-09": {
       "completed_at": "2026-04-11T01:42:15+00:00",
       "errors": [],
@@ -27,15 +63,15 @@
     }
   },
   "errors": [],
-  "last_run_finished_at": "2026-04-11T01:42:15+00:00",
-  "last_run_started_at": "2026-04-11T01:42:10+00:00",
+  "last_run_finished_at": "2026-04-11T02:41:33+00:00",
+  "last_run_started_at": "2026-04-11T02:40:50+00:00",
   "last_run_status": "success",
   "last_summary": {
     "permits_changed": 0,
-    "permits_found": 10,
-    "permits_new": 10,
-    "permits_unchanged": 0,
-    "target_issued_date": "2026-04-09"
+    "permits_found": 97,
+    "permits_new": 0,
+    "permits_unchanged": 97,
+    "target_issued_date": "2026-04-06"
   },
-  "last_target_issued_date": "2026-04-09"
+  "last_target_issued_date": "2026-04-06"
 }

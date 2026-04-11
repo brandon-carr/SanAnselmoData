@@ -659,10 +659,75 @@ class ETrakitClient:
                 f"Issue report POST failed: {response.status_code} for {response.url}"
             )
 
-        links = self._extract_permit_links_from_report(response.text)
+        links = self._fetch_all_issue_report_links(
+            initial_html=response.text,
+            report_url=self.config.issue_report_url,
+            referer=report_page.url,
+        )
         self._debug_write_json(
             "06_issue_report_links.json",
             {"count": len(links), "links": links},
+        )
+        return links
+
+    def _fetch_all_issue_report_links(
+        self,
+        initial_html: str,
+        report_url: str,
+        referer: str,
+    ) -> List[str]:
+        links = self._extract_permit_links_from_report(initial_html)
+        pending_pages = self._extract_report_page_postbacks(initial_html)
+        seen_pages = set()
+        page_fetches = []
+        current_html = initial_html
+
+        while pending_pages:
+            event_target, event_argument = pending_pages.pop(0)
+            page_key = (event_target, event_argument)
+            if page_key in seen_pages:
+                continue
+
+            seen_pages.add(page_key)
+            payload = self._parse_hidden_inputs(current_html)
+            payload["__EVENTTARGET"] = event_target
+            payload["__EVENTARGUMENT"] = event_argument
+
+            response = self.session.post(
+                report_url,
+                data=payload,
+                headers=self._browser_headers(report_url, referer=referer),
+                timeout=60,
+            )
+
+            if response.status_code >= 400:
+                raise ETrakitError(
+                    f"Issue report paging failed: {response.status_code} for {response.url}"
+                )
+
+            current_html = response.text
+            links.extend(self._extract_permit_links_from_report(current_html))
+            page_fetches.append(
+                {
+                    "event_target": event_target,
+                    "event_argument": event_argument,
+                    "status_code": response.status_code,
+                    "url": response.url,
+                }
+            )
+
+            for next_page in self._extract_report_page_postbacks(current_html):
+                if next_page not in seen_pages and next_page not in pending_pages:
+                    pending_pages.append(next_page)
+
+        links = self._dedupe(links)
+        self._debug_write_json(
+            "06_issue_report_paging.json",
+            {
+                "pages_fetched": page_fetches,
+                "total_pages_followed": len(page_fetches) + 1,
+                "total_links": len(links),
+            },
         )
         return links
 
@@ -687,6 +752,22 @@ class ETrakitClient:
                 )
 
         return self._dedupe(links)
+
+    def _extract_report_page_postbacks(self, html: str) -> List[tuple[str, str]]:
+        soup = BeautifulSoup(html, "html.parser")
+        page_postbacks: List[tuple[str, str]] = []
+
+        for a in soup.find_all("a", href=True):
+            href = a["href"]
+            match = re.search(
+                r"__doPostBack\('([^']+)','(Page\$(\d+))'\)",
+                href,
+                flags=re.IGNORECASE,
+            )
+            if match and int(match.group(3)) > 1:
+                page_postbacks.append((match.group(1), match.group(2)))
+
+        return list(dict.fromkeys(page_postbacks))
 
     def _search_permits_by_issued_date_fallback(self, issued_date_iso: str) -> List[str]:
         dt = datetime.strptime(issued_date_iso, "%Y-%m-%d")
