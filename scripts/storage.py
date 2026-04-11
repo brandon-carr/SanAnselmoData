@@ -38,7 +38,7 @@ class JsonPermitStore:
         self,
         current_path: str = "data/current_permits.json",
         history_path: str = "data/permit_history.json",
-        state_path: str = "data/sync_state.json",
+        state_path: str = "data/scrape_state.json",
         addresses_path: str = "data/addresses.json",
         address_history_path: str = "data/address_history.json",
     ) -> None:

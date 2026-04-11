@@ -13,7 +13,7 @@ jobs:
       GEOCODER_ENABLED: "true"
       GEOCODER_PROVIDER: "nominatim"
       GEOCODER_BASE_URL: https://nominatim.openstreetmap.org/search
-      GEOCODER_USER_AGENT: SanAnselmoPermitSync/1.0 (github actions geocoding workflow)
+      GEOCODER_USER_AGENT: SanAnselmoPermitScrape/1.0 (github actions geocoding workflow)
       GEOCODER_COUNTRY_CODES: us
       GEOCODER_TIMEOUT_SECONDS: 30
       GEOCODER_MIN_INTERVAL_SECONDS: 1.0

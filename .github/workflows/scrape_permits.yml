@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       target_issued_date:
-        description: "Issued date to sync (YYYY-MM-DD) — leave blank to use DAYS_BACK"
+        description: "Issued date to scrape (YYYY-MM-DD) — leave blank to use DAYS_BACK"
         required: false
         default: ""
 
 jobs:
-  sync:
+  scrape:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -69,9 +69,9 @@ jobs:
           if [ -z "$ETRAKIT_USERNAME" ]; then echo "Missing username"; exit 1; fi
           if [ -z "$ETRAKIT_PASSWORD" ]; then echo "Missing password"; exit 1; fi
 
-      - name: Run permit sync
+      - name: Run permit scrape
         run: |
-          python scripts/sync_permits.py
+          python scripts/scrape_permits.py
 
       # ✅ ALWAYS upload debug artifacts (even if script fails)
       - name: Upload debug artifacts
@@ -94,7 +94,7 @@ jobs:
           for file in \
             data/current_permits.json \
             data/permit_history.json \
-            data/sync_state.json \
+            data/scrape_state.json \
             data/addresses.json \
             data/address_history.json
           do
@@ -103,5 +103,5 @@ jobs:
             fi
           done
 
-          git diff --cached --quiet || git commit -m "Sync permits for ${TARGET_ISSUED_DATE:-auto}"
+          git diff --cached --quiet || git commit -m "Scrape permits for ${TARGET_ISSUED_DATE:-auto}"
           git push

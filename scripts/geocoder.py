@@ -21,7 +21,7 @@ class GeocodeConfig:
     user_agent: str = field(
         default_factory=lambda: os.getenv(
             "GEOCODER_USER_AGENT",
-            "SanAnselmoPermitSync/1.0 (local geocoding workflow)",
+            "SanAnselmoPermitScrape/1.0 (local geocoding workflow)",
         )
     )
     email: str = field(default_factory=lambda: os.getenv("GEOCODER_EMAIL", "").strip())

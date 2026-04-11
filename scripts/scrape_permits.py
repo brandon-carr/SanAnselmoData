@@ -87,7 +87,7 @@ def normalize_mmddyyyy_to_iso(value: str) -> str:
         return ""
 
 
-def sync_one_date(
+def scrape_one_date(
     client: ETrakitClient,
     current_records: Dict[str, PermitRecord],
     address_records: Dict[str, AddressRecord],
@@ -271,7 +271,7 @@ def main() -> int:
         run_state = init_run_state(state, target_issued_date)
         store.save_state(run_state)
 
-        success, summary, errors = sync_one_date(
+        success, summary, errors = scrape_one_date(
             client=client,
             current_records=current_records,
             address_records=address_records,

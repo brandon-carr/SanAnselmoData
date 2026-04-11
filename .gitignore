@@ -9,10 +9,10 @@ ai_context.md
 __pycache__/
 *.pyc
 
-# Runtime data produced by sync/geocode jobs
+# Runtime data produced by scrape/geocode jobs
 data/current_permits.json
 data/permit_history.json
-data/sync_state.json
+data/scrape_state.json
 data/geocode_cache.json
 data/addresses.json
 data/address_history.json
