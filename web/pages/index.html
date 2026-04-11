@@ -181,8 +181,8 @@
       <div class="sidebar-header">
         <h1>San Anselmo Permits</h1>
         <p>
-          Loads permit data from <code>../../data/current_permits.json</code>. Records without
-          coordinates are skipped from the map.
+          Loads permit data from <code>../../data/current_permits.json</code>. Only permits with
+          geolocation are shown.
         </p>
       </div>
 
@@ -419,7 +419,9 @@
         }
 
         const data = await response.json();
-        state.allPermits = asArray(data).map(normalizePermit);
+        state.allPermits = asArray(data)
+          .map(normalizePermit)
+          .filter((permit) => permit.lat != null && permit.lng != null);
         populateFilterOptions();
         renderResults();
       } catch (error) {
