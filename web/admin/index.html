@@ -116,6 +116,15 @@
       font-family: Arial, sans-serif;
     }
 
+    .breakdown {
+      margin-top: 8px;
+      display: grid;
+      gap: 4px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
     .panel {
       padding: 18px;
     }
@@ -223,7 +232,7 @@
       <p class="eyebrow">Admin</p>
       <h1>Permit Data Health</h1>
       <p class="subhead">
-        A quick operational view of planning and building permit volume by issued date and address geolocation status.
+        A quick operational view of planning, building, and other permit volume by issued date and address geolocation status.
         This page reads directly from the generated data files and summarizes retry progress.
       </p>
     </section>
@@ -233,6 +242,7 @@
         <p class="stat-label">Permits</p>
         <p class="stat-value" id="permitsTotal">-</p>
         <div class="stat-foot">Total permits currently loaded.</div>
+        <div class="breakdown" id="permitsBreakdown"></div>
       </article>
       <article class="card stat-card">
         <p class="stat-label">Addresses</p>
@@ -308,13 +318,31 @@
       };
     }
 
+    function titleCase(value) {
+      return String(value || "")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
+    function sourceNames(permits) {
+      return [...new Set(permits.map((permit) => permit.permit_source).filter(Boolean))].sort();
+    }
+
     function renderIssuedDateTable(permits) {
       const container = document.getElementById("issuedDateTable");
       const counts = new Map();
+      const sources = sourceNames(permits);
 
       for (const permit of permits) {
         const issuedDate = permit.issued_date || "Missing";
-        counts.set(issuedDate, (counts.get(issuedDate) || 0) + 1);
+        if (!counts.has(issuedDate)) {
+          counts.set(issuedDate, { total: 0, bySource: {} });
+        }
+        const entry = counts.get(issuedDate);
+        entry.total += 1;
+        if (permit.permit_source) {
+          entry.bySource[permit.permit_source] = (entry.bySource[permit.permit_source] || 0) + 1;
+        }
       }
 
       const rows = [...counts.entries()]
@@ -336,14 +364,16 @@
           <thead>
             <tr>
               <th>Issued Date</th>
-              <th class="num">Permits</th>
+              <th class="num">Total</th>
+              ${sources.map((source) => `<th class="num">${escapeHtml(titleCase(source))}</th>`).join("")}
             </tr>
           </thead>
           <tbody>
-            ${rows.map(([issuedDate, count]) => `
+            ${rows.map(([issuedDate, values]) => `
               <tr>
                 <td>${escapeHtml(issuedDate)}</td>
-                <td class="num">${count}</td>
+                <td class="num">${values.total}</td>
+                ${sources.map((source) => `<td class="num">${values.bySource[source] || 0}</td>`).join("")}
               </tr>
             `).join("")}
           </tbody>
@@ -431,11 +461,20 @@
     function updateSummaryCards(permits, addresses) {
       const geolocated = addresses.filter((address) => address.hasGeo).length;
       const pending = addresses.length - geolocated;
+      const sourceCounts = new Map();
+      for (const permit of permits) {
+        if (!permit.permit_source) continue;
+        sourceCounts.set(permit.permit_source, (sourceCounts.get(permit.permit_source) || 0) + 1);
+      }
 
       document.getElementById("permitsTotal").textContent = permits.length;
       document.getElementById("addressesTotal").textContent = addresses.length;
       document.getElementById("addressesLocated").textContent = geolocated;
       document.getElementById("addressesPending").textContent = pending;
+      document.getElementById("permitsBreakdown").innerHTML = [...sourceCounts.entries()]
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([source, count]) => `<div>${escapeHtml(titleCase(source))}: <strong>${count}</strong></div>`)
+        .join("");
     }
 
     function escapeHtml(value) {

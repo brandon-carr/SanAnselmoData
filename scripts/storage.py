@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, Iterable, List
 
-from permit_model import AddressRecord, PermitRecord, apply_address_to_permit, utc_now_iso
+from permit_model import AddressRecord, PermitRecord, apply_address_to_permit
 
 
 @dataclass(frozen=True)
@@ -107,11 +107,12 @@ class JsonPermitStore:
     def load_scrape_state(self, dataset_name: str) -> dict:
         config = self._config(dataset_name)
         default = {
-            "completed_issued_dates": [],
+            "year": 0,
+            "batch_size": 0,
+            "streams": {},
             "last_run_started_at": "",
             "last_run_finished_at": "",
             "last_run_status": "",
-            "last_target_issued_date": "",
             "last_summary": {},
             "errors": [],
         }
@@ -183,48 +184,3 @@ def hydrate_permit_groups_from_addresses(
 ) -> None:
     for permits in permit_groups.values():
         hydrate_permits_from_addresses(permits, addresses)
-
-
-def init_run_state(state: dict, target_issued_date: str) -> dict:
-    state["last_run_started_at"] = utc_now_iso()
-    state["last_run_finished_at"] = ""
-    state["last_run_status"] = "running"
-    state["last_target_issued_date"] = target_issued_date
-    state["last_summary"] = {
-        "target_issued_date": target_issued_date,
-        "permits_found": 0,
-        "permits_new": 0,
-        "permits_changed": 0,
-        "permits_unchanged": 0,
-    }
-    state["errors"] = []
-    return state
-
-
-def finalize_run_state(
-    state: dict,
-    *,
-    success: bool,
-    target_issued_date: str,
-    permits_found: int,
-    permits_new: int,
-    permits_changed: int,
-    permits_unchanged: int,
-    errors: List[str],
-) -> dict:
-    state["last_run_finished_at"] = utc_now_iso()
-    state["last_run_status"] = "success" if success else "failed"
-    state["last_target_issued_date"] = target_issued_date
-    state["last_summary"] = {
-        "target_issued_date": target_issued_date,
-        "permits_found": permits_found,
-        "permits_new": permits_new,
-        "permits_changed": permits_changed,
-        "permits_unchanged": permits_unchanged,
-    }
-    state["errors"] = errors
-    if success and target_issued_date not in state.get("completed_issued_dates", []):
-        state.setdefault("completed_issued_dates", [])
-        state["completed_issued_dates"].append(target_issued_date)
-        state["completed_issued_dates"] = sorted(set(state["completed_issued_dates"]))
-    return state

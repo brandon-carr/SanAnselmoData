@@ -6,4 +6,4 @@ from sequential_scraper import run_dataset
 
 
 if __name__ == "__main__":
-    sys.exit(run_dataset("building"))
+    sys.exit(run_dataset("violations"))

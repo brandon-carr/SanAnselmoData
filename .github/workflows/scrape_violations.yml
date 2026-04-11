@@ -1,10 +1,10 @@
-name: Scrape San Anselmo planning permits
+name: Scrape San Anselmo violations
 
 on:
   workflow_dispatch:
 
 jobs:
-  scrape_planning:
+  scrape_violations:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -41,30 +41,30 @@ jobs:
           if [ -z "$ETRAKIT_USERNAME" ]; then echo "Missing username"; exit 1; fi
           if [ -z "$ETRAKIT_PASSWORD" ]; then echo "Missing password"; exit 1; fi
 
-      - name: Run planning permit scrape
+      - name: Run violations scrape
         run: |
-          python scripts/scrape_planning_permits.py
+          python scripts/scrape_violations.py
 
       - name: Upload debug artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: etrakit-planning-debug
+          name: etrakit-violations-debug
           path: |
             data/debug/**
             data/*.json
           if-no-files-found: ignore
 
-      - name: Commit updated planning data
+      - name: Commit updated violations data
         if: success()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for file in \
-            data/planning_permits.json \
-            data/planning_permit_history.json \
-            data/planning_scrape_state.json \
+            data/violations_permits.json \
+            data/violations_permit_history.json \
+            data/violations_scrape_state.json \
             data/all_permits_view.json \
             data/addresses.json \
             data/address_history.json
@@ -74,5 +74,5 @@ jobs:
             fi
           done
 
-          git diff --cached --quiet || git commit -m "Scrape planning permits"
+          git diff --cached --quiet || git commit -m "Scrape violations"
           git push
