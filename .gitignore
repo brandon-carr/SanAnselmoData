@@ -4,12 +4,21 @@
 # Local notes/context
 ai_context.md
 
-# Python cache
+# Python
+.venv/
 __pycache__/
 *.pyc
 
-# Debug and generated local run artifacts
+# Runtime data produced by sync/geocode jobs
+data/current_permits.json
+data/permit_history.json
+data/sync_state.json
+data/geocode_cache.json
+data/addresses.json
+data/address_history.json
 data/debug/
+
+# Old local script data area
 scripts/data/
 
 # Optional: OS/editor noise
