@@ -46,15 +46,21 @@ class JsonPermitStore:
         addresses_path: str = "data/addresses.json",
         address_history_path: str = "data/address_history.json",
         all_permits_view_path: str = "data/all_permits_view.json",
+        published_addresses_path: str = "web/data/addresses.json",
+        published_all_permits_view_path: str = "web/data/all_permits_view.json",
     ) -> None:
         self.dataset_configs = dataset_configs or DEFAULT_PERMIT_DATASETS
         self.addresses_path = Path(addresses_path)
         self.address_history_path = Path(address_history_path)
         self.all_permits_view_path = Path(all_permits_view_path)
+        self.published_addresses_path = Path(published_addresses_path)
+        self.published_all_permits_view_path = Path(published_all_permits_view_path)
 
         self.addresses_path.parent.mkdir(parents=True, exist_ok=True)
         self.address_history_path.parent.mkdir(parents=True, exist_ok=True)
         self.all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_addresses_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
 
         for config in self.dataset_configs.values():
             Path(config.current_path).parent.mkdir(parents=True, exist_ok=True)
@@ -148,6 +154,7 @@ class JsonPermitStore:
             reverse=True,
         )
         self._write_json(self.all_permits_view_path, payload)
+        self._write_json(self.published_all_permits_view_path, payload)
 
     def load_addresses(self) -> Dict[str, AddressRecord]:
         payload = self._read_json(self.addresses_path, {})
@@ -156,6 +163,7 @@ class JsonPermitStore:
     def save_addresses(self, records: Dict[str, AddressRecord]) -> None:
         payload = {k: v.to_dict() for k, v in records.items()}
         self._write_json(self.addresses_path, payload)
+        self._write_json(self.published_addresses_path, payload)
 
     def append_address_history(self, address_id: str, old_record: AddressRecord) -> None:
         history = self._read_json(self.address_history_path, {})
