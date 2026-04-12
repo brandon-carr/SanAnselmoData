@@ -729,13 +729,20 @@ class ETrakitClient:
             "apn": find_after(["APN:", "APN"]),
             "property_type": find_after(["Property Type:", "Property Type"]),
             "lot_size_sf": find_after(["Lot Size (SF):", "Lot Size (SF)"]),
-            "applied_date": find_after(["Applied Date:", "Applied Date"]),
-            "approved_date": find_after(["Approved Date:", "Approved Date"]),
-            "issued_date": find_after(["Issued Date:", "Issued Date"]),
-            "finaled_date": find_after(["Finaled Date:", "Finaled Date"]),
-            "expiration_date": find_after(["Expiration Date:", "Expiration Date"]),
+            "applied_date": find_after(["Applied Date:", "Applied Date", "Applied:", "Applied"]),
+            "approved_date": find_after(["Approved Date:", "Approved Date", "Approved:", "Approved"]),
+            "issued_date": find_after(["Issued Date:", "Issued Date", "Issued:", "Issued"]),
+            "finaled_date": find_after(["Finaled Date:", "Finaled Date", "Closed:", "Closed"]),
+            "expiration_date": find_after(["Expiration Date:", "Expiration Date", "Expired:", "Expired"]),
             "source_url": detail_url,
-            "extra": {},
+            "extra": {
+                "officer": find_after(["Officer:", "Officer"]),
+                "referred_by": find_after(["Referred By:", "Referred By"]),
+                "opened": find_after(["Opened:", "Opened"]),
+                "closed": find_after(["Closed:", "Closed"]),
+                "last_action": find_after(["Last Action:", "Last Action"]),
+                "follow_up": find_after(["Follow Up:", "Follow Up"]),
+            },
         }
 
         self._debug_write_json(f"permit_{safe_name}_parsed.json", fields)

@@ -13,6 +13,7 @@ class PermitDatasetConfig:
     name: str
     current_path: str
     history_path: str
+    published_history_path: str
     state_path: str
 
 
@@ -21,18 +22,21 @@ DEFAULT_PERMIT_DATASETS: Dict[str, PermitDatasetConfig] = {
         name="planning",
         current_path="data/planning_permits.json",
         history_path="data/planning_permit_history.json",
+        published_history_path="web/data/planning_permit_history.json",
         state_path="data/planning_scrape_state.json",
     ),
     "building": PermitDatasetConfig(
         name="building",
         current_path="data/building_permits.json",
         history_path="data/building_permit_history.json",
+        published_history_path="web/data/building_permit_history.json",
         state_path="data/building_scrape_state.json",
     ),
     "violations": PermitDatasetConfig(
         name="violations",
         current_path="data/violations_permits.json",
         history_path="data/violations_permit_history.json",
+        published_history_path="web/data/violations_permit_history.json",
         state_path="data/violations_scrape_state.json",
     ),
 }
@@ -48,6 +52,7 @@ class JsonPermitStore:
         all_permits_view_path: str = "data/all_permits_view.json",
         published_addresses_path: str = "web/data/addresses.json",
         published_all_permits_view_path: str = "web/data/all_permits_view.json",
+        published_site_config_path: str = "web/data/site_config.json",
     ) -> None:
         self.dataset_configs = dataset_configs or DEFAULT_PERMIT_DATASETS
         self.addresses_path = Path(addresses_path)
@@ -55,16 +60,19 @@ class JsonPermitStore:
         self.all_permits_view_path = Path(all_permits_view_path)
         self.published_addresses_path = Path(published_addresses_path)
         self.published_all_permits_view_path = Path(published_all_permits_view_path)
+        self.published_site_config_path = Path(published_site_config_path)
 
         self.addresses_path.parent.mkdir(parents=True, exist_ok=True)
         self.address_history_path.parent.mkdir(parents=True, exist_ok=True)
         self.all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
         self.published_addresses_path.parent.mkdir(parents=True, exist_ok=True)
         self.published_all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_site_config_path.parent.mkdir(parents=True, exist_ok=True)
 
         for config in self.dataset_configs.values():
             Path(config.current_path).parent.mkdir(parents=True, exist_ok=True)
             Path(config.history_path).parent.mkdir(parents=True, exist_ok=True)
+            Path(config.published_history_path).parent.mkdir(parents=True, exist_ok=True)
             Path(config.state_path).parent.mkdir(parents=True, exist_ok=True)
 
     def _config(self, dataset_name: str) -> PermitDatasetConfig:
@@ -104,11 +112,13 @@ class JsonPermitStore:
         self._write_json(Path(self._config(dataset_name).current_path), payload)
 
     def append_permit_history(self, dataset_name: str, permit_number: str, old_record: PermitRecord) -> None:
-        history_path = Path(self._config(dataset_name).history_path)
+        config = self._config(dataset_name)
+        history_path = Path(config.history_path)
         history = self._read_json(history_path, {})
         history.setdefault(permit_number, [])
         history[permit_number].append(old_record.to_dict())
         self._write_json(history_path, history)
+        self._write_json(Path(config.published_history_path), history)
 
     def load_scrape_state(self, dataset_name: str) -> dict:
         config = self._config(dataset_name)
@@ -141,14 +151,14 @@ class JsonPermitStore:
             records = permit_groups.get(dataset_name, {})
             for permit in records.values():
                 item = permit.to_dict()
-                if not item.get("permit_source"):
-                    item["permit_source"] = dataset_name
+                if not item.get("record_type"):
+                    item["record_type"] = dataset_name
                 payload.append(item)
 
         payload.sort(
             key=lambda item: (
                 str(item.get("issued_date") or ""),
-                str(item.get("permit_source") or ""),
+                str(item.get("record_type") or ""),
                 str(item.get("permit_number") or ""),
             ),
             reverse=True,
@@ -164,6 +174,9 @@ class JsonPermitStore:
         payload = {k: v.to_dict() for k, v in records.items()}
         self._write_json(self.addresses_path, payload)
         self._write_json(self.published_addresses_path, payload)
+
+    def save_site_config(self, payload: dict) -> None:
+        self._write_json(self.published_site_config_path, payload)
 
     def append_address_history(self, address_id: str, old_record: AddressRecord) -> None:
         history = self._read_json(self.address_history_path, {})

@@ -1,12 +1,18 @@
 from __future__ import annotations
 
+import configparser
 import os
 import sys
 from typing import Dict, List
+from pathlib import Path
+
+import requests
 
 from geocoder import JsonGeocoder
 from permit_model import AddressRecord, PermitRecord, normalize_str, utc_now_iso
 from storage import JsonPermitStore, hydrate_permit_groups_from_addresses
+
+CONFIG_PATH = Path(__file__).with_name("permit_scrapers.ini")
 
 
 def getenv_int(name: str, default: int) -> int:
@@ -17,6 +23,26 @@ def getenv_int(name: str, default: int) -> int:
         return int(raw)
     except ValueError:
         return default
+
+
+def load_geocoding_settings() -> dict:
+    parser = configparser.ConfigParser()
+    parser.read(CONFIG_PATH, encoding="utf-8")
+
+    def get_int(option: str, env_name: str, default: int) -> int:
+        if parser.has_section("geocoding"):
+            raw = parser.get("geocoding", option, fallback="").strip()
+            if raw:
+                try:
+                    return int(raw)
+                except ValueError:
+                    pass
+        return getenv_int(env_name, default)
+
+    return {
+        "batch_size": get_int("batch_size", "GEOCODE_BATCH_SIZE", 10),
+        "max_attempts": get_int("max_attempts", "GEOCODE_MAX_ATTEMPTS", 3),
+    }
 
 
 def geocode_sort_key(record: PermitRecord) -> tuple[str, str]:
@@ -79,7 +105,7 @@ def attempt_geocode_address(
     record: AddressRecord,
     geocoder: JsonGeocoder,
     when_iso: str,
-) -> tuple[bool, str]:
+) -> tuple[bool, str, bool]:
     record.geocode_attempts += 1
     record.geocode_last_attempt_at = when_iso
 
@@ -89,22 +115,51 @@ def attempt_geocode_address(
         record.geocode_source = geocoder.config.provider
         record.geocode_status = "error"
         record.geocode_error = normalize_str(exc) or "Geocode request failed"
-        return False, record.geocode_error
+        return False, record.geocode_error, is_fatal_geocode_error(exc)
 
     if geocoded.latitude and geocoded.longitude:
         geocoded.geocode_status = "success"
         geocoded.geocode_error = ""
         geocoded.last_seen_at = when_iso
-        return True, ""
+        return True, "", False
 
     geocoded.geocode_status = "error"
     geocoded.geocode_error = "No geocode match returned"
-    return False, geocoded.geocode_error
+    return False, geocoded.geocode_error, False
+
+
+def is_fatal_geocode_error(exc: Exception) -> bool:
+    if isinstance(exc, requests.exceptions.Timeout):
+        return True
+    if isinstance(exc, requests.exceptions.ConnectionError):
+        return True
+    if isinstance(exc, requests.exceptions.HTTPError):
+        status_code = getattr(getattr(exc, "response", None), "status_code", None)
+        if status_code in {401, 403, 404, 408, 409, 429, 500, 502, 503, 504}:
+            return True
+
+    message = normalize_str(exc).lower()
+    fatal_markers = (
+        "429",
+        "403",
+        "401",
+        "too many requests",
+        "forbidden",
+        "unauthorized",
+        "connection refused",
+        "name resolution",
+        "temporarily unavailable",
+        "service unavailable",
+        "timed out",
+        "timeout",
+    )
+    return any(marker in message for marker in fatal_markers)
 
 
 def main() -> int:
-    batch_size = getenv_int("GEOCODE_BATCH_SIZE", 10)
-    max_attempts = getenv_int("GEOCODE_MAX_ATTEMPTS", 3)
+    geocoding_settings = load_geocoding_settings()
+    batch_size = geocoding_settings["batch_size"]
+    max_attempts = geocoding_settings["max_attempts"]
 
     store = JsonPermitStore()
     permit_groups = store.load_all_permits()
@@ -131,11 +186,11 @@ def main() -> int:
     for record in pending:
         previous = AddressRecord.from_dict(record.to_dict())
         when_iso = utc_now_iso()
-        success, error_message = attempt_geocode_address(record, geocoder, when_iso)
+        success, error_message, fatal_error = attempt_geocode_address(record, geocoder, when_iso)
         record.last_seen_at = when_iso
         record.data_hash = record.compute_data_hash()
 
-        if record.data_hash != previous.data_hash:
+        if previous.has_meaningful_history_change(record) and not record.is_first_geocode_fill_from(previous):
             store.append_address_history(record.address_id, previous)
 
         if success:
@@ -152,6 +207,12 @@ def main() -> int:
                 f"ERROR address={record.address_id} attempts={record.geocode_attempts} "
                 f"status={record.geocode_status} error={record.geocode_error}"
             )
+            if fatal_error:
+                print(
+                    "FATAL geocode provider error encountered; stopping remaining geocode attempts "
+                    "for this run so the failure can be reviewed."
+                )
+                break
 
     hydrate_permit_groups_from_addresses(permit_groups, address_records)
     store.save_addresses(address_records)

@@ -16,6 +16,104 @@ def normalize_str(value: Any) -> str:
     return " ".join(str(value).split()).strip()
 
 
+_ADDRESS_UPPER_TOKENS = {
+    "N", "S", "E", "W", "NE", "NW", "SE", "SW",
+    "PO", "P.O.", "US", "CA", "SF", "ADU", "JADU",
+    "LLA", "GPA", "TOD", "UP", "CV", "AB",
+}
+
+_PERMIT_UPPER_TOKENS = {
+    "ADU", "JADU", "HVAC", "AC", "CA", "SF", "LLA",
+    "GPA", "TOD", "UP", "DR", "DRC", "DRP", "DRR",
+    "ME", "ER", "CV", "AB",
+}
+
+
+def _smart_title_token(token: str) -> str:
+    if not token:
+        return ""
+
+    upper = token.upper()
+    if upper in _ADDRESS_UPPER_TOKENS:
+        return upper
+
+    if token.isdigit():
+        return token
+
+    if "-" in token:
+        return "-".join(_smart_title_token(part) for part in token.split("-"))
+
+    if "/" in token:
+        return "/".join(_smart_title_token(part) for part in token.split("/"))
+
+    if "'" in token:
+        return "'".join(part[:1].upper() + part[1:].lower() if part else "" for part in token.split("'"))
+
+    if len(token) == 1 and token.isalpha():
+        return token.upper()
+
+    return token[:1].upper() + token[1:].lower()
+
+
+def normalize_address(value: Any) -> str:
+    normalized = normalize_str(value)
+    if not normalized:
+        return ""
+
+    tokens = normalized.split(" ")
+    return " ".join(_smart_title_token(token) for token in tokens)
+
+
+def normalize_city_state_zip(value: Any) -> str:
+    normalized = normalize_str(value)
+    if not normalized:
+        return ""
+
+    parts = [part.strip() for part in normalized.split(",")]
+    if not parts:
+        return normalized
+
+    city = normalize_address(parts[0])
+    state = parts[1].upper() if len(parts) > 1 else ""
+    zip_code = parts[2] if len(parts) > 2 else ""
+
+    rebuilt = [city]
+    if state:
+        rebuilt.append(state)
+    if zip_code:
+        rebuilt.append(zip_code)
+    return ", ".join(rebuilt)
+
+
+def normalize_permit_label(value: Any) -> str:
+    normalized = normalize_str(value)
+    if not normalized:
+        return ""
+
+    tokens = normalized.split(" ")
+    cleaned_tokens = []
+    for token in tokens:
+        upper = token.upper()
+        if upper in _PERMIT_UPPER_TOKENS:
+            cleaned_tokens.append(upper)
+            continue
+        cleaned_tokens.append(_smart_title_token(token))
+
+    return " ".join(cleaned_tokens)
+
+
+def normalize_display_text(value: Any) -> str:
+    normalized = normalize_str(value)
+    if not normalized:
+        return ""
+
+    letters_only = "".join(ch for ch in normalized if ch.isalpha())
+    if letters_only and letters_only.upper() == letters_only:
+        return normalize_permit_label(normalized)
+
+    return normalized
+
+
 def build_address_id(address: Any, city_state_zip: Any) -> str:
     canonical = {
         "address": normalize_str(address).lower(),
@@ -27,7 +125,7 @@ def build_address_id(address: Any, city_state_zip: Any) -> str:
 @dataclass
 class PermitRecord:
     permit_number: str
-    permit_source: str = ""
+    record_type: str = ""
 
     status: str = ""
     permit_type: str = ""
@@ -72,16 +170,16 @@ class PermitRecord:
 
         record = cls(
             permit_number=permit_number,
-            permit_source=normalize_str(fields.get("permit_source")),
+            record_type=normalize_str(fields.get("record_type")),
             status=normalize_str(fields.get("status")),
-            permit_type=normalize_str(fields.get("permit_type")),
-            subtype=normalize_str(fields.get("subtype")),
-            short_description=normalize_str(fields.get("short_description")),
-            address=normalize_str(fields.get("address")),
-            city_state_zip=normalize_str(fields.get("city_state_zip")),
+            permit_type=normalize_permit_label(fields.get("permit_type")),
+            subtype=normalize_permit_label(fields.get("subtype")),
+            short_description=normalize_display_text(fields.get("short_description")),
+            address=normalize_address(fields.get("address")),
+            city_state_zip=normalize_city_state_zip(fields.get("city_state_zip")),
             address_id=normalize_str(fields.get("address_id")),
             apn=normalize_str(fields.get("apn")),
-            property_type=normalize_str(fields.get("property_type")),
+            property_type=normalize_display_text(fields.get("property_type")),
             lot_size_sf=normalize_str(fields.get("lot_size_sf")),
             applied_date=normalize_str(fields.get("applied_date")),
             approved_date=normalize_str(fields.get("approved_date")),
@@ -112,7 +210,7 @@ class PermitRecord:
     def compute_data_hash(self) -> str:
         meaningful = {
             "permit_number": self.permit_number,
-            "permit_source": self.permit_source,
+            "record_type": self.record_type,
             "status": self.status,
             "permit_type": self.permit_type,
             "subtype": self.subtype,
@@ -146,9 +244,15 @@ class PermitRecord:
 
     @classmethod
     def from_dict(cls, payload: Dict[str, Any]) -> "PermitRecord":
+        payload = dict(payload)
         if not payload.get("address_id"):
-            payload = dict(payload)
             payload["address_id"] = build_address_id(payload.get("address"), payload.get("city_state_zip"))
+        payload["address"] = normalize_address(payload.get("address"))
+        payload["city_state_zip"] = normalize_city_state_zip(payload.get("city_state_zip"))
+        payload["permit_type"] = normalize_permit_label(payload.get("permit_type"))
+        payload["subtype"] = normalize_permit_label(payload.get("subtype"))
+        payload["short_description"] = normalize_display_text(payload.get("short_description"))
+        payload["property_type"] = normalize_display_text(payload.get("property_type"))
         record = cls(**payload)
         return record
 
@@ -218,8 +322,8 @@ class AddressRecord:
     def from_fields(cls, fields: Dict[str, Any]) -> "AddressRecord":
         record = cls(
             address_id=normalize_str(fields.get("address_id")) or build_address_id(fields.get("address"), fields.get("city_state_zip")),
-            address=normalize_str(fields.get("address")),
-            city_state_zip=normalize_str(fields.get("city_state_zip")),
+            address=normalize_address(fields.get("address")),
+            city_state_zip=normalize_city_state_zip(fields.get("city_state_zip")),
             latitude=normalize_str(fields.get("latitude")),
             longitude=normalize_str(fields.get("longitude")),
             geocoded_address=normalize_str(fields.get("geocoded_address")),
@@ -276,6 +380,31 @@ class AddressRecord:
         }
         return sha256(repr(sorted(meaningful.items())).encode("utf-8")).hexdigest()
 
+    def meaningful_history_signature(self) -> Dict[str, Any]:
+        return {
+            "address_id": normalize_str(self.address_id).lower(),
+            "address": normalize_str(self.address).lower(),
+            "city_state_zip": normalize_str(self.city_state_zip).lower(),
+            "latitude": normalize_str(self.latitude),
+            "longitude": normalize_str(self.longitude),
+            "geocoded_address": normalize_str(self.geocoded_address).lower(),
+            "geocode_source": normalize_str(self.geocode_source).lower(),
+            "geocode_status": normalize_str(self.geocode_status).lower(),
+            "geocode_error": normalize_str(self.geocode_error),
+            "extra": self.extra,
+        }
+
+    def has_meaningful_history_change(self, other: "AddressRecord") -> bool:
+        return self.meaningful_history_signature() != other.meaningful_history_signature()
+
+    def has_coordinates(self) -> bool:
+        return bool(normalize_str(self.latitude) and normalize_str(self.longitude))
+
+    def is_first_geocode_fill_from(self, previous: "AddressRecord") -> bool:
+        previous_has_geo = previous.has_coordinates() or bool(normalize_str(previous.geocoded_address))
+        current_has_geo = self.has_coordinates() or bool(normalize_str(self.geocoded_address))
+        return (not previous_has_geo) and current_has_geo
+
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 
@@ -284,6 +413,9 @@ class AddressRecord:
         if not payload.get("address_id"):
             payload = dict(payload)
             payload["address_id"] = build_address_id(payload.get("address"), payload.get("city_state_zip"))
+        payload = dict(payload)
+        payload["address"] = normalize_address(payload.get("address"))
+        payload["city_state_zip"] = normalize_city_state_zip(payload.get("city_state_zip"))
         return cls(**payload)
 
     def with_seen_timestamp(self, when_iso: Optional[str] = None) -> "AddressRecord":

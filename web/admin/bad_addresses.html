@@ -135,6 +135,30 @@
       color: var(--muted);
       font-family: Arial, sans-serif;
     }
+
+    .action-button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--link);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+    }
+
+    .action-button:hover {
+      text-decoration: underline;
+    }
+
+    .action-help {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+      margin-top: 4px;
+      font-family: Arial, sans-serif;
+    }
   </style>
 </head>
 <body>
@@ -231,6 +255,7 @@
               <th>Last Error</th>
               <th>Last Attempt</th>
               <th>Address ID</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -245,11 +270,28 @@
                 <td>${escapeHtml(address.geocode_error || "")}</td>
                 <td>${escapeHtml(address.geocode_last_attempt_at || "")}</td>
                 <td class="mono">${escapeHtml(address.address_id)}</td>
+                <td>
+                  <button class="action-button" type="button" onclick="copyRetryCommand('${escapeHtml(address.address_id)}')">Mark For Retry</button>
+                  <div class="action-help">Copies a PowerShell command that sets attempts to 2 for the next geocode run.</div>
+                </td>
               </tr>
             `).join("")}
           </tbody>
         </table>
       `;
+    }
+
+    async function copyRetryCommand(addressId) {
+      const safeId = String(addressId || "").replaceAll("'", "''");
+      const command = `$addressId = '${safeId}'; $paths = @('data\\addresses.json', 'web\\data\\addresses.json'); foreach ($path in $paths) { if (Test-Path $path) { $json = Get-Content $path -Raw | ConvertFrom-Json; $record = $json.PSObject.Properties[$addressId]; if ($record) { $record.Value.geocode_attempts = 2; $record.Value.geocode_status = ''; $record.Value.geocode_error = ''; $json | ConvertTo-Json -Depth 100 | Set-Content $path } } }`;
+
+      try {
+        await navigator.clipboard.writeText(command);
+        alert(`Retry command copied for ${addressId}. Paste it into PowerShell to reset this address to 2 attempts.`);
+      } catch (error) {
+        console.error(error);
+        alert(`Could not copy automatically. Use this in PowerShell:\n\n${command}`);
+      }
     }
 
     async function init() {

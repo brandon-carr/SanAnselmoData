@@ -77,7 +77,7 @@
     }
 
     .summary-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr) minmax(0, 1fr);
       margin-bottom: 18px;
     }
 
@@ -123,6 +123,37 @@
       font-family: Arial, sans-serif;
       font-size: 12px;
       color: var(--muted);
+    }
+
+    .stat-group {
+      padding: 18px;
+    }
+
+    .stat-subgrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .stat-subcard {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: var(--panel-strong);
+    }
+
+    .stat-subcard .stat-label {
+      margin-bottom: 6px;
+    }
+
+    .stat-subcard .stat-value {
+      font-size: 26px;
+    }
+
+    .stat-subcard .stat-foot {
+      margin-top: 8px;
+      font-size: 12px;
     }
 
     .panel {
@@ -218,9 +249,47 @@
       font-family: Arial, sans-serif;
     }
 
+    .expand-button {
+      border: none;
+      background: none;
+      color: var(--accent);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+      padding: 0;
+    }
+
+    .expand-button:hover {
+      text-decoration: underline;
+    }
+
+    .subrow td:first-child {
+      padding-left: 26px;
+    }
+
+    .stat-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .stat-link:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 980px) {
       .summary-grid,
       .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-subgrid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .stat-subgrid {
         grid-template-columns: 1fr;
       }
     }
@@ -244,27 +313,39 @@
         <div class="stat-foot">Total permits currently loaded.</div>
         <div class="breakdown" id="permitsBreakdown"></div>
       </article>
-      <article class="card stat-card">
+      <article class="card stat-group">
         <p class="stat-label">Addresses</p>
-        <p class="stat-value" id="addressesTotal">-</p>
-        <div class="stat-foot">Unique addresses tracked for geolocation.</div>
+        <div class="stat-foot">Shared geolocation status across all tracked addresses.</div>
+        <div class="stat-subgrid">
+          <div class="stat-subcard">
+            <p class="stat-label">Unique Addresses</p>
+            <p class="stat-value" id="addressesTotal">-</p>
+            <div class="stat-foot">Unique addresses tracked for geolocation.</div>
+          </div>
+          <div class="stat-subcard">
+            <p class="stat-label">Pending Geolocation</p>
+            <p class="stat-value" id="addressesPending">-</p>
+            <div class="stat-foot">Addresses still eligible for future geocode attempts.</div>
+          </div>
+          <div class="stat-subcard">
+            <p class="stat-label">Failed Geolocation</p>
+            <p class="stat-value" id="addressesFailed">-</p>
+            <div class="stat-foot">Addresses that hit the retry ceiling without coordinates.</div>
+          </div>
+        </div>
       </article>
       <article class="card stat-card">
-        <p class="stat-label">Geolocated</p>
-        <p class="stat-value" id="addressesLocated">-</p>
-        <div class="stat-foot">Addresses with latitude and longitude.</div>
-      </article>
-      <article class="card stat-card">
-        <p class="stat-label">Pending / Failed</p>
-        <p class="stat-value" id="addressesPending">-</p>
-        <div class="stat-foot">Addresses still missing coordinates.</div>
+        <p class="stat-label">Records With Changes</p>
+        <p class="stat-value" id="changedRecordsTotal">-</p>
+        <div class="stat-foot" id="changedRecordsFoot">Records with at least one saved prior version.</div>
+        <div class="breakdown" id="changedRecordsBreakdown"></div>
       </article>
     </section>
 
     <section class="grid layout">
       <article class="card panel">
-        <h2>Permits by Issued Date</h2>
-        <p>Counts are grouped by the permit `issued_date` value currently stored in the permit dataset.</p>
+        <h2>Records by Initial Date Entered</h2>
+        <p>Recent records stay grouped by day. Older records are grouped by month and can be expanded inline.</p>
         <div id="issuedDateTable" class="loading">Loading permit counts...</div>
       </article>
 
@@ -283,7 +364,13 @@
   <script>
     const PERMITS_URL = "../data/all_permits_view.json";
     const ADDRESSES_URL = "../data/addresses.json";
+    const HISTORY_URLS = {
+      building: "../data/building_permit_history.json",
+      planning: "../data/planning_permit_history.json",
+      violations: "../data/violations_permit_history.json",
+    };
     const CACHE_BUST = `ts=${Date.now()}`;
+    const expandedMonthKeys = new Set();
 
     async function fetchJson(url) {
       const separator = url.includes("?") ? "&" : "?";
@@ -294,17 +381,30 @@
       return response.json();
     }
 
+    async function fetchJsonOrDefault(url, defaultValue) {
+      try {
+        return await fetchJson(url);
+      } catch (error) {
+        if (/HTTP 404/.test(String(error.message || ""))) {
+          return defaultValue;
+        }
+        throw error;
+      }
+    }
+
     function toList(payload) {
       if (Array.isArray(payload)) return payload;
       if (payload && typeof payload === "object") return Object.values(payload);
       return [];
     }
 
-    function normalizePermit(record, permitSource) {
+    function normalizePermit(record, recordType) {
       return {
         permit_number: record.permit_number || "",
-        permit_source: record.permit_source || permitSource || "",
+        record_type: record.record_type || recordType || "",
         issued_date: (record.issued_date || "").trim(),
+        applied_date: (record.applied_date || "").trim(),
+        opened: (record.opened || record.extra?.opened || record.applied_date || "").trim(),
       };
     }
 
@@ -324,32 +424,147 @@
         .replace(/\b\w/g, (char) => char.toUpperCase());
     }
 
-    function sourceNames(permits) {
-      return [...new Set(permits.map((permit) => permit.permit_source).filter(Boolean))].sort();
+    function formatCount(value) {
+      return Number(value || 0).toLocaleString("en-US");
+    }
+
+    function getRecordTypeLabel(value) {
+      switch (String(value || "").trim().toLowerCase()) {
+        case "building":
+          return "Building Permit";
+        case "planning":
+          return "Planning Permit";
+        case "violations":
+          return "Violation";
+        default:
+          return titleCase(value);
+      }
+    }
+
+    function recordTypeNames(permits) {
+      return [...new Set(permits.map((permit) => permit.record_type).filter(Boolean))].sort();
+    }
+
+    function parseUsDate(value) {
+      const trimmed = String(value || "").trim();
+      const match = trimmed.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+      if (!match) return null;
+      const month = Number(match[1]);
+      const day = Number(match[2]);
+      const year = Number(match[3]);
+      return new Date(year, month - 1, day);
+    }
+
+    function getInitialEnteredDate(permit) {
+      if (permit.record_type === "violations") {
+        return permit.opened || "Missing";
+      }
+      if (permit.record_type === "planning" || permit.record_type === "building") {
+        return permit.applied_date || "Missing";
+      }
+      return permit.issued_date || "Missing";
+    }
+
+    function monthKeyForDate(value) {
+      const parsed = parseUsDate(value);
+      if (!parsed) return "";
+      const month = String(parsed.getMonth() + 1).padStart(2, "0");
+      return `${parsed.getFullYear()}-${month}`;
+    }
+
+    function monthLabelForKey(key) {
+      const [year, month] = String(key || "").split("-");
+      const parsed = new Date(Number(year), Number(month) - 1, 1);
+      return parsed.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+    }
+
+    function buildIndexLink(dateLabel, recordType = "") {
+      const params = new URLSearchParams();
+      params.set("initial_date", dateLabel);
+      if (recordType) {
+        params.set("record_type", recordType);
+      }
+      return `../pages/index.html?${params.toString()}`;
+    }
+
+    function renderDayCellCount(dateLabel, count, recordType = "") {
+      if (!count) {
+        return formatCount(count);
+      }
+      return `<a class="stat-link" href="${escapeHtml(buildIndexLink(dateLabel, recordType))}">${formatCount(count)}</a>`;
+    }
+
+    function getRecentMonthKeys() {
+      const now = new Date();
+      const current = new Date(now.getFullYear(), now.getMonth(), 1);
+      return new Set([
+        `${current.getFullYear()}-${String(current.getMonth() + 1).padStart(2, "0")}`,
+      ]);
     }
 
     function renderIssuedDateTable(permits) {
       const container = document.getElementById("issuedDateTable");
       const counts = new Map();
-      const sources = sourceNames(permits);
+      const groupedMonths = new Map();
+      const recordTypes = recordTypeNames(permits);
+      const recentMonthKeys = getRecentMonthKeys();
 
       for (const permit of permits) {
-        const issuedDate = permit.issued_date || "Missing";
-        if (!counts.has(issuedDate)) {
-          counts.set(issuedDate, { total: 0, bySource: {} });
+        const initialDate = getInitialEnteredDate(permit);
+        const monthKey = monthKeyForDate(initialDate);
+        const shouldGroupByMonth = initialDate !== "Missing" && monthKey && !recentMonthKeys.has(monthKey);
+        const rowKey = shouldGroupByMonth ? monthKey : initialDate;
+
+        if (!counts.has(rowKey)) {
+          counts.set(rowKey, {
+            total: 0,
+            byRecordType: {},
+            type: shouldGroupByMonth ? "month" : "day",
+            label: shouldGroupByMonth ? monthLabelForKey(monthKey) : initialDate,
+            sortDate: shouldGroupByMonth ? `${monthKey}-01` : initialDate,
+            monthKey: shouldGroupByMonth ? monthKey : "",
+          });
         }
-        const entry = counts.get(issuedDate);
+        const entry = counts.get(rowKey);
         entry.total += 1;
-        if (permit.permit_source) {
-          entry.bySource[permit.permit_source] = (entry.bySource[permit.permit_source] || 0) + 1;
+        if (permit.record_type) {
+          entry.byRecordType[permit.record_type] = (entry.byRecordType[permit.record_type] || 0) + 1;
+        }
+
+        if (shouldGroupByMonth) {
+          if (!groupedMonths.has(monthKey)) {
+            groupedMonths.set(monthKey, new Map());
+          }
+          const monthEntries = groupedMonths.get(monthKey);
+          if (!monthEntries.has(initialDate)) {
+            monthEntries.set(initialDate, { total: 0, byRecordType: {} });
+          }
+          const dayEntry = monthEntries.get(initialDate);
+          dayEntry.total += 1;
+          if (permit.record_type) {
+            dayEntry.byRecordType[permit.record_type] = (dayEntry.byRecordType[permit.record_type] || 0) + 1;
+          }
         }
       }
 
       const rows = [...counts.entries()]
         .sort((a, b) => {
-          if (a[0] === "Missing") return 1;
-          if (b[0] === "Missing") return -1;
-          return a[0] < b[0] ? 1 : -1;
+          const aValue = a[1];
+          const bValue = b[1];
+          if (aValue.label === "Missing") return 1;
+          if (bValue.label === "Missing") return -1;
+
+          const aParsed = aValue.type === "month"
+            ? parseUsDate(`1/${aValue.monthKey.split("-")[1]}/${aValue.monthKey.split("-")[0]}`)
+            : parseUsDate(aValue.label);
+          const bParsed = bValue.type === "month"
+            ? parseUsDate(`1/${bValue.monthKey.split("-")[1]}/${bValue.monthKey.split("-")[0]}`)
+            : parseUsDate(bValue.label);
+
+          if (!aParsed && !bParsed) return aValue.label < bValue.label ? 1 : -1;
+          if (!aParsed) return 1;
+          if (!bParsed) return -1;
+          return aParsed < bParsed ? 1 : -1;
         });
 
       if (rows.length === 0) {
@@ -363,22 +578,57 @@
         <table>
           <thead>
             <tr>
-              <th>Issued Date</th>
+              <th>Initial Date Entered</th>
               <th class="num">Total</th>
-              ${sources.map((source) => `<th class="num">${escapeHtml(titleCase(source))}</th>`).join("")}
+              ${recordTypes.map((recordType) => `<th class="num">${escapeHtml(getRecordTypeLabel(recordType))}</th>`).join("")}
             </tr>
           </thead>
           <tbody>
-            ${rows.map(([issuedDate, values]) => `
+            ${rows.map(([rowKey, values]) => `
               <tr>
-                <td>${escapeHtml(issuedDate)}</td>
-                <td class="num">${values.total}</td>
-                ${sources.map((source) => `<td class="num">${values.bySource[source] || 0}</td>`).join("")}
+                <td>${values.type === "month"
+                  ? `<button class="expand-button" type="button" data-month-key="${escapeHtml(values.monthKey)}">${escapeHtml(values.label)}</button>`
+                  : `${escapeHtml(values.label)}`
+                }</td>
+                <td class="num">${values.type === "day" ? renderDayCellCount(values.label, values.total) : formatCount(values.total)}</td>
+                ${recordTypes.map((recordType) => `<td class="num">${values.type === "day" ? renderDayCellCount(values.label, values.byRecordType[recordType] || 0, recordType) : formatCount(values.byRecordType[recordType] || 0)}</td>`).join("")}
               </tr>
+              ${values.type === "month" && expandedMonthKeys.has(values.monthKey)
+                ? [...(groupedMonths.get(values.monthKey)?.entries() || [])]
+                  .sort((a, b) => {
+                    const aParsed = parseUsDate(a[0]);
+                    const bParsed = parseUsDate(b[0]);
+                    if (!aParsed && !bParsed) return a[0] < b[0] ? 1 : -1;
+                    if (!aParsed) return 1;
+                    if (!bParsed) return -1;
+                    return aParsed < bParsed ? 1 : -1;
+                  })
+                  .map(([dayLabel, dayValues]) => `
+                    <tr class="subrow">
+                      <td>${escapeHtml(dayLabel)}</td>
+                      <td class="num">${renderDayCellCount(dayLabel, dayValues.total)}</td>
+                      ${recordTypes.map((recordType) => `<td class="num">${renderDayCellCount(dayLabel, dayValues.byRecordType[recordType] || 0, recordType)}</td>`).join("")}
+                    </tr>
+                  `).join("")
+                : ""
+              }
             `).join("")}
           </tbody>
         </table>
       `;
+
+      container.querySelectorAll("[data-month-key]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const monthKey = button.getAttribute("data-month-key");
+          if (!monthKey) return;
+          if (expandedMonthKeys.has(monthKey)) {
+            expandedMonthKeys.delete(monthKey);
+          } else {
+            expandedMonthKeys.add(monthKey);
+          }
+          renderIssuedDateTable(permits);
+        });
+      });
     }
 
     function buildAttemptBuckets(addresses) {
@@ -431,9 +681,9 @@
             ${rows.map(([bucket, values]) => `
               <tr>
                 <td>${escapeHtml(bucket)}</td>
-                <td class="num">${values.withGeo}</td>
+                <td class="num">${formatCount(values.withGeo)}</td>
                 <td class="num">${formatWithoutGeoCell(bucket, values.withoutGeo)}</td>
-                <td class="num">${values.total}</td>
+                <td class="num">${formatCount(values.total)}</td>
               </tr>
             `).join("")}
           </tbody>
@@ -453,28 +703,64 @@
 
     function formatWithoutGeoCell(bucket, count) {
       if (bucket === "3+" && count > 0) {
-        return `<a href="./bad_addresses.html" style="color: var(--error); font-weight: 700;">${count}</a>`;
+        return `<a href="./bad_addresses.html" style="color: var(--error); font-weight: 700;">${formatCount(count)}</a>`;
       }
-      return String(count);
+      return formatCount(count);
     }
 
     function updateSummaryCards(permits, addresses) {
       const geolocated = addresses.filter((address) => address.hasGeo).length;
-      const pending = addresses.length - geolocated;
-      const sourceCounts = new Map();
+      const failed = addresses.filter((address) => !address.hasGeo && address.geocode_attempts >= 3).length;
+      const pending = addresses.filter((address) => !address.hasGeo && address.geocode_attempts < 3).length;
+      const recordTypeCounts = new Map();
       for (const permit of permits) {
-        if (!permit.permit_source) continue;
-        sourceCounts.set(permit.permit_source, (sourceCounts.get(permit.permit_source) || 0) + 1);
+        if (!permit.record_type) continue;
+        recordTypeCounts.set(permit.record_type, (recordTypeCounts.get(permit.record_type) || 0) + 1);
       }
 
-      document.getElementById("permitsTotal").textContent = permits.length;
-      document.getElementById("addressesTotal").textContent = addresses.length;
-      document.getElementById("addressesLocated").textContent = geolocated;
-      document.getElementById("addressesPending").textContent = pending;
-      document.getElementById("permitsBreakdown").innerHTML = [...sourceCounts.entries()]
+      document.getElementById("permitsTotal").textContent = formatCount(permits.length);
+      document.getElementById("addressesTotal").textContent = formatCount(addresses.length);
+      document.getElementById("addressesPending").textContent = formatCount(pending);
+      document.getElementById("permitsBreakdown").innerHTML = [...recordTypeCounts.entries()]
         .sort((a, b) => a[0].localeCompare(b[0]))
-        .map(([source, count]) => `<div>${escapeHtml(titleCase(source))}: <strong>${count}</strong></div>`)
+        .map(([recordType, count]) => `<div>${escapeHtml(getRecordTypeLabel(recordType))}: <strong>${formatCount(count)}</strong></div>`)
         .join("");
+      document.getElementById("addressesFailed").textContent = formatCount(failed);
+    }
+
+    function normalizeHistoryPayload(historyPayloads) {
+      const counts = new Map();
+      let total = 0;
+
+      for (const [recordType, payload] of Object.entries(historyPayloads)) {
+        const records = payload && typeof payload === "object" ? Object.keys(payload).filter((key) => {
+          const entries = payload[key];
+          return Array.isArray(entries) && entries.length > 0;
+        }) : [];
+
+        counts.set(recordType, records.length);
+        total += records.length;
+      }
+
+      return { total, counts };
+    }
+
+    function updateChangedRecordsCard(historyPayloads) {
+      const summary = normalizeHistoryPayload(historyPayloads);
+      const valueEl = document.getElementById("changedRecordsTotal");
+      const footEl = document.getElementById("changedRecordsFoot");
+      const breakdownEl = document.getElementById("changedRecordsBreakdown");
+
+      valueEl.textContent = formatCount(summary.total);
+      footEl.innerHTML = summary.total > 0
+        ? `<a class="stat-link" href="./changed_records.html">Review change history</a>`
+        : "Records with at least one saved prior version.";
+
+      breakdownEl.innerHTML = [...summary.counts.entries()]
+        .filter(([, count]) => count > 0)
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([recordType, count]) => `<div>${escapeHtml(getRecordTypeLabel(recordType))}: <strong>${formatCount(count)}</strong></div>`)
+        .join("") || "<div>No changed records yet.</div>";
     }
 
     function escapeHtml(value) {
@@ -488,15 +774,24 @@
 
     async function init() {
       try {
-        const [permitPayload, addressPayload] = await Promise.all([
+        const [permitPayload, addressPayload, buildingHistory, planningHistory, violationsHistory] = await Promise.all([
           fetchJson(PERMITS_URL),
           fetchJson(ADDRESSES_URL),
+          fetchJsonOrDefault(HISTORY_URLS.building, {}),
+          fetchJsonOrDefault(HISTORY_URLS.planning, {}),
+          fetchJsonOrDefault(HISTORY_URLS.violations, {}),
         ]);
 
-        const permits = toList(permitPayload).map((record) => normalizePermit(record, record.permit_source || ""));
+        const permits = toList(permitPayload).map((record) => normalizePermit(record, record.record_type || ""));
         const addresses = toList(addressPayload).map(normalizeAddress);
+        const historyPayloads = {
+          building: buildingHistory,
+          planning: planningHistory,
+          violations: violationsHistory,
+        };
 
         updateSummaryCards(permits, addresses);
+        updateChangedRecordsCard(historyPayloads);
         renderIssuedDateTable(permits);
         renderAddressMatrix(addresses);
       } catch (error) {

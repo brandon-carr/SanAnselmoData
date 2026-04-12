@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import configparser
 from dataclasses import dataclass
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Dict, List
 
@@ -64,6 +65,17 @@ def load_stream_config(dataset_name: str) -> ScrapeStreamConfig:
     )
 
 
+def load_site_config() -> dict:
+    parser = configparser.ConfigParser()
+    parser.read(CONFIG_PATH, encoding="utf-8")
+    inactive_raw = parser.get("web", "inactive_statuses", fallback="")
+    inactive_statuses = [item.strip() for item in inactive_raw.split(",") if item.strip()]
+    return {
+        "inactive_statuses": inactive_statuses,
+        "show_left_cards": parser.getboolean("web", "show_left_cards", fallback=True),
+    }
+
+
 def build_activity_number(prefix: str, year: int, sequence: int) -> str:
     return f"{prefix}{year}-{sequence:04d}"
 
@@ -93,6 +105,30 @@ def default_dataset_state(year: int, batch_size: int) -> dict:
     }
 
 
+def parse_iso_datetime(value: str) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed
+
+
+def should_skip_exhausted_stream(stream_state: dict, *, now: datetime, cooldown_hours: int = 24) -> bool:
+    if not bool(stream_state.get("exhausted")):
+        return False
+
+    finished_at = parse_iso_datetime(stream_state.get("last_run_finished_at", ""))
+    if finished_at is None:
+        return False
+
+    return (now - finished_at) < timedelta(hours=cooldown_hours)
+
+
 def sync_address_from_record(
     dataset_name: str,
     record: PermitRecord,
@@ -114,7 +150,7 @@ def sync_address_from_record(
         address_record.geocode_error = existing_address.geocode_error
         address_record.geocode_attempts = existing_address.geocode_attempts
         address_record.geocode_last_attempt_at = existing_address.geocode_last_attempt_at
-        if existing_address.data_hash != address_record.compute_data_hash():
+        if existing_address.has_meaningful_history_change(address_record):
             store.append_address_history(address_record.address_id, existing_address)
             _, address_record = existing_address.apply_new_source(address_record, when_iso=when_iso)
         else:
@@ -155,6 +191,7 @@ def sync_address_from_record(
 def run_dataset(dataset_name: str) -> int:
     config = load_stream_config(dataset_name)
     store = JsonPermitStore()
+    store.save_site_config(load_site_config())
     state = store.load_scrape_state(dataset_name)
     permit_records = store.load_permits(dataset_name)
     address_records = store.load_addresses()
@@ -164,6 +201,9 @@ def run_dataset(dataset_name: str) -> int:
         or int(state.get("batch_size") or 0) != config.batch_size
         or not isinstance(state.get("streams"), dict)
     ):
+        state = default_dataset_state(config.year, config.batch_size)
+
+    if not permit_records:
         state = default_dataset_state(config.year, config.batch_size)
 
     state["last_run_started_at"] = utc_now_iso()
@@ -181,9 +221,33 @@ def run_dataset(dataset_name: str) -> int:
 
     overall_errors: List[str] = []
     prefix_summaries: Dict[str, dict] = {}
+    now_utc = datetime.now(timezone.utc)
 
     for prefix in config.prefixes:
         stream_state = state["streams"].get(prefix, default_stream_state())
+        if should_skip_exhausted_stream(stream_state, now=now_utc):
+            prefix_summaries[prefix] = {
+                "prefix": prefix,
+                "year": config.year,
+                "start_sequence": int(stream_state.get("next_sequence") or 1),
+                "requested_batch_size": config.batch_size,
+                "found": 0,
+                "new": 0,
+                "changed": 0,
+                "unchanged": 0,
+                "next_sequence": int(stream_state.get("next_sequence") or 1),
+                "stopped_at_missing": (
+                    stream_state.get("last_summary", {}) or {}
+                ).get("stopped_at_missing", ""),
+                "skipped_recently_exhausted": True,
+            }
+            print(
+                f"SKIPPED dataset={dataset_name} prefix={prefix} "
+                f"reason=recently_exhausted next={build_activity_number(prefix, config.year, int(stream_state.get('next_sequence') or 1))}"
+            )
+            state["streams"][prefix] = stream_state
+            continue
+
         next_sequence = int(stream_state.get("next_sequence") or 1)
         activity_numbers = [
             build_activity_number(prefix, config.year, next_sequence + offset)
@@ -224,7 +288,7 @@ def run_dataset(dataset_name: str) -> int:
                 break
 
             try:
-                fields["permit_source"] = dataset_name
+                fields["record_type"] = dataset_name
                 record = PermitRecord.from_scraped_fields(fields)
             except Exception as exc:
                 stream_errors.append(f"{activity_number}: {exc}")

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Changed Records</title>
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --panel: #fffdf8;
+      --panel-strong: #ffffff;
+      --text: #201c18;
+      --muted: #6b6257;
+      --border: #d8d0c3;
+      --accent: #255f4a;
+      --accent-soft: #e2efe9;
+      --shadow: 0 10px 30px rgba(31, 28, 24, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #faf6f1 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1;
+    }
+
+    .subhead,
+    .summary,
+    table,
+    .modal,
+    .back-link,
+    .empty,
+    .close-button {
+      font-family: Arial, sans-serif;
+    }
+
+    .subhead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .back-link,
+    .record-link {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link:hover,
+    .record-link:hover {
+      text-decoration: underline;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .summary {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mono {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 12px;
+    }
+
+    .empty {
+      padding: 24px 18px;
+      color: var(--muted);
+    }
+
+    .modal-shell {
+      position: fixed;
+      inset: 0;
+      background: rgba(22, 18, 15, 0.54);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 1000;
+    }
+
+    .modal-shell.open {
+      display: flex;
+    }
+
+    .modal {
+      width: min(960px, 100%);
+      max-height: calc(100vh - 36px);
+      overflow: auto;
+      background: var(--panel-strong);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      margin: 0 0 4px;
+      font-size: 28px;
+      line-height: 1.05;
+    }
+
+    .modal-subhead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .close-button {
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 999px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .change-event {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      background: var(--panel);
+      margin-top: 14px;
+    }
+
+    .change-event:first-of-type {
+      margin-top: 0;
+    }
+
+    .change-event-title {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .change-lines {
+      display: grid;
+      gap: 12px;
+    }
+
+    .change-field {
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .change-field:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .change-line {
+      display: grid;
+      grid-template-columns: 180px 160px 1fr;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.45;
+      margin-top: 4px;
+    }
+
+    .change-line:first-child {
+      margin-top: 0;
+    }
+
+    .change-date {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .change-field-name {
+      font-weight: 700;
+    }
+
+    .change-value {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    @media (max-width: 760px) {
+      .change-line {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="topbar">
+      <div>
+        <h1>Changed Records</h1>
+        <p class="subhead">
+          Records with at least one saved prior version. Open any row to see only the fields that changed, with the before and after dates in front.
+        </p>
+      </div>
+      <a class="back-link" href="./index.html">Back to admin</a>
+    </div>
+
+    <section class="card">
+      <div class="summary" id="summary">Loading changed records...</div>
+      <div id="results" class="empty">Loading...</div>
+    </section>
+  </div>
+
+  <div class="modal-shell" id="modalShell" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-top">
+        <div>
+          <h2 class="modal-title" id="modalTitle">Change details</h2>
+          <p class="modal-subhead" id="modalSubhead"></p>
+        </div>
+        <button type="button" class="close-button" id="closeModalButton">Close</button>
+      </div>
+      <div id="modalContent" class="empty">Loading...</div>
+    </div>
+  </div>
+
+  <script>
+    const PERMITS_URL = "../data/all_permits_view.json";
+    const HISTORY_URLS = {
+      building: "../data/building_permit_history.json",
+      planning: "../data/planning_permit_history.json",
+      violations: "../data/violations_permit_history.json",
+    };
+    const CACHE_BUST = `ts=${Date.now()}`;
+    const IGNORED_DIFF_FIELDS = new Set(["data_hash"]);
+    const state = {
+      records: [],
+      recordMap: new Map(),
+    };
+
+    async function fetchJson(url) {
+      const separator = url.includes("?") ? "&" : "?";
+      const response = await fetch(`${url}${separator}${CACHE_BUST}`, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`Failed to load ${url}: HTTP ${response.status}`);
+      }
+      return response.json();
+    }
+
+    async function fetchJsonOrDefault(url, defaultValue) {
+      try {
+        return await fetchJson(url);
+      } catch (error) {
+        if (/HTTP 404/.test(String(error.message || ""))) {
+          return defaultValue;
+        }
+        throw error;
+      }
+    }
+
+    function toList(payload) {
+      if (Array.isArray(payload)) return payload;
+      if (payload && typeof payload === "object") return Object.values(payload);
+      return [];
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#39;");
+    }
+
+    function titleCase(value) {
+      return String(value || "")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase());
+    }
+
+    function getRecordTypeLabel(value) {
+      switch (String(value || "").trim().toLowerCase()) {
+        case "building":
+          return "Building Permit";
+        case "planning":
+          return "Planning Permit";
+        case "violations":
+          return "Violation";
+        default:
+          return titleCase(value);
+      }
+    }
+
+    function formatFieldLabel(key) {
+      return titleCase(key);
+    }
+
+    function formatValue(value) {
+      if (value == null) return "Blank";
+      if (typeof value === "string") return value.trim() || "Blank";
+      if (Array.isArray(value) || typeof value === "object") return JSON.stringify(value, null, 2);
+      return String(value);
+    }
+
+    function compareValues(a, b) {
+      return JSON.stringify(a ?? "") === JSON.stringify(b ?? "");
+    }
+
+    function getChangeStamp(record) {
+      return String(
+        record?.last_changed_at ||
+        record?.last_seen_at ||
+        record?.first_seen_at ||
+        "Unknown date"
+      );
+    }
+
+    function buildPermitMap(permits) {
+      const map = new Map();
+      for (const permit of permits) {
+        const recordType = String(permit.record_type || "").trim();
+        const permitNumber = String(permit.permit_number || "").trim();
+        if (!recordType || !permitNumber) continue;
+        map.set(`${recordType}::${permitNumber}`, permit);
+      }
+      return map;
+    }
+
+    function buildChangedRecords(permitMap, historyPayloads) {
+      const output = [];
+
+      for (const [recordType, payload] of Object.entries(historyPayloads)) {
+        if (!payload || typeof payload !== "object") continue;
+
+        for (const permitNumber of Object.keys(payload)) {
+          const historyEntries = Array.isArray(payload[permitNumber]) ? payload[permitNumber] : [];
+          if (historyEntries.length === 0) continue;
+
+          const current = permitMap.get(`${recordType}::${permitNumber}`) || null;
+          const versions = [...historyEntries];
+          if (current) {
+            versions.push(current);
+          }
+
+          const changeEvents = [];
+          for (let index = 0; index < versions.length - 1; index += 1) {
+            const before = versions[index];
+            const after = versions[index + 1];
+            const keys = [...new Set([...Object.keys(before || {}), ...Object.keys(after || {})])]
+              .filter((key) => !IGNORED_DIFF_FIELDS.has(key))
+              .sort((a, b) => a.localeCompare(b));
+
+            const changes = keys
+              .filter((key) => !compareValues(before?.[key], after?.[key]))
+              .map((key) => ({
+                field: key,
+                before: formatValue(before?.[key]),
+                after: formatValue(after?.[key]),
+              }));
+
+            if (changes.length > 0) {
+              changeEvents.push({
+                beforeStamp: getChangeStamp(before),
+                afterStamp: getChangeStamp(after),
+                changes,
+              });
+            }
+          }
+
+          output.push({
+            id: `${recordType}::${permitNumber}`,
+            permit_number: permitNumber,
+            record_type: recordType,
+            current_status: current?.status || "",
+            current_address: current?.address || "",
+            latest_change_at: current?.last_changed_at || historyEntries[historyEntries.length - 1]?.last_changed_at || "",
+            history_count: historyEntries.length,
+            change_event_count: changeEvents.length,
+            changeEvents,
+          });
+        }
+      }
+
+      return output.sort((a, b) => {
+        if (a.latest_change_at !== b.latest_change_at) {
+          return a.latest_change_at < b.latest_change_at ? 1 : -1;
+        }
+        if (a.record_type !== b.record_type) {
+          return a.record_type.localeCompare(b.record_type);
+        }
+        return a.permit_number.localeCompare(b.permit_number);
+      });
+    }
+
+    function renderList(records) {
+      const summary = document.getElementById("summary");
+      const results = document.getElementById("results");
+
+      summary.innerHTML = `<strong>${records.length}</strong> records currently have saved change history.`;
+
+      if (records.length === 0) {
+        results.className = "empty";
+        results.textContent = "No record history files are available yet, so there are no changed records to review.";
+        return;
+      }
+
+      results.className = "";
+      results.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Record</th>
+              <th>Record Type</th>
+              <th>Current Address</th>
+              <th class="num">Saved Versions</th>
+              <th class="num">Change Events</th>
+              <th>Latest Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${records.map((record) => `
+              <tr>
+                <td>
+                  <a class="record-link" href="#${encodeURIComponent(record.id)}" data-record-id="${escapeHtml(record.id)}">
+                    ${escapeHtml(record.permit_number)}
+                  </a>
+                  ${record.current_status ? `<br><span>${escapeHtml(record.current_status)}</span>` : ""}
+                </td>
+                <td>${escapeHtml(getRecordTypeLabel(record.record_type))}</td>
+                <td>${escapeHtml(record.current_address || "")}</td>
+                <td class="num">${record.history_count}</td>
+                <td class="num">${record.change_event_count}</td>
+                <td class="mono">${escapeHtml(record.latest_change_at || "")}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function renderModal(record) {
+      const modalShell = document.getElementById("modalShell");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalSubhead = document.getElementById("modalSubhead");
+      const modalContent = document.getElementById("modalContent");
+
+      if (!record) {
+        modalTitle.textContent = "Change details";
+        modalSubhead.textContent = "That record could not be found.";
+        modalContent.className = "empty";
+        modalContent.textContent = "The selected record is not available in the current change history.";
+        modalShell.classList.add("open");
+        modalShell.setAttribute("aria-hidden", "false");
+        return;
+      }
+
+      modalTitle.textContent = record.permit_number;
+      modalSubhead.textContent = `${getRecordTypeLabel(record.record_type)}${record.current_status ? ` | ${record.current_status}` : ""}`;
+
+      if (!record.changeEvents.length) {
+        modalContent.className = "empty";
+        modalContent.textContent = "This record has saved history, but there are no field-level differences available to show right now.";
+      } else {
+        modalContent.className = "";
+        modalContent.innerHTML = record.changeEvents.map((event, index) => `
+          <section class="change-event">
+            <h3 class="change-event-title">Change ${index + 1}</h3>
+            <div class="change-lines">
+              ${event.changes.map((change) => `
+                <div class="change-field">
+                  <div class="change-line">
+                    <div class="change-date">${escapeHtml(event.beforeStamp)}</div>
+                    <div class="change-field-name">${escapeHtml(formatFieldLabel(change.field))}:</div>
+                    <div class="change-value">${escapeHtml(change.before)}</div>
+                  </div>
+                  <div class="change-line">
+                    <div class="change-date">${escapeHtml(event.afterStamp)}</div>
+                    <div class="change-field-name">${escapeHtml(formatFieldLabel(change.field))}:</div>
+                    <div class="change-value">${escapeHtml(change.after)}</div>
+                  </div>
+                </div>
+              `).join("")}
+            </div>
+          </section>
+        `).join("");
+      }
+
+      modalShell.classList.add("open");
+      modalShell.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      const modalShell = document.getElementById("modalShell");
+      modalShell.classList.remove("open");
+      modalShell.setAttribute("aria-hidden", "true");
+      if (window.location.hash) {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+    }
+
+    function syncModalToHash() {
+      const rawHash = window.location.hash.replace(/^#/, "");
+      if (!rawHash) {
+        closeModal();
+        return;
+      }
+
+      const id = decodeURIComponent(rawHash);
+      renderModal(state.recordMap.get(id) || null);
+    }
+
+    async function init() {
+      try {
+        const [permitPayload, buildingHistory, planningHistory, violationsHistory] = await Promise.all([
+          fetchJson(PERMITS_URL),
+          fetchJsonOrDefault(HISTORY_URLS.building, {}),
+          fetchJsonOrDefault(HISTORY_URLS.planning, {}),
+          fetchJsonOrDefault(HISTORY_URLS.violations, {}),
+        ]);
+
+        const permitMap = buildPermitMap(toList(permitPayload));
+        const records = buildChangedRecords(permitMap, {
+          building: buildingHistory,
+          planning: planningHistory,
+          violations: violationsHistory,
+        });
+
+        state.records = records;
+        state.recordMap = new Map(records.map((record) => [record.id, record]));
+
+        renderList(records);
+        syncModalToHash();
+      } catch (error) {
+        document.getElementById("summary").textContent = "Failed to load changed records.";
+        document.getElementById("results").className = "empty";
+        document.getElementById("results").textContent = error.message;
+        console.error(error);
+      }
+    }
+
+    document.getElementById("closeModalButton").addEventListener("click", closeModal);
+    document.getElementById("modalShell").addEventListener("click", (event) => {
+      if (event.target.id === "modalShell") {
+        closeModal();
+      }
+    });
+    window.addEventListener("hashchange", syncModalToHash);
+
+    init();
+  </script>
+</body>
+</html>

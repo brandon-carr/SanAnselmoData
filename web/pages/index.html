@@ -119,6 +119,10 @@
       flex: 1;
     }
 
+    .results.hidden {
+      display: none;
+    }
+
     .permit-card {
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -165,6 +169,31 @@
       font-size: 14px;
     }
 
+    .map-shell {
+      position: relative;
+      min-width: 0;
+    }
+
+    .map-attribution-banner {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      z-index: 500;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.35;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .map-attribution-banner a {
+      color: inherit;
+      font-weight: 700;
+    }
+
     @media (max-width: 900px) {
       .app {
         grid-template-columns: 1fr;
@@ -196,9 +225,9 @@
         </div>
 
         <div class="field">
-          <label for="sourceFilter">Permit source</label>
-          <select id="sourceFilter">
-            <option value="">All sources</option>
+          <label for="recordTypeFilter">Record type</label>
+          <select id="recordTypeFilter">
+            <option value="">All record types</option>
           </select>
         </div>
 
@@ -217,8 +246,20 @@
         </div>
 
         <div class="field">
-          <label for="issuedAfter">Issued on or after</label>
-          <input id="issuedAfter" type="date" />
+          <label style="display:flex; align-items:center; gap:8px; text-transform:none; letter-spacing:normal; font-size:14px; font-weight:400; color:var(--text);">
+            <input id="showNonActiveRecords" type="checkbox" style="width:auto; margin:0;" />
+            Show Non-Active Records
+          </label>
+        </div>
+
+        <div class="field">
+          <label for="startDate">Start date</label>
+          <input id="startDate" type="date" />
+        </div>
+
+        <div class="field">
+          <label for="endDate">End date</label>
+          <input id="endDate" type="date" />
         </div>
 
         <div class="field">
@@ -230,7 +271,12 @@
       <div class="results" id="results"></div>
     </aside>
 
-    <main id="map"></main>
+    <main class="map-shell">
+      <div id="map"></div>
+      <div class="map-attribution-banner">
+        Map data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>.
+      </div>
+    </main>
   </div>
 
   <script
@@ -241,6 +287,7 @@
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script>
     const DATA_URL = "../data/all_permits_view.json";
+    const SITE_CONFIG_URL = "../data/site_config.json";
     const CACHE_BUST = `ts=${Date.now()}`;
     const DEFAULT_CENTER = [37.9746, -122.5610];
     const DEFAULT_ZOOM = 13;
@@ -248,7 +295,7 @@
     const map = L.map("map").setView(DEFAULT_CENTER, DEFAULT_ZOOM);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
-      attribution: "&copy; OpenStreetMap contributors"
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     const markersLayer = L.markerClusterGroup();
@@ -258,14 +305,19 @@
       rawPermits: [],
       allPermits: [],
       filteredPermits: [],
-      markersByPermit: new Map()
+      markersByPermit: new Map(),
+      inactiveStatuses: [],
+      showLeftCards: true,
+      linkedRecordType: "",
     };
 
     const keywordInput = document.getElementById("keyword");
-    const sourceFilter = document.getElementById("sourceFilter");
+    const recordTypeFilter = document.getElementById("recordTypeFilter");
     const typeFilter = document.getElementById("typeFilter");
     const statusFilter = document.getElementById("statusFilter");
-    const issuedAfterInput = document.getElementById("issuedAfter");
+    const showNonActiveRecordsInput = document.getElementById("showNonActiveRecords");
+    const startDateInput = document.getElementById("startDate");
+    const endDateInput = document.getElementById("endDate");
     const resetButton = document.getElementById("resetFilters");
     const resultsEl = document.getElementById("results");
     const summaryEl = document.getElementById("summary");
@@ -276,14 +328,24 @@
       return [];
     }
 
-    function normalizePermit(raw, permitSource) {
+    function normalizePermit(raw, recordType) {
       const latRaw = String(raw.lat ?? raw.latitude ?? "").trim();
       const lngRaw = String(raw.lng ?? raw.lon ?? raw.longitude ?? "").trim();
       const lat = latRaw === "" ? NaN : Number(latRaw);
       const lng = lngRaw === "" ? NaN : Number(lngRaw);
+      const extraFields = raw && typeof raw.extra === "object" && raw.extra && !Array.isArray(raw.extra)
+        ? raw.extra
+        : {};
+      const rawFields = {
+        ...Object.fromEntries(
+          Object.entries(raw || {}).filter(([key]) => key !== "extra")
+        ),
+        ...extraFields,
+        record_type: raw.record_type || recordType || "",
+      };
       return {
         permit_number: raw.permit_number || "",
-        permit_source: raw.permit_source || permitSource || "",
+        record_type: raw.record_type || recordType || "",
         status: raw.status || "",
         permit_type: raw.permit_type || raw.type || "",
         subtype: raw.subtype || "",
@@ -292,28 +354,243 @@
         city_state_zip: raw.city_state_zip || "",
         apn: raw.apn || "",
         applied_date: raw.applied_date || "",
+        approved_date: raw.approved_date || "",
         finaled_date: raw.finaled_date || "",
+        expiration_date: raw.expiration_date || "",
         issued_date: raw.issued_date || "",
+        opened: raw.opened || extraFields.opened || raw.applied_date || "",
+        closed: raw.closed || extraFields.closed || raw.finaled_date || "",
+        last_action: raw.last_action || extraFields.last_action || "",
+        follow_up: raw.follow_up || extraFields.follow_up || "",
         source_url: raw.source_url || "",
         lat: Number.isFinite(lat) ? lat : null,
         lng: Number.isFinite(lng) ? lng : null,
+        raw_fields: rawFields,
       };
     }
 
-    function buildPopupHtml(permit) {
+    function formatFieldLabel(key) {
+      if (key === "record_type") return "Record Type";
+      return String(key || "")
+        .replaceAll("_", " ")
+        .replace(/\b\w/g, (match) => match.toUpperCase());
+    }
+
+    function getRecordTypeDisplayLabel(recordType) {
+      switch (recordType) {
+        case "building":
+          return "Building Permit";
+        case "planning":
+          return "Planning Permit";
+        case "violations":
+          return "Violation";
+        default:
+          return recordType ? formatFieldLabel(recordType) : "";
+      }
+    }
+
+    function formatFieldValue(value, key = "") {
+      if (key === "record_type") {
+        return getRecordTypeDisplayLabel(String(value || "").trim().toLowerCase());
+      }
+      if (value == null) return "";
+      if (typeof value === "object") {
+        if (Array.isArray(value)) {
+          return value.length ? JSON.stringify(value) : "";
+        }
+        return Object.keys(value).length ? JSON.stringify(value) : "";
+      }
+      return String(value).trim();
+    }
+
+    function parseUsDate(value) {
+      const trimmed = String(value || "").trim();
+      const match = trimmed.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+      if (!match) return null;
+      const month = Number(match[1]);
+      const day = Number(match[2]);
+      const year = Number(match[3]);
+      return new Date(year, month - 1, day);
+    }
+
+    function toIsoDateString(date) {
+      if (!(date instanceof Date) || Number.isNaN(date.getTime())) return "";
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function getLatestPermitDateInfo(permit) {
+      const candidates = [
+        { label: "Applied", value: permit.applied_date },
+        { label: "Approved", value: permit.approved_date },
+        { label: "Issued", value: permit.issued_date },
+        { label: "Expiration", value: permit.expiration_date },
+      ]
+        .map((item) => ({ ...item, parsed: parseUsDate(item.value) }))
+        .filter((item) => item.value && item.parsed);
+
+      if (!candidates.length) return null;
+
+      candidates.sort((a, b) => b.parsed - a.parsed);
+      return candidates[0];
+    }
+
+    function getLatestPlanningDateInfo(permit) {
+      const candidates = [
+        { label: "Applied", value: permit.applied_date },
+        { label: "Approved", value: permit.approved_date },
+        { label: "Finaled", value: permit.finaled_date },
+      ]
+        .map((item) => ({ ...item, parsed: parseUsDate(item.value) }))
+        .filter((item) => item.value && item.parsed);
+
+      if (!candidates.length) return null;
+
+      candidates.sort((a, b) => b.parsed - a.parsed);
+      return candidates[0];
+    }
+
+    function getLatestViolationDateInfo(permit) {
+      const candidates = [
+        { label: "Opened", value: permit.opened },
+        { label: "Closed", value: permit.closed },
+        { label: "Last Action", value: permit.last_action },
+        { label: "Follow Up", value: permit.follow_up },
+      ]
+        .map((item) => ({ ...item, parsed: parseUsDate(item.value) }))
+        .filter((item) => item.value && item.parsed);
+
+      if (!candidates.length) return null;
+
+      candidates.sort((a, b) => b.parsed - a.parsed);
+      return candidates[0];
+    }
+
+    function getInitialEnteredDate(permit) {
+      if (permit.record_type === "violations") {
+        return permit.opened || "";
+      }
+      if (permit.record_type === "planning" || permit.record_type === "building") {
+        return permit.applied_date || "";
+      }
+      return permit.issued_date || "";
+    }
+
+    function buildAllFieldRows(permit) {
+      const rawFields = permit.raw_fields || {};
+      const preferredOrder = [
+        "permit_number",
+        "record_type",
+        "address",
+        "city_state_zip",
+        "permit_type",
+        "subtype",
+        "status",
+        "applied_date",
+        "approved_date",
+        "issued_date",
+        "finaled_date",
+        "expiration_date",
+        "short_description",
+        "apn",
+        "property_type",
+        "lot_size_sf",
+        "latitude",
+        "longitude",
+        "geocode_status",
+        "geocode_error",
+        "geocode_attempts",
+        "geocode_last_attempt_at",
+        "geocoded_address",
+        "source_url",
+      ];
+
+      const seen = new Set();
+      const orderedKeys = [];
+
+      for (const key of preferredOrder) {
+        if (key in rawFields) {
+          orderedKeys.push(key);
+          seen.add(key);
+        }
+      }
+
+      for (const key of Object.keys(rawFields).sort()) {
+        if (!seen.has(key)) {
+          orderedKeys.push(key);
+        }
+      }
+
+      return orderedKeys
+        .map((key) => {
+          const value = formatFieldValue(rawFields[key], key);
+          if (!value) return "";
+          return `<div><strong>${escapeHtml(formatFieldLabel(key))}:</strong> ${escapeHtml(value)}</div>`;
+        })
+        .filter(Boolean)
+        .join("");
+    }
+
+    function buildPopupDetailsSection(permit) {
+      const allFieldRows = buildAllFieldRows(permit);
+      if (!allFieldRows) return "";
+
+      const detailsId = `popup-details-${String(permit.permit_number || "permit").replace(/[^a-zA-Z0-9_-]/g, "-")}`;
+      const toggleId = `${detailsId}-toggle`;
       return `
-        <div style="min-width:220px; line-height:1.45;">
-          <strong>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? `  (${escapeHtml(permit.status)})` : ""}</strong><br>
-          ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
-          ${escapeHtml(permit.address || "No address")}<br>
-          ${permit.permit_type ? `Type: ${escapeHtml(permit.permit_type)}<br>` : ""}
-          ${permit.permit_source === "violations" && permit.applied_date ? `Opened: ${escapeHtml(permit.applied_date)}<br>` : ""}
-          ${permit.permit_source === "violations" && permit.finaled_date ? `Closed: ${escapeHtml(permit.finaled_date)}<br>` : ""}
-          ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
-          ${permit.short_description ? `<div style="margin-top:6px;">${escapeHtml(permit.short_description)}</div>` : ""}
-          ${permit.source_url ? `<div style="margin-top:8px;"><a href="${permit.source_url}" target="_blank" rel="noopener noreferrer">Open source record</a></div>` : ""}
+        <div style="margin-top:8px;">
+          <a id="${escapeHtml(toggleId)}" href="#" onclick="togglePopupDetails('${escapeHtml(detailsId)}', '${escapeHtml(toggleId)}'); return false;">Show all data</a>
+          <div id="${escapeHtml(detailsId)}" style="display:none; margin-top:8px; max-height:260px; overflow:auto; border-top:1px solid #ddd; padding-top:8px; font-size:12px;">
+            ${allFieldRows}
+            ${permit.source_url ? `<div style="margin-top:8px;"><a href="${permit.source_url}" target="_blank" rel="noopener noreferrer">Open source record</a></div>` : ""}
+          </div>
         </div>
       `;
+    }
+
+    function buildPopupHtml(permit) {
+      if (permit.record_type === "building") {
+        const latestDate = getLatestPermitDateInfo(permit);
+        return `
+          <div style="min-width:260px; max-width:360px; line-height:1.45;">
+            <strong>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? ` (${escapeHtml(permit.status)})` : ""}</strong><br>
+            ${escapeHtml(permit.address || "No address")}<br>
+            Building Permit<br>
+            ${latestDate ? `${escapeHtml(latestDate.label)}: ${escapeHtml(latestDate.value)}<br>` : ""}
+            ${(permit.permit_type || permit.subtype) ? `Type: ${escapeHtml(permit.permit_type || "")}${permit.subtype ? `${permit.permit_type ? ", " : ""}${escapeHtml(permit.subtype)}` : ""}<br>` : ""}
+            ${permit.short_description ? escapeHtml(permit.short_description) : ""}
+            ${buildPopupDetailsSection(permit)}
+          </div>
+        `;
+      }
+
+      return `
+        <div style="min-width:260px; max-width:360px; line-height:1.45;">
+          <strong>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? `  (${escapeHtml(permit.status)})` : ""}</strong><br>
+          ${permit.record_type === "planning" ? `${escapeHtml(getRecordTypeDisplayLabel(permit.record_type))}<br>` : ""}
+          ${permit.record_type && permit.record_type !== "planning" ? `Record Type: ${escapeHtml(getRecordTypeDisplayLabel(permit.record_type))}<br>` : ""}
+          ${escapeHtml(permit.address || "No address")}<br>
+          ${(permit.permit_type || permit.subtype) ? `Type: ${escapeHtml(permit.permit_type || "")}${permit.record_type === "violations" || permit.record_type === "planning" ? `${permit.subtype ? `${permit.permit_type ? ", " : ""}${escapeHtml(permit.subtype)}` : ""}` : ""}<br>` : ""}
+          ${permit.record_type === "violations" && getLatestViolationDateInfo(permit) ? `${escapeHtml(getLatestViolationDateInfo(permit).label)}: ${escapeHtml(getLatestViolationDateInfo(permit).value)}<br>` : ""}
+          ${permit.record_type === "planning" && getLatestPlanningDateInfo(permit) ? `${escapeHtml(getLatestPlanningDateInfo(permit).label)}: ${escapeHtml(getLatestPlanningDateInfo(permit).value)}<br>` : ""}
+          ${permit.record_type !== "planning" && permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
+          ${permit.short_description ? `<div style="margin-top:6px;">${escapeHtml(permit.short_description)}</div>` : ""}
+          ${buildPopupDetailsSection(permit)}
+        </div>
+      `;
+    }
+
+    function togglePopupDetails(detailsId, toggleId) {
+      const detailsEl = document.getElementById(detailsId);
+      if (!detailsEl) return;
+      const toggleEl = document.getElementById(toggleId);
+      const isHidden = detailsEl.style.display === "none";
+      detailsEl.style.display = isHidden ? "block" : "none";
+      if (toggleEl) {
+        toggleEl.textContent = isHidden ? "Hide data" : "Show all data";
+      }
     }
 
     function escapeHtml(value) {
@@ -329,13 +606,23 @@
       return /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(String(value || "").trim());
     }
 
+    function normalizeStatusValue(value) {
+      return String(value || "").trim().toLowerCase();
+    }
+
+    function isInactiveStatus(value) {
+      return state.inactiveStatuses.includes(normalizeStatusValue(value));
+    }
+
     function getFilterValues() {
       return {
         keyword: keywordInput.value.trim().toLowerCase(),
-        permit_source: sourceFilter.value,
+        record_type: recordTypeFilter.value,
         permit_type: typeFilter.value,
         status: statusFilter.value,
-        issued_after: issuedAfterInput.value,
+        show_non_active: showNonActiveRecordsInput.checked,
+        start_date: startDateInput.value,
+        end_date: endDateInput.value,
       };
     }
 
@@ -381,13 +668,22 @@
         if (!haystack.includes(filters.keyword)) return false;
       }
 
-      if (!ignore.has("permit_source") && filters.permit_source && permit.permit_source !== filters.permit_source) return false;
+      if (!ignore.has("record_type") && filters.record_type && permit.record_type !== filters.record_type) return false;
       if (!ignore.has("permit_type") && filters.permit_type && permit.permit_type !== filters.permit_type) return false;
       if (!ignore.has("status") && filters.status && permit.status !== filters.status) return false;
+      if (!ignore.has("show_non_active") && !filters.show_non_active && isInactiveStatus(permit.status)) return false;
 
-      if (!ignore.has("issued_after") && filters.issued_after && permit.issued_date) {
-        const permitDate = permit.issued_date.slice(0, 10);
-        if (permitDate && permitDate < filters.issued_after) return false;
+      if ((!ignore.has("start_date") && filters.start_date) || (!ignore.has("end_date") && filters.end_date)) {
+        const initialDate = parseUsDate(getInitialEnteredDate(permit));
+        if (!initialDate) return false;
+        const initialIsoDate = toIsoDateString(initialDate);
+
+        if (!ignore.has("start_date") && filters.start_date && initialIsoDate < filters.start_date) {
+          return false;
+        }
+        if (!ignore.has("end_date") && filters.end_date && initialIsoDate > filters.end_date) {
+          return false;
+        }
       }
 
       return true;
@@ -399,10 +695,10 @@
       for (let i = 0; i < 3; i += 1) {
         let passChanged = false;
 
-        const availableSources = [...new Set(
+        const availableRecordTypes = [...new Set(
           state.rawPermits
-            .filter((permit) => matchesFilters(permit, ["permit_source"]))
-            .map((permit) => permit.permit_source)
+            .filter((permit) => matchesFilters(permit, ["record_type"]))
+            .map((permit) => permit.record_type)
             .filter(Boolean)
         )].sort();
 
@@ -420,7 +716,7 @@
             .filter((value) => value && !isDateLike(value))
         )].sort();
 
-        passChanged = replaceSelectOptions(sourceFilter, availableSources, "All sources") || passChanged;
+        passChanged = replaceSelectOptions(recordTypeFilter, availableRecordTypes, "All record types") || passChanged;
         passChanged = replaceSelectOptions(typeFilter, availableTypes, "All types") || passChanged;
         passChanged = replaceSelectOptions(statusFilter, availableStatuses, "All statuses") || passChanged;
 
@@ -429,6 +725,28 @@
       }
 
       return changed;
+    }
+
+    function applyLinkedFiltersFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      state.linkedRecordType = params.get("record_type") || "";
+      const linkedInitialDate = params.get("initial_date") || "";
+
+      if (state.linkedRecordType) {
+        const optionValues = Array.from(recordTypeFilter.options).map((option) => option.value);
+        if (optionValues.includes(state.linkedRecordType)) {
+          recordTypeFilter.value = state.linkedRecordType;
+        }
+      }
+
+      if (linkedInitialDate) {
+        const linkedDate = parseUsDate(linkedInitialDate);
+        const linkedIsoDate = toIsoDateString(linkedDate);
+        if (linkedIsoDate) {
+          startDateInput.value = linkedIsoDate;
+          endDateInput.value = linkedIsoDate;
+        }
+      }
     }
 
     function renderResults() {
@@ -459,6 +777,12 @@
       const additionalNotGeolocated = filteredRawPermits.filter((permit) => permit.lat == null || permit.lng == null).length;
       summaryEl.textContent = `${state.filteredPermits.length} geolocated permits shown. ${additionalNotGeolocated} additional permits not geolocated`;
 
+      resultsEl.classList.toggle("hidden", !state.showLeftCards);
+      if (!state.showLeftCards) {
+        resultsEl.innerHTML = "";
+        return;
+      }
+
       resultsEl.innerHTML = "";
       if (state.filteredPermits.length === 0) {
         resultsEl.innerHTML = '<div class="empty-state">No permits match the current filters.</div>';
@@ -468,17 +792,21 @@
       for (const permit of state.filteredPermits) {
         const card = document.createElement("div");
         card.className = "permit-card";
+        const latestDate = permit.record_type === "building" ? getLatestPermitDateInfo(permit) : null;
+        const planningLatestDate = permit.record_type === "planning" ? getLatestPlanningDateInfo(permit) : null;
+        const violationLatestDate = permit.record_type === "violations" ? getLatestViolationDateInfo(permit) : null;
         card.innerHTML = `
           <h2>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? `  (${escapeHtml(permit.status)})` : ""}</h2>
           <div class="permit-meta">
-            ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
+            ${permit.record_type ? `${escapeHtml(getRecordTypeDisplayLabel(permit.record_type))}<br>` : ""}
             ${escapeHtml(permit.address || "No address")}<br>
-            ${permit.permit_type ? `Type: ${escapeHtml(permit.permit_type)}<br>` : ""}
-            ${permit.permit_source === "building" && permit.status === "Under Review" && permit.applied_date ? `Applied Date: ${escapeHtml(permit.applied_date)}<br>` : ""}
-            ${permit.permit_source === "violations" && permit.applied_date ? `Opened: ${escapeHtml(permit.applied_date)}<br>` : ""}
-            ${permit.permit_source === "violations" && permit.finaled_date ? `Closed: ${escapeHtml(permit.finaled_date)}<br>` : ""}
-            ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
-            ${permit.short_description ? escapeHtml(permit.short_description) : ""}
+            ${(permit.permit_type || permit.subtype) ? `Type: ${escapeHtml(permit.permit_type || "")}${(permit.record_type === "planning" || permit.record_type === "violations") && permit.subtype ? `${permit.permit_type ? ", " : ""}${escapeHtml(permit.subtype)}` : ""}<br>` : ""}
+            ${permit.record_type === "building" && permit.status === "Under Review" && permit.applied_date ? `Applied Date: ${escapeHtml(permit.applied_date)}<br>` : ""}
+            ${permit.record_type !== "building" && permit.record_type !== "planning" && permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
+            ${permit.record_type !== "planning" && permit.short_description ? `${escapeHtml(permit.short_description)}<br>` : ""}
+            ${permit.record_type === "building" && latestDate ? `${escapeHtml(latestDate.label)}: ${escapeHtml(latestDate.value)}` : ""}
+            ${permit.record_type === "planning" && planningLatestDate ? `${escapeHtml(planningLatestDate.label)}: ${escapeHtml(planningLatestDate.value)}` : ""}
+            ${permit.record_type === "violations" && violationLatestDate ? `${escapeHtml(violationLatestDate.label)}: ${escapeHtml(violationLatestDate.value)}` : ""}
           </div>
         `;
 
@@ -494,18 +822,30 @@
       }
     }
 
+    async function fetchJson(url) {
+      const response = await fetch(`${url}?${CACHE_BUST}`, { cache: "no-store" });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} for ${url}`);
+      }
+      return response.json();
+    }
+
     async function loadPermits() {
       try {
-        const response = await fetch(`${DATA_URL}?${CACHE_BUST}`, { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`HTTP ${response.status} for ${DATA_URL}`);
-        }
-
-        const data = await response.json();
+        const [data, siteConfig] = await Promise.all([
+          fetchJson(DATA_URL),
+          fetchJson(SITE_CONFIG_URL).catch(() => ({ inactive_statuses: [] })),
+        ]);
+        state.inactiveStatuses = (siteConfig.inactive_statuses || [])
+          .map(normalizeStatusValue)
+          .filter(Boolean);
+        state.showLeftCards = siteConfig.show_left_cards !== false;
         state.rawPermits = asArray(data)
-          .map((record) => normalizePermit(record, record.permit_source || ""));
+          .map((record) => normalizePermit(record, record.record_type || ""));
         state.allPermits = state.rawPermits
           .filter((permit) => permit.lat != null && permit.lng != null);
+        syncFilterOptions();
+        applyLinkedFiltersFromUrl();
         renderResults();
       } catch (error) {
         console.error(error);
@@ -519,17 +859,19 @@
       }
     }
 
-    [keywordInput, sourceFilter, typeFilter, statusFilter, issuedAfterInput].forEach((el) => {
+    [keywordInput, recordTypeFilter, typeFilter, statusFilter, showNonActiveRecordsInput, startDateInput, endDateInput].forEach((el) => {
       el.addEventListener("input", renderResults);
       el.addEventListener("change", renderResults);
     });
 
     resetButton.addEventListener("click", () => {
       keywordInput.value = "";
-      sourceFilter.value = "";
+      recordTypeFilter.value = "";
       typeFilter.value = "";
       statusFilter.value = "";
-      issuedAfterInput.value = "";
+      showNonActiveRecordsInput.checked = false;
+      startDateInput.value = "";
+      endDateInput.value = "";
       renderResults();
     });
 
