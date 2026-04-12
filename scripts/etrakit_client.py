@@ -651,6 +651,9 @@ class ETrakitClient:
         text_nodes = [normalize_str(t) for t in soup.stripped_strings if normalize_str(t)]
         row_map: Dict[str, str] = {}
 
+        def is_date_like(value: str) -> bool:
+            return bool(re.fullmatch(r"\d{1,2}/\d{1,2}/\d{4}", normalize_str(value)))
+
         for row in soup.select("div.row"):
             columns = row.select(":scope > div.column")
             if len(columns) < 2:
@@ -690,6 +693,24 @@ class ETrakitClient:
                             return nxt
             return ""
 
+        def find_primary_status() -> str:
+            status_value = find_after(status_labels)
+            if status_value and not is_date_like(status_value):
+                return status_value
+
+            for node in soup.find_all(id=True):
+                node_id = str(node.get("id", "")).lower()
+                if "status" not in node_id:
+                    continue
+                if "label" in node_id or "date" in node_id:
+                    continue
+
+                value = normalize_str(node.get_text(" ", strip=True))
+                if value and not is_date_like(value):
+                    return value
+
+            return status_value
+
         permit_number = self._extract_activity_number(
             detail_url,
             html,
@@ -699,7 +720,7 @@ class ETrakitClient:
 
         fields = {
             "permit_number": permit_number,
-            "status": find_after(status_labels),
+            "status": find_primary_status(),
             "permit_type": find_after(type_labels),
             "subtype": find_after(["Subtype:", "Subtype"]),
             "short_description": find_after(["Short Description:", "Short Description"]),
