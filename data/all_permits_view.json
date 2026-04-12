@@ -48471,16 +48471,28 @@
     "expiration_date": "7/27/2026",
     "extra": {},
     "finaled_date": "",
+<<<<<<< HEAD
     "first_seen_at": "2026-04-12T17:16:13+00:00",
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:02:55+00:00",
+=======
+    "first_seen_at": "2026-04-11T23:17:16+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "1/28/2026",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T17:16:13+00:00",
     "last_seen_at": "2026-04-12T17:16:13+00:00",
+=======
+    "last_changed_at": "2026-04-11T23:17:16+00:00",
+    "last_seen_at": "2026-04-11T23:17:16+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9830030",
     "longitude": "-122.5770003",
     "lot_size_sf": "5940",
@@ -49462,16 +49474,28 @@
     "expiration_date": "",
     "extra": {},
     "finaled_date": "3/19/2026",
+<<<<<<< HEAD
     "first_seen_at": "2026-04-12T17:16:11+00:00",
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:02:59+00:00",
+=======
+    "first_seen_at": "2026-04-11T23:17:15+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "1/22/2026",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T17:16:11+00:00",
     "last_seen_at": "2026-04-12T17:16:11+00:00",
+=======
+    "last_changed_at": "2026-04-11T23:17:15+00:00",
+    "last_seen_at": "2026-04-11T23:17:15+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9781805",
     "longitude": "-122.5760358",
     "lot_size_sf": "5840",
@@ -49848,16 +49872,28 @@
     "expiration_date": "7/20/2026",
     "extra": {},
     "finaled_date": "",
+<<<<<<< HEAD
     "first_seen_at": "2026-04-12T17:16:10+00:00",
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:23:09+00:00",
+=======
+    "first_seen_at": "2026-04-11T23:17:14+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:39+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "269, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "1/21/2026",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T17:16:10+00:00",
     "last_seen_at": "2026-04-12T17:16:10+00:00",
+=======
+    "last_changed_at": "2026-04-11T23:17:14+00:00",
+    "last_seen_at": "2026-04-11T23:17:14+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9957699",
     "longitude": "-122.5768271",
     "lot_size_sf": "23023",
@@ -51947,6 +51983,7 @@
     "subtype": "Kitchen And Bath"
   },
   {
+<<<<<<< HEAD
     "address": "41 Sunnyside Ave",
     "address_id": "0e09330fb7092181",
     "apn": "007-263-22",
@@ -52868,10 +52905,14 @@
   },
   {
     "address": "151 Oak Springs Dr",
+=======
+    "address": "151 OAK SPRINGS DR",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "bad3f3769da779e5",
     "apn": "005-282-09",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "3ffb62bda565680800dd3059e1f8e1cb7fca0a7398e77fffd74f88bdbcdb06ef",
     "expiration_date": "",
@@ -52888,16 +52929,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:05+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "a38c75dd01f9d7b65109bfc8d5fd6ce2fc965f255ea7640661277cfeb88dcedc",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:38+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:31+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "151, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:38:00+00:00",
     "last_seen_at": "2026-04-12T18:38:00+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:38+00:00",
+    "last_seen_at": "2026-04-12T00:31:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9979389",
     "longitude": "-122.5853405",
     "lot_size_sf": "9000",
     "permit_number": "AB2026-0030",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -52908,10 +52966,23 @@
   },
   {
     "address": "20 Brookmont Cir",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0030",
+    "status": "COMPLAINT",
+    "subtype": "BUILDING OR PLANNING CODE VIOLATION"
+  },
+  {
+    "address": "20 BROOKMONT CIR",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "198dc81cb952a56e",
     "apn": "005-111-18",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "4931c7f7aba18050367b87e6414fb5ff46bb6f76915bfbf335d6a21f7e46365a",
     "expiration_date": "",
@@ -52928,16 +52999,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:06+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "b270a32af555816e7e544d86595a416654d855061c7ee1a2d56bb06b60d92de9",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:38+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:31+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "20, Brookmont Circle, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:38:00+00:00",
     "last_seen_at": "2026-04-12T18:38:00+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:38+00:00",
+    "last_seen_at": "2026-04-12T00:31:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9905473",
     "longitude": "-122.5743245",
     "lot_size_sf": "4770",
     "permit_number": "AB2026-0029",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -52948,10 +53036,23 @@
   },
   {
     "address": "421 Greenfield Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0029",
+    "status": "COMPLAINT",
+    "subtype": "BUILDING OR PLANNING CODE VIOLATION"
+  },
+  {
+    "address": "421 GREENFIELD AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "d63e271dd1fc45f3",
     "apn": "006-211-17",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "3a02f6e0ead079f8c8f2607659585107d1e6ded1984936c367aa35fd5f7669f4",
     "expiration_date": "",
@@ -52968,16 +53069,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:07+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "7e2c126b268f809ecae1dd92877204d46089d488ac04f8bc90834e59125b1536",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:38+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:32+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "421, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:59+00:00",
     "last_seen_at": "2026-04-12T18:37:59+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:38+00:00",
+    "last_seen_at": "2026-04-12T00:31:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9757470",
     "longitude": "-122.5518499",
     "lot_size_sf": "6750",
     "permit_number": "AB2026-0028",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -52988,10 +53106,23 @@
   },
   {
     "address": "421 The Alameda",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0028",
+    "status": "COMPLAINT",
+    "subtype": "BUILDING OR PLANNING CODE VIOLATION"
+  },
+  {
+    "address": "421 THE ALAMEDA",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "72d8158891ee39a4",
     "apn": "005-041-06",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "61a7f9b787856d032f0a8f68995eab63bfc04eaeaecc6280cd5c95da6e553cc1",
     "expiration_date": "",
@@ -53008,16 +53139,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:08+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "0fc60f8a7d47eb2d1a713326c0b4b43b92e042c3d16252253b557f9236971e66",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:38+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:33+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "421, The Alameda, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:59+00:00",
     "last_seen_at": "2026-04-12T18:37:59+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:38+00:00",
+    "last_seen_at": "2026-04-12T00:31:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9990928",
     "longitude": "-122.5730904",
     "lot_size_sf": "10450",
     "permit_number": "AB2026-0027",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53028,10 +53176,23 @@
   },
   {
     "address": "14 Calumet Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0027",
+    "status": "COMPLAINT",
+    "subtype": "OTHER"
+  },
+  {
+    "address": "14 CALUMET AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "934592cb7345a822",
     "apn": "006-042-09",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "7d82e5a0b4fcb7812df526f6d77892867cad491df612e424a8e40031ba7d1b7c",
     "expiration_date": "",
@@ -53048,16 +53209,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:09+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "e17cc1995b0ff17031d8089f6282a06cf0763e4c3ef4dd635fe90f3d6c1aa074",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:38+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:34+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "14, Calumet Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:59+00:00",
     "last_seen_at": "2026-04-12T18:37:59+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:38+00:00",
+    "last_seen_at": "2026-04-12T00:31:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9812840",
     "longitude": "-122.5679861",
     "lot_size_sf": "6000",
     "permit_number": "AB2026-0026",
+<<<<<<< HEAD
     "permit_type": "Stop Work Order",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53068,10 +53246,23 @@
   },
   {
     "address": "15 Alto Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "STOP WORK ORDER",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0026",
+    "status": "COMPLAINT",
+    "subtype": "WORK W/O PERMITS"
+  },
+  {
+    "address": "15 ALTO AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "3e508c63f3b81259",
     "apn": "006-119-22",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "0439d50cb49838e5aa200cd101e33ce5668be1805560dcca2e089936d10ced12",
     "expiration_date": "",
@@ -53088,16 +53279,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:10+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "8ff9ee7be4b792c7925f1635a9fc0c70920fecd08ce3980eee22f6823ba26d8a",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:37+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:35+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "15, Alto Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:59+00:00",
     "last_seen_at": "2026-04-12T18:37:59+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:37+00:00",
+    "last_seen_at": "2026-04-12T00:31:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9825386",
     "longitude": "-122.5573157",
     "lot_size_sf": "6650",
     "permit_number": "AB2026-0025",
+<<<<<<< HEAD
     "permit_type": "Compliance Order",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53108,10 +53316,23 @@
   },
   {
     "address": "417 San Anselmo Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "COMPLIANCE ORDER",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0025",
+    "status": "COMPLAINT",
+    "subtype": "RESALE CORRECTIONS"
+  },
+  {
+    "address": "417 SAN ANSELMO AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "e43eeba30222c42a",
     "apn": "007-251-20",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "50e2360e01f11cd22eeae2b7f6adf6ce1c081f5cb79fde0c1fb981e392283109",
     "expiration_date": "",
@@ -53128,16 +53349,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:02:55+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "72f2e4ca2a4dbb664f1ba6406ce70837696af21a1ea5b7d3896b7c76068ab63b",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:37+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:58+00:00",
     "last_seen_at": "2026-04-12T18:37:58+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:37+00:00",
+    "last_seen_at": "2026-04-12T00:31:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9830030",
     "longitude": "-122.5770003",
     "lot_size_sf": "5940",
     "permit_number": "AB2026-0024",
+<<<<<<< HEAD
     "permit_type": "Compliance Order",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53148,10 +53386,23 @@
   },
   {
     "address": "418 Scenic Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "COMPLIANCE ORDER",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0024",
+    "status": "COMPLAINT",
+    "subtype": "RESALE CORRECTIONS"
+  },
+  {
+    "address": "418 SCENIC AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "6efbec4983784704",
     "apn": "007-031-07",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "d091ccd475d902d577a7abc9420018fed963b69986572ba6a91359174d51b450",
     "expiration_date": "",
@@ -53168,16 +53419,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:02:59+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "8147d6f0acfa16d97d4de5e5468ed995610074eebcdd465eeffa16da5f35d5df",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:37+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:58+00:00",
     "last_seen_at": "2026-04-12T18:37:58+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:37+00:00",
+    "last_seen_at": "2026-04-12T00:31:37+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9781805",
     "longitude": "-122.5760358",
     "lot_size_sf": "5840",
     "permit_number": "AB2026-0023",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53188,10 +53456,23 @@
   },
   {
     "address": "67 Tamalpais Ave",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0023",
+    "status": "COMPLAINT",
+    "subtype": "BUILDING OR PLANNING CODE VIOLATION"
+  },
+  {
+    "address": "67 TAMALPAIS AVE",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "e536645eac67fcbf",
     "apn": "007-212-08",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "7854506770103fb9a83949ac0772ac9965b709ba61c9ae30a3952e405239aa4e",
     "expiration_date": "",
@@ -53208,16 +53489,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:40:11+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "6576c54793013d7da96f0fdaa9eae05fabb5c7af22bd46d8575bb625714c6714",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:36+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:38+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "67, Tamalpais Avenue, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:58+00:00",
     "last_seen_at": "2026-04-12T18:37:58+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:36+00:00",
+    "last_seen_at": "2026-04-12T00:31:36+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9752399",
     "longitude": "-122.5656019",
     "lot_size_sf": "6000",
     "permit_number": "AB2026-0022",
+<<<<<<< HEAD
     "permit_type": "Courtesy Notice",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53228,10 +53526,23 @@
   },
   {
     "address": "269 Butterfield Rd",
+=======
+    "permit_source": "violations",
+    "permit_type": "COURTESY NOTICE",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0022",
+    "status": "COMPLAINT",
+    "subtype": "GAS POWERED LANDSCAPE EQUIPMENT"
+  },
+  {
+    "address": "269 BUTTERFIELD RD",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "840b7e8d40c59ebd",
     "apn": "005-055-18",
     "applied_date": "",
     "approved_date": "",
+<<<<<<< HEAD
     "city_state_zip": "San Anselmo, CA, 94960",
     "data_hash": "52340e4255d750dfcb71cae815a39813650f126ec3df36bfc386c89e723fb6df",
     "expiration_date": "",
@@ -53248,16 +53559,33 @@
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T18:23:09+00:00",
+=======
+    "city_state_zip": "SAN ANSELMO, CA, 94960",
+    "data_hash": "3c869853b50b73e2b03fab175d3884687af21375e82395b7a81eb5071656cadb",
+    "expiration_date": "",
+    "extra": {},
+    "finaled_date": "",
+    "first_seen_at": "2026-04-12T00:31:36+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-04-12T00:36:39+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "geocode_source": "nominatim",
     "geocode_status": "success",
     "geocoded_address": "269, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
     "issued_date": "",
+<<<<<<< HEAD
     "last_changed_at": "2026-04-12T18:37:57+00:00",
     "last_seen_at": "2026-04-12T18:37:57+00:00",
+=======
+    "last_changed_at": "2026-04-12T00:31:36+00:00",
+    "last_seen_at": "2026-04-12T00:31:36+00:00",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "latitude": "37.9957699",
     "longitude": "-122.5768271",
     "lot_size_sf": "23023",
     "permit_number": "AB2026-0021",
+<<<<<<< HEAD
     "permit_type": "Abatement",
     "property_type": "Parcel",
     "record_type": "violations",
@@ -53268,6 +53596,18 @@
   },
   {
     "address": "75 Kensington Rd",
+=======
+    "permit_source": "violations",
+    "permit_type": "ABATEMENT",
+    "property_type": "PARCEL",
+    "short_description": "",
+    "source_url": "https://sanan-trk.aspgov.com/eTRAKiT/Search/Case.aspx?ActivityNo=AB2026-0021",
+    "status": "COMPLAINT",
+    "subtype": "BUILDING OR PLANNING CODE VIOLATION"
+  },
+  {
+    "address": "75 KENSINGTON RD",
+>>>>>>> f5d73eb29f02516cede0087c9c4ce2cd56323be7
     "address_id": "7b9e5c424ca14a68",
     "apn": "007-262-03",
     "applied_date": "",
