@@ -300,19 +300,13 @@
       };
     }
 
-    function getRecordLabel(permit) {
-      if (permit.permit_source === "violations") return "Violation Permit Number";
-      return "Permit Number";
-    }
-
     function buildPopupHtml(permit) {
       return `
         <div style="min-width:220px; line-height:1.45;">
-          <strong>${escapeHtml(getRecordLabel(permit))}: ${escapeHtml(permit.permit_number || "Permit")}</strong><br>
+          <strong>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? `  (${escapeHtml(permit.status)})` : ""}</strong><br>
           ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
           ${escapeHtml(permit.address || "No address")}<br>
           ${permit.permit_type ? `Type: ${escapeHtml(permit.permit_type)}<br>` : ""}
-          ${permit.status ? `Status: ${escapeHtml(permit.status)}<br>` : ""}
           ${permit.permit_source === "violations" && permit.applied_date ? `Opened: ${escapeHtml(permit.applied_date)}<br>` : ""}
           ${permit.permit_source === "violations" && permit.finaled_date ? `Closed: ${escapeHtml(permit.finaled_date)}<br>` : ""}
           ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
@@ -475,19 +469,17 @@
         const card = document.createElement("div");
         card.className = "permit-card";
         card.innerHTML = `
-          <h2>${escapeHtml(getRecordLabel(permit))}: ${escapeHtml(permit.permit_number || "Permit")}</h2>
+          <h2>${escapeHtml(permit.permit_number || "Permit")}${permit.status ? `  (${escapeHtml(permit.status)})` : ""}</h2>
           <div class="permit-meta">
             ${permit.permit_source ? `Source: ${escapeHtml(permit.permit_source)}<br>` : ""}
             ${escapeHtml(permit.address || "No address")}<br>
             ${permit.permit_type ? `Type: ${escapeHtml(permit.permit_type)}<br>` : ""}
-            ${permit.status ? `Status: ${escapeHtml(permit.status)}<br>` : ""}
             ${permit.permit_source === "building" && permit.status === "Under Review" && permit.applied_date ? `Applied Date: ${escapeHtml(permit.applied_date)}<br>` : ""}
             ${permit.permit_source === "violations" && permit.applied_date ? `Opened: ${escapeHtml(permit.applied_date)}<br>` : ""}
             ${permit.permit_source === "violations" && permit.finaled_date ? `Closed: ${escapeHtml(permit.finaled_date)}<br>` : ""}
             ${permit.issued_date ? `Issued: ${escapeHtml(permit.issued_date)}<br>` : ""}
             ${permit.short_description ? escapeHtml(permit.short_description) : ""}
           </div>
-          ${permit.status ? `<div class="permit-status">${escapeHtml(permit.status)}</div>` : ""}
         `;
 
         card.addEventListener("click", () => {
