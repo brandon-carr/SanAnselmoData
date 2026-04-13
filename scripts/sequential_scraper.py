@@ -7,11 +7,13 @@ from pathlib import Path
 from typing import Dict, List
 
 from etrakit_client import ETrakitClient
+from geocoder import JsonGeocoder
 from permit_model import AddressRecord, PermitRecord, build_address_id, utc_now_iso
 from storage import JsonPermitStore, hydrate_permits_from_addresses
 
 
 CONFIG_PATH = Path(__file__).with_name("permit_scrapers.ini")
+_CACHE_GEOCODER: JsonGeocoder | None = None
 
 
 @dataclass(frozen=True)
@@ -129,6 +131,13 @@ def should_skip_exhausted_stream(stream_state: dict, *, now: datetime, cooldown_
     return (now - finished_at) < timedelta(hours=cooldown_hours)
 
 
+def get_cache_geocoder() -> JsonGeocoder:
+    global _CACHE_GEOCODER
+    if _CACHE_GEOCODER is None:
+        _CACHE_GEOCODER = JsonGeocoder()
+    return _CACHE_GEOCODER
+
+
 def sync_address_from_record(
     dataset_name: str,
     record: PermitRecord,
@@ -161,6 +170,14 @@ def sync_address_from_record(
         address_record.last_seen_at = when_iso
         address_record.last_changed_at = when_iso
         address_record.data_hash = address_record.compute_data_hash()
+
+    if not (address_record.latitude and address_record.longitude):
+        cache_geocoder = get_cache_geocoder()
+        if cache_geocoder.apply_cached_result(address_record):
+            address_record.geocode_status = "success"
+            address_record.geocode_error = ""
+            address_record.last_changed_at = when_iso
+            address_record.data_hash = address_record.compute_data_hash()
 
     address_records[address_record.address_id] = address_record
     record.latitude = address_record.latitude

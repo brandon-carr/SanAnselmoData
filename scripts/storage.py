@@ -50,23 +50,41 @@ class JsonPermitStore:
         addresses_path: str = "data/addresses.json",
         address_history_path: str = "data/address_history.json",
         all_permits_view_path: str = "data/all_permits_view.json",
+        permits_view_path: str = "data/permits_view.json",
+        violations_view_path: str = "data/violations_view.json",
+        inspections_view_path: str = "data/inspections_view.json",
         published_addresses_path: str = "web/data/addresses.json",
         published_all_permits_view_path: str = "web/data/all_permits_view.json",
+        published_permits_view_path: str = "web/data/permits_view.json",
+        published_violations_view_path: str = "web/data/violations_view.json",
+        published_inspections_view_path: str = "web/data/inspections_view.json",
         published_site_config_path: str = "web/data/site_config.json",
     ) -> None:
         self.dataset_configs = dataset_configs or DEFAULT_PERMIT_DATASETS
         self.addresses_path = Path(addresses_path)
         self.address_history_path = Path(address_history_path)
         self.all_permits_view_path = Path(all_permits_view_path)
+        self.permits_view_path = Path(permits_view_path)
+        self.violations_view_path = Path(violations_view_path)
+        self.inspections_view_path = Path(inspections_view_path)
         self.published_addresses_path = Path(published_addresses_path)
         self.published_all_permits_view_path = Path(published_all_permits_view_path)
+        self.published_permits_view_path = Path(published_permits_view_path)
+        self.published_violations_view_path = Path(published_violations_view_path)
+        self.published_inspections_view_path = Path(published_inspections_view_path)
         self.published_site_config_path = Path(published_site_config_path)
 
         self.addresses_path.parent.mkdir(parents=True, exist_ok=True)
         self.address_history_path.parent.mkdir(parents=True, exist_ok=True)
         self.all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.violations_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.inspections_view_path.parent.mkdir(parents=True, exist_ok=True)
         self.published_addresses_path.parent.mkdir(parents=True, exist_ok=True)
         self.published_all_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_permits_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_violations_view_path.parent.mkdir(parents=True, exist_ok=True)
+        self.published_inspections_view_path.parent.mkdir(parents=True, exist_ok=True)
         self.published_site_config_path.parent.mkdir(parents=True, exist_ok=True)
 
         for config in self.dataset_configs.values():
@@ -145,26 +163,108 @@ class JsonPermitStore:
         for dataset_name, records in permit_groups.items():
             self.save_permits(dataset_name, records)
 
-    def save_all_permits_view(self, permit_groups: Dict[str, Dict[str, PermitRecord]]) -> None:
-        payload = []
+    def _flatten_permit_groups(self, permit_groups: Dict[str, Dict[str, PermitRecord]]) -> List[dict]:
+        payload: List[dict] = []
         for dataset_name in self.dataset_names():
             records = permit_groups.get(dataset_name, {})
             for permit in records.values():
                 item = permit.to_dict()
                 if not item.get("record_type"):
                     item["record_type"] = dataset_name
+                item["record_id"] = f"{item['record_type']}:{item.get('permit_number', '')}"
                 payload.append(item)
+
+                if dataset_name != "building":
+                    continue
+
+                for inspection in permit.inspections:
+                    inspection_item = {
+                        "record_id": f"inspection:{inspection.record_id}",
+                        "record_type": "inspection",
+                        "parent_record_type": dataset_name,
+                        "parent_permit_number": permit.permit_number,
+                        "permit_number": permit.permit_number,
+                        "status": inspection.result or permit.status,
+                        "permit_type": inspection.inspection_type,
+                        "subtype": "",
+                        "short_description": inspection.notes or inspection.remarks or permit.short_description,
+                        "address": permit.address,
+                        "city_state_zip": permit.city_state_zip,
+                        "address_id": permit.address_id,
+                        "apn": permit.apn,
+                        "property_type": permit.property_type,
+                        "lot_size_sf": permit.lot_size_sf,
+                        "applied_date": permit.applied_date,
+                        "approved_date": permit.approved_date,
+                        "issued_date": permit.issued_date,
+                        "finaled_date": permit.finaled_date,
+                        "expiration_date": permit.expiration_date,
+                        "source_url": permit.source_url,
+                        "latitude": permit.latitude,
+                        "longitude": permit.longitude,
+                        "geocoded_address": permit.geocoded_address,
+                        "geocode_source": permit.geocode_source,
+                        "geocode_status": permit.geocode_status,
+                        "geocode_error": permit.geocode_error,
+                        "geocode_attempts": permit.geocode_attempts,
+                        "geocode_last_attempt_at": permit.geocode_last_attempt_at,
+                        "first_seen_at": permit.first_seen_at,
+                        "last_seen_at": permit.last_seen_at,
+                        "last_changed_at": permit.last_changed_at,
+                        "inspection_record_id": inspection.record_id,
+                        "inspection_type": inspection.inspection_type,
+                        "result": inspection.result,
+                        "scheduled_date": inspection.scheduled_date,
+                        "scheduled_time": inspection.scheduled_time,
+                        "completed_date": inspection.completed_date,
+                        "completed_time": inspection.completed_time,
+                        "inspector": inspection.inspector,
+                        "remarks": inspection.remarks,
+                        "notes": inspection.notes,
+                        "extra": dict(inspection.extra or {}),
+                    }
+                    payload.append(inspection_item)
 
         payload.sort(
             key=lambda item: (
-                str(item.get("issued_date") or ""),
+                str(item.get("scheduled_date") or item.get("completed_date") or item.get("issued_date") or ""),
                 str(item.get("record_type") or ""),
                 str(item.get("permit_number") or ""),
+                str(item.get("inspection_record_id") or ""),
             ),
             reverse=True,
         )
+        return payload
+
+    def save_all_permits_view(self, permit_groups: Dict[str, Dict[str, PermitRecord]]) -> None:
+        payload = self._flatten_permit_groups(permit_groups)
+
         self._write_json(self.all_permits_view_path, payload)
         self._write_json(self.published_all_permits_view_path, payload)
+        self._write_json(
+            self.permits_view_path,
+            [item for item in payload if item.get("record_type") in {"building", "planning"}],
+        )
+        self._write_json(
+            self.published_permits_view_path,
+            [item for item in payload if item.get("record_type") in {"building", "planning"}],
+        )
+        self._write_json(
+            self.violations_view_path,
+            [item for item in payload if item.get("record_type") == "violations"],
+        )
+        self._write_json(
+            self.published_violations_view_path,
+            [item for item in payload if item.get("record_type") == "violations"],
+        )
+        self._write_json(
+            self.inspections_view_path,
+            [item for item in payload if item.get("record_type") == "inspection"],
+        )
+        self._write_json(
+            self.published_inspections_view_path,
+            [item for item in payload if item.get("record_type") == "inspection"],
+        )
 
     def load_addresses(self) -> Dict[str, AddressRecord]:
         payload = self._read_json(self.addresses_path, {})

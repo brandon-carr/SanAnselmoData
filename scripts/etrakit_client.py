@@ -12,7 +12,7 @@ import requests
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 
-from permit_model import normalize_str
+from permit_model import InspectionRecord, normalize_str
 
 load_dotenv(override=True)
 
@@ -717,6 +717,7 @@ class ETrakitClient:
             text_nodes,
             record_number_labels,
         )
+        inspections = self._parse_inspections_from_detail_html(soup, permit_number)
 
         fields = {
             "permit_number": permit_number,
@@ -735,6 +736,7 @@ class ETrakitClient:
             "finaled_date": find_after(["Finaled Date:", "Finaled Date", "Closed:", "Closed"]),
             "expiration_date": find_after(["Expiration Date:", "Expiration Date", "Expired:", "Expired"]),
             "source_url": detail_url,
+            "inspections": [item.to_dict() for item in inspections],
             "extra": {
                 "officer": find_after(["Officer:", "Officer"]),
                 "referred_by": find_after(["Referred By:", "Referred By"]),
@@ -751,6 +753,126 @@ class ETrakitClient:
             raise ETrakitError(f"Could not extract activity number from {detail_url}")
 
         return fields
+
+    def _normalize_header_key(self, value: str) -> str:
+        return re.sub(r"[^a-z0-9]+", "", normalize_str(value).lower())
+
+    def _parse_inspection_datetime_value(self, value: str) -> tuple[str, str]:
+        text = normalize_str(value)
+        if not text:
+            return "", ""
+
+        match = re.match(r"^(\d{1,2}/\d{1,2}/\d{4})(?:\s+(.*))?$", text)
+        if match:
+            return match.group(1), normalize_str(match.group(2))
+
+        return "", text
+
+    def _parse_inspection_detail_html(self, html: str) -> Dict[str, str]:
+        soup = BeautifulSoup(html, "html.parser")
+
+        def value_for(span_id: str) -> str:
+            node = soup.find(id=span_id)
+            if not node:
+                return ""
+            return normalize_str(node.get_text(" ", strip=True))
+
+        notes_node = soup.find(id="divNotes")
+        return {
+            "inspection_type": value_for("lblInspectionType"),
+            "result": value_for("lblResult"),
+            "scheduled_date": value_for("lblSchedDate"),
+            "scheduled_time": value_for("lblSchedTime"),
+            "completed_date": value_for("lblCompDate"),
+            "completed_time": value_for("lblCompTime"),
+            "inspector": value_for("lblInspector"),
+            "remarks": value_for("lblRemarks"),
+            "notes": normalize_str(notes_node.get_text("\n", strip=True)) if notes_node else "",
+        }
+
+    def fetch_inspection_detail(
+        self,
+        *,
+        permit_number: str,
+        record_id: str,
+    ) -> Dict[str, str]:
+        detail_url = urljoin(
+            self.config.base_url,
+            f"moreinfo/inspectionInfo.aspx?Group=PERMIT&ActivityNo={permit_number}&RecordID={record_id}",
+        )
+        response = self._ensure_logged_in_for_url(detail_url)
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Inspection detail page failed: {response.status_code} for {response.url}"
+            )
+        return self._parse_inspection_detail_html(response.text)
+
+    def _extract_record_id_from_more_info(self, row: BeautifulSoup) -> str:
+        link = row.find("a", string=re.compile(r"More Info", re.IGNORECASE))
+        if not link:
+            return ""
+
+        onclick = str(link.get("onclick", ""))
+        quoted_values = re.findall(r"'([^']*)'", onclick)
+        if len(quoted_values) >= 4:
+            return normalize_str(quoted_values[3])
+
+        match = re.search(r"RecordID=([^&'\" ]+)", onclick, re.IGNORECASE)
+        if match:
+            return normalize_str(match.group(1))
+
+        href = str(link.get("href", ""))
+        match = re.search(r"RecordID=([^&'\" ]+)", href, re.IGNORECASE)
+        if match:
+            return normalize_str(match.group(1))
+        return ""
+
+    def _parse_inspections_from_detail_html(self, soup: BeautifulSoup, permit_number: str = "") -> List[InspectionRecord]:
+        inspections: List[InspectionRecord] = []
+        grid = soup.find(id=re.compile(r"rgInspectionInfo_GridData$"))
+        if not grid:
+            return inspections
+
+        table = grid.find("table")
+        if not table:
+            return inspections
+
+        seen_ids = set()
+        tbody = table.find("tbody") or table
+        for row in tbody.find_all("tr", recursive=False):
+            cells = row.find_all("td", recursive=False)
+            if len(cells) < 7:
+                continue
+
+            record_id = self._extract_record_id_from_more_info(row)
+            if not record_id or record_id in seen_ids:
+                continue
+
+            scheduled_cell = cells[2]
+            scheduled_link = scheduled_cell.find("a")
+            scheduled_text = normalize_str(scheduled_cell.get_text(" ", strip=True))
+            scheduled_date = ""
+            if scheduled_link and normalize_str(scheduled_link.get_text(" ", strip=True)).lower() == "schedule":
+                scheduled_date = ""
+            else:
+                scheduled_date = scheduled_text
+
+            item = {
+                "record_id": record_id,
+                "parent_permit_number": permit_number,
+                "inspection_type": normalize_str(cells[0].get_text(" ", strip=True)),
+                "result": normalize_str(cells[1].get_text(" ", strip=True)),
+                "scheduled_date": scheduled_date,
+                "scheduled_time": normalize_str(cells[3].get_text(" ", strip=True)),
+                "completed_date": normalize_str(cells[4].get_text(" ", strip=True)),
+                "completed_time": normalize_str(cells[5].get_text(" ", strip=True)),
+            }
+
+            inspection = InspectionRecord.from_fields(item)
+            seen_ids.add(record_id)
+            inspections.append(inspection)
+
+        return inspections
 
     def fetch_activity_details(
         self,
@@ -816,6 +938,34 @@ class ETrakitClient:
             address_labels=["Address", "Address:"],
             status_labels=["Status", "Status:"],
         )
+
+    def fetch_existing_inspection_activity_numbers(self, inspections_url: str) -> List[str]:
+        response = self._ensure_logged_in_for_url(inspections_url)
+        if response.status_code >= 400:
+            raise ETrakitError(
+                f"Existing inspections page failed: {response.status_code} for {response.url}"
+            )
+
+        soup = BeautifulSoup(response.text, "html.parser")
+        activity_numbers: List[str] = []
+        seen = set()
+        for link in soup.find_all("a", href=True):
+            href = link.get("href", "")
+            text = normalize_str(link.get_text(" ", strip=True)).upper()
+            match = re.search(r"ActivityNo=([A-Z]+?\d{4}-\d{4,})", href, re.IGNORECASE)
+            if match:
+                activity_number = match.group(1).upper()
+            elif re.fullmatch(r"[A-Z]+?\d{4}-\d{4,}", text):
+                activity_number = text
+            else:
+                continue
+
+            if activity_number in seen:
+                continue
+            seen.add(activity_number)
+            activity_numbers.append(activity_number)
+
+        return activity_numbers
 
     def _extract_activity_number(
         self,

@@ -112,6 +112,16 @@ class JsonGeocoder:
     def geocode_address(self, record: AddressRecord) -> AddressRecord:
         return self._geocode(record)
 
+    def apply_cached_result(self, record: PermitRecord | AddressRecord) -> bool:
+        for query in self._build_queries(record):
+            cached = self.cache.get(self._cache_key(query))
+            if not cached:
+                continue
+            if normalize_str(cached.get("latitude")) and normalize_str(cached.get("longitude")):
+                self._apply_result(record, cached)
+                return True
+        return False
+
     def _geocode(self, record: PermitRecord | AddressRecord):
         if not self.config.enabled:
             return record

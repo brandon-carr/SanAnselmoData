@@ -3,7 +3,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from hashlib import sha256
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 
 def utc_now_iso() -> str:
@@ -122,6 +122,53 @@ def build_address_id(address: Any, city_state_zip: Any) -> str:
     return sha256(repr(sorted(canonical.items())).encode("utf-8")).hexdigest()[:16]
 
 
+def normalize_inspection_field(value: Any) -> str:
+    return normalize_display_text(value)
+
+
+@dataclass
+class InspectionRecord:
+    record_id: str = ""
+    parent_permit_number: str = ""
+    inspection_type: str = ""
+    result: str = ""
+    scheduled_date: str = ""
+    scheduled_time: str = ""
+    completed_date: str = ""
+    completed_time: str = ""
+    inspector: str = ""
+    remarks: str = ""
+    notes: str = ""
+    extra: Dict[str, Any] = field(default_factory=dict)
+
+    @classmethod
+    def from_fields(cls, fields: Dict[str, Any]) -> "InspectionRecord":
+        payload = {
+            "record_id": normalize_str(fields.get("record_id") or fields.get("RecordID")),
+            "parent_permit_number": normalize_str(fields.get("parent_permit_number")).upper(),
+            "inspection_type": normalize_inspection_field(fields.get("inspection_type")),
+            "result": normalize_inspection_field(fields.get("result")),
+            "scheduled_date": normalize_str(fields.get("scheduled_date")),
+            "scheduled_time": normalize_inspection_field(fields.get("scheduled_time")),
+            "completed_date": normalize_str(fields.get("completed_date")),
+            "completed_time": normalize_inspection_field(fields.get("completed_time")),
+            "inspector": normalize_inspection_field(fields.get("inspector")),
+            "remarks": normalize_inspection_field(fields.get("remarks")),
+            "notes": normalize_inspection_field(fields.get("notes")),
+            "extra": fields.get("extra", {}) or {},
+        }
+        if not payload["record_id"]:
+            raise ValueError("inspection record_id is required")
+        return cls(**payload)
+
+    @classmethod
+    def from_dict(cls, payload: Dict[str, Any]) -> "InspectionRecord":
+        return cls.from_fields(payload)
+
+    def to_dict(self) -> Dict[str, Any]:
+        return asdict(self)
+
+
 @dataclass
 class PermitRecord:
     permit_number: str
@@ -159,6 +206,7 @@ class PermitRecord:
     last_seen_at: str = ""
     last_changed_at: str = ""
     data_hash: str = ""
+    inspections: List[InspectionRecord] = field(default_factory=list)
 
     extra: Dict[str, Any] = field(default_factory=dict)
 
@@ -195,6 +243,19 @@ class PermitRecord:
             geocode_error=normalize_str(fields.get("geocode_error")),
             geocode_attempts=int(fields.get("geocode_attempts", 0) or 0),
             geocode_last_attempt_at=normalize_str(fields.get("geocode_last_attempt_at")),
+            inspections=[
+                (
+                    item
+                    if isinstance(item, InspectionRecord)
+                    else InspectionRecord.from_dict(
+                        {
+                            **item,
+                            "parent_permit_number": item.get("parent_permit_number") or permit_number,
+                        }
+                    )
+                )
+                for item in (fields.get("inspections") or [])
+            ],
             extra=fields.get("extra", {}) or {},
         )
 
@@ -235,6 +296,7 @@ class PermitRecord:
             "geocode_error": self.geocode_error,
             "geocode_attempts": self.geocode_attempts,
             "geocode_last_attempt_at": self.geocode_last_attempt_at,
+            "inspections": [item.to_dict() for item in self.inspections],
             "extra": self.extra,
         }
         return sha256(repr(sorted(meaningful.items())).encode("utf-8")).hexdigest()
@@ -253,6 +315,19 @@ class PermitRecord:
         payload["subtype"] = normalize_permit_label(payload.get("subtype"))
         payload["short_description"] = normalize_display_text(payload.get("short_description"))
         payload["property_type"] = normalize_display_text(payload.get("property_type"))
+        payload["inspections"] = [
+            (
+                item
+                if isinstance(item, InspectionRecord)
+                else InspectionRecord.from_dict(
+                    {
+                        **item,
+                        "parent_permit_number": item.get("parent_permit_number") or payload.get("permit_number"),
+                    }
+                )
+            )
+            for item in (payload.get("inspections") or [])
+        ]
         record = cls(**payload)
         return record
 
@@ -286,6 +361,8 @@ class PermitRecord:
         old_hash = self.data_hash
         if not new_record.address_id:
             new_record.address_id = build_address_id(new_record.address, new_record.city_state_zip)
+        if not new_record.inspections and self.inspections:
+            new_record.inspections = list(self.inspections)
         new_hash = new_record.compute_data_hash()
 
         if old_hash == new_hash:
