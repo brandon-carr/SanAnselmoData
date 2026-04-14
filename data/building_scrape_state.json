@@ -1,21 +1,21 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-04-14T18:10:10+00:00",
-  "last_run_started_at": "2026-04-14T18:10:04+00:00",
+  "last_run_finished_at": "2026-04-14T18:20:28+00:00",
+  "last_run_started_at": "2026-04-14T18:20:20+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
       "B": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 101,
+        "found": 3,
+        "new": 3,
+        "next_sequence": 150,
         "prefix": "B",
         "requested_batch_size": 50,
-        "start_sequence": 51,
-        "stopped_at_missing": "",
-        "unchanged": 50,
+        "start_sequence": 101,
+        "stopped_at_missing": "B2026-0150",
+        "unchanged": 46,
         "year": 2026
       },
       "E": {
@@ -218,23 +218,23 @@
   "streams": {
     "B": {
       "errors": [],
-      "exhausted": false,
-      "last_run_finished_at": "2026-04-14T18:10:10+00:00",
-      "last_run_started_at": "2026-04-14T18:10:08+00:00",
+      "exhausted": true,
+      "last_run_finished_at": "2026-04-14T18:20:28+00:00",
+      "last_run_started_at": "2026-04-14T18:20:24+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 101,
+        "found": 3,
+        "new": 3,
+        "next_sequence": 150,
         "prefix": "B",
         "requested_batch_size": 50,
-        "start_sequence": 51,
-        "stopped_at_missing": "",
-        "unchanged": 50,
+        "start_sequence": 101,
+        "stopped_at_missing": "B2026-0150",
+        "unchanged": 46,
         "year": 2026
       },
-      "next_sequence": 101
+      "next_sequence": 150
     },
     "E": {
       "errors": [],
@@ -864,23 +864,23 @@
     "2026": {
       "B": {
         "errors": [],
-        "exhausted": false,
-        "last_run_finished_at": "2026-04-14T18:10:10+00:00",
-        "last_run_started_at": "2026-04-14T18:10:08+00:00",
+        "exhausted": true,
+        "last_run_finished_at": "2026-04-14T18:20:28+00:00",
+        "last_run_started_at": "2026-04-14T18:20:24+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
-          "found": 0,
-          "new": 0,
-          "next_sequence": 101,
+          "found": 3,
+          "new": 3,
+          "next_sequence": 150,
           "prefix": "B",
           "requested_batch_size": 50,
-          "start_sequence": 51,
-          "stopped_at_missing": "",
-          "unchanged": 50,
+          "start_sequence": 101,
+          "stopped_at_missing": "B2026-0150",
+          "unchanged": 46,
           "year": 2026
         },
-        "next_sequence": 101
+        "next_sequence": 150
       },
       "E": {
         "errors": [],
