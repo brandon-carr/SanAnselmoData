@@ -1,0 +1,88 @@
+name: Scrape San Anselmo inspections
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 13 * * *"
+
+jobs:
+  scrape_inspections:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    env:
+      ETRAKIT_USERNAME: ${{ secrets.ETRAKIT_USERNAME }}
+      ETRAKIT_PASSWORD: ${{ secrets.ETRAKIT_PASSWORD }}
+
+      ETRAKIT_DEBUG: "true"
+      ETRAKIT_DEBUG_DIR: data/debug
+
+      ETRAKIT_BASE_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+      ETRAKIT_LOGIN_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+
+      ETRAKIT_USERNAME_FIELD: ctl00$MainContent$txtUserName
+      ETRAKIT_PASSWORD_FIELD: ctl00$MainContent$txtPassword
+      ETRAKIT_LOGIN_BUTTON_FIELD: ctl00$MainContent$btnLogin
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Validate secrets
+        run: |
+          if [ -z "$ETRAKIT_USERNAME" ]; then echo "Missing username"; exit 1; fi
+          if [ -z "$ETRAKIT_PASSWORD" ]; then echo "Missing password"; exit 1; fi
+
+      - name: Run inspections scrape
+        run: |
+          python scripts/scrape_inspections.py
+
+      - name: Upload debug artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: etrakit-inspections-debug
+          path: |
+            data/debug/**
+            data/*.json
+            web/data/*.json
+          if-no-files-found: ignore
+
+      - name: Commit updated inspection data
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for file in \
+            data/building_permits.json \
+            data/building_permit_history.json \
+            data/building_scrape_state.json \
+            data/all_permits_view.json \
+            data/permits_view.json \
+            data/inspections_view.json \
+            data/addresses.json \
+            data/address_history.json \
+            web/data/building_permit_history.json \
+            web/data/all_permits_view.json \
+            web/data/permits_view.json \
+            web/data/inspections_view.json \
+            web/data/addresses.json
+          do
+            if [ -f "$file" ]; then
+              git add -f "$file"
+            fi
+          done
+
+          git diff --cached --quiet || git commit -m "Scrape inspections"
+          git push
