@@ -6,7 +6,8 @@
     "Finaled",
     "Void",
     "Withdrawn",
-    "Town Resolved"
+    "Town Resolved",
+    "Denied"
   ],
   "show_left_cards": false
 }
