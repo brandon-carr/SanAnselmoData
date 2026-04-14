@@ -75992,11 +75992,7 @@
       "referred_by": ""
     },
     "finaled_date": "",
-<<<<<<< HEAD
     "first_seen_at": "2026-04-14T18:08:07+00:00",
-=======
-    "first_seen_at": "2026-04-14T17:55:48+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "geocode_attempts": 1,
     "geocode_error": "",
     "geocode_last_attempt_at": "2026-04-12T20:24:05+00:00",
@@ -76076,13 +76072,8 @@
       }
     ],
     "issued_date": "",
-<<<<<<< HEAD
     "last_changed_at": "2026-04-14T18:08:07+00:00",
     "last_seen_at": "2026-04-14T18:08:07+00:00",
-=======
-    "last_changed_at": "2026-04-14T17:55:48+00:00",
-    "last_seen_at": "2026-04-14T17:55:48+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "latitude": "37.9756918",
     "longitude": "-122.5770030",
     "lot_size_sf": "7500",
@@ -76113,11 +76104,7 @@
       "referred_by": ""
     },
     "finaled_date": "",
-<<<<<<< HEAD
     "first_seen_at": "2026-04-14T18:08:07+00:00",
-=======
-    "first_seen_at": "2026-04-14T17:55:49+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "geocode_attempts": 3,
     "geocode_error": "No geocode match returned",
     "geocode_last_attempt_at": "2026-04-12T18:42:42+00:00",
@@ -76197,13 +76184,8 @@
       }
     ],
     "issued_date": "",
-<<<<<<< HEAD
     "last_changed_at": "2026-04-14T18:08:07+00:00",
     "last_seen_at": "2026-04-14T18:08:07+00:00",
-=======
-    "last_changed_at": "2026-04-14T17:55:49+00:00",
-    "last_seen_at": "2026-04-14T17:55:49+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "latitude": "",
     "longitude": "",
     "lot_size_sf": "7085",
@@ -76234,11 +76216,7 @@
       "referred_by": ""
     },
     "finaled_date": "",
-<<<<<<< HEAD
     "first_seen_at": "2026-04-14T18:08:09+00:00",
-=======
-    "first_seen_at": "2026-04-14T17:55:50+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "geocode_attempts": 0,
     "geocode_error": "",
     "geocode_last_attempt_at": "",
@@ -76318,13 +76296,8 @@
       }
     ],
     "issued_date": "",
-<<<<<<< HEAD
     "last_changed_at": "2026-04-14T18:08:09+00:00",
     "last_seen_at": "2026-04-14T18:08:09+00:00",
-=======
-    "last_changed_at": "2026-04-14T17:55:50+00:00",
-    "last_seen_at": "2026-04-14T17:55:50+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "latitude": "",
     "longitude": "",
     "lot_size_sf": "5300",
@@ -101617,11 +101590,7 @@
       "referred_by": ""
     },
     "finaled_date": "",
-<<<<<<< HEAD
     "first_seen_at": "2026-04-14T18:08:13+00:00",
-=======
-    "first_seen_at": "2026-04-14T17:56:15+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "geocode_attempts": 3,
     "geocode_error": "No geocode match returned",
     "geocode_last_attempt_at": "2026-04-12T18:42:42+00:00",
@@ -101701,13 +101670,8 @@
       }
     ],
     "issued_date": "",
-<<<<<<< HEAD
     "last_changed_at": "2026-04-14T18:08:13+00:00",
     "last_seen_at": "2026-04-14T18:08:13+00:00",
-=======
-    "last_changed_at": "2026-04-14T17:56:15+00:00",
-    "last_seen_at": "2026-04-14T17:56:15+00:00",
->>>>>>> 1d9682adf7606c08b0812e47b918aee408d8229b
     "latitude": "",
     "longitude": "",
     "lot_size_sf": "7085",
