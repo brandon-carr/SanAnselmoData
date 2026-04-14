@@ -2,6 +2,9 @@ name: Scrape San Anselmo building permits
 
 on:
   workflow_dispatch:
+  schedule:
+    # 6:30 AM PDT (13:30 UTC)
+    - cron: "30 13 * * *"
 
 jobs:
   scrape_building:

@@ -2,6 +2,9 @@ name: Scrape San Anselmo violations
 
 on:
   workflow_dispatch:
+  schedule:
+    # 6:40 AM PDT (13:40 UTC)
+    - cron: "40 13 * * *"
 
 jobs:
   scrape_violations:

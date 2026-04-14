@@ -3,7 +3,8 @@ name: Scrape San Anselmo inspections
 on:
   workflow_dispatch:
   schedule:
-    - cron: "15 13 * * *"
+    # 6:45 AM PDT (13:45 UTC)
+    - cron: "45 13 * * *"
 
 jobs:
   scrape_inspections:
