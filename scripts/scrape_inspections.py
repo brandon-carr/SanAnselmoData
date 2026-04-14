@@ -29,6 +29,17 @@ def activity_prefix(activity_number: str) -> str:
     return match.group(1) if match else ""
 
 
+def print_prefix_summaries(prefix_summaries: dict[str, dict]) -> None:
+    print("FINAL PREFIX SUMMARY dataset=inspections")
+    for prefix in sorted(prefix_summaries):
+        summary = prefix_summaries[prefix]
+        print(
+            f"- prefix={prefix} targeted={summary.get('targeted', 0)} "
+            f"new={summary.get('new', 0)} changed={summary.get('changed', 0)} "
+            f"unchanged={summary.get('unchanged', 0)} errors={summary.get('errors', 0)}"
+        )
+
+
 def main() -> int:
     dataset_name = "building"
     config = load_stream_config(dataset_name)
@@ -73,8 +84,15 @@ def main() -> int:
     changed_count = 0
     unchanged_count = 0
     error_count = 0
+    prefix_summaries: dict[str, dict] = {}
 
     for activity_number in target_numbers:
+        prefix = activity_prefix(activity_number) or "UNKNOWN"
+        summary = prefix_summaries.setdefault(
+            prefix,
+            {"targeted": 0, "new": 0, "changed": 0, "unchanged": 0, "errors": 0},
+        )
+        summary["targeted"] += 1
         try:
             fields = client.fetch_activity_details_by_number(
                 config.detail_base_url,
@@ -86,6 +104,7 @@ def main() -> int:
             )
             if not fields:
                 error_count += 1
+                summary["errors"] += 1
                 print(f"FAILED {activity_number}: permit detail not found")
                 continue
 
@@ -125,12 +144,16 @@ def main() -> int:
 
             if is_new:
                 new_count += 1
+                summary["new"] += 1
             elif changed:
                 changed_count += 1
+                summary["changed"] += 1
             else:
                 unchanged_count += 1
+                summary["unchanged"] += 1
         except Exception as exc:
             error_count += 1
+            summary["errors"] += 1
             print(f"FAILED {activity_number}: {exc}")
 
     hydrate_permits_from_addresses(permit_records, address_records)
@@ -143,6 +166,7 @@ def main() -> int:
         f"- processed {len(target_numbers)} building permits from today's inspections: "
         f"new={new_count} changed={changed_count} unchanged={unchanged_count} errors={error_count}"
     )
+    print_prefix_summaries(prefix_summaries)
     return 0 if error_count == 0 else 1
 
 

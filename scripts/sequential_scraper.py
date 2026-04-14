@@ -99,12 +99,41 @@ def default_dataset_state(year: int, batch_size: int) -> dict:
         "year": year,
         "batch_size": batch_size,
         "streams": {},
+        "year_streams": {},
         "last_run_started_at": "",
         "last_run_finished_at": "",
         "last_run_status": "",
         "last_summary": {},
         "errors": [],
     }
+
+
+def normalize_dataset_state(state: dict, *, year: int, batch_size: int) -> dict:
+    if not isinstance(state, dict):
+        return default_dataset_state(year, batch_size)
+
+    normalized = default_dataset_state(
+        int(state.get("year") or year),
+        int(state.get("batch_size") or batch_size),
+    )
+    normalized.update(state)
+
+    raw_year_streams = normalized.get("year_streams")
+    year_streams = raw_year_streams if isinstance(raw_year_streams, dict) else {}
+
+    raw_streams = normalized.get("streams")
+    streams = raw_streams if isinstance(raw_streams, dict) else {}
+    legacy_year = int(normalized.get("year") or year)
+    legacy_year_key = str(legacy_year)
+
+    if streams and legacy_year_key not in year_streams:
+        year_streams[legacy_year_key] = streams
+
+    normalized["year_streams"] = year_streams
+    normalized["streams"] = year_streams.get(str(year), {})
+    normalized["year"] = year
+    normalized["batch_size"] = batch_size
+    return normalized
 
 
 def parse_iso_datetime(value: str) -> datetime | None:
@@ -136,6 +165,29 @@ def get_cache_geocoder() -> JsonGeocoder:
     if _CACHE_GEOCODER is None:
         _CACHE_GEOCODER = JsonGeocoder()
     return _CACHE_GEOCODER
+
+
+def print_prefix_summaries(dataset_name: str, prefixes: List[str], prefix_summaries: Dict[str, dict]) -> None:
+    print(f"FINAL PREFIX SUMMARY dataset={dataset_name}")
+    for prefix in prefixes:
+        summary = prefix_summaries.get(prefix)
+        if not summary:
+            print(f"- prefix={prefix} status=not_run")
+            continue
+
+        if summary.get("skipped_recently_exhausted"):
+            print(
+                f"- prefix={prefix} skipped_recently_exhausted=true "
+                f"next={build_activity_number(prefix, int(summary.get('year') or 0), int(summary.get('next_sequence') or 1))}"
+            )
+            continue
+
+        print(
+            f"- prefix={prefix} year={summary.get('year')} found={summary.get('found', 0)} "
+            f"new={summary.get('new', 0)} changed={summary.get('changed', 0)} "
+            f"unchanged={summary.get('unchanged', 0)} next={summary.get('next_sequence', 1)} "
+            f"stopped_at_missing={summary.get('stopped_at_missing', '') or 'none'}"
+        )
 
 
 def sync_address_from_record(
@@ -209,19 +261,28 @@ def run_dataset(dataset_name: str) -> int:
     config = load_stream_config(dataset_name)
     store = JsonPermitStore()
     store.save_site_config(load_site_config())
-    state = store.load_scrape_state(dataset_name)
+    state = normalize_dataset_state(
+        store.load_scrape_state(dataset_name),
+        year=config.year,
+        batch_size=config.batch_size,
+    )
     permit_records = store.load_permits(dataset_name)
     address_records = store.load_addresses()
 
-    if (
-        int(state.get("year") or 0) != config.year
-        or int(state.get("batch_size") or 0) != config.batch_size
-        or not isinstance(state.get("streams"), dict)
-    ):
-        state = default_dataset_state(config.year, config.batch_size)
-
     if not permit_records:
         state = default_dataset_state(config.year, config.batch_size)
+        state["year_streams"][str(config.year)] = state["streams"]
+
+    current_year_key = str(config.year)
+    year_streams = state.get("year_streams")
+    if not isinstance(year_streams, dict):
+        year_streams = {}
+        state["year_streams"] = year_streams
+    current_streams = year_streams.get(current_year_key)
+    if not isinstance(current_streams, dict):
+        current_streams = {}
+        year_streams[current_year_key] = current_streams
+    state["streams"] = current_streams
 
     state["last_run_started_at"] = utc_now_iso()
     state["last_run_status"] = "running"
@@ -241,7 +302,7 @@ def run_dataset(dataset_name: str) -> int:
     now_utc = datetime.now(timezone.utc)
 
     for prefix in config.prefixes:
-        stream_state = state["streams"].get(prefix, default_stream_state())
+        stream_state = current_streams.get(prefix, default_stream_state())
         if should_skip_exhausted_stream(stream_state, now=now_utc):
             prefix_summaries[prefix] = {
                 "prefix": prefix,
@@ -262,7 +323,7 @@ def run_dataset(dataset_name: str) -> int:
                 f"SKIPPED dataset={dataset_name} prefix={prefix} "
                 f"reason=recently_exhausted next={build_activity_number(prefix, config.year, int(stream_state.get('next_sequence') or 1))}"
             )
-            state["streams"][prefix] = stream_state
+            current_streams[prefix] = stream_state
             continue
 
         next_sequence = int(stream_state.get("next_sequence") or 1)
@@ -276,7 +337,7 @@ def run_dataset(dataset_name: str) -> int:
         stream_state["last_run_started_at"] = utc_now_iso()
         stream_state["last_run_status"] = "running"
         stream_state["errors"] = []
-        state["streams"][prefix] = stream_state
+        current_streams[prefix] = stream_state
         store.save_scrape_state(dataset_name, state)
 
         found_count = 0
@@ -287,6 +348,10 @@ def run_dataset(dataset_name: str) -> int:
         stop_at_sequence: int | None = None
 
         for sequence, activity_number in enumerate(activity_numbers, start=next_sequence):
+            if activity_number in permit_records:
+                unchanged_count += 1
+                continue
+
             try:
                 fields = client.fetch_activity_details_by_number(
                     config.detail_base_url,
@@ -362,7 +427,7 @@ def run_dataset(dataset_name: str) -> int:
             ),
         }
         stream_state["errors"] = stream_errors
-        state["streams"][prefix] = stream_state
+        current_streams[prefix] = stream_state
         prefix_summaries[prefix] = dict(stream_state["last_summary"])
         overall_errors.extend(stream_errors)
         store.save_scrape_state(dataset_name, state)
@@ -386,5 +451,6 @@ def run_dataset(dataset_name: str) -> int:
     state["last_summary"] = {"prefix_summaries": prefix_summaries}
     state["errors"] = overall_errors
     store.save_scrape_state(dataset_name, state)
+    print_prefix_summaries(dataset_name, config.prefixes, prefix_summaries)
 
     return 0
