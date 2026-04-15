@@ -1,21 +1,22 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-04-14T18:20:28+00:00",
-  "last_run_started_at": "2026-04-14T18:20:20+00:00",
+  "last_run_finished_at": "2026-04-15T14:53:58+00:00",
+  "last_run_started_at": "2026-04-15T14:53:56+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
       "B": {
         "changed": 0,
-        "found": 3,
-        "new": 3,
+        "found": 0,
+        "new": 0,
         "next_sequence": 150,
         "prefix": "B",
         "requested_batch_size": 50,
-        "start_sequence": 101,
+        "skipped_recently_exhausted": true,
+        "start_sequence": 150,
         "stopped_at_missing": "B2026-0150",
-        "unchanged": 46,
+        "unchanged": 0,
         "year": 2026
       },
       "E": {
