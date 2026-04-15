@@ -5687,6 +5687,24 @@
     "latitude": "37.9830030",
     "longitude": "-122.5770003"
   },
+  "434959c4262a24e4": {
+    "address": "340 Sir Francis Drake Blvd",
+    "address_id": "434959c4262a24e4",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "73968b99b05222dfc8947f9ecfdaca50f885559e027d92b0025007ea5f614746",
+    "extra": {},
+    "first_seen_at": "2026-04-15T14:58:47+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-15T14:58:47+00:00",
+    "last_seen_at": "2026-04-15T14:58:47+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
   "435cecd9c7d355ed": {
     "address": "6 Saunders Ave",
     "address_id": "435cecd9c7d355ed",
