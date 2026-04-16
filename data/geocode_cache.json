@@ -31,6 +31,14 @@
     "queried_at": "2026-04-12T20:43:25+00:00",
     "query": "1 Rutherford Ave, San Anselmo, CA, 94960"
   },
+  "1 s oak ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1, South Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9720070",
+    "longitude": "-122.5756620",
+    "queried_at": "2026-04-16T15:15:10+00:00",
+    "query": "1 S Oak Ave, San Anselmo, CA, 94960"
+  },
   "1 the alameda knolls, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
@@ -102,6 +110,14 @@
     "longitude": "-122.5802123",
     "queried_at": "2026-04-12T20:53:28+00:00",
     "query": "10 Hawthorne Ave, San Anselmo, CA, 94960"
+  },
+  "10 herrera ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "10, Herrera Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9926581",
+    "longitude": "-122.5800748",
+    "queried_at": "2026-04-16T15:15:20+00:00",
+    "query": "10 Herrera Ct, San Anselmo, CA, 94960"
   },
   "10 island dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -591,6 +607,14 @@
     "queried_at": "2026-04-12T19:04:53+00:00",
     "query": "11 Hawthorne Ave, San Anselmo, CA, 94960"
   },
+  "11 indian rock rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "11, Indian Rock Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9909210",
+    "longitude": "-122.5713910",
+    "queried_at": "2026-04-16T15:15:07+00:00",
+    "query": "11 Indian Rock Rd, San Anselmo, CA, 94960"
+  },
   "11 santa barbara ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "11, Santa Barbara Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -598,6 +622,14 @@
     "longitude": "-122.5663205",
     "queried_at": "2026-04-12T20:33:48+00:00",
     "query": "11 Santa Barbara Ave, San Anselmo, CA, 94960"
+  },
+  "11 sunview ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "11, Sunview Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9902630",
+    "longitude": "-122.5709110",
+    "queried_at": "2026-04-16T15:15:05+00:00",
+    "query": "11 Sunview Ave, San Anselmo, CA, 94960"
   },
   "11 timothy ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -798,6 +830,14 @@
     "longitude": "-122.5740707",
     "queried_at": "2026-04-12T19:04:44+00:00",
     "query": "114 Alder Ave, San Anselmo, CA, 94960"
+  },
+  "114 barber ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "114, Barber Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9715140",
+    "longitude": "-122.5599097",
+    "queried_at": "2026-04-16T15:15:13+00:00",
+    "query": "114 Barber Ave, San Anselmo, CA, 94960"
   },
   "114 brookside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -1078,6 +1118,14 @@
     "longitude": "-122.5618372",
     "queried_at": "2026-04-12T20:50:14+00:00",
     "query": "120 Sir Francis Drake Blvd, San Anselmo, CA, 94960"
+  },
+  "120 sturdivant ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "120, Sturdivant Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9722757",
+    "longitude": "-122.5569934",
+    "queried_at": "2026-04-16T15:15:16+00:00",
+    "query": "120 Sturdivant Ave, San Anselmo, CA, 94960"
   },
   "1208 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -1759,6 +1807,14 @@
     "queried_at": "2026-04-12T20:44:36+00:00",
     "query": "137 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "137 oak knoll ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "137, Oak Knoll Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9861822",
+    "longitude": "-122.5788555",
+    "queried_at": "2026-04-16T15:15:12+00:00",
+    "query": "137 Oak Knoll Ave, San Anselmo, CA, 94960"
+  },
   "137 saunders ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "137, Saunders Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -1975,6 +2031,14 @@
     "queried_at": "2026-04-12T18:41:10+00:00",
     "query": "14-16 Forbes Ave, San Anselmo, CA, 94960"
   },
+  "140 allyn ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "140, Allyn Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9762459",
+    "longitude": "-122.5778308",
+    "queried_at": "2026-04-16T15:15:26+00:00",
+    "query": "140 Allyn Ave, San Anselmo, CA, 94960"
+  },
   "140 hilldale dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "140, Hilldale Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -2022,6 +2086,14 @@
     "longitude": "-122.5685159",
     "queried_at": "2026-04-12T20:44:03+00:00",
     "query": "142 Calumet Ave, San Anselmo, CA, 94960"
+  },
+  "142 oak ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "142, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9691406",
+    "longitude": "-122.5705164",
+    "queried_at": "2026-04-16T15:15:09+00:00",
+    "query": "142 Oak Ave, San Anselmo, CA, 94960"
   },
   "1420 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -2271,6 +2343,14 @@
     "queried_at": "2026-04-12T18:50:43+00:00",
     "query": "15 Sturdivant Ave, San Anselmo, CA, 94960"
   },
+  "15 sunview ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "15, Sunview Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9902324",
+    "longitude": "-122.5706893",
+    "queried_at": "2026-04-16T15:15:28+00:00",
+    "query": "15 Sunview Ave, San Anselmo, CA, 94960"
+  },
   "15 valley rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "15, Valley Road, San Anselmo, Marin County, California, 94960, United States",
@@ -2399,6 +2479,14 @@
     "queried_at": "2026-04-12T20:34:30+00:00",
     "query": "152 Oak Springs Dr, San Anselmo, CA, 94960"
   },
+  "1525 san anselmo ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1525, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9830736",
+    "longitude": "-122.5770406",
+    "queried_at": "2026-04-16T15:15:21+00:00",
+    "query": "1525 San Anselmo Ave, San Anselmo, CA, 94960"
+  },
   "1529 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "1529, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -2526,6 +2614,14 @@
     "longitude": "-122.5761381",
     "queried_at": "2026-04-12T18:50:47+00:00",
     "query": "16 Arroyo Ave, San Anselmo, CA, 94960"
+  },
+  "16 blackhawk dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "16, Blackhawk Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9894737",
+    "longitude": "-122.5681690",
+    "queried_at": "2026-04-16T15:15:06+00:00",
+    "query": "16 Blackhawk Dr, San Anselmo, CA, 94960"
   },
   "16 canyon rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -3207,6 +3303,22 @@
     "queried_at": "2026-04-12T20:46:28+00:00",
     "query": "19 Fern Ln, San Anselmo, CA, 94960"
   },
+  "19 karl ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "19, Karl Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9795395",
+    "longitude": "-122.5708620",
+    "queried_at": "2026-04-16T15:15:23+00:00",
+    "query": "19 Karl Ave, San Anselmo, CA, 94960"
+  },
+  "19 library pl, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "19, Library Place, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9743752",
+    "longitude": "-122.5632267",
+    "queried_at": "2026-04-16T15:15:04+00:00",
+    "query": "19 Library Pl, San Anselmo, CA, 94960"
+  },
   "19 madrone ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "19, Madrone Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -3358,6 +3470,14 @@
     "longitude": "-122.5777300",
     "queried_at": "2026-04-12T20:44:59+00:00",
     "query": "2 Fairview Ct, San Anselmo, CA, 94960"
+  },
+  "2 florence ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Florence Avenue, San Anselmo, Marin County, California, 94930, United States",
+    "latitude": "37.9837057",
+    "longitude": "-122.5785730",
+    "queried_at": "2026-04-16T15:15:12+00:00",
+    "query": "2 Florence Ave, San Anselmo, CA, 94960"
   },
   "2 foothill rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -3854,6 +3974,14 @@
     "longitude": "-122.5693186",
     "queried_at": "2026-04-12T20:53:20+00:00",
     "query": "215 Laurel Ave, San Anselmo, CA, 94960"
+  },
+  "216 laurel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "216, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9765292",
+    "longitude": "-122.5695449",
+    "queried_at": "2026-04-16T15:15:15+00:00",
+    "query": "216 Laurel Ave, San Anselmo, CA, 94960"
   },
   "216 san francisco blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -4647,6 +4775,14 @@
     "queried_at": "2026-04-12T20:52:21+00:00",
     "query": "270 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "270 redwood rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "270, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9759444",
+    "longitude": "-122.5761455",
+    "queried_at": "2026-04-16T15:15:14+00:00",
+    "query": "270 Redwood Rd, San Anselmo, CA, 94960"
+  },
   "271 the alameda, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "271, The Alameda, San Anselmo, Marin County, California, 94960, United States",
@@ -4943,6 +5079,14 @@
     "queried_at": "2026-04-14T18:24:34+00:00",
     "query": "30 Vineyard Ave, San Anselmo, CA, 94960"
   },
+  "30 yolanda dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "30, Yolanda Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9804634",
+    "longitude": "-122.5723871",
+    "queried_at": "2026-04-16T15:15:22+00:00",
+    "query": "30 Yolanda Dr, San Anselmo, CA, 94960"
+  },
   "300 sunny hills dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
@@ -4950,6 +5094,14 @@
     "longitude": "",
     "queried_at": "2026-04-12T20:39:57+00:00",
     "query": "300 Sunny Hills Dr, San Anselmo, CA, 94960"
+  },
+  "304 bolinas ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Bolinas Avenue, Ross, Marin County, California, 94960, United States",
+    "latitude": "37.9675454",
+    "longitude": "-122.5681109",
+    "queried_at": "2026-04-16T15:15:18+00:00",
+    "query": "304 Bolinas Ave, San Anselmo, CA, 94960"
   },
   "305 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -5334,6 +5486,14 @@
     "longitude": "-122.5689320",
     "queried_at": "2026-04-12T20:39:00+00:00",
     "query": "340 Laurel Ave, San Anselmo, CA, 94960"
+  },
+  "340 sir francis drake blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "China Villa restaurant, 340, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94904, United States",
+    "latitude": "37.9760050",
+    "longitude": "-122.5614630",
+    "queried_at": "2026-04-16T15:15:10+00:00",
+    "query": "340 Sir Francis Drake Blvd, San Anselmo, CA, 94960"
   },
   "343 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -7143,6 +7303,14 @@
     "queried_at": "2026-04-12T20:25:50+00:00",
     "query": "53 Grove Ln, San Anselmo, CA, 94960"
   },
+  "53 hillside ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "53, Hillside Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9769875",
+    "longitude": "-122.5711520",
+    "queried_at": "2026-04-16T15:15:19+00:00",
+    "query": "53 Hillside Ave, San Anselmo, CA, 94960"
+  },
   "53 oak springs dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "53, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -7598,6 +7766,14 @@
     "longitude": "-122.5699679",
     "queried_at": "2026-04-12T19:05:19+00:00",
     "query": "58 Park Dr, San Anselmo, CA, 94960"
+  },
+  "58 sais ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "58, Sais Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9794806",
+    "longitude": "-122.5677644",
+    "queried_at": "2026-04-16T15:15:27+00:00",
+    "query": "58 Sais Ave, San Anselmo, CA, 94960"
   },
   "58 spruce ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -8222,6 +8398,14 @@
     "longitude": "-122.5704715",
     "queried_at": "2026-04-12T19:02:19+00:00",
     "query": "71 Berkeley Ave, San Anselmo, CA, 94960"
+  },
+  "71 lincoln park, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-04-16T15:15:25+00:00",
+    "query": "71 Lincoln Park, San Anselmo, CA, 94960"
   },
   "71 olive ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -9119,6 +9303,14 @@
     "queried_at": "2026-04-12T20:44:56+00:00",
     "query": "9 Ancho Vista Ave, San Anselmo, CA, 94960"
   },
+  "9 boulder ln, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Boulder Lane, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9773927",
+    "longitude": "-122.5596701",
+    "queried_at": "2026-04-16T15:15:17+00:00",
+    "query": "9 Boulder Ln, San Anselmo, CA, 94960"
+  },
   "9 broadmoor ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "9, Broadmoor Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -9158,6 +9350,14 @@
     "longitude": "-122.5783687",
     "queried_at": "2026-04-12T20:43:15+00:00",
     "query": "9 Rutherford Ave, San Anselmo, CA, 94960"
+  },
+  "9 sheila ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Sheila Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9985175",
+    "longitude": "-122.5784523",
+    "queried_at": "2026-04-16T15:15:25+00:00",
+    "query": "9 Sheila Ct, San Anselmo, CA, 94960"
   },
   "9 stone ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
