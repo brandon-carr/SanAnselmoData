@@ -71,6 +71,24 @@
     "latitude": "37.9895606",
     "longitude": "-122.5797812"
   },
+  "00689ac27880b2a3": {
+    "address": "1 S Oak Ave",
+    "address_id": "00689ac27880b2a3",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "e6030c31152f01cc044c7c93df2b11dca2f2c0415b774666925ffc461cc40c1e",
+    "extra": {},
+    "first_seen_at": "2026-04-16T15:13:06+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-16T15:13:06+00:00",
+    "last_seen_at": "2026-04-16T15:13:06+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
   "00c822a5993de855": {
     "address": "124 Greenfield Ave",
     "address_id": "00c822a5993de855",
@@ -88,6 +106,24 @@
     "last_seen_at": "2026-04-12T20:18:59+00:00",
     "latitude": "37.9762888",
     "longitude": "-122.5612584"
+  },
+  "00ce508b7ecb31a1": {
+    "address": "142 Oak Ave",
+    "address_id": "00ce508b7ecb31a1",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "04d262527ad396bf92536e4a8ec0dacdc659bd69225f12800904cecfc7e4b058",
+    "extra": {},
+    "first_seen_at": "2026-04-16T15:13:07+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-16T15:13:07+00:00",
+    "last_seen_at": "2026-04-16T15:13:07+00:00",
+    "latitude": "",
+    "longitude": ""
   },
   "012b89ffdb3c9ec3": {
     "address": "64 Nokomis Ave",
@@ -9535,7 +9571,7 @@
     "geocode_status": "success",
     "geocoded_address": "80, Bennit Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:43+00:00",
-    "last_seen_at": "2026-04-12T20:21:43+00:00",
+    "last_seen_at": "2026-04-16T15:13:11+00:00",
     "latitude": "37.9901554",
     "longitude": "-122.5803899"
   },
@@ -11011,7 +11047,7 @@
     "geocode_status": "success",
     "geocoded_address": "97, Spring Grove Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:03:30+00:00",
-    "last_seen_at": "2026-04-14T01:28:39+00:00",
+    "last_seen_at": "2026-04-16T15:13:08+00:00",
     "latitude": "37.9756992",
     "longitude": "-122.5564033"
   },
@@ -11785,7 +11821,7 @@
     "geocode_status": "",
     "geocoded_address": "",
     "last_changed_at": "2026-04-14T01:26:19+00:00",
-    "last_seen_at": "2026-04-14T01:26:19+00:00",
+    "last_seen_at": "2026-04-16T15:13:12+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -12865,7 +12901,7 @@
     "geocode_status": "success",
     "geocoded_address": "44, Terrace Avenue, San Rafael, Marin County, California, 94901, United States",
     "last_changed_at": "2026-04-12T20:18:00+00:00",
-    "last_seen_at": "2026-04-12T20:18:00+00:00",
+    "last_seen_at": "2026-04-16T15:13:18+00:00",
     "latitude": "37.9705913",
     "longitude": "-122.5448242"
   },
@@ -14665,7 +14701,7 @@
     "geocode_status": "success",
     "geocoded_address": "55, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:15:11+00:00",
-    "last_seen_at": "2026-04-12T20:15:11+00:00",
+    "last_seen_at": "2026-04-16T15:13:11+00:00",
     "latitude": "37.9781016",
     "longitude": "-122.5752302"
   },
@@ -19165,7 +19201,7 @@
     "geocode_status": "success",
     "geocoded_address": "19, Fern Lane, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:06:46+00:00",
-    "last_seen_at": "2026-04-12T20:06:46+00:00",
+    "last_seen_at": "2026-04-16T15:13:12+00:00",
     "latitude": "37.9829344",
     "longitude": "-122.5758332"
   },
@@ -20231,6 +20267,24 @@
     "latitude": "",
     "longitude": ""
   },
+  "d7c7818b8dd43548": {
+    "address": "11 Sunview Ave",
+    "address_id": "d7c7818b8dd43548",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "5d0789059bcaefa96701a885157d11d38255e5ef5779bcbcbed383d168f36248",
+    "extra": {},
+    "first_seen_at": "2026-04-16T15:13:11+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-16T15:13:11+00:00",
+    "last_seen_at": "2026-04-16T15:13:11+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
   "d814ae0f79286d08": {
     "address": "511 Redwood Rd",
     "address_id": "d814ae0f79286d08",
@@ -20732,6 +20786,24 @@
     "geocoded_address": "",
     "last_changed_at": "2026-04-14T01:26:33+00:00",
     "last_seen_at": "2026-04-14T01:26:33+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
+  "dd26ed5c3ec3da1a": {
+    "address": "11 Indian Rock Rd",
+    "address_id": "dd26ed5c3ec3da1a",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "0fcee13c4019a511ff10a91d6354160c7ba84e94f2ec6341536c101bccb5ad73",
+    "extra": {},
+    "first_seen_at": "2026-04-16T15:13:07+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-16T15:13:07+00:00",
+    "last_seen_at": "2026-04-16T15:13:07+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -22012,6 +22084,24 @@
     "last_seen_at": "2026-04-12T20:10:45+00:00",
     "latitude": "37.9731580",
     "longitude": "-122.5643678"
+  },
+  "ea09789bc11602e9": {
+    "address": "16 Blackhawk Dr",
+    "address_id": "ea09789bc11602e9",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "69ba3437f0668ee97b874ca93ed29e615315326b363426fa09429c025206d16a",
+    "extra": {},
+    "first_seen_at": "2026-04-16T15:13:08+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-16T15:13:08+00:00",
+    "last_seen_at": "2026-04-16T15:13:08+00:00",
+    "latitude": "",
+    "longitude": ""
   },
   "ea10f16181435a80": {
     "address": "100 Ridge Rd",
