@@ -19133,6 +19133,24 @@
     "latitude": "37.9969318",
     "longitude": "-122.5855329"
   },
+  "ce464f3bdfea1884": {
+    "address": "60 Belle Ave",
+    "address_id": "ce464f3bdfea1884",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "10659786c9481e72fef35f468a6bc37a6b57a864e91c3b0801f77131ba5fc37b",
+    "extra": {},
+    "first_seen_at": "2026-04-17T14:43:11+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-17T14:43:11+00:00",
+    "last_seen_at": "2026-04-17T14:43:11+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
   "ce800c4223912e07": {
     "address": "314 Bolinas Ave",
     "address_id": "ce800c4223912e07",
