@@ -75,14 +75,41 @@ jobs:
             data/planning_permit_history.json \
             data/planning_scrape_state.json \
             data/all_permits_view.json \
+            data/permits_view.json \
+            data/violations_view.json \
             data/addresses.json \
-            data/address_history.json
+            data/address_history.json \
+            web/data/planning_permit_history.json \
+            web/data/all_permits_view.json \
+            web/data/permits_view.json \
+            web/data/violations_view.json \
+            web/data/inspections_view.json \
+            web/data/addresses.json \
+            web/data/site_config.json
           do
             if [ -f "$file" ]; then
               git add -f "$file"
             fi
           done
 
-          git diff --cached --quiet || git commit -m "Scrape planning permits"
-          git pull --rebase origin main
-          git push
+          if git diff --cached --quiet; then
+            echo "No planning permit changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Scrape planning permits"
+
+          for attempt in 1 2 3
+          do
+            git pull --rebase origin main
+            if git push; then
+              exit 0
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "Push failed after 3 attempts"
+              exit 1
+            fi
+
+            sleep 5
+          done

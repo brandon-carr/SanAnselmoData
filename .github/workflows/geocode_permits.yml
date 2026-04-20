@@ -71,16 +71,40 @@ jobs:
             data/all_permits_view.json \
             data/planning_permits.json \
             data/building_permits.json \
+            data/violations_view.json \
             data/violations_permits.json \
             data/addresses.json \
             data/address_history.json \
-            data/geocode_cache.json
+            data/geocode_cache.json \
+            web/data/all_permits_view.json \
+            web/data/permits_view.json \
+            web/data/violations_view.json \
+            web/data/inspections_view.json \
+            web/data/addresses.json
           do
             if [ -f "$file" ]; then
               git add -f "$file"
             fi
           done
 
-          git diff --cached --quiet || git commit -m "Geocode permit addresses"
-          git pull --rebase origin main
-          git push
+          if git diff --cached --quiet; then
+            echo "No geocode changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Geocode permit addresses"
+
+          for attempt in 1 2 3
+          do
+            git pull --rebase origin main
+            if git push; then
+              exit 0
+            fi
+
+            if [ "$attempt" -eq 3 ]; then
+              echo "Push failed after 3 attempts"
+              exit 1
+            fi
+
+            sleep 5
+          done
