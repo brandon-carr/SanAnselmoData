@@ -1,19 +1,19 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-04-18T14:22:52+00:00",
-  "last_run_started_at": "2026-04-18T14:22:44+00:00",
+  "last_run_finished_at": "2026-04-20T15:05:42+00:00",
+  "last_run_started_at": "2026-04-20T15:05:35+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
       "AB": {
         "changed": 0,
-        "found": 1,
-        "new": 1,
+        "found": 0,
+        "new": 0,
         "next_sequence": 56,
         "prefix": "AB",
         "requested_batch_size": 50,
-        "start_sequence": 55,
+        "start_sequence": 56,
         "stopped_at_missing": "AB2026-0056",
         "unchanged": 0,
         "year": 2026
@@ -36,17 +36,17 @@
     "AB": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-04-18T14:22:50+00:00",
-      "last_run_started_at": "2026-04-18T14:22:48+00:00",
+      "last_run_finished_at": "2026-04-20T15:05:40+00:00",
+      "last_run_started_at": "2026-04-20T15:05:39+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
-        "found": 1,
-        "new": 1,
+        "found": 0,
+        "new": 0,
         "next_sequence": 56,
         "prefix": "AB",
         "requested_batch_size": 50,
-        "start_sequence": 55,
+        "start_sequence": 56,
         "stopped_at_missing": "AB2026-0056",
         "unchanged": 0,
         "year": 2026
@@ -56,8 +56,8 @@
     "CV": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-04-18T14:22:52+00:00",
-      "last_run_started_at": "2026-04-18T14:22:50+00:00",
+      "last_run_finished_at": "2026-04-20T15:05:42+00:00",
+      "last_run_started_at": "2026-04-20T15:05:40+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -122,17 +122,17 @@
       "AB": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-04-18T14:22:50+00:00",
-        "last_run_started_at": "2026-04-18T14:22:48+00:00",
+        "last_run_finished_at": "2026-04-20T15:05:40+00:00",
+        "last_run_started_at": "2026-04-20T15:05:39+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
-          "found": 1,
-          "new": 1,
+          "found": 0,
+          "new": 0,
           "next_sequence": 56,
           "prefix": "AB",
           "requested_batch_size": 50,
-          "start_sequence": 55,
+          "start_sequence": 56,
           "stopped_at_missing": "AB2026-0056",
           "unchanged": 0,
           "year": 2026
@@ -142,8 +142,8 @@
       "CV": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-04-18T14:22:52+00:00",
-        "last_run_started_at": "2026-04-18T14:22:50+00:00",
+        "last_run_finished_at": "2026-04-20T15:05:42+00:00",
+        "last_run_started_at": "2026-04-20T15:05:40+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
