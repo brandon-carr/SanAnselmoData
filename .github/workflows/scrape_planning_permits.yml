@@ -6,6 +6,10 @@ on:
     # 6:35 AM PDT (13:35 UTC)
     - cron: "35 13 * * *"
 
+concurrency:
+  group: repo-write-main
+  cancel-in-progress: false
+
 jobs:
   scrape_planning:
     runs-on: ubuntu-latest
@@ -29,6 +33,8 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -78,4 +84,5 @@ jobs:
           done
 
           git diff --cached --quiet || git commit -m "Scrape planning permits"
+          git pull --rebase origin main
           git push

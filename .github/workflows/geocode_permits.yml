@@ -6,6 +6,10 @@ on:
     # 6:50 AM PDT (13:50 UTC)
     - cron: "50 13 * * *"
 
+concurrency:
+  group: repo-write-main
+  cancel-in-progress: false
+
 jobs:
   geocode:
     runs-on: ubuntu-latest
@@ -26,6 +30,8 @@ jobs:
     steps:
       - name: Check out repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -76,4 +82,5 @@ jobs:
           done
 
           git diff --cached --quiet || git commit -m "Geocode permit addresses"
+          git pull --rebase origin main
           git push
