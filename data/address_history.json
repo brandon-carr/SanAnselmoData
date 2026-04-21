@@ -59,6 +59,26 @@
       "longitude": ""
     }
   ],
+  "13e0916384777395": [
+    {
+      "address": "38 West Gate Way",
+      "address_id": "13e0916384777395",
+      "city_state_zip": "San Anselmo, CA, 94960",
+      "data_hash": "0554874ac040725cdcb1afd17a849b6f317142de6e6a8c6ad7502017b5bdb4c7",
+      "extra": {},
+      "first_seen_at": "2026-04-14T01:27:47+00:00",
+      "geocode_attempts": 0,
+      "geocode_error": "",
+      "geocode_last_attempt_at": "",
+      "geocode_source": "",
+      "geocode_status": "",
+      "geocoded_address": "",
+      "last_changed_at": "2026-04-14T01:27:47+00:00",
+      "last_seen_at": "2026-04-14T01:27:47+00:00",
+      "latitude": "",
+      "longitude": ""
+    }
+  ],
   "21011f4b03c8635c": [
     {
       "address": "3 Beverly Way",
