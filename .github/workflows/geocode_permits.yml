@@ -71,7 +71,9 @@ jobs:
             data/all_permits_view.json \
             data/planning_permits.json \
             data/building_permits.json \
+            data/permits_view.json \
             data/violations_view.json \
+            data/inspections_view.json \
             data/violations_permits.json \
             data/addresses.json \
             data/address_history.json \
