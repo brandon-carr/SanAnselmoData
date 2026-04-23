@@ -18683,6 +18683,24 @@
     "latitude": "37.9963179",
     "longitude": "-122.5844448"
   },
+  "c749befa9aa2fb56": {
+    "address": "48 Durham Rd",
+    "address_id": "c749befa9aa2fb56",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "df56d6d2f06a2d9b7c7ffedce96d4ffb6126b4e4bf4fb52ef9df3f956cd5ade2",
+    "extra": {},
+    "first_seen_at": "2026-04-23T15:28:18+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "",
+    "geocode_status": "",
+    "geocoded_address": "",
+    "last_changed_at": "2026-04-23T15:28:18+00:00",
+    "last_seen_at": "2026-04-23T15:28:18+00:00",
+    "latitude": "",
+    "longitude": ""
+  },
   "c790ab85a1e6c999": {
     "address": "510 San Anselmo Ave",
     "address_id": "c790ab85a1e6c999",
