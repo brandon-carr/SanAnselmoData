@@ -4543,6 +4543,14 @@
     "queried_at": "2026-04-12T20:49:11+00:00",
     "query": "22 Blackhawk Dr, San Anselmo, CA, 94960"
   },
+  "22 broadmoor ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "22, Broadmoor Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9867901",
+    "longitude": "-122.5744088",
+    "queried_at": "2026-04-26T14:29:23+00:00",
+    "query": "22 Broadmoor Ave, San Anselmo, CA, 94960"
+  },
   "22 foss ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "22, Foss Avenue, San Anselmo, Marin County, California, 94960, United States",
