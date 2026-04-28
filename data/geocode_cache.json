@@ -2623,6 +2623,14 @@
     "queried_at": "2026-04-21T15:02:06+00:00",
     "query": "15 Ramona Way, San Anselmo, CA, 94960"
   },
+  "15 rosemont ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "15, Rosemont Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9907727",
+    "longitude": "-122.5774505",
+    "queried_at": "2026-04-28T16:02:20+00:00",
+    "query": "15 Rosemont Ave, San Anselmo, CA, 94960"
+  },
   "15 skyline rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "15, Skyline Road, San Anselmo, Marin County, California, 94960, United States",
@@ -3390,6 +3398,14 @@
     "longitude": "-122.5861086",
     "queried_at": "2026-04-12T20:41:14+00:00",
     "query": "173 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
+  "174 meadowcroft dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "174, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9885936",
+    "longitude": "-122.5772800",
+    "queried_at": "2026-04-28T16:02:19+00:00",
+    "query": "174 Meadowcroft Dr, San Anselmo, CA, 94960"
   },
   "175 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
