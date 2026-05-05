@@ -10,14 +10,10 @@ __pycache__/
 *.pyc
 
 # Runtime data produced by scrape/geocode jobs
-data/*_permits.json
-data/*_permit_history.json
-data/*_scrape_state.json
-data/all_permits_view.json
-data/geocode_cache.json
-data/addresses.json
-data/address_history.json
-data/debug/
+data/**
+web/data/**
+compat_check_tmp/data/**
+compat_check_tmp/web/data/**
 !data/.gitkeep
 
 # Old local script data area
