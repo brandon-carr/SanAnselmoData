@@ -1,0 +1,13 @@
+{
+  "inactive_statuses": [
+    "Cancelled",
+    "Closed",
+    "Complete",
+    "Finaled",
+    "Void",
+    "Withdrawn",
+    "Town Resolved",
+    "Denied"
+  ],
+  "show_left_cards": false
+}
