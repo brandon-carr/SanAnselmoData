@@ -2,9 +2,6 @@ name: Geocode San Anselmo addresses
 
 on:
   workflow_dispatch:
-  schedule:
-    # 6:50 AM PDT (13:50 UTC)
-    - cron: "50 13 * * *"
 
 concurrency:
   group: repo-write-main

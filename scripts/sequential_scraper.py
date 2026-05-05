@@ -269,10 +269,6 @@ def run_dataset(dataset_name: str) -> int:
     permit_records = store.load_permits(dataset_name)
     address_records = store.load_addresses()
 
-    if not permit_records:
-        state = default_dataset_state(config.year, config.batch_size)
-        state["year_streams"][str(config.year)] = state["streams"]
-
     current_year_key = str(config.year)
     year_streams = state.get("year_streams")
     if not isinstance(year_streams, dict):

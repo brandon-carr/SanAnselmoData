@@ -2,9 +2,6 @@ name: Scrape San Anselmo planning permits
 
 on:
   workflow_dispatch:
-  schedule:
-    # 6:35 AM PDT (13:35 UTC)
-    - cron: "35 13 * * *"
 
 concurrency:
   group: repo-write-main

@@ -15,6 +15,7 @@ web/data/**
 compat_check_tmp/data/**
 compat_check_tmp/web/data/**
 !data/.gitkeep
+!web/data/.gitkeep
 
 # Old local script data area
 scripts/data/

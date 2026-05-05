@@ -1,0 +1,143 @@
+name: Update production data and deploy Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 6:30 AM PDT (13:30 UTC)
+    - cron: "30 13 * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: production-data-and-pages
+  cancel-in-progress: false
+
+jobs:
+  update_and_deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    env:
+      ETRAKIT_USERNAME: ${{ secrets.ETRAKIT_USERNAME }}
+      ETRAKIT_PASSWORD: ${{ secrets.ETRAKIT_PASSWORD }}
+
+      ETRAKIT_DEBUG: "true"
+      ETRAKIT_DEBUG_DIR: data/debug
+
+      ETRAKIT_BASE_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+      ETRAKIT_LOGIN_URL: https://sanan-trk.aspgov.com/eTRAKiT/
+      ETRAKIT_PERMIT_SEARCH_URL: https://sanan-trk.aspgov.com/eTRAKiT/Search/Permit.aspx
+
+      ETRAKIT_USERNAME_FIELD: ctl00$MainContent$txtUserName
+      ETRAKIT_PASSWORD_FIELD: ctl00$MainContent$txtPassword
+      ETRAKIT_LOGIN_BUTTON_FIELD: ctl00$MainContent$btnLogin
+
+      GEOCODER_ENABLED: "true"
+      GEOCODER_PROVIDER: "nominatim"
+      GEOCODER_BASE_URL: https://nominatim.openstreetmap.org/search
+      GEOCODER_USER_AGENT: SanAnselmoPermitScrape/1.0 (github actions geocoding workflow)
+      GEOCODER_COUNTRY_CODES: us
+      GEOCODER_TIMEOUT_SECONDS: 30
+      GEOCODER_MIN_INTERVAL_SECONDS: 1.0
+      GEOCODE_BATCH_SIZE: 10
+      GEOCODE_MAX_ATTEMPTS: 3
+
+    steps:
+      - name: Check out site code
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Check out production data
+        uses: actions/checkout@v4
+        with:
+          ref: production-data
+          path: production-data
+
+      - name: Restore production data into workspace
+        working-directory: site
+        run: |
+          mkdir -p data web/data
+          if [ -d ../production-data/data ]; then
+            cp -R ../production-data/data/. data/
+          fi
+          if [ -d ../production-data/web/data ]; then
+            cp -R ../production-data/web/data/. web/data/
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        working-directory: site
+        run: |
+          pip install -r scripts/requirements.txt
+
+      - name: Validate secrets
+        run: |
+          if [ -z "$ETRAKIT_USERNAME" ]; then echo "Missing username"; exit 1; fi
+          if [ -z "$ETRAKIT_PASSWORD" ]; then echo "Missing password"; exit 1; fi
+
+      - name: Run all data jobs
+        working-directory: site
+        run: |
+          python scripts/scrape_building_permits.py
+          python scripts/scrape_planning_permits.py
+          python scripts/scrape_violations.py
+          python scripts/scrape_inspections.py
+          python scripts/geocode_permits.py
+
+      - name: Upload generated data artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-data
+          path: |
+            site/data/**
+            site/web/data/**
+          if-no-files-found: ignore
+
+      - name: Commit production data
+        working-directory: production-data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          mkdir -p data web/data
+          rsync -a --delete --include='*.json' --exclude='*' ../site/data/ data/
+          rsync -a --delete --include='*.json' --exclude='*' ../site/web/data/ web/data/
+
+          git add data web/data
+
+          if git diff --cached --quiet; then
+            echo "No production data changes to commit"
+            exit 0
+          fi
+
+          git commit -m "Update production data"
+          git push origin production-data
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare Pages artifact
+        working-directory: site
+        run: |
+          mkdir -p pages-artifact
+          cp -R web pages-artifact/web
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/pages-artifact
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

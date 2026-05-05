@@ -2,9 +2,6 @@ name: Deploy site to GitHub Pages
 
 on:
   workflow_dispatch:
-  schedule:
-    # 6:55 AM PDT (13:55 UTC)
-    - cron: "55 13 * * *"
 
 permissions:
   contents: read

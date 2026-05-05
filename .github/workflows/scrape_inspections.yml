@@ -2,9 +2,6 @@ name: Scrape San Anselmo inspections
 
 on:
   workflow_dispatch:
-  schedule:
-    # 6:45 AM PDT (13:45 UTC)
-    - cron: "45 13 * * *"
 
 concurrency:
   group: repo-write-main
