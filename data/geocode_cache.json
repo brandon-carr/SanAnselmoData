@@ -10655,6 +10655,14 @@
     "queried_at": "2026-04-12T19:05:50+00:00",
     "query": "9 Broadmoor Ave, San Anselmo, CA, 94960"
   },
+  "9 brookside ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Brookside Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9872838",
+    "longitude": "-122.5723479",
+    "queried_at": "2026-05-12T15:57:41+00:00",
+    "query": "9 Brookside Ct, San Anselmo, CA, 94960"
+  },
   "9 fern ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "9, Fern Lane, San Anselmo, Marin County, California, 94960, United States",
