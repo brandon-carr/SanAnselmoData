@@ -9679,6 +9679,14 @@
     "queried_at": "2026-04-12T20:53:02+00:00",
     "query": "71 Olive Ave, San Anselmo, CA, 94960"
   },
+  "71 ross ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "71, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9715437",
+    "longitude": "-122.5646803",
+    "queried_at": "2026-05-17T14:42:58+00:00",
+    "query": "71 Ross Ave, San Anselmo, CA, 94960"
+  },
   "711 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",

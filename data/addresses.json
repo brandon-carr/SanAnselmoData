@@ -1399,7 +1399,7 @@
     "geocode_status": "success",
     "geocoded_address": "739, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:29+00:00",
-    "last_seen_at": "2026-04-12T20:21:29+00:00",
+    "last_seen_at": "2026-05-17T14:41:22+00:00",
     "latitude": "37.9722605",
     "longitude": "-122.5718296"
   },
@@ -8872,6 +8872,24 @@
     "last_seen_at": "2026-04-12T20:08:00+00:00",
     "latitude": "37.9805371",
     "longitude": "-122.5585327"
+  },
+  "627a17e118800058": {
+    "address": "71 Ross Ave",
+    "address_id": "627a17e118800058",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "b38f921c96417387c5c2124e5eb05d09b4c426f2ba69502e2368d82fe25d8f0a",
+    "extra": {},
+    "first_seen_at": "2026-05-17T14:41:19+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-05-17T14:42:57+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "71, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-05-17T14:42:57+00:00",
+    "last_seen_at": "2026-05-17T14:42:57+00:00",
+    "latitude": "37.9715437",
+    "longitude": "-122.5646803"
   },
   "62977939be4fc8cb": {
     "address": "61 Nokomis Ave",
