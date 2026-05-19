@@ -959,6 +959,14 @@
     "queried_at": "2026-04-15T14:57:14+00:00",
     "query": "114 Calumet Ave, San Anselmo, CA, 94960"
   },
+  "114 meadowcroft dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "114, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9876723",
+    "longitude": "-122.5749947",
+    "queried_at": "2026-05-19T16:37:24+00:00",
+    "query": "114 Meadowcroft Dr, San Anselmo, CA, 94960"
+  },
   "115 madrone ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "115, Madrone Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -10390,6 +10398,14 @@
     "longitude": "-122.5657600",
     "queried_at": "2026-04-12T18:50:31+00:00",
     "query": "834 Sir Francis Drake Blvd, San Anselmo, CA, 94960"
+  },
+  "834-916 sir francis drake blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-05-19T16:37:26+00:00",
+    "query": "834-916 Sir Francis Drake Blvd, San Anselmo, CA, 94960"
   },
   "838 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
