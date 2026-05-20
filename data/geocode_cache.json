@@ -703,6 +703,14 @@
     "queried_at": "2026-04-16T15:15:07+00:00",
     "query": "11 Indian Rock Rd, San Anselmo, CA, 94960"
   },
+  "11 monterey ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "11, Monterey Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9845387",
+    "longitude": "-122.5645204",
+    "queried_at": "2026-05-20T16:35:53+00:00",
+    "query": "11 Monterey Ave, San Anselmo, CA, 94960"
+  },
   "11 santa barbara ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "11, Santa Barbara Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -4711,6 +4719,14 @@
     "queried_at": "2026-04-12T20:34:21+00:00",
     "query": "22 Nokomis Ave, San Anselmo, CA, 94960"
   },
+  "22 scenic ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "22, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9788903",
+    "longitude": "-122.5743639",
+    "queried_at": "2026-05-20T16:35:55+00:00",
+    "query": "22 Scenic Ave, San Anselmo, CA, 94960"
+  },
   "22 sunview ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "22, Sunview Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -4942,6 +4958,14 @@
     "longitude": "-122.5771670",
     "queried_at": "2026-04-12T20:35:27+00:00",
     "query": "23 Medway Rd, San Anselmo, CA, 94960"
+  },
+  "23 vine ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "23, Vine Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9695286",
+    "longitude": "-122.5700798",
+    "queried_at": "2026-05-20T16:35:52+00:00",
+    "query": "23 Vine Ave, San Anselmo, CA, 94960"
   },
   "230 oak springs dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -8023,6 +8047,14 @@
     "queried_at": "2026-04-19T14:27:35+00:00",
     "query": "5 Bungalow Ave, San Anselmo, CA, 94960"
   },
+  "5 caleta ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "5, Caleta Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9983272",
+    "longitude": "-122.5760006",
+    "queried_at": "2026-05-20T16:35:51+00:00",
+    "query": "5 Caleta Ave, San Anselmo, CA, 94960"
+  },
   "5 cedar st, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "5, Cedar Street, San Anselmo, Marin County, California, 94960, United States",
@@ -11038,6 +11070,14 @@
     "longitude": "-122.5731051",
     "queried_at": "2026-04-12T18:57:09+00:00",
     "query": "96 Broadmoor Ave, San Anselmo, CA, 94960"
+  },
+  "96 suffield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "96, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9883524",
+    "longitude": "-122.5817552",
+    "queried_at": "2026-05-20T16:35:54+00:00",
+    "query": "96 Suffield Ave, San Anselmo, CA, 94960"
   },
   "964 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
