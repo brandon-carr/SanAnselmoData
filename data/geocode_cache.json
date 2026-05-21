@@ -95,6 +95,14 @@
     "queried_at": "2026-04-12T18:57:28+00:00",
     "query": "10 Broadmoor Ave, San Anselmo, CA, 94960"
   },
+  "10 crest rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "10, Crest Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9730750",
+    "longitude": "-122.5532870",
+    "queried_at": "2026-05-21T16:25:16+00:00",
+    "query": "10 Crest Rd, San Anselmo, CA, 94960"
+  },
   "10 deer park ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "10, Deer Park Lane, San Anselmo, Marin County, California, 94960, United States",
@@ -6854,6 +6862,14 @@
     "longitude": "-122.5649194",
     "queried_at": "2026-04-12T20:40:19+00:00",
     "query": "4 Monterey Ave, San Anselmo, CA, 94960"
+  },
+  "4 savannah rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "4, Savannah Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9767366",
+    "longitude": "-122.5731659",
+    "queried_at": "2026-05-21T16:25:17+00:00",
+    "query": "4 Savannah Rd, San Anselmo, CA, 94960"
   },
   "4 willow way, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
