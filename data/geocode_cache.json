@@ -135,6 +135,14 @@
     "queried_at": "2026-04-16T15:15:20+00:00",
     "query": "10 Herrera Ct, San Anselmo, CA, 94960"
   },
+  "10 humboldt ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "10, Humboldt Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9816531",
+    "longitude": "-122.5771907",
+    "queried_at": "2026-05-22T16:00:53+00:00",
+    "query": "10 Humboldt Ave, San Anselmo, CA, 94960"
+  },
   "10 island dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "10, Island Drive, San Anselmo, Marin County, California, 94901, United States",
@@ -6566,6 +6574,14 @@
     "longitude": "-122.5762172",
     "queried_at": "2026-04-12T18:55:36+00:00",
     "query": "355 Butterfield Rd, San Anselmo, CA, 94960"
+  },
+  "36 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "36, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9880804",
+    "longitude": "-122.5779684",
+    "queried_at": "2026-05-22T16:00:54+00:00",
+    "query": "36 Butterfield Rd, San Anselmo, CA, 94960"
   },
   "36 grove ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
