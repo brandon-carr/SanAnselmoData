@@ -499,7 +499,7 @@
     "geocode_status": "success",
     "geocoded_address": "123, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:44+00:00",
-    "last_seen_at": "2026-04-12T20:21:44+00:00",
+    "last_seen_at": "2026-05-24T14:47:28+00:00",
     "latitude": "37.9968130",
     "longitude": "-122.5844679"
   },
@@ -4459,7 +4459,7 @@
     "geocode_status": "success",
     "geocoded_address": "144, Melville Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:07:26+00:00",
-    "last_seen_at": "2026-04-12T20:07:26+00:00",
+    "last_seen_at": "2026-05-24T14:47:28+00:00",
     "latitude": "37.9719239",
     "longitude": "-122.5705901"
   },
@@ -6673,7 +6673,7 @@
     "geocode_status": "success",
     "geocoded_address": "180, Sturdivant Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:02+00:00",
-    "last_seen_at": "2026-05-20T16:35:34+00:00",
+    "last_seen_at": "2026-05-24T14:46:00+00:00",
     "latitude": "37.9720840",
     "longitude": "-122.5563553"
   },
@@ -6964,6 +6964,24 @@
     "last_seen_at": "2026-04-14T17:55:29+00:00",
     "latitude": "37.9891390",
     "longitude": "-122.5812082"
+  },
+  "4e3dd9104341fedb": {
+    "address": "25 Valley Rd",
+    "address_id": "4e3dd9104341fedb",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "686218ebacf2d5034037e9e9eaded8a09ccc90eef763f43a4dcb1e9b45bb97b7",
+    "extra": {},
+    "first_seen_at": "2026-05-24T14:47:29+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-05-24T14:47:37+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "25, Valley Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-05-24T14:47:37+00:00",
+    "last_seen_at": "2026-05-24T14:47:37+00:00",
+    "latitude": "37.9890288",
+    "longitude": "-122.5824578"
   },
   "4e81ab3bfffd4e31": {
     "address": "305 San Anselmo Ave",
@@ -20249,6 +20267,24 @@
     "latitude": "37.9742497",
     "longitude": "-122.5633399"
   },
+  "d111f358e5ce1f0c": {
+    "address": "170 Ridge Rd",
+    "address_id": "d111f358e5ce1f0c",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "9ee368789b14c4e28bbca5e51507b91db5a5d79e4a600048d50de1f556810f64",
+    "extra": {},
+    "first_seen_at": "2026-05-24T14:47:29+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-05-24T14:47:36+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "170, Ridge Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-05-24T14:47:36+00:00",
+    "last_seen_at": "2026-05-24T14:47:36+00:00",
+    "latitude": "37.9882840",
+    "longitude": "-122.5707010"
+  },
   "d130dd13d0953b3a": {
     "address": "22 Tamalpais Ave",
     "address_id": "d130dd13d0953b3a",
@@ -23035,7 +23071,7 @@
     "geocode_status": "success",
     "geocoded_address": "27, Sierra Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:35:08+00:00",
-    "last_seen_at": "2026-04-12T18:35:08+00:00",
+    "last_seen_at": "2026-05-24T14:46:10+00:00",
     "latitude": "37.9849734",
     "longitude": "-122.5755701"
   },

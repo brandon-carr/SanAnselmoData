@@ -3487,6 +3487,14 @@
     "queried_at": "2026-04-20T15:06:50+00:00",
     "query": "170 Oak Springs Dr, San Anselmo, CA, 94960"
   },
+  "170 ridge rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "170, Ridge Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9882840",
+    "longitude": "-122.5707010",
+    "queried_at": "2026-05-24T14:47:37+00:00",
+    "query": "170 Ridge Rd, San Anselmo, CA, 94960"
+  },
   "171 crescent rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "171, Crescent Road, San Anselmo, Marin County, California, 94960, United States",
@@ -5294,6 +5302,14 @@
     "longitude": "-122.5583230",
     "queried_at": "2026-04-12T20:53:10+00:00",
     "query": "25 Sunny Dr, San Anselmo, CA, 94960"
+  },
+  "25 valley rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "25, Valley Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9890288",
+    "longitude": "-122.5824578",
+    "queried_at": "2026-05-24T14:47:38+00:00",
+    "query": "25 Valley Rd, San Anselmo, CA, 94960"
   },
   "25 waverly rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
