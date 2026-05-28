@@ -1399,6 +1399,14 @@
     "queried_at": "2026-04-11T23:22:08+00:00",
     "query": "122 ALLYN AVE, SAN ANSELMO, CA, 94960"
   },
+  "122 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "122, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9971077",
+    "longitude": "-122.5846952",
+    "queried_at": "2026-05-28T17:07:32+00:00",
+    "query": "122 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
   "122 tunstead ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "122, Tunstead Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -5647,6 +5655,14 @@
     "queried_at": "2026-04-12T20:50:25+00:00",
     "query": "271 The Alameda, San Anselmo, CA, 94960"
   },
+  "273 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "273, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9958744",
+    "longitude": "-122.5767968",
+    "queried_at": "2026-05-28T17:07:33+00:00",
+    "query": "273 Butterfield Rd, San Anselmo, CA, 94960"
+  },
   "274 oak ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "274, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8222,6 +8238,14 @@
     "longitude": "-122.5712821",
     "queried_at": "2026-04-12T20:43:46+00:00",
     "query": "50 Indian Rock Ct, San Anselmo, CA, 94960"
+  },
+  "50 lincoln park, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-05-28T17:07:34+00:00",
+    "query": "50 Lincoln Park, San Anselmo, CA, 94960"
   },
   "50 madrone ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
