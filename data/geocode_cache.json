@@ -215,6 +215,14 @@
     "queried_at": "2026-04-15T14:57:02+00:00",
     "query": "10 Spruce Ave, San Anselmo, CA, 94960"
   },
+  "10 taylor st, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "10, Taylor Street, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9820638",
+    "longitude": "-122.5704873",
+    "queried_at": "2026-05-31T15:00:40+00:00",
+    "query": "10 Taylor St, San Anselmo, CA, 94960"
+  },
   "100 alder ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "100, Alder Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -4423,6 +4431,14 @@
     "queried_at": "2026-04-12T20:29:57+00:00",
     "query": "205 Crescent Rd, San Anselmo, CA, 94960"
   },
+  "205 greenfield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9762888",
+    "longitude": "-122.5612584",
+    "queried_at": "2026-05-31T15:00:42+00:00",
+    "query": "205 Greenfield Ave, San Anselmo, CA, 94960"
+  },
   "205 laurel ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "205, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -6583,6 +6599,14 @@
     "queried_at": "2026-04-12T20:26:14+00:00",
     "query": "35 Scenic Ave, San Anselmo, CA, 94960"
   },
+  "35 sunny hills dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-05-31T15:00:41+00:00",
+    "query": "35 Sunny Hills Dr, San Anselmo, CA, 94960"
+  },
   "35 tamalpais ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "35, Tamalpais Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -7326,6 +7350,14 @@
     "longitude": "-122.5770003",
     "queried_at": "2026-04-12T20:24:32+00:00",
     "query": "427 San Anselmo Ave, San Anselmo, CA, 94960"
+  },
+  "428 the alameda, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "428, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9989169",
+    "longitude": "-122.5731579",
+    "queried_at": "2026-05-31T15:00:43+00:00",
+    "query": "428 The Alameda, San Anselmo, CA, 94960"
   },
   "429 center blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10910,6 +10942,14 @@
     "longitude": "-122.5686725",
     "queried_at": "2026-04-12T20:39:54+00:00",
     "query": "9 Tomahawk Dr, San Anselmo, CA, 94960"
+  },
+  "9 vine ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Vine Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9694416",
+    "longitude": "-122.5699576",
+    "queried_at": "2026-05-31T15:00:39+00:00",
+    "query": "9 Vine Ave, San Anselmo, CA, 94960"
   },
   "9 west ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
