@@ -1,4 +1,12 @@
 {
+  "1 allemand ln, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1, Allemand Lane, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9776460",
+    "longitude": "-122.5600330",
+    "queried_at": "2026-06-01T19:06:45+00:00",
+    "query": "1 Allemand Ln, San Anselmo, CA, 94960"
+  },
   "1 caleta ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "1, Caleta Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8286,6 +8294,14 @@
     "longitude": "-122.5662020",
     "queried_at": "2026-04-12T20:53:25+00:00",
     "query": "50 Madrone Ave, San Anselmo, CA, 94960"
+  },
+  "50 mariposa ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "50, Mariposa Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9708803",
+    "longitude": "-122.5637677",
+    "queried_at": "2026-06-01T19:06:45+00:00",
+    "query": "50 Mariposa Ave, San Anselmo, CA, 94960"
   },
   "50 nokomis ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
