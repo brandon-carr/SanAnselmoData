@@ -5391,6 +5391,14 @@
     "queried_at": "2026-04-12T20:25:10+00:00",
     "query": "25 Oak Springs Dr, San Anselmo, CA, 94960"
   },
+  "25 pasadena ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "25, Pasadena Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9876451",
+    "longitude": "-122.5659815",
+    "queried_at": "2026-06-08T16:57:03+00:00",
+    "query": "25 Pasadena Ave, San Anselmo, CA, 94960"
+  },
   "25 suffield ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "25, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
