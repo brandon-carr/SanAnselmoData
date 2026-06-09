@@ -1435,7 +1435,7 @@
     "geocode_status": "success",
     "geocoded_address": "99, Alder Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:53+00:00",
-    "last_seen_at": "2026-05-28T17:07:01+00:00",
+    "last_seen_at": "2026-06-09T16:15:13+00:00",
     "latitude": "37.9812620",
     "longitude": "-122.5740120"
   },
@@ -1543,7 +1543,7 @@
     "geocode_status": "success",
     "geocoded_address": "38, Mariposa Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-06-04T16:33:44+00:00",
-    "last_seen_at": "2026-06-04T16:33:44+00:00",
+    "last_seen_at": "2026-06-09T16:15:29+00:00",
     "latitude": "37.9710388",
     "longitude": "-122.5632650"
   },
@@ -4243,7 +4243,7 @@
     "geocode_status": "success",
     "geocoded_address": "120, Crescent Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:57+00:00",
-    "last_seen_at": "2026-04-12T20:13:57+00:00",
+    "last_seen_at": "2026-06-09T16:15:07+00:00",
     "latitude": "37.9724114",
     "longitude": "-122.5690861"
   },
@@ -5359,7 +5359,7 @@
     "geocode_status": "success",
     "geocoded_address": "248, San Francisco Boulevard, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-13T19:36:13+00:00",
-    "last_seen_at": "2026-06-04T16:33:20+00:00",
+    "last_seen_at": "2026-06-09T16:15:39+00:00",
     "latitude": "37.9870017",
     "longitude": "-122.5642223"
   },
@@ -6853,7 +6853,7 @@
     "geocode_status": "success",
     "geocoded_address": "180, Sturdivant Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:02+00:00",
-    "last_seen_at": "2026-06-02T17:51:52+00:00",
+    "last_seen_at": "2026-06-09T16:15:12+00:00",
     "latitude": "37.9720840",
     "longitude": "-122.5563553"
   },
@@ -7681,7 +7681,7 @@
     "geocode_status": "success",
     "geocoded_address": "152, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:14:19+00:00",
-    "last_seen_at": "2026-06-04T16:30:47+00:00",
+    "last_seen_at": "2026-06-09T16:15:30+00:00",
     "latitude": "37.9985473",
     "longitude": "-122.5855489"
   },
@@ -9643,7 +9643,7 @@
     "geocode_status": "success",
     "geocoded_address": "96, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-20T16:35:53+00:00",
-    "last_seen_at": "2026-05-20T16:35:53+00:00",
+    "last_seen_at": "2026-06-09T16:15:08+00:00",
     "latitude": "37.9883524",
     "longitude": "-122.5817552"
   },
@@ -13945,7 +13945,7 @@
     "geocode_status": "success",
     "geocoded_address": "61, Hillside Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:18:59+00:00",
-    "last_seen_at": "2026-06-04T16:33:13+00:00",
+    "last_seen_at": "2026-06-09T16:15:24+00:00",
     "latitude": "37.9769130",
     "longitude": "-122.5710183"
   },
@@ -15493,7 +15493,7 @@
     "geocode_status": "success",
     "geocoded_address": "55, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:15:11+00:00",
-    "last_seen_at": "2026-06-04T16:33:35+00:00",
+    "last_seen_at": "2026-06-09T16:15:34+00:00",
     "latitude": "37.9781016",
     "longitude": "-122.5752302"
   },
@@ -17833,7 +17833,7 @@
     "geocode_status": "success",
     "geocoded_address": "Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-31T15:00:41+00:00",
-    "last_seen_at": "2026-06-08T16:56:43+00:00",
+    "last_seen_at": "2026-06-09T16:15:14+00:00",
     "latitude": "37.9762888",
     "longitude": "-122.5612584"
   },
@@ -18031,7 +18031,7 @@
     "geocode_status": "error",
     "geocoded_address": "",
     "last_changed_at": "2026-04-12T20:21:45+00:00",
-    "last_seen_at": "2026-05-27T16:48:36+00:00",
+    "last_seen_at": "2026-06-09T16:15:19+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -24241,7 +24241,7 @@
     "geocode_status": "success",
     "geocoded_address": "12, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:12:20+00:00",
-    "last_seen_at": "2026-05-20T16:35:47+00:00",
+    "last_seen_at": "2026-06-09T16:15:28+00:00",
     "latitude": "37.9866670",
     "longitude": "-122.5718735"
   },
