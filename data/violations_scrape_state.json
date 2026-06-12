@@ -1,19 +1,20 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-06-11T17:05:42+00:00",
-  "last_run_started_at": "2026-06-11T17:05:32+00:00",
+  "last_run_finished_at": "2026-06-12T16:29:27+00:00",
+  "last_run_started_at": "2026-06-12T16:29:24+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
       "AB": {
         "changed": 0,
-        "found": 4,
-        "new": 4,
+        "found": 0,
+        "new": 0,
         "next_sequence": 71,
         "prefix": "AB",
         "requested_batch_size": 50,
-        "start_sequence": 67,
+        "skipped_recently_exhausted": true,
+        "start_sequence": 71,
         "stopped_at_missing": "AB2026-0071",
         "unchanged": 0,
         "year": 2026
@@ -25,6 +26,7 @@
         "next_sequence": 1,
         "prefix": "CV",
         "requested_batch_size": 50,
+        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "CV2026-0001",
         "unchanged": 0,
