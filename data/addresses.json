@@ -305,6 +305,24 @@
     "latitude": "37.9777480",
     "longitude": "-122.5715646"
   },
+  "02bed85544ddd1f2": {
+    "address": "424 The Alameda",
+    "address_id": "02bed85544ddd1f2",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "42d2a1983741e6409e2e8f5d8a93dfdb7513bf732353f35b866cdf2fa98b8479",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:20+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:42+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "424, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:42+00:00",
+    "last_seen_at": "2026-06-13T15:16:42+00:00",
+    "latitude": "37.9989081",
+    "longitude": "-122.5732343"
+  },
   "02cf5ae83c4c51bd": {
     "address": "1525 San Anselmo Ave",
     "address_id": "02cf5ae83c4c51bd",
@@ -1565,6 +1583,24 @@
     "latitude": "37.9710388",
     "longitude": "-122.5632650"
   },
+  "0fcf3dc8caf09039": {
+    "address": "9 Jordan Ave",
+    "address_id": "0fcf3dc8caf09039",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "e4a2be5e041daee2bb08c18ad4f9f00d8c874b400d626e3f9b6f5bc860bcc4e3",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:20+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:42+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "9, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:42+00:00",
+    "last_seen_at": "2026-06-13T15:16:42+00:00",
+    "latitude": "37.9779178",
+    "longitude": "-122.5544596"
+  },
   "0fdd4771a4db6325": {
     "address": "50 Lincoln Park",
     "address_id": "0fdd4771a4db6325",
@@ -2122,6 +2158,24 @@
     "last_seen_at": "2026-04-12T20:04:56+00:00",
     "latitude": "37.9965551",
     "longitude": "-122.5752928"
+  },
+  "165096833c38292f": {
+    "address": "119 Santa Cruz Ave",
+    "address_id": "165096833c38292f",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "795390bd2762ef3764c8e3f91f5130ff28fe61425983a998fca827c7d8d975ae",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:10+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:47+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "119, Santa Cruz Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:47+00:00",
+    "last_seen_at": "2026-06-13T15:16:47+00:00",
+    "latitude": "37.9857432",
+    "longitude": "-122.5659906"
   },
   "1653968e1465a098": {
     "address": "16 Traxler Rd",
@@ -10007,6 +10061,24 @@
     "latitude": "37.9816531",
     "longitude": "-122.5771907"
   },
+  "69b533fa84cd144b": {
+    "address": "119 Barber Ave",
+    "address_id": "69b533fa84cd144b",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "e36e1a775b122bdbfbc4209a2727b9b7a96d7b280dfbae41f87cdeb7019f3123",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:11+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:46+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "119, Barber Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:46+00:00",
+    "last_seen_at": "2026-06-13T15:16:46+00:00",
+    "latitude": "37.9720101",
+    "longitude": "-122.5596601"
+  },
   "6a1a9001928e172b": {
     "address": "205 Laurel Ave",
     "address_id": "6a1a9001928e172b",
@@ -13030,6 +13102,24 @@
     "last_seen_at": "2026-04-14T01:27:35+00:00",
     "latitude": "37.9806474",
     "longitude": "-122.5794978"
+  },
+  "85f5c08d99a7c594": {
+    "address": "531 Oak Ave",
+    "address_id": "85f5c08d99a7c594",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "8859c6b86e27f500e8f785dd5d7879d2d85c239f3dc7618232e19dd9d31d265e",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:12+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:44+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "531, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:44+00:00",
+    "last_seen_at": "2026-06-13T15:16:44+00:00",
+    "latitude": "37.9707066",
+    "longitude": "-122.5779650"
   },
   "85fa321bb125dfdf": {
     "address": "257 Los Angeles Blvd",
@@ -19903,7 +19993,7 @@
     "geocode_status": "success",
     "geocoded_address": "307, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T17:16:21+00:00",
-    "last_seen_at": "2026-04-14T17:56:49+00:00",
+    "last_seen_at": "2026-06-13T15:15:11+00:00",
     "latitude": "37.9717609",
     "longitude": "-122.5725625"
   },
@@ -25432,6 +25522,24 @@
     "last_seen_at": "2026-04-12T20:14:39+00:00",
     "latitude": "37.9794213",
     "longitude": "-122.5558064"
+  },
+  "fb6ac9734675a28d": {
+    "address": "62 Oakland Ave",
+    "address_id": "fb6ac9734675a28d",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "b2ea789e64bf6aee2a207666bc0224bcf5ef46907d84e10c8ec33745a2987d55",
+    "extra": {},
+    "first_seen_at": "2026-06-13T15:15:12+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-13T15:16:44+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "62, Oakland Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-13T15:16:44+00:00",
+    "last_seen_at": "2026-06-13T15:16:44+00:00",
+    "latitude": "37.9863428",
+    "longitude": "-122.5676561"
   },
   "fb7e3dbee9765e2c": {
     "address": "980 San Anselmo Ave",

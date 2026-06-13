@@ -1175,6 +1175,14 @@
     "queried_at": "2026-04-12T20:43:43+00:00",
     "query": "118 The Alameda, San Anselmo, CA, 94960"
   },
+  "119 barber ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "119, Barber Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9720101",
+    "longitude": "-122.5596601",
+    "queried_at": "2026-06-13T15:16:47+00:00",
+    "query": "119 Barber Ave, San Anselmo, CA, 94960"
+  },
   "119 calumet ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "119, Calumet Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -1190,6 +1198,14 @@
     "longitude": "-122.5705409",
     "queried_at": "2026-04-21T00:06:18+00:00",
     "query": "119 Laurel Ave, San Anselmo, CA, 94960"
+  },
+  "119 santa cruz ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "119, Santa Cruz Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9857432",
+    "longitude": "-122.5659906",
+    "queried_at": "2026-06-13T15:16:47+00:00",
+    "query": "119 Santa Cruz Ave, San Anselmo, CA, 94960"
   },
   "12 arroyo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -7503,6 +7519,14 @@
     "queried_at": "2026-04-12T18:40:09+00:00",
     "query": "421 The Alameda, San Anselmo, CA, 94960"
   },
+  "424 the alameda, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "424, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9989081",
+    "longitude": "-122.5732343",
+    "queried_at": "2026-06-13T15:16:44+00:00",
+    "query": "424 The Alameda, San Anselmo, CA, 94960"
+  },
   "425 center blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "Center Boulevard, San Anselmo, Marin County, California, 94960, United States",
@@ -8791,6 +8815,14 @@
     "queried_at": "2026-04-14T18:24:30+00:00",
     "query": "530 Scenic Ave, San Anselmo, CA, 94960"
   },
+  "531 oak ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "531, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9707066",
+    "longitude": "-122.5779650",
+    "queried_at": "2026-06-13T15:16:44+00:00",
+    "query": "531 Oak Ave, San Anselmo, CA, 94960"
+  },
   "538 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "3 Ring Cycles, 538, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -9582,6 +9614,14 @@
     "longitude": "-122.5770003",
     "queried_at": "2026-04-11T23:20:19+00:00",
     "query": "619 SAN ANSELMO AVE, SAN ANSELMO, CA, 94960"
+  },
+  "62 oakland ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "62, Oakland Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9863428",
+    "longitude": "-122.5676561",
+    "queried_at": "2026-06-13T15:16:46+00:00",
+    "query": "62 Oakland Ave, San Anselmo, CA, 94960"
   },
   "62 park dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -11094,6 +11134,14 @@
     "longitude": "-122.5590781",
     "queried_at": "2026-04-12T19:00:27+00:00",
     "query": "9 Grove Hill Ave, San Anselmo, CA, 94960"
+  },
+  "9 jordan ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9779178",
+    "longitude": "-122.5544596",
+    "queried_at": "2026-06-13T15:16:42+00:00",
+    "query": "9 Jordan Ave, San Anselmo, CA, 94960"
   },
   "9 madera ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
