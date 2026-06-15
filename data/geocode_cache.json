@@ -5711,6 +5711,14 @@
     "queried_at": "2026-04-19T14:27:40+00:00",
     "query": "27 Bella Vista Ave, San Anselmo, CA, 94960"
   },
+  "27 broadmoor ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "27, Broadmoor Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9868964",
+    "longitude": "-122.5745892",
+    "queried_at": "2026-06-15T18:08:02+00:00",
+    "query": "27 Broadmoor Ave, San Anselmo, CA, 94960"
+  },
   "27 brookside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "27, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -9662,6 +9670,14 @@
     "longitude": "-122.5738831",
     "queried_at": "2026-04-12T20:24:31+00:00",
     "query": "629 San Anselmo Ave, San Anselmo, CA, 94960"
+  },
+  "63 brookmead pl, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "63, Brookmead Place, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9898775",
+    "longitude": "-122.5754820",
+    "queried_at": "2026-06-15T18:08:03+00:00",
+    "query": "63 Brookmead Pl, San Anselmo, CA, 94960"
   },
   "63 indian rock rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
