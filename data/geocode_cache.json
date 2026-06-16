@@ -1095,6 +1095,14 @@
     "queried_at": "2026-04-12T19:04:30+00:00",
     "query": "115 Woodside Dr, San Anselmo, CA, 94960"
   },
+  "116 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "116, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9909700",
+    "longitude": "-122.5767412",
+    "queried_at": "2026-06-16T18:15:18+00:00",
+    "query": "116 Butterfield Rd, San Anselmo, CA, 94960"
+  },
   "116 chipman pl, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "116, Chipman Place, San Anselmo, Marin County, California, 94960, United States",
@@ -1822,6 +1830,14 @@
     "longitude": "-122.5826168",
     "queried_at": "2026-04-12T00:02:44+00:00",
     "query": "13 WEST CT, SAN ANSELMO, CA, 94960"
+  },
+  "130 allyn ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "130, Allyn Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9761139",
+    "longitude": "-122.5779883",
+    "queried_at": "2026-06-16T18:15:19+00:00",
+    "query": "130 Allyn Ave, San Anselmo, CA, 94960"
   },
   "130 chipman pl, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -2655,6 +2671,14 @@
     "queried_at": "2026-04-12T19:04:38+00:00",
     "query": "148 Morningside Dr, San Anselmo, CA, 94960"
   },
+  "148 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "148, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9983694",
+    "longitude": "-122.5854110",
+    "queried_at": "2026-06-16T18:15:22+00:00",
+    "query": "148 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
   "149 crescent rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "149, Crescent Road, San Anselmo, Marin County, California, 94960, United States",
@@ -3230,6 +3254,14 @@
     "longitude": "-122.5803956",
     "queried_at": "2026-04-11T23:20:25+00:00",
     "query": "16 HILLCREST CT, SAN ANSELMO, CA, 94960"
+  },
+  "16 karl ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "16, Karl Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9794429",
+    "longitude": "-122.5710557",
+    "queried_at": "2026-06-16T18:15:20+00:00",
+    "query": "16 Karl Ave, San Anselmo, CA, 94960"
   },
   "16 kenrick dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10375,6 +10407,14 @@
     "queried_at": "2026-04-12T20:41:16+00:00",
     "query": "75 Oak Springs Dr, San Anselmo, CA, 94960"
   },
+  "75 yolanda dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "75, Yolanda Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9808158",
+    "longitude": "-122.5735283",
+    "queried_at": "2026-06-16T18:15:17+00:00",
+    "query": "75 Yolanda Dr, San Anselmo, CA, 94960"
+  },
   "76 elm ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "76, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -11302,6 +11342,14 @@
     "longitude": "-122.5715020",
     "queried_at": "2026-04-21T00:06:20+00:00",
     "query": "90 Ridge Rd, San Anselmo, CA, 94960"
+  },
+  "903 san anselmo ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "903, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9774935",
+    "longitude": "-122.5680930",
+    "queried_at": "2026-06-16T18:15:21+00:00",
+    "query": "903 San Anselmo Ave, San Anselmo, CA, 94960"
   },
   "91 holstein rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
