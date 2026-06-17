@@ -8959,6 +8959,14 @@
     "queried_at": "2026-04-12T20:26:52+00:00",
     "query": "55 Alder Ave, San Anselmo, CA, 94960"
   },
+  "55 avenue del norte, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-06-17T16:45:49+00:00",
+    "query": "55 Avenue Del Norte, San Anselmo, CA, 94960"
+  },
   "55 brookside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "55, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
