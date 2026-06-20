@@ -4999,7 +4999,7 @@
     "geocode_status": "success",
     "geocoded_address": "77, Mountain View Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:07:01+00:00",
-    "last_seen_at": "2026-04-12T20:07:01+00:00",
+    "last_seen_at": "2026-06-20T15:19:46+00:00",
     "latitude": "37.9865175",
     "longitude": "-122.5714790"
   },
@@ -5215,7 +5215,7 @@
     "geocode_status": "success",
     "geocoded_address": "Humboldt Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:14+00:00",
-    "last_seen_at": "2026-04-12T20:20:14+00:00",
+    "last_seen_at": "2026-06-20T15:19:37+00:00",
     "latitude": "37.9813765",
     "longitude": "-122.5775074"
   },
@@ -5794,6 +5794,24 @@
     "last_seen_at": "2026-04-12T20:09:11+00:00",
     "latitude": "37.9804957",
     "longitude": "-122.5755616"
+  },
+  "3f4d0f921c723648": {
+    "address": "157 Redwood Rd",
+    "address_id": "3f4d0f921c723648",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "b39e8e015831fac29c029f16d31a7bd8c47507b8be0827ef8e37d1de4db3ab2e",
+    "extra": {},
+    "first_seen_at": "2026-06-20T15:19:36+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-20T15:21:39+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "157, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-20T15:21:39+00:00",
+    "last_seen_at": "2026-06-20T15:21:39+00:00",
+    "latitude": "37.9762944",
+    "longitude": "-122.5733113"
   },
   "3fa8e4cf42d88ee2": {
     "address": "324 The Alameda",
@@ -6640,6 +6658,24 @@
     "last_seen_at": "2026-04-15T14:57:16+00:00",
     "latitude": "37.9781805",
     "longitude": "-122.5760358"
+  },
+  "47a89f67669a318c": {
+    "address": "1340 San Anselmo Ave",
+    "address_id": "47a89f67669a318c",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "3e94e5387d7c399817683a43e2c17114730e6f6c127c9d5eb01c1237e329b50f",
+    "extra": {},
+    "first_seen_at": "2026-06-20T15:19:56+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-20T15:21:37+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "1340, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-20T15:21:37+00:00",
+    "last_seen_at": "2026-06-20T15:21:37+00:00",
+    "latitude": "37.9803020",
+    "longitude": "-122.5748394"
   },
   "47a9237943ba4f8c": {
     "address": "111 Crescent Rd",
@@ -8782,6 +8818,24 @@
     "last_seen_at": "2026-04-12T20:12:30+00:00",
     "latitude": "37.9996535",
     "longitude": "-122.5811465"
+  },
+  "5c7e29e2bda30b40": {
+    "address": "10 Brookside Ct",
+    "address_id": "5c7e29e2bda30b40",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "34bf22196ac0b3877bf2d401e5ee97c2abccad518f39213ca9a2e17cd39e9a77",
+    "extra": {},
+    "first_seen_at": "2026-06-20T15:19:47+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-20T15:21:38+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "10, Brookside Court, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-20T15:21:38+00:00",
+    "last_seen_at": "2026-06-20T15:21:38+00:00",
+    "latitude": "37.9871519",
+    "longitude": "-122.5722227"
   },
   "5c951b5bdff2aaa7": {
     "address": "25 Mountain View Ave",
@@ -13009,7 +13063,7 @@
     "geocode_status": "success",
     "geocoded_address": "50, Mariposa Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-06-01T19:06:44+00:00",
-    "last_seen_at": "2026-06-08T16:56:44+00:00",
+    "last_seen_at": "2026-06-20T15:20:03+00:00",
     "latitude": "37.9708803",
     "longitude": "-122.5637677"
   },
@@ -17188,6 +17242,24 @@
     "last_seen_at": "2026-04-12T20:11:40+00:00",
     "latitude": "",
     "longitude": ""
+  },
+  "ac475fc482060e9a": {
+    "address": "132 Woodland Ave",
+    "address_id": "ac475fc482060e9a",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "bb670fd1fc5868f66107cfda020603f7422fa9351f2860e29b3ae868a2435203",
+    "extra": {},
+    "first_seen_at": "2026-06-20T15:21:27+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-20T15:21:37+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "132, Woodland Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-20T15:21:37+00:00",
+    "last_seen_at": "2026-06-20T15:21:37+00:00",
+    "latitude": "37.9721705",
+    "longitude": "-122.5669029"
   },
   "aca5a6aa1b83151c": {
     "address": "35 Tamalpais Ave",
