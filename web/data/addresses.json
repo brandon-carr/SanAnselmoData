@@ -6115,7 +6115,7 @@
     "geocode_status": "success",
     "geocoded_address": "40, Valley Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:06:30+00:00",
-    "last_seen_at": "2026-04-12T20:06:30+00:00",
+    "last_seen_at": "2026-06-22T17:58:32+00:00",
     "latitude": "37.9894274",
     "longitude": "-122.5824960"
   },
@@ -18913,7 +18913,7 @@
     "geocode_status": "success",
     "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:37:48+00:00",
-    "last_seen_at": "2026-05-20T16:33:33+00:00",
+    "last_seen_at": "2026-06-22T18:00:34+00:00",
     "latitude": "37.9781805",
     "longitude": "-122.5760358"
   },
