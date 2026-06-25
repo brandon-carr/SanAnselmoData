@@ -2423,6 +2423,14 @@
     "queried_at": "2026-06-06T14:57:31+00:00",
     "query": "14 Elm Ct, San Anselmo, CA, 94960"
   },
+  "14 foss ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "14, Foss Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9713992",
+    "longitude": "-122.5685942",
+    "queried_at": "2026-06-25T16:00:01+00:00",
+    "query": "14 Foss Ave, San Anselmo, CA, 94960"
+  },
   "14 idalia ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "14, Idalia Court, San Anselmo, Marin County, California, 94960, United States",
@@ -6574,6 +6582,14 @@
     "longitude": "-122.5764643",
     "queried_at": "2026-04-12T20:25:25+00:00",
     "query": "327 Butterfield Rd, San Anselmo, CA, 94960"
+  },
+  "328 laurel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "328, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9751688",
+    "longitude": "-122.5685670",
+    "queried_at": "2026-06-25T16:00:02+00:00",
+    "query": "328 Laurel Ave, San Anselmo, CA, 94960"
   },
   "329 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
