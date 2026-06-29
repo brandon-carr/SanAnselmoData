@@ -2479,6 +2479,14 @@
     "queried_at": "2026-04-21T00:06:15+00:00",
     "query": "14 Oak Ave, San Anselmo, CA, 94960"
   },
+  "14 rivera st, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "14, Rivera Street, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9849834",
+    "longitude": "-122.5711973",
+    "queried_at": "2026-06-29T16:45:54+00:00",
+    "query": "14 Rivera St, San Anselmo, CA, 94960"
+  },
   "14 scenic ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "14, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",

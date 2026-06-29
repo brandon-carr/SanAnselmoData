@@ -733,7 +733,7 @@
     "geocode_status": "success",
     "geocoded_address": "Florence Avenue, San Anselmo, Marin County, California, 94930, United States",
     "last_changed_at": "2026-04-12T17:15:51+00:00",
-    "last_seen_at": "2026-04-14T17:55:11+00:00",
+    "last_seen_at": "2026-06-29T16:45:39+00:00",
     "latitude": "37.9837057",
     "longitude": "-122.5785730"
   },
@@ -12739,7 +12739,7 @@
     "geocode_status": "success",
     "geocoded_address": "17, Oak Knoll Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:36+00:00",
-    "last_seen_at": "2026-06-23T16:08:01+00:00",
+    "last_seen_at": "2026-06-29T16:45:44+00:00",
     "latitude": "37.9836459",
     "longitude": "-122.5772043"
   },
@@ -12775,7 +12775,7 @@
     "geocode_status": "success",
     "geocoded_address": "175, Ridge Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:41+00:00",
-    "last_seen_at": "2026-06-04T16:33:07+00:00",
+    "last_seen_at": "2026-06-29T16:45:51+00:00",
     "latitude": "37.9881270",
     "longitude": "-122.5706360"
   },
@@ -13297,7 +13297,7 @@
     "geocode_status": "success",
     "geocoded_address": "401, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:11:18+00:00",
-    "last_seen_at": "2026-06-18T16:46:02+00:00",
+    "last_seen_at": "2026-06-29T16:45:43+00:00",
     "latitude": "37.9806474",
     "longitude": "-122.5794978"
   },
@@ -20839,7 +20839,7 @@
     "geocode_status": "success",
     "geocoded_address": "60, Belle Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-17T14:45:03+00:00",
-    "last_seen_at": "2026-04-17T14:45:03+00:00",
+    "last_seen_at": "2026-06-29T16:44:05+00:00",
     "latitude": "37.9701257",
     "longitude": "-122.5626198"
   },
@@ -25450,6 +25450,24 @@
     "last_seen_at": "2026-04-12T20:10:42+00:00",
     "latitude": "37.9710653",
     "longitude": "-122.5631812"
+  },
+  "f6d34d8f42ee2bae": {
+    "address": "14 Rivera St",
+    "address_id": "f6d34d8f42ee2bae",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "b1c1cb04b8f3cdd35bc38c2e5bcba1d0b67997e0d982344c9faf21c0d1dca94b",
+    "extra": {},
+    "first_seen_at": "2026-06-29T16:43:48+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-06-29T16:45:54+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "14, Rivera Street, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-06-29T16:45:54+00:00",
+    "last_seen_at": "2026-06-29T16:45:54+00:00",
+    "latitude": "37.9849834",
+    "longitude": "-122.5711973"
   },
   "f6d6751caba2bd9a": {
     "address": "33 Barber Ave",
