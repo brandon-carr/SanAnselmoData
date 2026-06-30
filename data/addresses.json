@@ -3505,7 +3505,7 @@
     "geocode_status": "success",
     "geocoded_address": "1, Caleta Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:38+00:00",
-    "last_seen_at": "2026-04-12T20:13:38+00:00",
+    "last_seen_at": "2026-06-30T15:45:04+00:00",
     "latitude": "37.9983340",
     "longitude": "-122.5760670"
   },
@@ -4513,7 +4513,7 @@
     "geocode_status": "success",
     "geocoded_address": "Java Hub, 60, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:45+00:00",
-    "last_seen_at": "2026-06-01T19:06:11+00:00",
+    "last_seen_at": "2026-06-30T15:44:44+00:00",
     "latitude": "37.9761496",
     "longitude": "-122.5596307"
   },
@@ -6061,7 +6061,7 @@
     "geocode_status": "success",
     "geocoded_address": "15, Cherne Lane, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:32:20+00:00",
-    "last_seen_at": "2026-04-14T17:55:48+00:00",
+    "last_seen_at": "2026-06-30T15:44:55+00:00",
     "latitude": "37.9967820",
     "longitude": "-122.5792430"
   },
@@ -8167,7 +8167,7 @@
     "geocode_status": "success",
     "geocoded_address": "174, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-28T16:02:19+00:00",
-    "last_seen_at": "2026-04-28T16:02:19+00:00",
+    "last_seen_at": "2026-06-30T15:44:54+00:00",
     "latitude": "37.9885936",
     "longitude": "-122.5772800"
   },
@@ -16699,7 +16699,7 @@
     "geocode_status": "success",
     "geocoded_address": "21, Florence Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-06-04T16:33:47+00:00",
-    "last_seen_at": "2026-06-24T15:41:56+00:00",
+    "last_seen_at": "2026-06-30T15:44:49+00:00",
     "latitude": "37.9830210",
     "longitude": "-122.5776685"
   },
@@ -25843,7 +25843,7 @@
     "geocode_status": "success",
     "geocoded_address": "191, The Alameda, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:15:27+00:00",
-    "last_seen_at": "2026-06-18T16:46:08+00:00",
+    "last_seen_at": "2026-06-30T15:44:47+00:00",
     "latitude": "37.9935766",
     "longitude": "-122.5757961"
   },
@@ -25987,7 +25987,7 @@
     "geocode_status": "success",
     "geocoded_address": "165, Crescent Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:24+00:00",
-    "last_seen_at": "2026-05-05T18:27:25+00:00",
+    "last_seen_at": "2026-06-30T15:44:58+00:00",
     "latitude": "37.9733507",
     "longitude": "-122.5694658"
   },
