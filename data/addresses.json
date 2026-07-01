@@ -3761,6 +3761,24 @@
     "latitude": "37.9743173",
     "longitude": "-122.5624830"
   },
+  "27191e33a737bcc7": {
+    "address": "150 Jordan Ave",
+    "address_id": "27191e33a737bcc7",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "2abf084995706ff415e3b271b45d0cbe4a8dbc504d9600cd56ff2e22bf8c4ad8",
+    "extra": {},
+    "first_seen_at": "2026-07-01T16:01:07+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-07-01T16:03:02+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "150, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-07-01T16:03:02+00:00",
+    "last_seen_at": "2026-07-01T16:03:02+00:00",
+    "latitude": "37.9818092",
+    "longitude": "-122.5550515"
+  },
   "272dfad87ded8e81": {
     "address": "21 Forrest Ave",
     "address_id": "272dfad87ded8e81",
@@ -4981,7 +4999,7 @@
     "geocode_status": "success",
     "geocoded_address": "35, Berlin Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:17:59+00:00",
-    "last_seen_at": "2026-06-04T16:33:40+00:00",
+    "last_seen_at": "2026-07-01T16:02:59+00:00",
     "latitude": "37.9801065",
     "longitude": "-122.5706509"
   },
@@ -5323,7 +5341,7 @@
     "geocode_status": "success",
     "geocoded_address": "205, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:14:40+00:00",
-    "last_seen_at": "2026-04-12T20:14:40+00:00",
+    "last_seen_at": "2026-07-01T16:01:10+00:00",
     "latitude": "37.9967772",
     "longitude": "-122.5853734"
   },
@@ -7051,7 +7069,7 @@
     "geocode_status": "success",
     "geocoded_address": "180, Sturdivant Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:02+00:00",
-    "last_seen_at": "2026-06-09T16:15:12+00:00",
+    "last_seen_at": "2026-07-01T16:02:50+00:00",
     "latitude": "37.9720840",
     "longitude": "-122.5563553"
   },
@@ -7789,7 +7807,7 @@
     "geocode_status": "success",
     "geocoded_address": "416, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:06:55+00:00",
-    "last_seen_at": "2026-06-11T17:03:55+00:00",
+    "last_seen_at": "2026-07-01T16:01:16+00:00",
     "latitude": "37.9757519",
     "longitude": "-122.5518975"
   },
@@ -8185,7 +8203,7 @@
     "geocode_status": "success",
     "geocoded_address": "1019, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:34+00:00",
-    "last_seen_at": "2026-04-14T17:55:08+00:00",
+    "last_seen_at": "2026-07-01T16:01:17+00:00",
     "latitude": "37.9815775",
     "longitude": "-122.5678893"
   },
@@ -9949,7 +9967,7 @@
     "geocode_status": "success",
     "geocoded_address": "CVS Pharmacy, 880, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:00:53+00:00",
-    "last_seen_at": "2026-04-14T17:56:00+00:00",
+    "last_seen_at": "2026-07-01T16:02:52+00:00",
     "latitude": "37.9812704",
     "longitude": "-122.5652448"
   },
@@ -12001,7 +12019,7 @@
     "geocode_status": "success",
     "geocoded_address": "155, Camino de Herrera, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-15T15:35:36+00:00",
-    "last_seen_at": "2026-05-15T15:35:36+00:00",
+    "last_seen_at": "2026-07-01T16:01:13+00:00",
     "latitude": "37.9919940",
     "longitude": "-122.5810468"
   },
@@ -13783,7 +13801,7 @@
     "geocode_status": "success",
     "geocoded_address": "124, Floribel Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:06:52+00:00",
-    "last_seen_at": "2026-06-18T16:44:06+00:00",
+    "last_seen_at": "2026-07-01T16:02:51+00:00",
     "latitude": "37.9774284",
     "longitude": "-122.5770786"
   },
@@ -18791,6 +18809,24 @@
     "latitude": "37.9758853",
     "longitude": "-122.5640023"
   },
+  "ba9a82bdada3ee15": {
+    "address": "28 Fern Ln",
+    "address_id": "ba9a82bdada3ee15",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "774d347909a1b0c6a2b24281f8e845a5063dfdf128f89ce2d3a1f694dc5f434b",
+    "extra": {},
+    "first_seen_at": "2026-07-01T16:01:03+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-07-01T16:03:04+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "28, Fern Lane, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-07-01T16:03:04+00:00",
+    "last_seen_at": "2026-07-01T16:03:04+00:00",
+    "latitude": "37.9827737",
+    "longitude": "-122.5759156"
+  },
   "baa21f6e41dfc4fe": {
     "address": "37 Barber Ave",
     "address_id": "baa21f6e41dfc4fe",
@@ -20519,6 +20555,24 @@
     "latitude": "37.9931400",
     "longitude": "-122.5757940"
   },
+  "c94e87f71adb69da": {
+    "address": "1598 Sir Francis Drake Blvd",
+    "address_id": "c94e87f71adb69da",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "0929bd07e5f54fea54bb588121cb3631f0ec9e889f85fd488849ad3b97ed8de4",
+    "extra": {},
+    "first_seen_at": "2026-07-01T16:02:39+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-07-01T16:03:02+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "1598, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-07-01T16:03:02+00:00",
+    "last_seen_at": "2026-07-01T16:03:02+00:00",
+    "latitude": "37.9867104",
+    "longitude": "-122.5808031"
+  },
   "c95a1fdb25a07c58": {
     "address": "228 Brookside Dr",
     "address_id": "c95a1fdb25a07c58",
@@ -21631,7 +21685,7 @@
     "geocode_status": "success",
     "geocoded_address": "Safeway, 838, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:05:37+00:00",
-    "last_seen_at": "2026-04-12T20:05:37+00:00",
+    "last_seen_at": "2026-07-01T16:01:04+00:00",
     "latitude": "37.9807253",
     "longitude": "-122.5640939"
   },
@@ -23039,6 +23093,24 @@
     "latitude": "37.9843180",
     "longitude": "-122.5745970"
   },
+  "e29698bb5165e881": {
+    "address": "134 Woodside Dr",
+    "address_id": "e29698bb5165e881",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "872895c853ea458d5e11f456c2008d3a758c6ec567d56eccc9eb2c833bd7336e",
+    "extra": {},
+    "first_seen_at": "2026-07-01T16:01:07+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-07-01T16:03:03+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "134, Woodside Drive, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-07-01T16:03:03+00:00",
+    "last_seen_at": "2026-07-01T16:03:03+00:00",
+    "latitude": "37.9970454",
+    "longitude": "-122.5827735"
+  },
   "e29dbeadb0e1672d": {
     "address": "1337 San Anselmo Ave",
     "address_id": "e29dbeadb0e1672d",
@@ -23575,7 +23647,7 @@
     "geocode_status": "error",
     "geocoded_address": "",
     "last_changed_at": "2026-04-12T20:20:46+00:00",
-    "last_seen_at": "2026-06-01T19:04:17+00:00",
+    "last_seen_at": "2026-07-01T16:01:04+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -24907,7 +24979,7 @@
     "geocode_status": "success",
     "geocoded_address": "12, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:12:20+00:00",
-    "last_seen_at": "2026-06-09T16:15:28+00:00",
+    "last_seen_at": "2026-07-01T16:02:55+00:00",
     "latitude": "37.9866670",
     "longitude": "-122.5718735"
   },
