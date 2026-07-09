@@ -1159,6 +1159,14 @@
     "queried_at": "2026-04-17T14:45:23+00:00",
     "query": "116 Chipman Pl, San Anselmo, CA, 94960"
   },
+  "116 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "116, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9970645",
+    "longitude": "-122.5844880",
+    "queried_at": "2026-07-09T16:13:49+00:00",
+    "query": "116 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
   "116 the alameda, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "116, The Alameda, San Anselmo, Marin County, California, 94960, United States",
@@ -1382,6 +1390,14 @@
     "longitude": "-122.5821702",
     "queried_at": "2026-04-12T18:57:22+00:00",
     "query": "12 Traxler Rd, San Anselmo, CA, 94960"
+  },
+  "12 valley rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "12, Valley Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9883857",
+    "longitude": "-122.5820456",
+    "queried_at": "2026-07-09T16:13:51+00:00",
+    "query": "12 Valley Rd, San Anselmo, CA, 94960"
   },
   "120 brookside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -3894,6 +3910,14 @@
     "longitude": "-122.5642440",
     "queried_at": "2026-04-12T20:44:39+00:00",
     "query": "177 Pine St, San Anselmo, CA, 94960"
+  },
+  "178 floribel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "178, Floribel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9766606",
+    "longitude": "-122.5771837",
+    "queried_at": "2026-07-09T16:13:52+00:00",
+    "query": "178 Floribel Ave, San Anselmo, CA, 94960"
   },
   "178 meadowcroft dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -9750,6 +9774,14 @@
     "longitude": "-122.5731926",
     "queried_at": "2026-04-12T18:55:41+00:00",
     "query": "6 Meadowcroft Dr, San Anselmo, CA, 94960"
+  },
+  "6 rancho dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "6, Rancho Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9936192",
+    "longitude": "-122.5776544",
+    "queried_at": "2026-07-09T16:13:50+00:00",
+    "query": "6 Rancho Dr, San Anselmo, CA, 94960"
   },
   "6 red hill ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
