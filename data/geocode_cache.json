@@ -823,6 +823,14 @@
     "queried_at": "2026-04-14T18:24:44+00:00",
     "query": "11 Vine Ave, San Anselmo, CA, 94960"
   },
+  "11 waverly rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "11, Waverly Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9681117",
+    "longitude": "-122.5676103",
+    "queried_at": "2026-07-16T15:18:41+00:00",
+    "query": "11 Waverly Rd, San Anselmo, CA, 94960"
+  },
   "110 alder ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "110, Alder Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -5399,6 +5407,14 @@
     "queried_at": "2026-04-12T20:41:10+00:00",
     "query": "230 Oak Springs Dr, San Anselmo, CA, 94960"
   },
+  "231 laurel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "231, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9763888",
+    "longitude": "-122.5693003",
+    "queried_at": "2026-07-16T15:18:39+00:00",
+    "query": "231 Laurel Ave, San Anselmo, CA, 94960"
+  },
   "231 san francisco blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "231, San Francisco Boulevard, San Anselmo, Marin County, California, 94960, United States",
@@ -6278,6 +6294,14 @@
     "longitude": "-122.5664950",
     "queried_at": "2026-04-12T20:26:21+00:00",
     "query": "289 Crescent Rd, San Anselmo, CA, 94960"
+  },
+  "289 redwood rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "289, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9750740",
+    "longitude": "-122.5761167",
+    "queried_at": "2026-07-16T15:18:42+00:00",
+    "query": "289 Redwood Rd, San Anselmo, CA, 94960"
   },
   "29 bennit ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -9318,6 +9342,14 @@
     "longitude": "-122.5734960",
     "queried_at": "2026-06-04T16:33:53+00:00",
     "query": "55 Brookside Dr, San Anselmo, CA, 94960"
+  },
+  "55 cordone dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "55, Cordone Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9856056",
+    "longitude": "-122.5707334",
+    "queried_at": "2026-07-16T15:18:41+00:00",
+    "query": "55 Cordone Dr, San Anselmo, CA, 94960"
   },
   "55 crooked ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
