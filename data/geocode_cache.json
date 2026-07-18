@@ -2535,6 +2535,14 @@
     "queried_at": "2026-06-29T16:45:54+00:00",
     "query": "14 Rivera St, San Anselmo, CA, 94960"
   },
+  "14 san francisco blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "14, San Francisco Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9824990",
+    "longitude": "-122.5686620",
+    "queried_at": "2026-07-18T14:34:52+00:00",
+    "query": "14 San Francisco Blvd, San Anselmo, CA, 94960"
+  },
   "14 scenic ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "14, Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -2702,6 +2710,14 @@
     "longitude": "-122.5657489",
     "queried_at": "2026-04-12T20:40:49+00:00",
     "query": "144 Sycamore Ave, San Anselmo, CA, 94960"
+  },
+  "144 woodland ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "144, Woodland Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9721477",
+    "longitude": "-122.5671098",
+    "queried_at": "2026-07-18T14:34:54+00:00",
+    "query": "144 Woodland Ave, San Anselmo, CA, 94960"
   },
   "1441 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -6079,6 +6095,14 @@
     "queried_at": "2026-04-12T20:38:38+00:00",
     "query": "27 Rutherford Ave, San Anselmo, CA, 94960"
   },
+  "27 san rafael ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "27, San Rafael Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9764267",
+    "longitude": "-122.5650604",
+    "queried_at": "2026-07-18T14:34:53+00:00",
+    "query": "27 San Rafael Ave, San Anselmo, CA, 94960"
+  },
   "27 sierra ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "27, Sierra Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -6982,6 +7006,14 @@
     "longitude": "-122.5647799",
     "queried_at": "2026-04-12T20:44:25+00:00",
     "query": "34 Tamalpais Ave, San Anselmo, CA, 94960"
+  },
+  "34 valley rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "34, Valley Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9891906",
+    "longitude": "-122.5823321",
+    "queried_at": "2026-07-18T14:34:55+00:00",
+    "query": "34 Valley Rd, San Anselmo, CA, 94960"
   },
   "340 laurel ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
