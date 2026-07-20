@@ -7295,6 +7295,14 @@
     "queried_at": "2026-04-12T20:36:08+00:00",
     "query": "37 Barber Ave, San Anselmo, CA, 94960"
   },
+  "37 canyon rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "37, Canyon Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9776111",
+    "longitude": "-122.5794322",
+    "queried_at": "2026-07-20T15:27:35+00:00",
+    "query": "37 Canyon Rd, San Anselmo, CA, 94960"
+  },
   "37 elm ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "37, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
