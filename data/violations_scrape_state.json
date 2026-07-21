@@ -1,8 +1,8 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-07-20T15:26:49+00:00",
-  "last_run_started_at": "2026-07-20T15:26:40+00:00",
+  "last_run_finished_at": "2026-07-21T15:20:19+00:00",
+  "last_run_started_at": "2026-07-21T15:20:15+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
@@ -13,6 +13,7 @@
         "next_sequence": 87,
         "prefix": "AB",
         "requested_batch_size": 50,
+        "skipped_recently_exhausted": true,
         "start_sequence": 87,
         "stopped_at_missing": "AB2026-0087",
         "unchanged": 0,
@@ -25,6 +26,7 @@
         "next_sequence": 1,
         "prefix": "CV",
         "requested_batch_size": 50,
+        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "CV2026-0001",
         "unchanged": 0,
