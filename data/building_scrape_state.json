@@ -1,21 +1,20 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-07-21T15:20:12+00:00",
-  "last_run_started_at": "2026-07-21T15:20:08+00:00",
+  "last_run_finished_at": "2026-07-22T15:19:31+00:00",
+  "last_run_started_at": "2026-07-22T15:18:29+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
       "B": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 299,
+        "found": 4,
+        "new": 4,
+        "next_sequence": 303,
         "prefix": "B",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 299,
-        "stopped_at_missing": "B2026-0299",
+        "stopped_at_missing": "B2026-0303",
         "unchanged": 0,
         "year": 2026
       },
@@ -26,7 +25,6 @@
         "next_sequence": 85,
         "prefix": "E",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 85,
         "stopped_at_missing": "E2026-0085",
         "unchanged": 0,
@@ -39,7 +37,6 @@
         "next_sequence": 19,
         "prefix": "F",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 19,
         "stopped_at_missing": "F2026-0019",
         "unchanged": 0,
@@ -52,7 +49,6 @@
         "next_sequence": 1,
         "prefix": "GATE",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "GATE2026-0001",
         "unchanged": 0,
@@ -60,14 +56,13 @@
       },
       "GH": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 10,
+        "found": 1,
+        "new": 1,
+        "next_sequence": 11,
         "prefix": "GH",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 10,
-        "stopped_at_missing": "GH2026-0010",
+        "stopped_at_missing": "GH2026-0011",
         "unchanged": 0,
         "year": 2026
       },
@@ -78,7 +73,6 @@
         "next_sequence": 1,
         "prefix": "INV",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "INV2026-0001",
         "unchanged": 0,
@@ -91,7 +85,6 @@
         "next_sequence": 1,
         "prefix": "LLA",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "LLA2026-0001",
         "unchanged": 0,
@@ -104,7 +97,6 @@
         "next_sequence": 1,
         "prefix": "LOA",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "LOA2026-0001",
         "unchanged": 0,
@@ -117,7 +109,6 @@
         "next_sequence": 1,
         "prefix": "LOTA",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "LOTA2026-0001",
         "unchanged": 0,
@@ -130,7 +121,6 @@
         "next_sequence": 76,
         "prefix": "M",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 76,
         "stopped_at_missing": "M2026-0076",
         "unchanged": 0,
@@ -138,14 +128,13 @@
       },
       "P": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 53,
+        "found": 1,
+        "new": 1,
+        "next_sequence": 54,
         "prefix": "P",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 53,
-        "stopped_at_missing": "P2026-0053",
+        "stopped_at_missing": "P2026-0054",
         "unchanged": 0,
         "year": 2026
       },
@@ -156,7 +145,6 @@
         "next_sequence": 26,
         "prefix": "R",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 26,
         "stopped_at_missing": "R2026-0026",
         "unchanged": 0,
@@ -169,7 +157,6 @@
         "next_sequence": 1,
         "prefix": "SPA",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "SPA2026-0001",
         "unchanged": 0,
@@ -182,7 +169,6 @@
         "next_sequence": 19,
         "prefix": "T",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 19,
         "stopped_at_missing": "T2026-0019",
         "unchanged": 0,
@@ -195,7 +181,6 @@
         "next_sequence": 3,
         "prefix": "WC",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 3,
         "stopped_at_missing": "WC2026-0003",
         "unchanged": 0,
@@ -208,7 +193,6 @@
         "next_sequence": 1,
         "prefix": "WELL",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "WELL2026-0001",
         "unchanged": 0,
@@ -220,28 +204,28 @@
     "B": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:24:52+00:00",
-      "last_run_started_at": "2026-07-20T15:24:48+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:38+00:00",
+      "last_run_started_at": "2026-07-22T15:18:33+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
-        "found": 1,
-        "new": 1,
-        "next_sequence": 299,
+        "found": 4,
+        "new": 4,
+        "next_sequence": 303,
         "prefix": "B",
         "requested_batch_size": 50,
-        "start_sequence": 298,
-        "stopped_at_missing": "B2026-0299",
+        "start_sequence": 299,
+        "stopped_at_missing": "B2026-0303",
         "unchanged": 0,
         "year": 2026
       },
-      "next_sequence": 299
+      "next_sequence": 303
     },
     "E": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:24:55+00:00",
-      "last_run_started_at": "2026-07-20T15:24:52+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:42+00:00",
+      "last_run_started_at": "2026-07-22T15:18:38+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -260,8 +244,8 @@
     "F": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:24:58+00:00",
-      "last_run_started_at": "2026-07-20T15:24:55+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:45+00:00",
+      "last_run_started_at": "2026-07-22T15:18:42+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -280,8 +264,8 @@
     "GATE": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:14+00:00",
-      "last_run_started_at": "2026-07-20T15:25:11+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:03+00:00",
+      "last_run_started_at": "2026-07-22T15:18:59+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -300,28 +284,28 @@
     "GH": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:17+00:00",
-      "last_run_started_at": "2026-07-20T15:25:14+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:07+00:00",
+      "last_run_started_at": "2026-07-22T15:19:03+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 10,
+        "found": 1,
+        "new": 1,
+        "next_sequence": 11,
         "prefix": "GH",
         "requested_batch_size": 50,
         "start_sequence": 10,
-        "stopped_at_missing": "GH2026-0010",
+        "stopped_at_missing": "GH2026-0011",
         "unchanged": 0,
         "year": 2026
       },
-      "next_sequence": 10
+      "next_sequence": 11
     },
     "INV": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:21+00:00",
-      "last_run_started_at": "2026-07-20T15:25:17+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:10+00:00",
+      "last_run_started_at": "2026-07-22T15:19:07+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -340,8 +324,8 @@
     "LLA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:24+00:00",
-      "last_run_started_at": "2026-07-20T15:25:21+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:14+00:00",
+      "last_run_started_at": "2026-07-22T15:19:10+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -360,8 +344,8 @@
     "LOA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:30+00:00",
-      "last_run_started_at": "2026-07-20T15:25:27+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:21+00:00",
+      "last_run_started_at": "2026-07-22T15:19:17+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -380,8 +364,8 @@
     "LOTA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:27+00:00",
-      "last_run_started_at": "2026-07-20T15:25:24+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:17+00:00",
+      "last_run_started_at": "2026-07-22T15:19:14+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -400,8 +384,8 @@
     "M": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:01+00:00",
-      "last_run_started_at": "2026-07-20T15:24:58+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:49+00:00",
+      "last_run_started_at": "2026-07-22T15:18:45+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -420,28 +404,28 @@
     "P": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:05+00:00",
-      "last_run_started_at": "2026-07-20T15:25:01+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:52+00:00",
+      "last_run_started_at": "2026-07-22T15:18:49+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
         "found": 1,
         "new": 1,
-        "next_sequence": 53,
+        "next_sequence": 54,
         "prefix": "P",
         "requested_batch_size": 50,
-        "start_sequence": 52,
-        "stopped_at_missing": "P2026-0053",
+        "start_sequence": 53,
+        "stopped_at_missing": "P2026-0054",
         "unchanged": 0,
         "year": 2026
       },
-      "next_sequence": 53
+      "next_sequence": 54
     },
     "R": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:08+00:00",
-      "last_run_started_at": "2026-07-20T15:25:05+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:56+00:00",
+      "last_run_started_at": "2026-07-22T15:18:52+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -460,8 +444,8 @@
     "SPA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:40+00:00",
-      "last_run_started_at": "2026-07-20T15:25:36+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:31+00:00",
+      "last_run_started_at": "2026-07-22T15:19:27+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -480,8 +464,8 @@
     "T": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:11+00:00",
-      "last_run_started_at": "2026-07-20T15:25:08+00:00",
+      "last_run_finished_at": "2026-07-22T15:18:59+00:00",
+      "last_run_started_at": "2026-07-22T15:18:56+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -500,8 +484,8 @@
     "WC": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:33+00:00",
-      "last_run_started_at": "2026-07-20T15:25:30+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:24+00:00",
+      "last_run_started_at": "2026-07-22T15:19:21+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -520,8 +504,8 @@
     "WELL": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-07-20T15:25:36+00:00",
-      "last_run_started_at": "2026-07-20T15:25:33+00:00",
+      "last_run_finished_at": "2026-07-22T15:19:27+00:00",
+      "last_run_started_at": "2026-07-22T15:19:24+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -866,28 +850,28 @@
       "B": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:24:52+00:00",
-        "last_run_started_at": "2026-07-20T15:24:48+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:38+00:00",
+        "last_run_started_at": "2026-07-22T15:18:33+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
-          "found": 1,
-          "new": 1,
-          "next_sequence": 299,
+          "found": 4,
+          "new": 4,
+          "next_sequence": 303,
           "prefix": "B",
           "requested_batch_size": 50,
-          "start_sequence": 298,
-          "stopped_at_missing": "B2026-0299",
+          "start_sequence": 299,
+          "stopped_at_missing": "B2026-0303",
           "unchanged": 0,
           "year": 2026
         },
-        "next_sequence": 299
+        "next_sequence": 303
       },
       "E": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:24:55+00:00",
-        "last_run_started_at": "2026-07-20T15:24:52+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:42+00:00",
+        "last_run_started_at": "2026-07-22T15:18:38+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -906,8 +890,8 @@
       "F": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:24:58+00:00",
-        "last_run_started_at": "2026-07-20T15:24:55+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:45+00:00",
+        "last_run_started_at": "2026-07-22T15:18:42+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -926,8 +910,8 @@
       "GATE": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:14+00:00",
-        "last_run_started_at": "2026-07-20T15:25:11+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:03+00:00",
+        "last_run_started_at": "2026-07-22T15:18:59+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -946,28 +930,28 @@
       "GH": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:17+00:00",
-        "last_run_started_at": "2026-07-20T15:25:14+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:07+00:00",
+        "last_run_started_at": "2026-07-22T15:19:03+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
-          "found": 0,
-          "new": 0,
-          "next_sequence": 10,
+          "found": 1,
+          "new": 1,
+          "next_sequence": 11,
           "prefix": "GH",
           "requested_batch_size": 50,
           "start_sequence": 10,
-          "stopped_at_missing": "GH2026-0010",
+          "stopped_at_missing": "GH2026-0011",
           "unchanged": 0,
           "year": 2026
         },
-        "next_sequence": 10
+        "next_sequence": 11
       },
       "INV": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:21+00:00",
-        "last_run_started_at": "2026-07-20T15:25:17+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:10+00:00",
+        "last_run_started_at": "2026-07-22T15:19:07+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -986,8 +970,8 @@
       "LLA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:24+00:00",
-        "last_run_started_at": "2026-07-20T15:25:21+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:14+00:00",
+        "last_run_started_at": "2026-07-22T15:19:10+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1006,8 +990,8 @@
       "LOA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:30+00:00",
-        "last_run_started_at": "2026-07-20T15:25:27+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:21+00:00",
+        "last_run_started_at": "2026-07-22T15:19:17+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1026,8 +1010,8 @@
       "LOTA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:27+00:00",
-        "last_run_started_at": "2026-07-20T15:25:24+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:17+00:00",
+        "last_run_started_at": "2026-07-22T15:19:14+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1046,8 +1030,8 @@
       "M": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:01+00:00",
-        "last_run_started_at": "2026-07-20T15:24:58+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:49+00:00",
+        "last_run_started_at": "2026-07-22T15:18:45+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1066,28 +1050,28 @@
       "P": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:05+00:00",
-        "last_run_started_at": "2026-07-20T15:25:01+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:52+00:00",
+        "last_run_started_at": "2026-07-22T15:18:49+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
           "found": 1,
           "new": 1,
-          "next_sequence": 53,
+          "next_sequence": 54,
           "prefix": "P",
           "requested_batch_size": 50,
-          "start_sequence": 52,
-          "stopped_at_missing": "P2026-0053",
+          "start_sequence": 53,
+          "stopped_at_missing": "P2026-0054",
           "unchanged": 0,
           "year": 2026
         },
-        "next_sequence": 53
+        "next_sequence": 54
       },
       "R": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:08+00:00",
-        "last_run_started_at": "2026-07-20T15:25:05+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:56+00:00",
+        "last_run_started_at": "2026-07-22T15:18:52+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1106,8 +1090,8 @@
       "SPA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:40+00:00",
-        "last_run_started_at": "2026-07-20T15:25:36+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:31+00:00",
+        "last_run_started_at": "2026-07-22T15:19:27+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1126,8 +1110,8 @@
       "T": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:11+00:00",
-        "last_run_started_at": "2026-07-20T15:25:08+00:00",
+        "last_run_finished_at": "2026-07-22T15:18:59+00:00",
+        "last_run_started_at": "2026-07-22T15:18:56+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1146,8 +1130,8 @@
       "WC": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:33+00:00",
-        "last_run_started_at": "2026-07-20T15:25:30+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:24+00:00",
+        "last_run_started_at": "2026-07-22T15:19:21+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1166,8 +1150,8 @@
       "WELL": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-07-20T15:25:36+00:00",
-        "last_run_started_at": "2026-07-20T15:25:33+00:00",
+        "last_run_finished_at": "2026-07-22T15:19:27+00:00",
+        "last_run_started_at": "2026-07-22T15:19:24+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
