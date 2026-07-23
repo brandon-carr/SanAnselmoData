@@ -8703,6 +8703,14 @@
     "queried_at": "2026-04-12T20:34:29+00:00",
     "query": "49 El Cerrito Ave, San Anselmo, CA, 94960"
   },
+  "49 karl ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "49, Karl Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9791196",
+    "longitude": "-122.5700632",
+    "queried_at": "2026-07-23T15:31:56+00:00",
+    "query": "49 Karl Ave, San Anselmo, CA, 94960"
+  },
   "49 medway rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "49, Medway Road, San Anselmo, Marin County, California, 94960, United States",
@@ -11838,6 +11846,14 @@
     "longitude": "-122.5725540",
     "queried_at": "2026-04-12T20:24:23+00:00",
     "query": "91 Holstein Rd, San Anselmo, CA, 94960"
+  },
+  "91 jordan ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "91, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9805546",
+    "longitude": "-122.5561871",
+    "queried_at": "2026-07-23T15:31:55+00:00",
+    "query": "91 Jordan Ave, San Anselmo, CA, 94960"
   },
   "91 rosemont ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
