@@ -9471,6 +9471,14 @@
     "queried_at": "2026-04-12T18:23:11+00:00",
     "query": "55 Melville Ave, San Anselmo, CA, 94960"
   },
+  "55 redwood rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "55, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9784078",
+    "longitude": "-122.5737196",
+    "queried_at": "2026-07-25T14:45:38+00:00",
+    "query": "55 Redwood Rd, San Anselmo, CA, 94960"
+  },
   "55 sais ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "55, Sais Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -9502,6 +9510,14 @@
     "longitude": "-122.5752302",
     "queried_at": "2026-04-12T20:33:19+00:00",
     "query": "55 Scenic Ave, San Anselmo, CA, 94960"
+  },
+  "55 terrace ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "55, Terrace Avenue, San Rafael, Marin County, California, 94901, United States",
+    "latitude": "37.9708494",
+    "longitude": "-122.5450059",
+    "queried_at": "2026-07-25T14:45:39+00:00",
+    "query": "55 Terrace Ave, San Anselmo, CA, 94960"
   },
   "550 san anselmo ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
