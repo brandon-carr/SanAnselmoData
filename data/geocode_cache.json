@@ -4095,6 +4095,14 @@
     "queried_at": "2026-04-12T20:25:51+00:00",
     "query": "18 Park Way, San Anselmo, CA, 94960"
   },
+  "18 rancho dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "18, Rancho Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9937728",
+    "longitude": "-122.5776404",
+    "queried_at": "2026-07-27T15:59:54+00:00",
+    "query": "18 Rancho Dr, San Anselmo, CA, 94960"
+  },
   "18 sais ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "18, Sais Avenue, San Anselmo, Marin County, California, 94960, United States",
