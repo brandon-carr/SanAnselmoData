@@ -7351,6 +7351,14 @@
     "queried_at": "2026-04-12T20:51:49+00:00",
     "query": "37 Madrone Ave, San Anselmo, CA, 94960"
   },
+  "37 ross ave unit 6,7,& 8, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "",
+    "latitude": "",
+    "longitude": "",
+    "queried_at": "2026-07-30T15:30:43+00:00",
+    "query": "37 Ross Ave Unit 6,7,& 8, San Anselmo, CA, 94960"
+  },
   "37 rutherford ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "37, Rutherford Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -11198,6 +11206,14 @@
     "longitude": "-122.5711040",
     "queried_at": "2026-04-12T20:34:31+00:00",
     "query": "8 Rivera St, San Anselmo, CA, 94960"
+  },
+  "8 rosemont ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "8, Rosemont Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9908999",
+    "longitude": "-122.5772395",
+    "queried_at": "2026-07-30T15:30:42+00:00",
+    "query": "8 Rosemont Ave, San Anselmo, CA, 94960"
   },
   "8 sunny dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
