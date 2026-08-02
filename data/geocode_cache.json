@@ -11143,6 +11143,14 @@
     "queried_at": "2026-04-12T20:41:16+00:00",
     "query": "79 Scenic Ave, San Anselmo, CA, 94960"
   },
+  "79 sequoia dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "79, Sequoia Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9832124",
+    "longitude": "-122.5574112",
+    "queried_at": "2026-08-02T14:47:04+00:00",
+    "query": "79 Sequoia Dr, San Anselmo, CA, 94960"
+  },
   "790 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "790, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
