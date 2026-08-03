@@ -1863,6 +1863,14 @@
     "queried_at": "2026-04-12T19:05:32+00:00",
     "query": "13 Carlson Ave, San Anselmo, CA, 94960"
   },
+  "13 coogan ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "13, Coogan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9789403",
+    "longitude": "-122.5574968",
+    "queried_at": "2026-08-03T16:02:05+00:00",
+    "query": "13 Coogan Ave, San Anselmo, CA, 94960"
+  },
   "13 morningside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "13, Morningside Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -7014,6 +7022,14 @@
     "longitude": "-122.5726067",
     "queried_at": "2026-04-12T20:41:29+00:00",
     "query": "34 Holstein Rd, San Anselmo, CA, 94960"
+  },
+  "34 merced ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "34, Merced Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9838062",
+    "longitude": "-122.5755868",
+    "queried_at": "2026-08-03T16:02:06+00:00",
+    "query": "34 Merced Ave, San Anselmo, CA, 94960"
   },
   "34 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
