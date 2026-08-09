@@ -11821,7 +11821,7 @@
     "geocode_status": "success",
     "geocoded_address": "81, Magnolia Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:12:17+00:00",
-    "last_seen_at": "2026-04-12T20:12:17+00:00",
+    "last_seen_at": "2026-08-09T14:03:36+00:00",
     "latitude": "37.9745561",
     "longitude": "-122.5659826"
   },
@@ -17077,7 +17077,7 @@
     "geocode_status": "success",
     "geocoded_address": "121, Tunstead Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:33+00:00",
-    "last_seen_at": "2026-08-05T15:37:01+00:00",
+    "last_seen_at": "2026-08-09T14:05:11+00:00",
     "latitude": "37.9741143",
     "longitude": "-122.5632043"
   },
@@ -18917,6 +18917,24 @@
     "latitude": "37.9773903",
     "longitude": "-122.5652684"
   },
+  "b5190d0e79796bf0": {
+    "address": "135 Suffield Ave",
+    "address_id": "b5190d0e79796bf0",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "57c7880794cce105b42e049dd8a44b1d97209dec2d0daf914b79f7d1b9e231bb",
+    "extra": {},
+    "first_seen_at": "2026-08-09T14:05:12+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-08-09T14:06:00+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "135, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-08-09T14:06:00+00:00",
+    "last_seen_at": "2026-08-09T14:06:00+00:00",
+    "latitude": "37.9874915",
+    "longitude": "-122.5817082"
+  },
   "b51d74c3ac7008ce": {
     "address": "8 Island Dr",
     "address_id": "b51d74c3ac7008ce",
@@ -19057,7 +19075,7 @@
     "geocode_status": "success",
     "geocoded_address": "1420, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-15T14:57:07+00:00",
-    "last_seen_at": "2026-04-15T14:57:07+00:00",
+    "last_seen_at": "2026-08-09T14:03:20+00:00",
     "latitude": "37.9861217",
     "longitude": "-122.5754248"
   },
@@ -24316,6 +24334,24 @@
     "last_seen_at": "2026-04-14T01:29:12+00:00",
     "latitude": "37.9706644",
     "longitude": "-122.5641962"
+  },
+  "e4949d0f14c97ab4": {
+    "address": "9 Hilldale Dr",
+    "address_id": "e4949d0f14c97ab4",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "d7446fd79a380700e10872ddd340528fc308c62fe10697dcd241a17594681522",
+    "extra": {},
+    "first_seen_at": "2026-08-09T14:03:32+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-08-09T14:06:01+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "9, Hilldale Drive, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-08-09T14:06:01+00:00",
+    "last_seen_at": "2026-08-09T14:06:01+00:00",
+    "latitude": "37.9773066",
+    "longitude": "-122.5545432"
   },
   "e4f5ee254911da4d": {
     "address": "22 Foss Ave",

@@ -2215,6 +2215,14 @@
     "queried_at": "2026-04-12T20:51:57+00:00",
     "query": "135 Scenic Ave, San Anselmo, CA, 94960"
   },
+  "135 suffield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "135, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9874915",
+    "longitude": "-122.5817082",
+    "queried_at": "2026-08-09T14:06:01+00:00",
+    "query": "135 Suffield Ave, San Anselmo, CA, 94960"
+  },
   "135 the alameda, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "135, The Alameda, San Anselmo, Marin County, California, 94960, United States",
@@ -11814,6 +11822,14 @@
     "longitude": "-122.5590781",
     "queried_at": "2026-04-12T19:00:27+00:00",
     "query": "9 Grove Hill Ave, San Anselmo, CA, 94960"
+  },
+  "9 hilldale dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "9, Hilldale Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9773066",
+    "longitude": "-122.5545432",
+    "queried_at": "2026-08-09T14:06:02+00:00",
+    "query": "9 Hilldale Dr, San Anselmo, CA, 94960"
   },
   "9 jordan ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
