@@ -10623,6 +10623,14 @@
     "queried_at": "2026-04-21T00:06:33+00:00",
     "query": "7 Roble Ct, San Anselmo, CA, 94960"
   },
+  "7 rutherford ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "7, Rutherford Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9885865",
+    "longitude": "-122.5783007",
+    "queried_at": "2026-08-11T14:35:10+00:00",
+    "query": "7 Rutherford Ave, San Anselmo, CA, 94960"
+  },
   "7 the alameda knolls, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
