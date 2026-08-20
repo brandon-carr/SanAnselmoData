@@ -1,8 +1,8 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-08-19T14:03:55+00:00",
-  "last_run_started_at": "2026-08-19T14:03:27+00:00",
+  "last_run_finished_at": "2026-08-20T14:07:07+00:00",
+  "last_run_started_at": "2026-08-20T14:05:55+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
@@ -145,7 +145,6 @@
         "next_sequence": 1,
         "prefix": "LM",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "LM2026-0001",
         "unchanged": 0,
@@ -158,7 +157,6 @@
         "next_sequence": 1,
         "prefix": "ME",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "ME2026-0001",
         "unchanged": 0,
@@ -171,7 +169,6 @@
         "next_sequence": 1,
         "prefix": "MRSU",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "MRSU2026-0001",
         "unchanged": 0,
@@ -184,7 +181,6 @@
         "next_sequence": 3,
         "prefix": "PRE",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 3,
         "stopped_at_missing": "PRE2026-0003",
         "unchanged": 0,
@@ -192,14 +188,13 @@
       },
       "PRO": {
         "changed": 0,
-        "found": 0,
-        "new": 0,
-        "next_sequence": 41,
+        "found": 1,
+        "new": 1,
+        "next_sequence": 42,
         "prefix": "PRO",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 41,
-        "stopped_at_missing": "PRO2026-0041",
+        "stopped_at_missing": "PRO2026-0042",
         "unchanged": 0,
         "year": 2026
       },
@@ -210,7 +205,6 @@
         "next_sequence": 1,
         "prefix": "SR",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "SR2026-0001",
         "unchanged": 0,
@@ -223,7 +217,6 @@
         "next_sequence": 1,
         "prefix": "TOD",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "TOD2026-0001",
         "unchanged": 0,
@@ -236,7 +229,6 @@
         "next_sequence": 1,
         "prefix": "UP",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "UP2026-0001",
         "unchanged": 0,
@@ -249,7 +241,6 @@
         "next_sequence": 1,
         "prefix": "VAR",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "VAR2026-0001",
         "unchanged": 0,
@@ -261,8 +252,8 @@
     "APL": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:33+00:00",
-      "last_run_started_at": "2026-08-19T14:03:30+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:02+00:00",
+      "last_run_started_at": "2026-08-20T14:05:59+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -281,8 +272,8 @@
     "BL": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:35+00:00",
-      "last_run_started_at": "2026-08-19T14:03:33+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:05+00:00",
+      "last_run_started_at": "2026-08-20T14:06:02+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -301,8 +292,8 @@
     "COC": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:37+00:00",
-      "last_run_started_at": "2026-08-19T14:03:35+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:09+00:00",
+      "last_run_started_at": "2026-08-20T14:06:05+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -321,8 +312,8 @@
     "DRC": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:39+00:00",
-      "last_run_started_at": "2026-08-19T14:03:37+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:12+00:00",
+      "last_run_started_at": "2026-08-20T14:06:09+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -341,8 +332,8 @@
     "DRP": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:42+00:00",
-      "last_run_started_at": "2026-08-19T14:03:39+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:16+00:00",
+      "last_run_started_at": "2026-08-20T14:06:12+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -361,8 +352,8 @@
     "DRR": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:44+00:00",
-      "last_run_started_at": "2026-08-19T14:03:42+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:19+00:00",
+      "last_run_started_at": "2026-08-20T14:06:16+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -381,8 +372,8 @@
     "ER": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:46+00:00",
-      "last_run_started_at": "2026-08-19T14:03:44+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:22+00:00",
+      "last_run_started_at": "2026-08-20T14:06:19+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -401,8 +392,8 @@
     "FARA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:48+00:00",
-      "last_run_started_at": "2026-08-19T14:03:46+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:26+00:00",
+      "last_run_started_at": "2026-08-20T14:06:22+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -421,8 +412,8 @@
     "GP": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:50+00:00",
-      "last_run_started_at": "2026-08-19T14:03:48+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:29+00:00",
+      "last_run_started_at": "2026-08-20T14:06:26+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -441,8 +432,8 @@
     "GPA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:52+00:00",
-      "last_run_started_at": "2026-08-19T14:03:50+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:33+00:00",
+      "last_run_started_at": "2026-08-20T14:06:29+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -461,8 +452,8 @@
     "LLA": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-19T14:03:55+00:00",
-      "last_run_started_at": "2026-08-19T14:03:52+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:36+00:00",
+      "last_run_started_at": "2026-08-20T14:06:33+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -481,8 +472,8 @@
     "LM": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:31+00:00",
-      "last_run_started_at": "2026-08-18T14:03:27+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:39+00:00",
+      "last_run_started_at": "2026-08-20T14:06:36+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -501,8 +492,8 @@
     "ME": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:34+00:00",
-      "last_run_started_at": "2026-08-18T14:03:31+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:43+00:00",
+      "last_run_started_at": "2026-08-20T14:06:39+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -521,8 +512,8 @@
     "MRSU": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:38+00:00",
-      "last_run_started_at": "2026-08-18T14:03:34+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:46+00:00",
+      "last_run_started_at": "2026-08-20T14:06:43+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -541,8 +532,8 @@
     "PRE": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:42+00:00",
-      "last_run_started_at": "2026-08-18T14:03:38+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:49+00:00",
+      "last_run_started_at": "2026-08-20T14:06:46+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -561,28 +552,28 @@
     "PRO": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:45+00:00",
-      "last_run_started_at": "2026-08-18T14:03:42+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:53+00:00",
+      "last_run_started_at": "2026-08-20T14:06:49+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
         "found": 1,
         "new": 1,
-        "next_sequence": 41,
+        "next_sequence": 42,
         "prefix": "PRO",
         "requested_batch_size": 50,
-        "start_sequence": 40,
-        "stopped_at_missing": "PRO2026-0041",
+        "start_sequence": 41,
+        "stopped_at_missing": "PRO2026-0042",
         "unchanged": 0,
         "year": 2026
       },
-      "next_sequence": 41
+      "next_sequence": 42
     },
     "SR": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:49+00:00",
-      "last_run_started_at": "2026-08-18T14:03:45+00:00",
+      "last_run_finished_at": "2026-08-20T14:06:57+00:00",
+      "last_run_started_at": "2026-08-20T14:06:53+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -601,8 +592,8 @@
     "TOD": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:53+00:00",
-      "last_run_started_at": "2026-08-18T14:03:49+00:00",
+      "last_run_finished_at": "2026-08-20T14:07:00+00:00",
+      "last_run_started_at": "2026-08-20T14:06:57+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -621,8 +612,8 @@
     "UP": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:03:56+00:00",
-      "last_run_started_at": "2026-08-18T14:03:53+00:00",
+      "last_run_finished_at": "2026-08-20T14:07:03+00:00",
+      "last_run_started_at": "2026-08-20T14:07:00+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -641,8 +632,8 @@
     "VAR": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-08-18T14:04:00+00:00",
-      "last_run_started_at": "2026-08-18T14:03:56+00:00",
+      "last_run_finished_at": "2026-08-20T14:07:07+00:00",
+      "last_run_started_at": "2026-08-20T14:07:03+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -1067,8 +1058,8 @@
       "APL": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:33+00:00",
-        "last_run_started_at": "2026-08-19T14:03:30+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:02+00:00",
+        "last_run_started_at": "2026-08-20T14:05:59+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1087,8 +1078,8 @@
       "BL": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:35+00:00",
-        "last_run_started_at": "2026-08-19T14:03:33+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:05+00:00",
+        "last_run_started_at": "2026-08-20T14:06:02+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1107,8 +1098,8 @@
       "COC": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:37+00:00",
-        "last_run_started_at": "2026-08-19T14:03:35+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:09+00:00",
+        "last_run_started_at": "2026-08-20T14:06:05+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1127,8 +1118,8 @@
       "DRC": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:39+00:00",
-        "last_run_started_at": "2026-08-19T14:03:37+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:12+00:00",
+        "last_run_started_at": "2026-08-20T14:06:09+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1147,8 +1138,8 @@
       "DRP": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:42+00:00",
-        "last_run_started_at": "2026-08-19T14:03:39+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:16+00:00",
+        "last_run_started_at": "2026-08-20T14:06:12+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1167,8 +1158,8 @@
       "DRR": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:44+00:00",
-        "last_run_started_at": "2026-08-19T14:03:42+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:19+00:00",
+        "last_run_started_at": "2026-08-20T14:06:16+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1187,8 +1178,8 @@
       "ER": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:46+00:00",
-        "last_run_started_at": "2026-08-19T14:03:44+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:22+00:00",
+        "last_run_started_at": "2026-08-20T14:06:19+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1207,8 +1198,8 @@
       "FARA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:48+00:00",
-        "last_run_started_at": "2026-08-19T14:03:46+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:26+00:00",
+        "last_run_started_at": "2026-08-20T14:06:22+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1227,8 +1218,8 @@
       "GP": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:50+00:00",
-        "last_run_started_at": "2026-08-19T14:03:48+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:29+00:00",
+        "last_run_started_at": "2026-08-20T14:06:26+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1247,8 +1238,8 @@
       "GPA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:52+00:00",
-        "last_run_started_at": "2026-08-19T14:03:50+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:33+00:00",
+        "last_run_started_at": "2026-08-20T14:06:29+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1267,8 +1258,8 @@
       "LLA": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-19T14:03:55+00:00",
-        "last_run_started_at": "2026-08-19T14:03:52+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:36+00:00",
+        "last_run_started_at": "2026-08-20T14:06:33+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1287,8 +1278,8 @@
       "LM": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:31+00:00",
-        "last_run_started_at": "2026-08-18T14:03:27+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:39+00:00",
+        "last_run_started_at": "2026-08-20T14:06:36+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1307,8 +1298,8 @@
       "ME": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:34+00:00",
-        "last_run_started_at": "2026-08-18T14:03:31+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:43+00:00",
+        "last_run_started_at": "2026-08-20T14:06:39+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1327,8 +1318,8 @@
       "MRSU": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:38+00:00",
-        "last_run_started_at": "2026-08-18T14:03:34+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:46+00:00",
+        "last_run_started_at": "2026-08-20T14:06:43+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1347,8 +1338,8 @@
       "PRE": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:42+00:00",
-        "last_run_started_at": "2026-08-18T14:03:38+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:49+00:00",
+        "last_run_started_at": "2026-08-20T14:06:46+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1367,28 +1358,28 @@
       "PRO": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:45+00:00",
-        "last_run_started_at": "2026-08-18T14:03:42+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:53+00:00",
+        "last_run_started_at": "2026-08-20T14:06:49+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
           "found": 1,
           "new": 1,
-          "next_sequence": 41,
+          "next_sequence": 42,
           "prefix": "PRO",
           "requested_batch_size": 50,
-          "start_sequence": 40,
-          "stopped_at_missing": "PRO2026-0041",
+          "start_sequence": 41,
+          "stopped_at_missing": "PRO2026-0042",
           "unchanged": 0,
           "year": 2026
         },
-        "next_sequence": 41
+        "next_sequence": 42
       },
       "SR": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:49+00:00",
-        "last_run_started_at": "2026-08-18T14:03:45+00:00",
+        "last_run_finished_at": "2026-08-20T14:06:57+00:00",
+        "last_run_started_at": "2026-08-20T14:06:53+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1407,8 +1398,8 @@
       "TOD": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:53+00:00",
-        "last_run_started_at": "2026-08-18T14:03:49+00:00",
+        "last_run_finished_at": "2026-08-20T14:07:00+00:00",
+        "last_run_started_at": "2026-08-20T14:06:57+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1427,8 +1418,8 @@
       "UP": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:03:56+00:00",
-        "last_run_started_at": "2026-08-18T14:03:53+00:00",
+        "last_run_finished_at": "2026-08-20T14:07:03+00:00",
+        "last_run_started_at": "2026-08-20T14:07:00+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -1447,8 +1438,8 @@
       "VAR": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-08-18T14:04:00+00:00",
-        "last_run_started_at": "2026-08-18T14:03:56+00:00",
+        "last_run_finished_at": "2026-08-20T14:07:07+00:00",
+        "last_run_started_at": "2026-08-20T14:07:03+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,

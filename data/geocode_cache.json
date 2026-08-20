@@ -335,6 +335,14 @@
     "queried_at": "2026-04-18T14:27:00+00:00",
     "query": "100 Ridge Rd, San Anselmo, CA, 94960"
   },
+  "100 saunders ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "100, Saunders Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9799080",
+    "longitude": "-122.5712680",
+    "queried_at": "2026-08-20T14:07:49+00:00",
+    "query": "100 Saunders Ave, San Anselmo, CA, 94960"
+  },
   "100 sequoia dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "100, Sequoia Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -1206,6 +1214,14 @@
     "longitude": "-122.5570679",
     "queried_at": "2026-04-20T15:07:06+00:00",
     "query": "117 Sequoia Dr, San Anselmo, CA, 94960"
+  },
+  "117 tamal vista dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "117, Tamal Vista Drive, San Anselmo, Marin County, California, 94901, United States",
+    "latitude": "37.9791579",
+    "longitude": "-122.5508367",
+    "queried_at": "2026-08-20T14:07:50+00:00",
+    "query": "117 Tamal Vista Dr, San Anselmo, CA, 94960"
   },
   "117 woodland ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
