@@ -279,6 +279,14 @@
     "queried_at": "2026-04-12T20:36:09+00:00",
     "query": "100 Berkeley Ave, San Anselmo, CA, 94960"
   },
+  "100 broadmoor ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "100, Broadmoor Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9894232",
+    "longitude": "-122.5729722",
+    "queried_at": "2026-08-22T13:51:16+00:00",
+    "query": "100 Broadmoor Ave, San Anselmo, CA, 94960"
+  },
   "100 brookmead ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "100, Brookmead Court, San Anselmo, Marin County, California, 94960, United States",
@@ -5007,6 +5015,14 @@
     "queried_at": "2026-04-14T18:24:24+00:00",
     "query": "21 Carlson Ct, San Anselmo, CA, 94960"
   },
+  "21 cypress rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "21, Cypress Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9797080",
+    "longitude": "-122.5584070",
+    "queried_at": "2026-08-22T13:51:18+00:00",
+    "query": "21 Cypress Rd, San Anselmo, CA, 94960"
+  },
   "21 florence ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "21, Florence Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -7359,6 +7375,14 @@
     "queried_at": "2026-04-12T18:55:36+00:00",
     "query": "355 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "36 ash ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "36, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9845675",
+    "longitude": "-122.5748372",
+    "queried_at": "2026-08-22T13:51:17+00:00",
+    "query": "36 Ash Ave, San Anselmo, CA, 94960"
+  },
   "36 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "36, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
@@ -8470,6 +8494,14 @@
     "longitude": "-122.5780270",
     "queried_at": "2026-04-12T20:29:25+00:00",
     "query": "45 Florence Ave, San Anselmo, CA, 94960"
+  },
+  "45 karl ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "45, Karl Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9791430",
+    "longitude": "-122.5701065",
+    "queried_at": "2026-08-22T13:51:14+00:00",
+    "query": "45 Karl Ave, San Anselmo, CA, 94960"
   },
   "45 longview ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10046,6 +10078,14 @@
     "longitude": "-122.5669540",
     "queried_at": "2026-04-12T20:51:21+00:00",
     "query": "59 Kensington Rd, San Anselmo, CA, 94960"
+  },
+  "59 suffield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "59, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9882852",
+    "longitude": "-122.5801674",
+    "queried_at": "2026-08-22T13:51:15+00:00",
+    "query": "59 Suffield Ave, San Anselmo, CA, 94960"
   },
   "59 woodland ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
