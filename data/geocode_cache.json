@@ -3615,6 +3615,14 @@
     "queried_at": "2026-04-12T18:39:53+00:00",
     "query": "16 Traxler Rd, San Anselmo, CA, 94960"
   },
+  "16 vine ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "16, Vine Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9696082",
+    "longitude": "-122.5698732",
+    "queried_at": "2026-08-24T14:10:57+00:00",
+    "query": "16 Vine Ave, San Anselmo, CA, 94960"
+  },
   "160 oak knoll ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "160, Oak Knoll Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -7767,6 +7775,14 @@
     "queried_at": "2026-04-12T20:45:31+00:00",
     "query": "40 Cordone Dr, San Anselmo, CA, 94960"
   },
+  "40 entrata ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "40, Entrata Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9730706",
+    "longitude": "-122.5599493",
+    "queried_at": "2026-08-24T14:10:56+00:00",
+    "query": "40 Entrata Ave, San Anselmo, CA, 94960"
+  },
   "40 floribel ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "Floribel Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8222,6 +8238,14 @@
     "longitude": "-122.5715826",
     "queried_at": "2026-07-15T15:07:39+00:00",
     "query": "43 Indian Rock Ct, San Anselmo, CA, 94960"
+  },
+  "43 jordan ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "43, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9787630",
+    "longitude": "-122.5561330",
+    "queried_at": "2026-08-24T14:10:58+00:00",
+    "query": "43 Jordan Ave, San Anselmo, CA, 94960"
   },
   "43 nokomis ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
