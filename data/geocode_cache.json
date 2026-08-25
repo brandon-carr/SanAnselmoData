@@ -2799,6 +2799,14 @@
     "queried_at": "2026-04-12T20:26:54+00:00",
     "query": "145 Barber Ave, San Anselmo, CA, 94960"
   },
+  "145 meadowcroft dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "145, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9878730",
+    "longitude": "-122.5763520",
+    "queried_at": "2026-08-25T14:14:21+00:00",
+    "query": "145 Meadowcroft Dr, San Anselmo, CA, 94960"
+  },
   "145 tunstead ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "145, Tunstead Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8247,6 +8255,14 @@
     "queried_at": "2026-08-24T14:10:58+00:00",
     "query": "43 Jordan Ave, San Anselmo, CA, 94960"
   },
+  "43 magnolia ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "43, Magnolia Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9745924",
+    "longitude": "-122.5645705",
+    "queried_at": "2026-08-25T14:14:20+00:00",
+    "query": "43 Magnolia Ave, San Anselmo, CA, 94960"
+  },
   "43 nokomis ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "43, Nokomis Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8838,6 +8854,14 @@
     "longitude": "-122.5807910",
     "queried_at": "2026-04-12T20:46:34+00:00",
     "query": "48 Camino De Herrera, San Anselmo, CA, 94960"
+  },
+  "48 cordone dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "48, Cordone Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9854279",
+    "longitude": "-122.5705812",
+    "queried_at": "2026-08-25T14:14:19+00:00",
+    "query": "48 Cordone Dr, San Anselmo, CA, 94960"
   },
   "48 durham rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
