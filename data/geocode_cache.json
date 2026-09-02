@@ -5503,6 +5503,14 @@
     "queried_at": "2026-04-12T20:39:51+00:00",
     "query": "224 Forbes Ave, San Anselmo, CA, 94960"
   },
+  "224 greenfield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "224, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9758760",
+    "longitude": "-122.5534780",
+    "queried_at": "2026-09-02T17:16:06+00:00",
+    "query": "224 Greenfield Ave, San Anselmo, CA, 94960"
+  },
   "224 laurel ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "224, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -7374,6 +7382,14 @@
     "longitude": "-122.5542062",
     "queried_at": "2026-04-12T20:34:22+00:00",
     "query": "35 Longview Ave, San Anselmo, CA, 94960"
+  },
+  "35 merced ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "35, Merced Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9838789",
+    "longitude": "-122.5753908",
+    "queried_at": "2026-09-02T17:16:08+00:00",
+    "query": "35 Merced Ave, San Anselmo, CA, 94960"
   },
   "35 park dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10630,6 +10646,14 @@
     "longitude": "-122.5704473",
     "queried_at": "2026-04-12T20:24:57+00:00",
     "query": "64 Cordone Dr, San Anselmo, CA, 94960"
+  },
+  "64 longview ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "64, Longview Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9790792",
+    "longitude": "-122.5547911",
+    "queried_at": "2026-09-02T17:16:08+00:00",
+    "query": "64 Longview Ave, San Anselmo, CA, 94960"
   },
   "64 nokomis ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
