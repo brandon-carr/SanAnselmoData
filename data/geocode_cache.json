@@ -6407,6 +6407,14 @@
     "queried_at": "2026-04-12T20:23:55+00:00",
     "query": "28 Durham Rd, San Anselmo, CA, 94960"
   },
+  "28 elkhorn way, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "28, Elkhorn Way, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9889122",
+    "longitude": "-122.5676021",
+    "queried_at": "2026-09-06T16:22:45+00:00",
+    "query": "28 Elkhorn Way, San Anselmo, CA, 94960"
+  },
   "28 fern ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "28, Fern Lane, San Anselmo, Marin County, California, 94960, United States",
