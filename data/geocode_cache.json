@@ -991,6 +991,14 @@
     "queried_at": "2026-04-12T20:22:56+00:00",
     "query": "1119 San Anselmo Ave, San Anselmo, CA, 94960"
   },
+  "112 floribel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "112, Floribel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9764001",
+    "longitude": "-122.5768216",
+    "queried_at": "2026-09-09T17:14:59+00:00",
+    "query": "112 Floribel Ave, San Anselmo, CA, 94960"
+  },
   "112 hilldale dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "112, Hilldale Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -5015,6 +5023,14 @@
     "queried_at": "2026-07-03T15:33:48+00:00",
     "query": "208 Brookside Dr, San Anselmo, CA, 94960"
   },
+  "208 greenfield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "208, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9758787",
+    "longitude": "-122.5535811",
+    "queried_at": "2026-09-09T17:14:58+00:00",
+    "query": "208 Greenfield Ave, San Anselmo, CA, 94960"
+  },
   "208 spring grove ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "208, Spring Grove Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -5918,6 +5934,14 @@
     "longitude": "-122.5686759",
     "queried_at": "2026-04-12T20:38:58+00:00",
     "query": "25 Foss Ave, San Anselmo, CA, 94960"
+  },
+  "25 hillcrest ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "25, Hillcrest Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9912725",
+    "longitude": "-122.5801548",
+    "queried_at": "2026-09-09T17:15:01+00:00",
+    "query": "25 Hillcrest Ct, San Anselmo, CA, 94960"
   },
   "25 idalia ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10790,6 +10814,14 @@
     "longitude": "-122.5707172",
     "queried_at": "2026-04-12T20:39:56+00:00",
     "query": "67 Berkeley Ave, San Anselmo, CA, 94960"
+  },
+  "67 longwood dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "67, Longwood Drive, San Anselmo, Marin County, California, 94901, United States",
+    "latitude": "37.9817042",
+    "longitude": "-122.5530731",
+    "queried_at": "2026-09-09T17:15:00+00:00",
+    "query": "67 Longwood Dr, San Anselmo, CA, 94960"
   },
   "67 oak springs dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
