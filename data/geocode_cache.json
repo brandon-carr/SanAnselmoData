@@ -5711,6 +5711,14 @@
     "queried_at": "2026-04-12T20:40:37+00:00",
     "query": "24 Carlson Ave, San Anselmo, CA, 94960"
   },
+  "24 elm ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "24, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9805835",
+    "longitude": "-122.5767966",
+    "queried_at": "2026-09-18T17:08:24+00:00",
+    "query": "24 Elm Ave, San Anselmo, CA, 94960"
+  },
   "24 fern ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "24, Fern Lane, San Anselmo, Marin County, California, 94960, United States",

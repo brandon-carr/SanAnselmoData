@@ -13243,7 +13243,7 @@
     "geocode_status": "success",
     "geocoded_address": "108, Sequoia Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:12:13+00:00",
-    "last_seen_at": "2026-09-17T17:42:54+00:00",
+    "last_seen_at": "2026-09-18T17:08:21+00:00",
     "latitude": "37.9784500",
     "longitude": "-122.5568336"
   },
@@ -17620,6 +17620,24 @@
     "last_seen_at": "2026-04-14T01:30:09+00:00",
     "latitude": "37.9793407",
     "longitude": "-122.5738831"
+  },
+  "a589235e4d63b46e": {
+    "address": "24 Elm Ave",
+    "address_id": "a589235e4d63b46e",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "1d5dd27b51417a05386717093afa5c39f9ade31bbe57ef214991f3e0366e7a78",
+    "extra": {},
+    "first_seen_at": "2026-09-18T17:07:39+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-18T17:08:24+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "24, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-18T17:08:24+00:00",
+    "last_seen_at": "2026-09-18T17:08:24+00:00",
+    "latitude": "37.9805835",
+    "longitude": "-122.5767966"
   },
   "a589ef94dff934d0": {
     "address": "121 Tunstead Ave",
