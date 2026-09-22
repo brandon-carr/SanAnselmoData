@@ -7671,6 +7671,14 @@
     "queried_at": "2026-04-12T20:51:26+00:00",
     "query": "370 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "370 the alameda, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "370, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9986211",
+    "longitude": "-122.5741516",
+    "queried_at": "2026-09-22T17:40:50+00:00",
+    "query": "370 The Alameda, San Anselmo, CA, 94960"
+  },
   "375 oak ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "375, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -11414,6 +11422,14 @@
     "longitude": "-122.5843992",
     "queried_at": "2026-04-12T20:41:16+00:00",
     "query": "75 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
+  "75 ross ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "75, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9715225",
+    "longitude": "-122.5647484",
+    "queried_at": "2026-09-22T17:40:49+00:00",
+    "query": "75 Ross Ave, San Anselmo, CA, 94960"
   },
   "75 yolanda dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
