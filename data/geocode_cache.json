@@ -903,6 +903,14 @@
     "queried_at": "2026-04-12T20:43:27+00:00",
     "query": "110 Meadowcroft Dr, San Anselmo, CA, 94960"
   },
+  "110 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "110, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9975906",
+    "longitude": "-122.5846868",
+    "queried_at": "2026-09-23T17:56:05+00:00",
+    "query": "110 Oak Springs Dr, San Anselmo, CA, 94960"
+  },
   "110 ross ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "110, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -4958,6 +4966,14 @@
     "longitude": "-122.5752920",
     "queried_at": "2026-08-14T14:31:02+00:00",
     "query": "203 Brookside Dr, San Anselmo, CA, 94960"
+  },
+  "204 oak springs dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "204, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9967064",
+    "longitude": "-122.5857490",
+    "queried_at": "2026-09-23T17:56:03+00:00",
+    "query": "204 Oak Springs Dr, San Anselmo, CA, 94960"
   },
   "205 crescent rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -10231,6 +10247,14 @@
     "queried_at": "2026-04-12T20:52:14+00:00",
     "query": "58 Spruce Ave, San Anselmo, CA, 94960"
   },
+  "59 austin ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "59, Austin Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9686856",
+    "longitude": "-122.5694095",
+    "queried_at": "2026-09-23T17:56:02+00:00",
+    "query": "59 Austin Ave, San Anselmo, CA, 94960"
+  },
   "59 brookside dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "59, Brookside Drive, San Anselmo, Marin County, California, 94960, United States",
@@ -12358,6 +12382,14 @@
     "longitude": "-122.5734341",
     "queried_at": "2026-04-12T20:44:38+00:00",
     "query": "90 Alder Ave, San Anselmo, CA, 94960"
+  },
+  "90 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "90, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9897642",
+    "longitude": "-122.5773110",
+    "queried_at": "2026-09-23T17:56:01+00:00",
+    "query": "90 Butterfield Rd, San Anselmo, CA, 94960"
   },
   "90 camino de herrera, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
