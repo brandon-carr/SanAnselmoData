@@ -3973,7 +3973,7 @@
     "geocode_status": "success",
     "geocoded_address": "33, Carlson Court, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T17:19:43+00:00",
-    "last_seen_at": "2026-08-02T14:45:12+00:00",
+    "last_seen_at": "2026-09-24T17:54:42+00:00",
     "latitude": "37.9932738",
     "longitude": "-122.5781072"
   },
@@ -4012,6 +4012,24 @@
     "last_seen_at": "2026-04-14T01:27:32+00:00",
     "latitude": "37.9969022",
     "longitude": "-122.5785822"
+  },
+  "260076b612f851bd": {
+    "address": "58 Oakland Ave",
+    "address_id": "260076b612f851bd",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "424d4a1dfaf619f9db6416d4877d7eb7b21e8d3e973920cd45fbaa4418287d7d",
+    "extra": {},
+    "first_seen_at": "2026-09-24T17:53:52+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-24T17:55:11+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "58, Oakland Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-24T17:55:11+00:00",
+    "last_seen_at": "2026-09-24T17:55:11+00:00",
+    "latitude": "37.9861202",
+    "longitude": "-122.5676542"
   },
   "265f9573aa8933a9": {
     "address": "19 Agatha Ct",
@@ -4225,7 +4243,7 @@
     "geocode_status": "success",
     "geocoded_address": "157, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-08-18T14:05:03+00:00",
-    "last_seen_at": "2026-08-18T14:05:03+00:00",
+    "last_seen_at": "2026-09-24T17:54:37+00:00",
     "latitude": "37.9879850",
     "longitude": "-122.5764836"
   },
@@ -4336,6 +4354,24 @@
     "last_seen_at": "2026-04-12T20:04:55+00:00",
     "latitude": "37.9905873",
     "longitude": "-122.5722490"
+  },
+  "28882ba0cdddddc3": {
+    "address": "151 Alder Ave",
+    "address_id": "28882ba0cdddddc3",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "bb36a383ee07a33cef917bcc3302a9d123e75ab1e64d2d64c7fa2ecbcccf54d8",
+    "extra": {},
+    "first_seen_at": "2026-09-24T17:53:42+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-24T17:55:12+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "151, Alder Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-24T17:55:12+00:00",
+    "last_seen_at": "2026-09-24T17:55:12+00:00",
+    "latitude": "37.9813257",
+    "longitude": "-122.5754216"
   },
   "2896221ce1438c1c": {
     "address": "15 Lincoln Park",
@@ -5935,7 +5971,7 @@
     "geocode_status": "success",
     "geocoded_address": "106, Humboldt Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:11:47+00:00",
-    "last_seen_at": "2026-08-19T14:04:05+00:00",
+    "last_seen_at": "2026-09-24T17:54:22+00:00",
     "latitude": "37.9812769",
     "longitude": "-122.5786330"
   },
@@ -8077,7 +8113,7 @@
     "geocode_status": "success",
     "geocoded_address": "135, Redwood Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:19:05+00:00",
-    "last_seen_at": "2026-04-14T17:55:52+00:00",
+    "last_seen_at": "2026-09-24T17:53:37+00:00",
     "latitude": "37.9768409",
     "longitude": "-122.5735837"
   },
@@ -11011,7 +11047,7 @@
     "geocode_status": "success",
     "geocoded_address": "153, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-05T18:29:11+00:00",
-    "last_seen_at": "2026-08-27T23:02:43+00:00",
+    "last_seen_at": "2026-09-24T17:54:31+00:00",
     "latitude": "37.9921340",
     "longitude": "-122.5765930"
   },
@@ -11785,7 +11821,7 @@
     "geocode_status": "success",
     "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-14T18:24:28+00:00",
-    "last_seen_at": "2026-08-20T14:06:50+00:00",
+    "last_seen_at": "2026-09-24T17:54:53+00:00",
     "latitude": "37.9781805",
     "longitude": "-122.5760358"
   },
@@ -14380,6 +14416,24 @@
     "last_seen_at": "2026-04-14T01:29:45+00:00",
     "latitude": "37.9866008",
     "longitude": "-122.5633582"
+  },
+  "86343d2162afe37c": {
+    "address": "140 Oak Knoll Ave",
+    "address_id": "86343d2162afe37c",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "e08bf58c578ca20867a41c576819e33673a27c8dd14d5660100529c942d7b2ae",
+    "extra": {},
+    "first_seen_at": "2026-09-24T17:53:47+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-24T17:55:11+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "140, Oak Knoll Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-24T17:55:11+00:00",
+    "last_seen_at": "2026-09-24T17:55:11+00:00",
+    "latitude": "37.9862544",
+    "longitude": "-122.5785962"
   },
   "86a97259031047aa": {
     "address": "32 Elm Ave",
@@ -18661,7 +18715,7 @@
     "geocode_status": "success",
     "geocoded_address": "Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:07:49+00:00",
-    "last_seen_at": "2026-07-31T15:33:34+00:00",
+    "last_seen_at": "2026-09-24T17:54:58+00:00",
     "latitude": "37.9762888",
     "longitude": "-122.5612584"
   },
@@ -19003,7 +19057,7 @@
     "geocode_status": "success",
     "geocoded_address": "21, Island Drive, San Anselmo, Marin County, California, 94901, United States",
     "last_changed_at": "2026-04-12T20:12:55+00:00",
-    "last_seen_at": "2026-09-21T18:52:06+00:00",
+    "last_seen_at": "2026-09-24T17:53:53+00:00",
     "latitude": "37.9774579",
     "longitude": "-122.5518708"
   },
@@ -19147,7 +19201,7 @@
     "geocode_status": "success",
     "geocoded_address": "150, The Alameda, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:07:17+00:00",
-    "last_seen_at": "2026-09-17T17:42:39+00:00",
+    "last_seen_at": "2026-09-24T17:54:47+00:00",
     "latitude": "37.9923270",
     "longitude": "-122.5751800"
   },
@@ -20605,7 +20659,7 @@
     "geocode_status": "success",
     "geocoded_address": "Scenic Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:30:01+00:00",
-    "last_seen_at": "2026-08-31T19:32:40+00:00",
+    "last_seen_at": "2026-09-24T17:54:49+00:00",
     "latitude": "37.9781805",
     "longitude": "-122.5760358"
   },
@@ -20731,7 +20785,7 @@
     "geocode_status": "success",
     "geocoded_address": "27, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:11:49+00:00",
-    "last_seen_at": "2026-09-23T17:55:50+00:00",
+    "last_seen_at": "2026-09-24T17:55:05+00:00",
     "latitude": "37.9680790",
     "longitude": "-122.5698850"
   },
@@ -23255,6 +23309,24 @@
     "latitude": "37.9784078",
     "longitude": "-122.5737196"
   },
+  "d27a2bee8a5bf908": {
+    "address": "99 Butterfield Rd",
+    "address_id": "d27a2bee8a5bf908",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "9f9ec31bcd8748e97b8c65376176e96db5fe0cd3a235341410eb5204e9f13f70",
+    "extra": {},
+    "first_seen_at": "2026-09-24T17:54:59+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-24T17:55:10+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "99, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-24T17:55:10+00:00",
+    "last_seen_at": "2026-09-24T17:55:10+00:00",
+    "latitude": "37.9902050",
+    "longitude": "-122.5773490"
+  },
   "d29ffc7987239c97": {
     "address": "15 Rosemont Ave",
     "address_id": "d29ffc7987239c97",
@@ -23665,7 +23737,7 @@
     "geocode_status": "success",
     "geocoded_address": "421, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:37:59+00:00",
-    "last_seen_at": "2026-09-08T17:18:15+00:00",
+    "last_seen_at": "2026-09-24T17:53:37+00:00",
     "latitude": "37.9757470",
     "longitude": "-122.5518499"
   },
@@ -25303,7 +25375,7 @@
     "geocode_status": "success",
     "geocoded_address": "22, Nokomis Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:14:26+00:00",
-    "last_seen_at": "2026-09-16T17:42:06+00:00",
+    "last_seen_at": "2026-09-24T17:54:36+00:00",
     "latitude": "37.9785815",
     "longitude": "-122.5667520"
   },
@@ -26059,7 +26131,7 @@
     "geocode_status": "success",
     "geocoded_address": "128, The Alameda, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-08-19T14:04:18+00:00",
-    "last_seen_at": "2026-09-21T18:51:53+00:00",
+    "last_seen_at": "2026-09-24T17:54:43+00:00",
     "latitude": "37.9918049",
     "longitude": "-122.5745473"
   },
@@ -27895,7 +27967,7 @@
     "geocode_status": "success",
     "geocoded_address": "19, Cherne Lane, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:36:14+00:00",
-    "last_seen_at": "2026-04-12T18:36:14+00:00",
+    "last_seen_at": "2026-09-24T17:54:26+00:00",
     "latitude": "37.9967060",
     "longitude": "-122.5791456"
   },
