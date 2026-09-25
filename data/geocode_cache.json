@@ -6695,6 +6695,14 @@
     "queried_at": "2026-04-17T14:45:15+00:00",
     "query": "299 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "3 agatha ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "3, Agatha Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9807751",
+    "longitude": "-122.5708493",
+    "queried_at": "2026-09-25T18:02:15+00:00",
+    "query": "3 Agatha Ct, San Anselmo, CA, 94960"
+  },
   "3 bennit ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "3, Bennit Avenue, San Anselmo, Marin County, California, 94960, United States",

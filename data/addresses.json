@@ -22337,6 +22337,24 @@
     "latitude": "37.9907390",
     "longitude": "-122.5695337"
   },
+  "cab3bd958ed11310": {
+    "address": "3 Agatha Ct",
+    "address_id": "cab3bd958ed11310",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "058a85b846c768dfba1951aef81bbc7f7d7b329f0a86ae530a213dbe9c0fb1d5",
+    "extra": {},
+    "first_seen_at": "2026-09-25T17:59:33+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-25T18:02:15+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "3, Agatha Court, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-25T18:02:15+00:00",
+    "last_seen_at": "2026-09-25T18:02:15+00:00",
+    "latitude": "37.9807751",
+    "longitude": "-122.5708493"
+  },
   "cad339c9073a1921": {
     "address": "72 Kensington Rd",
     "address_id": "cad339c9073a1921",
