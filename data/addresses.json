@@ -4949,6 +4949,24 @@
     "latitude": "37.9889571",
     "longitude": "-122.5672523"
   },
+  "2ed8b54a5541b9e5": {
+    "address": "10-12 Hazel Ave",
+    "address_id": "2ed8b54a5541b9e5",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "a1ab1b1b7bc6988ea791cb712206f4a140db2c78db4c217da78d4f7fdf0eee81",
+    "extra": {},
+    "first_seen_at": "2026-09-27T17:50:45+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-27T17:53:16+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "Hazel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-27T17:53:16+00:00",
+    "last_seen_at": "2026-09-27T17:53:16+00:00",
+    "latitude": "37.9775664",
+    "longitude": "-122.5704403"
+  },
   "2edf3a3d3aed04d6": {
     "address": "360 Redwood Rd",
     "address_id": "2edf3a3d3aed04d6",
@@ -7000,6 +7018,24 @@
     "last_seen_at": "2026-04-20T15:07:04+00:00",
     "latitude": "37.9817459",
     "longitude": "-122.5674203"
+  },
+  "447bf9120e440776": {
+    "address": "869 San Anselmo Ave",
+    "address_id": "447bf9120e440776",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "d1da8fd7304b4da47106e331068237ef8f5d4db99e6c0a6e98ec497e3a1b1cd5",
+    "extra": {},
+    "first_seen_at": "2026-09-27T17:50:45+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-09-27T17:53:16+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "869, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-09-27T17:53:16+00:00",
+    "last_seen_at": "2026-09-27T17:53:16+00:00",
+    "latitude": "37.9773910",
+    "longitude": "-122.5674430"
   },
   "44a018a071518f01": {
     "address": "41 Rosemont Ave",
