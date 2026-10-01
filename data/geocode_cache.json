@@ -4703,6 +4703,14 @@
     "queried_at": "2026-04-12T19:06:03+00:00",
     "query": "2 Foothill Rd, San Anselmo, CA, 94960"
   },
+  "2 grove hill ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "2, South Grove Hill Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9810820",
+    "longitude": "-122.5588700",
+    "queried_at": "2026-10-01T19:00:09+00:00",
+    "query": "2 Grove Hill Ave, San Anselmo, CA, 94960"
+  },
   "2 hillcrest ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "2, Hillcrest Court, San Anselmo, Marin County, California, 94960, United States",
@@ -5694,6 +5702,14 @@
     "longitude": "-122.5771670",
     "queried_at": "2026-04-12T20:35:27+00:00",
     "query": "23 Medway Rd, San Anselmo, CA, 94960"
+  },
+  "23 skyline rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "23, Skyline Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9908391",
+    "longitude": "-122.5813171",
+    "queried_at": "2026-10-01T19:00:10+00:00",
+    "query": "23 Skyline Rd, San Anselmo, CA, 94960"
   },
   "23 vine ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -12614,6 +12630,14 @@
     "longitude": "-122.5732163",
     "queried_at": "2026-04-12T20:52:06+00:00",
     "query": "93 Broadmoor Ave, San Anselmo, CA, 94960"
+  },
+  "93 florence ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "93, Florence Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9837136",
+    "longitude": "-122.5787446",
+    "queried_at": "2026-10-01T19:00:08+00:00",
+    "query": "93 Florence Ave, San Anselmo, CA, 94960"
   },
   "93 hillside ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
