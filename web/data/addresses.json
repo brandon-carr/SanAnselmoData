@@ -2497,7 +2497,7 @@
     "geocode_status": "success",
     "geocoded_address": "16, Traxler Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:33+00:00",
-    "last_seen_at": "2026-04-21T15:01:29+00:00",
+    "last_seen_at": "2026-10-03T17:29:48+00:00",
     "latitude": "37.9911814",
     "longitude": "-122.5821191"
   },
@@ -21379,7 +21379,7 @@
     "geocode_status": "success",
     "geocoded_address": "94, Berkeley Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-07-03T15:33:44+00:00",
-    "last_seen_at": "2026-09-02T17:15:42+00:00",
+    "last_seen_at": "2026-10-03T17:29:49+00:00",
     "latitude": "37.9890786",
     "longitude": "-122.5695046"
   },
@@ -26113,7 +26113,7 @@
     "geocode_status": "success",
     "geocoded_address": "115, Sequoia Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-19T14:27:32+00:00",
-    "last_seen_at": "2026-04-19T14:27:32+00:00",
+    "last_seen_at": "2026-10-03T17:27:37+00:00",
     "latitude": "37.9785488",
     "longitude": "-122.5570625"
   },
@@ -28456,6 +28456,24 @@
     "last_seen_at": "2026-05-28T17:05:01+00:00",
     "latitude": "",
     "longitude": ""
+  },
+  "fb032467da4b52fe": {
+    "address": "38 Morningside Dr",
+    "address_id": "fb032467da4b52fe",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "f9e1d3a121c01d4c0b53120ca0ef8ac08eb5cf61659d11c5175edeed3b9435e4",
+    "extra": {},
+    "first_seen_at": "2026-10-03T17:27:32+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-03T17:29:59+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "38, Morningside Drive, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-03T17:29:59+00:00",
+    "last_seen_at": "2026-10-03T17:29:59+00:00",
+    "latitude": "37.9863042",
+    "longitude": "-122.5736863"
   },
   "fb05465ef19db48b": {
     "address": "18 Southview Ter",
