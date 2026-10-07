@@ -6303,6 +6303,14 @@
     "queried_at": "2026-04-12T18:55:18+00:00",
     "query": "26 Karl Ave, San Anselmo, CA, 94960"
   },
+  "26 laurel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "26, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9784527",
+    "longitude": "-122.5718746",
+    "queried_at": "2026-10-07T19:27:28+00:00",
+    "query": "26 Laurel Ave, San Anselmo, CA, 94960"
+  },
   "26 mariposa ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "26, Mariposa Avenue, San Anselmo, Marin County, California, 94960, United States",
