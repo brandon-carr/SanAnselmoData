@@ -2105,6 +2105,24 @@
     "latitude": "37.9734297",
     "longitude": "-122.5630524"
   },
+  "12747164989ce418": {
+    "address": "80 Ross Ave",
+    "address_id": "12747164989ce418",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "f4feec5d6f42e643ac1b27d7eecd85e8f42ed156dd2c05c8cd98a07322ff5ff1",
+    "extra": {},
+    "first_seen_at": "2026-10-09T18:55:08+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-09T18:55:19+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "80, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-09T18:55:19+00:00",
+    "last_seen_at": "2026-10-09T18:55:19+00:00",
+    "latitude": "37.9716077",
+    "longitude": "-122.5650459"
+  },
   "1282e23bfaaaaca5": {
     "address": "58 Magnolia Ave",
     "address_id": "1282e23bfaaaaca5",
@@ -10273,7 +10291,7 @@
     "geocode_status": "success",
     "geocoded_address": "71, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-17T14:42:57+00:00",
-    "last_seen_at": "2026-07-06T16:35:22+00:00",
+    "last_seen_at": "2026-10-09T18:55:08+00:00",
     "latitude": "37.9715437",
     "longitude": "-122.5646803"
   },
@@ -10654,6 +10672,24 @@
     "last_seen_at": "2026-08-11T14:34:48+00:00",
     "latitude": "37.9897816",
     "longitude": "-122.5750988"
+  },
+  "65490314fe75873f": {
+    "address": "916 Sir Francis Drake Blvd",
+    "address_id": "65490314fe75873f",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "c420d6a3874f7ec75c418f2d85d931cdf6bfbc93cb96a6a195e74844f2523551",
+    "extra": {},
+    "first_seen_at": "2026-10-09T18:53:05+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-09T18:55:20+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "Swirl, 916, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-09T18:55:20+00:00",
+    "last_seen_at": "2026-10-09T18:55:20+00:00",
+    "latitude": "37.9817519",
+    "longitude": "-122.5662110"
   },
   "65550f309eab2b2a": {
     "address": "85 Suffield Ave",
@@ -16792,6 +16828,24 @@
     "last_seen_at": "2026-04-14T01:27:26+00:00",
     "latitude": "37.9834979",
     "longitude": "-122.5688214"
+  },
+  "9c3b2f093f2fbfb2": {
+    "address": "68 Longview Ave",
+    "address_id": "9c3b2f093f2fbfb2",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "955aa6990bb58b7583ddccb5c46f74fb63efdd4b9b3146a8ab2b146efa13e770",
+    "extra": {},
+    "first_seen_at": "2026-10-09T18:53:04+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-09T18:55:21+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "68, Longview Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-09T18:55:21+00:00",
+    "last_seen_at": "2026-10-09T18:55:21+00:00",
+    "latitude": "37.9791948",
+    "longitude": "-122.5547593"
   },
   "9c49fc3efb6245ea": {
     "address": "204 Oak Springs Dr",
@@ -24047,6 +24101,24 @@
     "latitude": "37.9713320",
     "longitude": "-122.5659280"
   },
+  "d6bcf04ee7c8d1e0": {
+    "address": "19 Knoll Rd",
+    "address_id": "d6bcf04ee7c8d1e0",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "556c2024c6e3a223176ac234feb766de63420aeb6475f03ba8b1de2230098c62",
+    "extra": {},
+    "first_seen_at": "2026-10-09T18:53:09+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-09T18:55:19+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "19, Knoll Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-09T18:55:19+00:00",
+    "last_seen_at": "2026-10-09T18:55:19+00:00",
+    "latitude": "37.9799000",
+    "longitude": "-122.5572130"
+  },
   "d6d0d1b429104ff3": {
     "address": "18 Park Way",
     "address_id": "d6d0d1b429104ff3",
@@ -27751,7 +27823,7 @@
     "geocode_status": "success",
     "geocoded_address": "San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:00:50+00:00",
-    "last_seen_at": "2026-04-12T20:00:50+00:00",
+    "last_seen_at": "2026-10-09T18:55:08+00:00",
     "latitude": "37.9854461",
     "longitude": "-122.5765656"
   },

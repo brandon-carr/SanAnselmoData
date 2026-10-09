@@ -4479,6 +4479,14 @@
     "queried_at": "2026-04-16T15:15:23+00:00",
     "query": "19 Karl Ave, San Anselmo, CA, 94960"
   },
+  "19 knoll rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "19, Knoll Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9799000",
+    "longitude": "-122.5572130",
+    "queried_at": "2026-10-09T18:55:20+00:00",
+    "query": "19 Knoll Rd, San Anselmo, CA, 94960"
+  },
   "19 library pl, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "19, Library Place, San Anselmo, Marin County, California, 94960, United States",
@@ -11063,6 +11071,14 @@
     "queried_at": "2026-04-12T20:43:23+00:00",
     "query": "68 Alder Ave, San Anselmo, CA, 94960"
   },
+  "68 longview ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "68, Longview Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9791948",
+    "longitude": "-122.5547593",
+    "queried_at": "2026-10-09T18:55:22+00:00",
+    "query": "68 Longview Ave, San Anselmo, CA, 94960"
+  },
   "68 medway rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "68, Medway Road, San Anselmo, Marin County, California, 94960, United States",
@@ -11919,6 +11935,14 @@
     "queried_at": "2026-04-12T20:40:53+00:00",
     "query": "80 Hawthorne Ave, San Anselmo, CA, 94960"
   },
+  "80 ross ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "80, Ross Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9716077",
+    "longitude": "-122.5650459",
+    "queried_at": "2026-10-09T18:55:19+00:00",
+    "query": "80 Ross Ave, San Anselmo, CA, 94960"
+  },
   "80 suffield ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "80, Suffield Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -12630,6 +12654,14 @@
     "longitude": "-122.5565620",
     "queried_at": "2026-04-12T20:29:22+00:00",
     "query": "91 Spring Grove Ave, San Anselmo, CA, 94960"
+  },
+  "916 sir francis drake blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Swirl, 916, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9817519",
+    "longitude": "-122.5662110",
+    "queried_at": "2026-10-09T18:55:21+00:00",
+    "query": "916 Sir Francis Drake Blvd, San Anselmo, CA, 94960"
   },
   "92 oak springs dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
