@@ -10703,6 +10703,14 @@
     "queried_at": "2026-04-12T20:25:55+00:00",
     "query": "61 Hillside Ave, San Anselmo, CA, 94960"
   },
+  "61 laurel ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "61, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9778772",
+    "longitude": "-122.5714034",
+    "queried_at": "2026-10-12T21:50:38+00:00",
+    "query": "61 Laurel Ave, San Anselmo, CA, 94960"
+  },
   "61 lincoln park, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
