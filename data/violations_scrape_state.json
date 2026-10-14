@@ -1,8 +1,8 @@
 {
   "batch_size": 50,
   "errors": [],
-  "last_run_finished_at": "2026-10-13T19:54:07+00:00",
-  "last_run_started_at": "2026-10-13T19:54:04+00:00",
+  "last_run_finished_at": "2026-10-14T18:07:12+00:00",
+  "last_run_started_at": "2026-10-14T18:07:01+00:00",
   "last_run_status": "success",
   "last_summary": {
     "prefix_summaries": {
@@ -13,7 +13,6 @@
         "next_sequence": 110,
         "prefix": "AB",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 110,
         "stopped_at_missing": "AB2026-0110",
         "unchanged": 0,
@@ -26,7 +25,6 @@
         "next_sequence": 1,
         "prefix": "CV",
         "requested_batch_size": 50,
-        "skipped_recently_exhausted": true,
         "start_sequence": 1,
         "stopped_at_missing": "CV2026-0001",
         "unchanged": 0,
@@ -38,8 +36,8 @@
     "AB": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-10-12T21:49:43+00:00",
-      "last_run_started_at": "2026-10-12T21:49:39+00:00",
+      "last_run_finished_at": "2026-10-14T18:07:08+00:00",
+      "last_run_started_at": "2026-10-14T18:07:04+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -58,8 +56,8 @@
     "CV": {
       "errors": [],
       "exhausted": true,
-      "last_run_finished_at": "2026-10-12T21:49:46+00:00",
-      "last_run_started_at": "2026-10-12T21:49:43+00:00",
+      "last_run_finished_at": "2026-10-14T18:07:12+00:00",
+      "last_run_started_at": "2026-10-14T18:07:08+00:00",
       "last_run_status": "success",
       "last_summary": {
         "changed": 0,
@@ -124,8 +122,8 @@
       "AB": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-10-12T21:49:43+00:00",
-        "last_run_started_at": "2026-10-12T21:49:39+00:00",
+        "last_run_finished_at": "2026-10-14T18:07:08+00:00",
+        "last_run_started_at": "2026-10-14T18:07:04+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
@@ -144,8 +142,8 @@
       "CV": {
         "errors": [],
         "exhausted": true,
-        "last_run_finished_at": "2026-10-12T21:49:46+00:00",
-        "last_run_started_at": "2026-10-12T21:49:43+00:00",
+        "last_run_finished_at": "2026-10-14T18:07:12+00:00",
+        "last_run_started_at": "2026-10-14T18:07:08+00:00",
         "last_run_status": "success",
         "last_summary": {
           "changed": 0,
