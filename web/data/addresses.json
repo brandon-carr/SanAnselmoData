@@ -1799,6 +1799,24 @@
     "latitude": "37.9774895",
     "longitude": "-122.5518849"
   },
+  "0fa9a909f30d6c29": {
+    "address": "87 Butterfield Rd",
+    "address_id": "0fa9a909f30d6c29",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "a53d54927df536d7ea967a2672f9c1e5a776c9f8a7db7ab79e2d9050b6d8890f",
+    "extra": {},
+    "first_seen_at": "2026-10-16T17:33:08+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-16T17:35:32+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "87, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-16T17:35:32+00:00",
+    "last_seen_at": "2026-10-16T17:35:32+00:00",
+    "latitude": "37.9898097",
+    "longitude": "-122.5775111"
+  },
   "0fae4084c7a1ce89": {
     "address": "138 Sycamore Ave",
     "address_id": "0fae4084c7a1ce89",
@@ -7303,7 +7321,7 @@
     "geocode_status": "success",
     "geocoded_address": "Bank of America, 401, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:06+00:00",
-    "last_seen_at": "2026-06-11T17:05:37+00:00",
+    "last_seen_at": "2026-10-16T17:35:21+00:00",
     "latitude": "37.9738653",
     "longitude": "-122.5623842"
   },
@@ -14791,7 +14809,7 @@
     "geocode_status": "success",
     "geocoded_address": "318, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T18:38:44+00:00",
-    "last_seen_at": "2026-07-23T15:31:40+00:00",
+    "last_seen_at": "2026-10-16T17:33:56+00:00",
     "latitude": "37.9973625",
     "longitude": "-122.5763177"
   },
@@ -19024,6 +19042,24 @@
     "last_seen_at": "2026-04-19T14:27:39+00:00",
     "latitude": "37.9790019",
     "longitude": "-122.5654025"
+  },
+  "ab949ff3dfafb0a6": {
+    "address": "26 Belle Ave Unit B",
+    "address_id": "ab949ff3dfafb0a6",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "81f5e1d2bf78108f9136761f7f7aca97dd86cb68417bf10d69a66cf66e0bcf00",
+    "extra": {},
+    "first_seen_at": "2026-10-16T17:33:21+00:00",
+    "geocode_attempts": 0,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "26, Belle Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-16T17:33:21+00:00",
+    "last_seen_at": "2026-10-16T17:33:21+00:00",
+    "latitude": "37.9703456",
+    "longitude": "-122.5619166"
   },
   "abc9fa9258b64b51": {
     "address": "64 Woodside Dr",
@@ -23827,7 +23863,7 @@
     "geocode_status": "success",
     "geocoded_address": "1000, South Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:11:15+00:00",
-    "last_seen_at": "2026-04-14T01:28:47+00:00",
+    "last_seen_at": "2026-10-16T17:33:16+00:00",
     "latitude": "37.9706598",
     "longitude": "-122.5751450"
   },
