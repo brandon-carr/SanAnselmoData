@@ -47,6 +47,14 @@
     "queried_at": "2026-04-12T20:50:49+00:00",
     "query": "1 Oakhill Dr, San Anselmo, CA, 94960"
   },
+  "1 ray ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1, Ray Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9931610",
+    "longitude": "-122.5755350",
+    "queried_at": "2026-10-18T16:39:22+00:00",
+    "query": "1 Ray Ct, San Anselmo, CA, 94960"
+  },
   "1 rutherford ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "1, Rutherford Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -4846,6 +4854,14 @@
     "longitude": "-122.5770638",
     "queried_at": "2026-04-12T20:54:26+00:00",
     "query": "20 Carlson Ave, San Anselmo, CA, 94960"
+  },
+  "20 durham rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "20, Durham Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9870870",
+    "longitude": "-122.5663763",
+    "queried_at": "2026-10-18T16:39:21+00:00",
+    "query": "20 Durham Rd, San Anselmo, CA, 94960"
   },
   "20 hillcrest ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
