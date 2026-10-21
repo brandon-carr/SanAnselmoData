@@ -1863,6 +1863,14 @@
     "queried_at": "2026-04-12T18:50:25+00:00",
     "query": "127 Suffield Ave, San Anselmo, CA, 94960"
   },
+  "128 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "128, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9912257",
+    "longitude": "-122.5765057",
+    "queried_at": "2026-10-21T18:11:59+00:00",
+    "query": "128 Butterfield Rd, San Anselmo, CA, 94960"
+  },
   "128 calumet ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "128, Calumet Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -6799,6 +6807,14 @@
     "queried_at": "2026-04-12T19:04:24+00:00",
     "query": "295 Oak Ave, San Anselmo, CA, 94960"
   },
+  "296 butterfield rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "296, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9965895",
+    "longitude": "-122.5764040",
+    "queried_at": "2026-10-21T18:11:58+00:00",
+    "query": "296 Butterfield Rd, San Anselmo, CA, 94960"
+  },
   "298 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "298, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
@@ -10647,6 +10663,14 @@
     "queried_at": "2026-04-12T20:52:36+00:00",
     "query": "60 Essex St, San Anselmo, CA, 94960"
   },
+  "60 fernwood dr, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "60, Fernwood Drive, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9755629",
+    "longitude": "-122.5737470",
+    "queried_at": "2026-10-21T18:12:00+00:00",
+    "query": "60 Fernwood Dr, San Anselmo, CA, 94960"
+  },
   "60 greenfield ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "Java Hub, 60, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -12998,6 +13022,14 @@
     "longitude": "-122.5740120",
     "queried_at": "2026-04-12T20:23:55+00:00",
     "query": "99 Alder Ave, San Anselmo, CA, 94960"
+  },
+  "99 broadmoor ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "99, Broadmoor Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9896455",
+    "longitude": "-122.5729540",
+    "queried_at": "2026-10-21T18:12:01+00:00",
+    "query": "99 Broadmoor Ave, San Anselmo, CA, 94960"
   },
   "99 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
