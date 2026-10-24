@@ -8243,6 +8243,24 @@
     "latitude": "37.9752821",
     "longitude": "-122.5614880"
   },
+  "4e0b9fd81f798afc": {
+    "address": "64 Berkeley Ave",
+    "address_id": "4e0b9fd81f798afc",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "0a901adf79ac144e518b6bbbb5a10611f61bfe5b26ffc786994e2ed234c0c80d",
+    "extra": {},
+    "first_seen_at": "2026-10-24T16:47:16+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-24T16:47:28+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "64, Berkeley Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-24T16:47:28+00:00",
+    "last_seen_at": "2026-10-24T16:47:28+00:00",
+    "latitude": "37.9894780",
+    "longitude": "-122.5711460"
+  },
   "4e27a06145ca852f": {
     "address": "69 Mountain View Ave",
     "address_id": "4e27a06145ca852f",
@@ -22639,7 +22657,7 @@
     "geocode_status": "success",
     "geocoded_address": "307, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T17:16:21+00:00",
-    "last_seen_at": "2026-09-04T16:54:06+00:00",
+    "last_seen_at": "2026-10-24T16:46:52+00:00",
     "latitude": "37.9717609",
     "longitude": "-122.5725625"
   },
@@ -23398,6 +23416,24 @@
     "last_seen_at": "2026-04-12T20:03:44+00:00",
     "latitude": "37.9778720",
     "longitude": "-122.5516590"
+  },
+  "cf4650ed83f8f3fc": {
+    "address": "150 Oak Ave",
+    "address_id": "cf4650ed83f8f3fc",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "f423aa5ea354b3b8139ff1057aadb79c50b91cb81fadf0de6fb33877637e11ce",
+    "extra": {},
+    "first_seen_at": "2026-10-24T16:45:01+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-10-24T16:47:28+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "150, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-10-24T16:47:28+00:00",
+    "last_seen_at": "2026-10-24T16:47:28+00:00",
+    "latitude": "37.9693901",
+    "longitude": "-122.5709617"
   },
   "cf4e1e05e680b5c6": {
     "address": "21 Laurel Ave",
@@ -28129,7 +28165,7 @@
     "geocode_status": "success",
     "geocoded_address": "329, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:03:19+00:00",
-    "last_seen_at": "2026-04-12T20:03:19+00:00",
+    "last_seen_at": "2026-10-24T16:44:36+00:00",
     "latitude": "37.9760386",
     "longitude": "-122.5534084"
   },

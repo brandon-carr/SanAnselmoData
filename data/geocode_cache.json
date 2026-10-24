@@ -3239,6 +3239,14 @@
     "queried_at": "2026-07-01T16:03:03+00:00",
     "query": "150 Jordan Ave, San Anselmo, CA, 94960"
   },
+  "150 oak ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "150, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9693901",
+    "longitude": "-122.5709617",
+    "queried_at": "2026-10-24T16:47:29+00:00",
+    "query": "150 Oak Ave, San Anselmo, CA, 94960"
+  },
   "150 prospect ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "150, Prospect Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -10982,6 +10990,14 @@
     "longitude": "-122.5598817",
     "queried_at": "2026-04-12T20:52:54+00:00",
     "query": "64 Barber Ave, San Anselmo, CA, 94960"
+  },
+  "64 berkeley ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "64, Berkeley Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9894780",
+    "longitude": "-122.5711460",
+    "queried_at": "2026-10-24T16:47:28+00:00",
+    "query": "64 Berkeley Ave, San Anselmo, CA, 94960"
   },
   "64 cordone dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
