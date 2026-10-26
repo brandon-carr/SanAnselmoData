@@ -7359,6 +7359,14 @@
     "queried_at": "2026-04-12T20:24:46+00:00",
     "query": "33 Park Way, San Anselmo, CA, 94960"
   },
+  "33 salinas ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "33, Salinas Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9879035",
+    "longitude": "-122.5653085",
+    "queried_at": "2026-10-26T19:29:44+00:00",
+    "query": "33 Salinas Ave, San Anselmo, CA, 94960"
+  },
   "33 sequoia dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "33, Sequoia Drive, San Anselmo, Marin County, California, 94960, United States",
