@@ -2151,6 +2151,14 @@
     "queried_at": "2026-04-18T14:27:02+00:00",
     "query": "131 The Alameda, San Anselmo, CA, 94960"
   },
+  "1310 san anselmo ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "1310, San Anselmo Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9795418",
+    "longitude": "-122.5740125",
+    "queried_at": "2026-11-04T20:32:46+00:00",
+    "query": "1310 San Anselmo Ave, San Anselmo, CA, 94960"
+  },
   "132 butterfield rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "132, Butterfield Road, San Anselmo, Marin County, California, 94960, United States",
@@ -5063,6 +5071,14 @@
     "queried_at": "2026-04-12T20:54:32+00:00",
     "query": "200 Holstein Rd, San Anselmo, CA, 94960"
   },
+  "200 saunders ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "200, Saunders Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9814720",
+    "longitude": "-122.5708170",
+    "queried_at": "2026-11-04T20:32:44+00:00",
+    "query": "200 Saunders Ave, San Anselmo, CA, 94960"
+  },
   "201 floribel ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "201, Floribel Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -6078,6 +6094,14 @@
     "longitude": "-122.5583351",
     "queried_at": "2026-04-12T20:40:27+00:00",
     "query": "25 Buena Vista, San Anselmo, CA, 94960"
+  },
+  "25 canyon rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "25, Canyon Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9776007",
+    "longitude": "-122.5790335",
+    "queried_at": "2026-11-04T20:32:45+00:00",
+    "query": "25 Canyon Rd, San Anselmo, CA, 94960"
   },
   "25 carlson ct, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
