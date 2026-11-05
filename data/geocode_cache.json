@@ -639,6 +639,14 @@
     "queried_at": "2026-04-12T20:23:26+00:00",
     "query": "1055 San Anselmo Ave, San Anselmo, CA, 94960"
   },
+  "106 alder ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "106, Alder Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9816064",
+    "longitude": "-122.5738881",
+    "queried_at": "2026-11-05T20:48:23+00:00",
+    "query": "106 Alder Ave, San Anselmo, CA, 94960"
+  },
   "106 humboldt ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "106, Humboldt Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -2767,6 +2775,14 @@
     "queried_at": "2026-09-24T17:55:12+00:00",
     "query": "140 Oak Knoll Ave, San Anselmo, CA, 94960"
   },
+  "140 pine st, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "140, Pine Street, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9734575",
+    "longitude": "-122.5633964",
+    "queried_at": "2026-11-05T20:48:24+00:00",
+    "query": "140 Pine St, San Anselmo, CA, 94960"
+  },
   "140 sir francis drake blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "140, Sir Francis Drake Boulevard, San Anselmo, Marin County, California, 94960, United States",
@@ -3079,6 +3095,14 @@
     "queried_at": "2026-04-21T15:02:15+00:00",
     "query": "15 Cottage Ave, San Anselmo, CA, 94960"
   },
+  "15 florence ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "15, Florence Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9829631",
+    "longitude": "-122.5775790",
+    "queried_at": "2026-11-05T20:48:19+00:00",
+    "query": "15 Florence Ave, San Anselmo, CA, 94960"
+  },
   "15 foothill rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "15, Foothill Road, San Anselmo, Marin County, California, 94960, United States",
@@ -3142,6 +3166,14 @@
     "longitude": "-122.5769537",
     "queried_at": "2026-04-20T15:07:08+00:00",
     "query": "15 Medway Rd, San Anselmo, CA, 94960"
+  },
+  "15 monterey ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "15, Monterey Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9844567",
+    "longitude": "-122.5643818",
+    "queried_at": "2026-11-05T20:48:22+00:00",
+    "query": "15 Monterey Ave, San Anselmo, CA, 94960"
   },
   "15 prospect ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
@@ -8343,6 +8375,14 @@
     "queried_at": "2026-04-12T20:52:24+00:00",
     "query": "41 Brookside Dr, San Anselmo, CA, 94960"
   },
+  "41 crooked ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Crooked Avenue, San Anselmo, Marin County, California, 94957, United States",
+    "latitude": "37.9804635",
+    "longitude": "-122.5579873",
+    "queried_at": "2026-11-05T20:48:21+00:00",
+    "query": "41 Crooked Ave, San Anselmo, CA, 94960"
+  },
   "41 elkhorn way, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "41, Elkhorn Way, San Anselmo, Marin County, California, 94960, United States",
@@ -10543,6 +10583,14 @@
     "queried_at": "2026-04-12T20:52:14+00:00",
     "query": "58 Spruce Ave, San Anselmo, CA, 94960"
   },
+  "580 red hill ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Mi Familia Taqueria, 580, Red Hill Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9767667",
+    "longitude": "-122.5604409",
+    "queried_at": "2026-11-05T20:48:18+00:00",
+    "query": "580 Red Hill Ave, San Anselmo, CA, 94960"
+  },
   "59 austin ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "59, Austin Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -10670,6 +10718,14 @@
     "longitude": "-122.5760262",
     "queried_at": "2026-04-12T20:44:33+00:00",
     "query": "6 Caleta Ave, San Anselmo, CA, 94960"
+  },
+  "6 cypress rd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "6, Cypress Road, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9792739",
+    "longitude": "-122.5587252",
+    "queried_at": "2026-11-05T20:48:20+00:00",
+    "query": "6 Cypress Rd, San Anselmo, CA, 94960"
   },
   "6 kilgore ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
