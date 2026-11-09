@@ -3831,6 +3831,14 @@
     "queried_at": "2026-04-12T20:52:07+00:00",
     "query": "161 Prospect Ave, San Anselmo, CA, 94960"
   },
+  "162 the alameda, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "162, The Alameda, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9927099",
+    "longitude": "-122.5753670",
+    "queried_at": "2026-11-09T23:05:39+00:00",
+    "query": "162 The Alameda, San Anselmo, CA, 94960"
+  },
   "163 tunstead ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "163, Tunstead Avenue, San Anselmo, Marin County, California, 94960, United States",
