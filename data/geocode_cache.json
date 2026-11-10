@@ -927,6 +927,14 @@
     "queried_at": "2026-04-12T20:39:33+00:00",
     "query": "110 Hawthorne Ave, San Anselmo, CA, 94960"
   },
+  "110 jordan ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "110, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9809990",
+    "longitude": "-122.5557100",
+    "queried_at": "2026-11-10T20:31:20+00:00",
+    "query": "110 Jordan Ave, San Anselmo, CA, 94960"
+  },
   "110 meadowcroft dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "110, Meadowcroft Drive, San Anselmo, Marin County, California, 94960, United States",
