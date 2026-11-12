@@ -1399,6 +1399,14 @@
     "queried_at": "2026-04-12T20:54:23+00:00",
     "query": "12 Austin Ave, San Anselmo, CA, 94960"
   },
+  "12 barber ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "Barber Avenue, San Anselmo, Marin County, California, 94957, United States",
+    "latitude": "37.9727025",
+    "longitude": "-122.5614638",
+    "queried_at": "2026-11-12T21:01:40+00:00",
+    "query": "12 Barber Ave, San Anselmo, CA, 94960"
+  },
   "12 bay tree ln, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "",
@@ -7326,6 +7334,14 @@
     "longitude": "-122.5763036",
     "queried_at": "2026-08-14T14:31:03+00:00",
     "query": "322 Butterfield Rd, San Anselmo, CA, 94960"
+  },
+  "322 greenfield ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "322, Greenfield Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9758464",
+    "longitude": "-122.5528627",
+    "queried_at": "2026-11-12T21:01:39+00:00",
+    "query": "322 Greenfield Ave, San Anselmo, CA, 94960"
   },
   "324 the alameda, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
