@@ -4863,6 +4863,14 @@
     "queried_at": "2026-04-12T20:23:34+00:00",
     "query": "2 Hillcrest Ct, San Anselmo, CA, 94960"
   },
+  "2 hooper ln, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "2, Hooper Lane, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9837380",
+    "longitude": "-122.5799660",
+    "queried_at": "2026-11-16T22:59:53+00:00",
+    "query": "2 Hooper Ln, San Anselmo, CA, 94960"
+  },
   "2 loma robles dr, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "2, Loma Robles Drive, San Anselmo, Marin County, California, 94960, United States",
