@@ -8183,6 +8183,14 @@
     "queried_at": "2026-04-12T20:34:23+00:00",
     "query": "4 Canyon Rd, San Anselmo, CA, 94960"
   },
+  "4 east ct, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "4, East Court, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9901422",
+    "longitude": "-122.5788549",
+    "queried_at": "2026-11-17T21:50:58+00:00",
+    "query": "4 East Ct, San Anselmo, CA, 94960"
+  },
   "4 hawthorne ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "4, Hawthorne Avenue, San Anselmo, Marin County, California, 94960, United States",
