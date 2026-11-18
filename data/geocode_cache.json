@@ -2815,6 +2815,14 @@
     "queried_at": "2026-05-05T18:29:28+00:00",
     "query": "1405 San Anselmo Ave, San Anselmo, CA, 94960"
   },
+  "141 barber ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "141, Barber Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9716167",
+    "longitude": "-122.5596704",
+    "queried_at": "2026-11-18T21:32:34+00:00",
+    "query": "141 Barber Ave, San Anselmo, CA, 94960"
+  },
   "141 crescent rd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "141, Crescent Road, San Anselmo, Marin County, California, 94960, United States",
@@ -7279,6 +7287,14 @@
     "queried_at": "2026-04-12T20:49:16+00:00",
     "query": "318 The Alameda, San Anselmo, CA, 94960"
   },
+  "32 ash ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "32, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9846694",
+    "longitude": "-122.5748927",
+    "queried_at": "2026-11-18T21:32:35+00:00",
+    "query": "32 Ash Ave, San Anselmo, CA, 94960"
+  },
   "32 elm ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "32, Elm Avenue, San Anselmo, Marin County, California, 94960, United States",
@@ -8014,6 +8030,14 @@
     "longitude": "-122.5719893",
     "queried_at": "2026-07-29T15:27:15+00:00",
     "query": "38 Alder Ave, San Anselmo, CA, 94960"
+  },
+  "38 el cerrito ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "38, El Cerrito Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9834873",
+    "longitude": "-122.5688624",
+    "queried_at": "2026-11-18T21:32:33+00:00",
+    "query": "38 El Cerrito Ave, San Anselmo, CA, 94960"
   },
   "38 jordan ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",

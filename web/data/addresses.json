@@ -1543,7 +1543,7 @@
     "geocode_status": "success",
     "geocoded_address": "99, Hillside Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:14:27+00:00",
-    "last_seen_at": "2026-11-10T20:30:45+00:00",
+    "last_seen_at": "2026-11-18T21:29:04+00:00",
     "latitude": "37.9764500",
     "longitude": "-122.5704796"
   },
@@ -3145,7 +3145,7 @@
     "geocode_status": "success",
     "geocoded_address": "20, Sierra Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-17T14:45:23+00:00",
-    "last_seen_at": "2026-11-04T20:32:14+00:00",
+    "last_seen_at": "2026-11-18T21:32:19+00:00",
     "latitude": "37.9855892",
     "longitude": "-122.5752614"
   },
@@ -4423,7 +4423,7 @@
     "geocode_status": "success",
     "geocoded_address": "Mi Familia Taqueria, 580, Red Hill Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-11-05T20:48:18+00:00",
-    "last_seen_at": "2026-11-05T20:48:18+00:00",
+    "last_seen_at": "2026-11-18T21:32:00+00:00",
     "latitude": "37.9767667",
     "longitude": "-122.5604409"
   },
@@ -8095,7 +8095,7 @@
     "geocode_status": "success",
     "geocoded_address": "180, Sturdivant Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:02+00:00",
-    "last_seen_at": "2026-10-21T18:11:16+00:00",
+    "last_seen_at": "2026-11-18T21:32:12+00:00",
     "latitude": "37.9720840",
     "longitude": "-122.5563553"
   },
@@ -10021,7 +10021,7 @@
     "geocode_status": "success",
     "geocoded_address": "100, Laurel Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:07:09+00:00",
-    "last_seen_at": "2026-11-04T20:32:16+00:00",
+    "last_seen_at": "2026-11-18T21:32:21+00:00",
     "latitude": "37.9775220",
     "longitude": "-122.5711720"
   },
@@ -11465,6 +11465,42 @@
     "latitude": "37.9735480",
     "longitude": "-122.5674106"
   },
+  "6895414beddad008": {
+    "address": "38 El Cerrito Ave",
+    "address_id": "6895414beddad008",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "6d8239cf82ec790188ae22ec0eb58e5838782f3f9f358a2b6a6e8e9255642a55",
+    "extra": {},
+    "first_seen_at": "2026-11-18T21:29:04+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-11-18T21:32:33+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "38, El Cerrito Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-11-18T21:32:33+00:00",
+    "last_seen_at": "2026-11-18T21:32:33+00:00",
+    "latitude": "37.9834873",
+    "longitude": "-122.5688624"
+  },
+  "68a49c09a6a3f38e": {
+    "address": "32 Ash Ave",
+    "address_id": "68a49c09a6a3f38e",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "1065fd43021b98954244d1fdb48ef8859668d3df9841853fad7996f90a4ece25",
+    "extra": {},
+    "first_seen_at": "2026-11-18T21:28:53+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-11-18T21:32:34+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "32, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-11-18T21:32:34+00:00",
+    "last_seen_at": "2026-11-18T21:32:34+00:00",
+    "latitude": "37.9846694",
+    "longitude": "-122.5748927"
+  },
   "68bd292829e987d3": {
     "address": "163 Tunstead Ave",
     "address_id": "68bd292829e987d3",
@@ -11731,7 +11767,7 @@
     "geocode_status": "success",
     "geocoded_address": "62, Tamalpais Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:11:39+00:00",
-    "last_seen_at": "2026-04-12T20:11:39+00:00",
+    "last_seen_at": "2026-11-18T21:29:05+00:00",
     "latitude": "37.9753660",
     "longitude": "-122.5657698"
   },
@@ -19255,7 +19291,7 @@
     "geocode_status": "error",
     "geocoded_address": "",
     "last_changed_at": "2026-08-20T14:07:50+00:00",
-    "last_seen_at": "2026-11-17T21:50:53+00:00",
+    "last_seen_at": "2026-11-18T21:32:17+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -22855,7 +22891,7 @@
     "geocode_status": "success",
     "geocoded_address": "127, Oak Springs Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-05-05T18:29:19+00:00",
-    "last_seen_at": "2026-11-02T22:26:38+00:00",
+    "last_seen_at": "2026-11-18T21:32:27+00:00",
     "latitude": "37.9968196",
     "longitude": "-122.5846867"
   },
@@ -26689,7 +26725,7 @@
     "geocode_status": "success",
     "geocoded_address": "604, Red Hill Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:15:25+00:00",
-    "last_seen_at": "2026-08-28T23:05:55+00:00",
+    "last_seen_at": "2026-11-18T21:31:17+00:00",
     "latitude": "37.9767818",
     "longitude": "-122.5611970"
   },
@@ -27751,7 +27787,7 @@
     "geocode_status": "success",
     "geocoded_address": "72, Woodside Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-07-11T14:35:50+00:00",
-    "last_seen_at": "2026-09-28T20:12:22+00:00",
+    "last_seen_at": "2026-11-18T21:32:05+00:00",
     "latitude": "37.9972372",
     "longitude": "-122.5791849"
   },
@@ -28924,6 +28960,24 @@
     "last_seen_at": "2026-04-12T20:10:35+00:00",
     "latitude": "37.9876471",
     "longitude": "-122.5774220"
+  },
+  "f8ab7005d5163a7c": {
+    "address": "141 Barber Ave",
+    "address_id": "f8ab7005d5163a7c",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "7e380e0136cc92f370f1495dc6bba0326f4162b12435ada73ea1dae8d3777667",
+    "extra": {},
+    "first_seen_at": "2026-11-18T21:29:03+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-11-18T21:32:33+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "141, Barber Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-11-18T21:32:33+00:00",
+    "last_seen_at": "2026-11-18T21:32:33+00:00",
+    "latitude": "37.9716167",
+    "longitude": "-122.5596704"
   },
   "f8b445673334bfab": {
     "address": "31 Rutherford Ave",
