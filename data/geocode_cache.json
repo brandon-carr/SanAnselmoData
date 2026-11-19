@@ -7551,6 +7551,14 @@
     "queried_at": "2026-04-14T18:24:32+00:00",
     "query": "339 San Anselmo Ave, San Anselmo, CA, 94960"
   },
+  "34 ash ave, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "34, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9846196",
+    "longitude": "-122.5748624",
+    "queried_at": "2026-11-19T21:43:59+00:00",
+    "query": "34 Ash Ave, San Anselmo, CA, 94960"
+  },
   "34 el cerrito ave, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "34, El Cerrito Avenue, San Anselmo, Marin County, California, 94960, United States",

@@ -3613,7 +3613,7 @@
     "geocode_status": "success",
     "geocoded_address": "15, Florence Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-11-05T20:48:18+00:00",
-    "last_seen_at": "2026-11-05T20:48:18+00:00",
+    "last_seen_at": "2026-11-19T21:43:51+00:00",
     "latitude": "37.9829631",
     "longitude": "-122.5775790"
   },
@@ -7681,7 +7681,7 @@
     "geocode_status": "success",
     "geocoded_address": "164, Ridge Road, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:06:28+00:00",
-    "last_seen_at": "2026-11-04T20:31:56+00:00",
+    "last_seen_at": "2026-11-19T21:43:24+00:00",
     "latitude": "37.9884033",
     "longitude": "-122.5707505"
   },
@@ -10651,7 +10651,7 @@
     "geocode_status": "success",
     "geocoded_address": "15, Monterey Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-11-05T20:48:21+00:00",
-    "last_seen_at": "2026-11-05T20:48:21+00:00",
+    "last_seen_at": "2026-11-19T21:43:38+00:00",
     "latitude": "37.9844567",
     "longitude": "-122.5643818"
   },
@@ -11497,7 +11497,7 @@
     "geocode_status": "success",
     "geocoded_address": "32, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-11-18T21:32:34+00:00",
-    "last_seen_at": "2026-11-18T21:32:34+00:00",
+    "last_seen_at": "2026-11-19T21:43:54+00:00",
     "latitude": "37.9846694",
     "longitude": "-122.5748927"
   },
@@ -16699,7 +16699,7 @@
     "geocode_status": "success",
     "geocoded_address": "125, Oak Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:21:40+00:00",
-    "last_seen_at": "2026-11-10T20:30:57+00:00",
+    "last_seen_at": "2026-11-19T21:43:43+00:00",
     "latitude": "37.9687070",
     "longitude": "-122.5702240"
   },
@@ -19903,7 +19903,7 @@
     "geocode_status": "success",
     "geocoded_address": "130, Woodland Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:05:05+00:00",
-    "last_seen_at": "2026-11-17T21:50:18+00:00",
+    "last_seen_at": "2026-11-19T21:43:29+00:00",
     "latitude": "37.9721743",
     "longitude": "-122.5668684"
   },
@@ -21001,7 +21001,7 @@
     "geocode_status": "error",
     "geocoded_address": "",
     "last_changed_at": "2026-04-12T20:21:45+00:00",
-    "last_seen_at": "2026-10-13T19:54:36+00:00",
+    "last_seen_at": "2026-11-19T21:43:40+00:00",
     "latitude": "",
     "longitude": ""
   },
@@ -21325,7 +21325,7 @@
     "geocode_status": "success",
     "geocoded_address": "12, Tamalpais Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:20:51+00:00",
-    "last_seen_at": "2026-11-03T20:10:59+00:00",
+    "last_seen_at": "2026-11-19T21:43:13+00:00",
     "latitude": "37.9758853",
     "longitude": "-122.5640023"
   },
@@ -24349,7 +24349,7 @@
     "geocode_status": "success",
     "geocoded_address": "110, Jordan Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-11-10T20:31:19+00:00",
-    "last_seen_at": "2026-11-10T20:31:19+00:00",
+    "last_seen_at": "2026-11-19T21:43:53+00:00",
     "latitude": "37.9809990",
     "longitude": "-122.5557100"
   },
@@ -26293,7 +26293,7 @@
     "geocode_status": "success",
     "geocoded_address": "46, Tomahawk Drive, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:13:33+00:00",
-    "last_seen_at": "2026-10-14T18:08:15+00:00",
+    "last_seen_at": "2026-11-19T21:43:37+00:00",
     "latitude": "37.9918310",
     "longitude": "-122.5688178"
   },
@@ -28273,7 +28273,7 @@
     "geocode_status": "success",
     "geocoded_address": "46, Santa Barbara Avenue, San Anselmo, Marin County, California, 94960, United States",
     "last_changed_at": "2026-04-12T20:14:27+00:00",
-    "last_seen_at": "2026-10-19T19:26:02+00:00",
+    "last_seen_at": "2026-11-19T21:43:50+00:00",
     "latitude": "37.9874530",
     "longitude": "-122.5652420"
   },
@@ -28816,6 +28816,24 @@
     "last_seen_at": "2026-04-12T20:11:03+00:00",
     "latitude": "37.9819220",
     "longitude": "-122.5534020"
+  },
+  "f7472df070a00adf": {
+    "address": "34 Ash Ave",
+    "address_id": "f7472df070a00adf",
+    "city_state_zip": "San Anselmo, CA, 94960",
+    "data_hash": "f384c4cd46b7356567ccd6097a2dbc205d9742f361db6f1711c0466304a89a08",
+    "extra": {},
+    "first_seen_at": "2026-11-19T21:41:17+00:00",
+    "geocode_attempts": 1,
+    "geocode_error": "",
+    "geocode_last_attempt_at": "2026-11-19T21:43:58+00:00",
+    "geocode_source": "nominatim",
+    "geocode_status": "success",
+    "geocoded_address": "34, Ash Avenue, San Anselmo, Marin County, California, 94960, United States",
+    "last_changed_at": "2026-11-19T21:43:58+00:00",
+    "last_seen_at": "2026-11-19T21:43:58+00:00",
+    "latitude": "37.9846196",
+    "longitude": "-122.5748624"
   },
   "f77ac5ab9013fa2a": {
     "address": "119 Laurel Ave",
