@@ -6087,6 +6087,14 @@
     "queried_at": "2026-04-12T20:36:05+00:00",
     "query": "242 Butterfield Rd, San Anselmo, CA, 94960"
   },
+  "244 los angeles blvd, san anselmo, ca, 94960": {
+    "geocode_source": "nominatim",
+    "geocoded_address": "244, Los Angeles Boulevard, San Anselmo, Marin County, California, 94960, United States",
+    "latitude": "37.9861434",
+    "longitude": "-122.5635453",
+    "queried_at": "2026-11-22T20:27:37+00:00",
+    "query": "244 Los Angeles Blvd, San Anselmo, CA, 94960"
+  },
   "245 san francisco blvd, san anselmo, ca, 94960": {
     "geocode_source": "nominatim",
     "geocoded_address": "245, San Francisco Boulevard, San Anselmo, Marin County, California, 94960, United States",
